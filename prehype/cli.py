@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import sys
 
+from prehype.breakouts import add_prices, find_breakouts
 from prehype.pipeline import scan
 from prehype.scoring import ScoreWeights
 from prehype.sources.base import DataSource
@@ -57,6 +58,33 @@ def _cmd_scan(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_breakouts(args: argparse.Namespace) -> int:
+    print("\nScanning hitters for breakout signals (Baseball Savant)...")
+    hits = find_breakouts(
+        year=args.year,
+        min_pa=args.min_pa,
+        top=args.top,
+        min_score=args.min_score,
+    )
+    if not hits:
+        print(
+            "No breakout candidates found. If this is unexpected, Baseball "
+            "Savant may be unreachable from here, or the season/year has no data yet."
+        )
+        return 0
+
+    if args.with_prices:
+        print("Checking card prices on eBay for the shortlist...")
+        hits = add_prices(hits)
+
+    print(f"\n=== Breakout board — top {len(hits)} (player-first) ===\n")
+    for i, h in enumerate(hits, 1):
+        print(f"{i}. {h.as_alert()}\n")
+    if not args.with_prices:
+        print("Tip: add --with-prices to check card prices for these players.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="prehype",
@@ -86,6 +114,21 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--cheap-ref", type=float, default=15.0, help="price considered 'dirt cheap'")
     s.add_argument("--rich-ref", type=float, default=500.0, help="price considered 'expensive'")
     s.set_defaults(func=_cmd_scan)
+
+    b = sub.add_parser(
+        "breakouts",
+        help="player-first: find MLB hitters about to break out (Statcast)",
+    )
+    b.add_argument("--year", type=int, default=None, help="season year (default: current)")
+    b.add_argument("--min-pa", type=int, default=150, help="minimum plate appearances")
+    b.add_argument("--top", type=int, default=15, help="how many candidates to show")
+    b.add_argument("--min-score", type=float, default=40.0, help="hide breakout scores below this")
+    b.add_argument(
+        "--with-prices",
+        action="store_true",
+        help="also check eBay card prices for the shortlist (needs a non-blocked IP)",
+    )
+    b.set_defaults(func=_cmd_breakouts)
     return p
 
 

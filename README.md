@@ -22,6 +22,30 @@ The edge isn't predicting the future — it's spotting cards where the first two
 signals are already firing but **price is still asleep.** That gap is the
 opportunity window. Once price starts running, you're late.
 
+## Player-first, not price-first
+
+There are far fewer players about to break out than there are cheap cards, so
+we start with the small pile:
+
+```
+ALL hitters --> who's about to break out? --> (top few) --> check card price --> "cheap + hot = BUY"
+                (Statcast leading signal)                   (eBay, only now)
+```
+
+The breakout signal uses **leading** Statcast numbers, not lagging box-score
+stats. The key one: **expected wOBA vs actual wOBA**. When a hitter's quality of
+contact (xwOBA) is elite but his actual results still lag, he's "unlucky" — his
+numbers are about to jump, and because casual fans watch the box score his cards
+are still cheap. That's the edge. See `sources/savant.py` and `breakouts.py`.
+
+Because the price check runs only on the breakout shortlist, it's a few eBay
+lookups instead of thousands — which also sidesteps most of eBay's IP blocking.
+
+> Note: the raw breakout board surfaces elite skill, which includes famous
+> stars (Soto, Ohtani). Those get filtered out by the `--with-prices` stage —
+> their cards are expensive, so there's no edge. The buys are the players with
+> the same underlying skill but cheap cards.
+
 ## The Pre-Hype Score
 
 Every player gets a single 0–100 score built from transparent parts:
@@ -49,6 +73,11 @@ Verdicts you'll see: `EARLY` 🔥 · `WATCH` 👀 · `WINDOW_CLOSING` ⏳ ·
 ## Quick start
 
 ```bash
+# PLAYER-FIRST: find MLB hitters about to break out (real Statcast data),
+# then check their card prices for just the shortlist:
+python -m prehype breakouts --min-pa 300
+python -m prehype breakouts --min-pa 300 --with-prices   # adds eBay price check
+
 # Runs fully offline on built-in demo players:
 python -m prehype scan
 
