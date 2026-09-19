@@ -22,6 +22,25 @@ The edge isn't predicting the future — it's spotting cards where the first two
 signals are already firing but **price is still asleep.** That gap is the
 opportunity window. Once price starts running, you're late.
 
+## Prospects (minor leagues) — where Bowman 1st autos live
+
+```bash
+python -m prehype prospects --min-pa 150            # scan the minors
+python -m prehype prospects --min-pa 150 --with-prices
+```
+
+Bowman 1st autos are *prospect* cards, so the real edge is in the minors. The
+minors have no Statcast, so the leading signal is **age-relative-to-level** (a
+20-year-old holding his own in Double-A is a screaming buy), plus OPS and plate
+discipline (walk/strikeout rates travel up levels). Same downstream funnel:
+hype meter + Bowman 1st auto price + price-momentum gate. See `sources/milb.py`
+and `find_prospects()`.
+
+Note: this ranks by *numbers*, not scouting reports — so a toolsy, highly-ranked
+name with a merely-good statline lands mid-pack, while a lesser-known kid with a
+loud season rises. That's the point (be early on the numbers), but it means the
+tool complements prospect lists, it doesn't replace scouting.
+
 ## Player-first, not price-first
 
 There are far fewer players about to break out than there are cheap cards, so

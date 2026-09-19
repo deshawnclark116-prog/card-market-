@@ -9,7 +9,13 @@ from __future__ import annotations
 import argparse
 import sys
 
-from prehype.breakouts import add_hype, add_prices, find_breakouts, find_breakouts_multi
+from prehype.breakouts import (
+    add_hype,
+    add_prices,
+    find_breakouts,
+    find_breakouts_multi,
+    find_prospects,
+)
 from prehype.pipeline import scan
 from prehype.scoring import ScoreWeights
 from prehype.sources.base import DataSource
@@ -165,11 +171,54 @@ def build_parser() -> argparse.ArgumentParser:
     )
     b.set_defaults(func=_cmd_breakouts)
 
+    pr = sub.add_parser(
+        "prospects",
+        help="scan the MINOR leagues for prospect breakouts (Bowman 1st autos)",
+    )
+    pr.add_argument("--year", type=int, default=None, help="season year (default: current)")
+    pr.add_argument("--min-pa", type=int, default=150, help="min plate appearances")
+    pr.add_argument("--top", type=int, default=15, help="how many candidates to show")
+    pr.add_argument("--min-score", type=float, default=20.0, help="hide scores below this")
+    pr.add_argument("--no-hype", action="store_true", help="skip the Google Trends hype meter")
+    pr.add_argument("--anchor", default="Aaron Judge", help="famous player for the hype meter")
+    pr.add_argument(
+        "--with-prices",
+        action="store_true",
+        help="check Bowman 1st auto prices on eBay (needs a non-blocked IP)",
+    )
+    pr.set_defaults(func=_cmd_prospects)
+
     sv = sub.add_parser("serve", help="run the JSON API for a web frontend")
     sv.add_argument("--host", default="0.0.0.0", help="bind host (default: 0.0.0.0)")
     sv.add_argument("--port", type=int, default=8000, help="port (default: 8000)")
     sv.set_defaults(func=_cmd_serve)
     return p
+
+
+def _cmd_prospects(args: argparse.Namespace) -> int:
+    print("\nScanning the minor leagues for prospect breakouts (MLB StatsAPI)...")
+    hits = find_prospects(
+        year=args.year, min_pa=args.min_pa, top=max(args.top * 3, args.top), min_score=args.min_score
+    )
+    if not hits:
+        print("No prospects found — the minor-league feeds may be unreachable from here.")
+        return 0
+
+    if not args.no_hype:
+        print("Checking search interest (hype meter) to find the real sleepers...")
+        hits = add_hype(hits, anchor=args.anchor)
+    hits = hits[: args.top]
+
+    if args.with_prices:
+        print("Checking Bowman 1st auto prices on eBay...")
+        hits = add_prices(hits, cards=("bowman1st",))
+
+    print(f"\n=== Prospect board — top {len(hits)} (minors) ===\n")
+    for i, h in enumerate(hits, 1):
+        print(f"{i}. {h.as_alert()}\n")
+    if not args.with_prices:
+        print("Tip: add --with-prices to check Bowman 1st auto prices.")
+    return 0
 
 
 def _cmd_serve(args: argparse.Namespace) -> int:

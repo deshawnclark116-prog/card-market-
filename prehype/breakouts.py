@@ -211,6 +211,47 @@ def find_breakouts_multi(
     return combined[: top * 3]
 
 
+def find_prospects(
+    *,
+    year: int | None = None,
+    min_pa: int = 150,
+    top: int = 15,
+    min_score: float = 20.0,
+    levels: tuple[int, ...] = (11, 12, 13, 14),
+    batters: list | None = None,
+) -> list[BreakoutHit]:
+    """Scan the minor leagues for prospect breakouts (no price yet).
+
+    Uses age-for-level + performance (there's no Statcast in the minors). Pass
+    ``batters`` (a list of MilbBatter) to score supplied data (tests); otherwise
+    fetches live from the MLB StatsAPI minor-league feeds.
+    """
+
+    from datetime import date as _date
+
+    from prehype.sources.milb import fetch_level, prospect_reason, prospect_score
+
+    year = year or _date.today().year
+    if batters is None:
+        batters = []
+        for sid in levels:
+            batters.extend(fetch_level(year, sid))
+
+    hits: list[BreakoutHit] = []
+    for b in batters:
+        if b.pa < min_pa:
+            continue
+        score, kind = prospect_score(b)
+        if score < min_score:
+            continue
+        hits.append(
+            BreakoutHit(batter=b, score=score, kind=kind, age=b.age, reason=prospect_reason(b))
+        )
+
+    hits.sort(key=lambda h: h.score, reverse=True)
+    return hits[:top]
+
+
 def add_hype(
     hits: list[BreakoutHit],
     *,
