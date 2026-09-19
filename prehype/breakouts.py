@@ -49,6 +49,11 @@ class BreakoutHit:
         """What we sort by: sleeper score once hype is known, else breakout."""
         return self.sleeper_score if self.sleeper_score is not None else self.score
 
+    @property
+    def pos(self) -> str:
+        """Short position tag: PIT for pitchers, BAT for hitters."""
+        return "PIT" if self.batter.is_pitcher else "BAT"
+
     def as_alert(self) -> str:
         price = (
             f"~${self.median_price:,.0f} ({self.comp_count} comps)"
@@ -62,12 +67,12 @@ class BreakoutHit:
                 else "hype unknown"
             )
             head = (
-                f"🔎 {self.batter.name} — SLEEPER {self.sleeper_score:.0f}/100 "
+                f"🔎 {self.batter.name} ({self.pos}) — SLEEPER {self.sleeper_score:.0f}/100 "
                 f"(breakout {self.score:.0f}, hype {hype}) [{self.kind}] | cards {price}"
             )
         else:
             head = (
-                f"🔎 {self.batter.name} — breakout {self.score:.0f}/100 "
+                f"🔎 {self.batter.name} ({self.pos}) — breakout {self.score:.0f}/100 "
                 f"[{self.kind}] | cards {price}"
             )
         return f"{head}\n   • {self.reason}"
@@ -85,23 +90,25 @@ def find_breakouts(
     min_pa: int = 150,
     top: int = 15,
     min_score: float = 20.0,
+    player_type: str = "batter",
     batters: list[SavantBatter] | None = None,
     prior: list[SavantBatter] | None = None,
     ages: dict[str, int] | None = None,
 ) -> list[BreakoutHit]:
-    """Scan hitters and return the top breakout candidates (no price yet).
+    """Scan one player type and return the top breakout candidates (no price yet).
 
     Scores IMPROVEMENT (this year vs last) + youth, so sleepers rise and famous
-    stars sink. Pass ``batters``/``prior``/``ages`` to score supplied data (used
-    in tests); otherwise it fetches live.
+    stars sink. ``player_type`` is "batter" or "pitcher". Pass
+    ``batters``/``prior``/``ages`` to score supplied data (tests); otherwise
+    fetches live.
     """
 
     from datetime import date as _date
 
     year = year or _date.today().year
     if batters is None:
-        batters = fetch_expected_stats(year)
-        prior = fetch_expected_stats(year - 1)
+        batters = fetch_expected_stats(year, kind=player_type)
+        prior = fetch_expected_stats(year - 1, kind=player_type)
         ages = fetch_ages(year)
     prior_map = {b.player_id: b for b in (prior or [])}
     ages = ages or {}
@@ -126,6 +133,36 @@ def find_breakouts(
 
     hits.sort(key=lambda h: h.score, reverse=True)
     return hits[:top]
+
+
+def find_breakouts_multi(
+    *,
+    year: int | None = None,
+    min_pa_batter: int = 250,
+    min_pa_pitcher: int = 200,
+    top: int = 15,
+    min_score: float = 20.0,
+    types: tuple[str, ...] = ("batter", "pitcher"),
+) -> list[BreakoutHit]:
+    """Scan hitters and pitchers, merge, and return the top candidates overall.
+
+    Pitchers face fewer batters, so they get their own (lower) min_pa default.
+    """
+
+    combined: list[BreakoutHit] = []
+    for t in types:
+        min_pa = min_pa_pitcher if t == "pitcher" else min_pa_batter
+        combined.extend(
+            find_breakouts(
+                year=year,
+                min_pa=min_pa,
+                top=top * 3,
+                min_score=min_score,
+                player_type=t,
+            )
+        )
+    combined.sort(key=lambda h: h.score, reverse=True)
+    return combined[: top * 3]
 
 
 def add_hype(

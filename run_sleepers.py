@@ -16,20 +16,32 @@ from __future__ import annotations
 
 import argparse
 
-from prehype.breakouts import add_hype, add_prices, find_breakouts
+from prehype.breakouts import add_hype, add_prices, find_breakouts_multi
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Find cheap, quiet, breaking-out MLB cards.")
     ap.add_argument("--year", type=int, default=None, help="season year (default: this year)")
-    ap.add_argument("--min-pa", type=int, default=250, help="min plate appearances")
+    ap.add_argument("--min-pa", type=int, default=250, help="min plate appearances (hitters)")
+    ap.add_argument("--min-pa-pitcher", type=int, default=200, help="min batters faced (pitchers)")
+    ap.add_argument(
+        "--type", choices=["both", "batter", "pitcher"], default="both",
+        help="scan hitters, pitchers, or both (default: both)",
+    )
     ap.add_argument("--top", type=int, default=10, help="how many players to show")
     ap.add_argument("--no-prices", action="store_true", help="skip the eBay price step")
     ap.add_argument("--anchor", default="Aaron Judge", help="famous player for the hype meter")
     args = ap.parse_args()
 
-    print("\nStep 1/3  Finding hitters who are quietly getting good...")
-    hits = find_breakouts(year=args.year, min_pa=args.min_pa, top=max(args.top * 3, args.top))
+    types = {"both": ("batter", "pitcher"), "batter": ("batter",), "pitcher": ("pitcher",)}[args.type]
+    print("\nStep 1/3  Finding hitters & pitchers who are quietly getting good...")
+    hits = find_breakouts_multi(
+        year=args.year,
+        min_pa_batter=args.min_pa,
+        min_pa_pitcher=args.min_pa_pitcher,
+        top=args.top,
+        types=types,
+    )
     if not hits:
         print("  Couldn't reach Baseball Savant. Check your internet and try again.")
         return 1
@@ -57,7 +69,7 @@ def main() -> int:
         hype = f"{h.interest:.0f}% hype" if h.interest is not None else "hype ?"
         price = f"~${h.median_price:,.0f}" if h.median_price is not None else "price ?"
         score = h.sleeper_score if h.sleeper_score is not None else h.score
-        print(f"{i:>2}. {h.batter.name:<22} sleeper {score:>4.0f}/100 | {age} | {hype} | cards {price}")
+        print(f"{i:>2}. {h.batter.name:<22} ({h.pos}) sleeper {score:>4.0f}/100 | {age} | {hype} | cards {price}")
         print(f"    {h.reason}\n")
 
     print("How to read it: high sleeper score + young + low hype + cheap cards = buy early.")

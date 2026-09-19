@@ -31,7 +31,7 @@ from datetime import date
 
 _CSV_URL = (
     "https://baseballsavant.mlb.com/leaderboard/expected_statistics"
-    "?type=batter&year={year}&position=&team=&filterType=bip&min={min_bip}&csv=true"
+    "?type={kind}&year={year}&position=&team=&filterType=bip&min={min_bip}&csv=true"
 )
 _UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -41,19 +41,28 @@ _UA = (
 
 @dataclass
 class SavantBatter:
-    """One hitter's Statcast expected-stats line."""
+    """One player's Statcast expected-stats line (a hitter or a pitcher).
+
+    For a pitcher these are the numbers *allowed*: ``est_woba`` is xwOBA-against,
+    where **lower is better** (harder to hit). ``player_type`` says which.
+    """
 
     player_id: str
     name: str            # "First Last"
     year: int
     pa: int
-    woba: float          # actual wOBA (what the box score reflects)
-    est_woba: float      # expected wOBA (quality of contact)
-    est_slg: float       # expected slugging (power under the hood)
+    woba: float          # actual wOBA (or wOBA allowed, for a pitcher)
+    est_woba: float      # expected wOBA (quality of contact, or contact allowed)
+    est_slg: float       # expected slugging (allowed, for a pitcher)
+    player_type: str = "batter"  # "batter" or "pitcher"
+
+    @property
+    def is_pitcher(self) -> bool:
+        return self.player_type == "pitcher"
 
     @property
     def luck_gap(self) -> float:
-        """actual − expected. Negative = unlucky = results due to rise."""
+        """actual − expected. For a hitter, negative = unlucky = results due to rise."""
         return round(self.woba - self.est_woba, 4)
 
 
@@ -64,8 +73,10 @@ def _to_float(s: str) -> float | None:
         return None
 
 
-def parse_expected_stats(csv_text: str, year: int) -> list[SavantBatter]:
-    """Parse a Savant expected-statistics CSV into batters (resilient)."""
+def parse_expected_stats(
+    csv_text: str, year: int, *, kind: str = "batter"
+) -> list[SavantBatter]:
+    """Parse a Savant expected-statistics CSV into players (resilient)."""
 
     # Strip a leading BOM if present so the first header key matches.
     csv_text = csv_text.lstrip("﻿")
@@ -94,25 +105,26 @@ def parse_expected_stats(csv_text: str, year: int) -> list[SavantBatter]:
                 woba=woba,
                 est_woba=est_woba,
                 est_slg=_to_float(row.get("est_slg")) or 0.0,
+                player_type=kind,
             )
         )
     return out
 
 
 def fetch_expected_stats(
-    year: int | None = None, *, min_bip: int = 50, timeout: float = 25.0
+    year: int | None = None, *, kind: str = "batter", min_bip: int = 50, timeout: float = 25.0
 ) -> list[SavantBatter]:
-    """Download the batter expected-stats leaderboard. Returns [] on failure."""
+    """Download the expected-stats leaderboard (batter or pitcher). [] on failure."""
 
     year = year or date.today().year
-    url = _CSV_URL.format(year=year, min_bip=min_bip)
+    url = _CSV_URL.format(kind=kind, year=year, min_bip=min_bip)
     try:
         req = urllib.request.Request(url, headers={"User-Agent": _UA, "Accept": "text/csv,*/*"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             text = resp.read().decode("utf-8", "replace")
     except (urllib.error.URLError, TimeoutError, ValueError):
         return []
-    return parse_expected_stats(text, year)
+    return parse_expected_stats(text, year, kind=kind)
 
 
 # --------------------------------------------------------------------------- #
@@ -160,10 +172,17 @@ def fetch_ages(year: int | None = None, *, timeout: float = 25.0) -> dict[str, i
 # Established stars score low here: their year-over-year jump is ~zero and their
 # prior level was already elite, so the "was under the radar" gate zeroes them.
 
+# Hitters: higher xwOBA is better.
 _LEAGUE_WOBA = 0.315
 _JUMP_FULL = 0.045       # a +.045 xwOBA jump year-over-year is huge
 _STAR_PRIOR = 0.360      # prior xwOBA at/above this = already known
 _PRIOR_MIN_PA = 150      # need a real prior sample to call it a "jump"
+
+# Pitchers: it's xwOBA-*against*, so LOWER is better and a "jump" is a DROP.
+_PITCH_LEAGUE = 0.320    # ~league-average contact allowed
+_PITCH_ELITE = 0.260     # elite (very hard to hit)
+_PITCH_STAR = 0.300      # prior at/below this = already an elite arm (not hidden)
+_PITCH_HITTABLE = 0.360  # prior this high = was very hittable (lots of room)
 
 
 def _clamp01(x: float) -> float:
@@ -179,33 +198,48 @@ def _youth_mult(age: int | None) -> float:
     return 0.7 + 0.5 * youth01                   # 0.7x (old) .. 1.2x (very young)
 
 
+def _batter_breakout(cur: SavantBatter, prior: "SavantBatter | None") -> tuple[float, str]:
+    now = cur.est_woba
+    if prior is None or prior.pa < _PRIOR_MIN_PA:
+        base = _clamp01((now - _LEAGUE_WOBA) / (0.420 - _LEAGUE_WOBA))
+        return base * 0.85, "emerging"
+    jump = now - prior.est_woba
+    jump01 = _clamp01(jump / _JUMP_FULL)
+    under_radar01 = _clamp01((_STAR_PRIOR - prior.est_woba) / (_STAR_PRIOR - 0.290))
+    now_ok01 = _clamp01((now - 0.310) / (0.375 - 0.310))
+    return jump01 * (0.35 + 0.65 * under_radar01) * (0.40 + 0.60 * now_ok01), "leveling up"
+
+
+def _pitcher_breakout(cur: SavantBatter, prior: "SavantBatter | None") -> tuple[float, str]:
+    # Lower xwOBA-against is better; improvement is a DROP.
+    now = cur.est_woba
+    if prior is None or prior.pa < _PRIOR_MIN_PA:
+        base = _clamp01((_PITCH_LEAGUE - now) / (_PITCH_LEAGUE - _PITCH_ELITE))
+        return base * 0.85, "emerging"
+    drop = prior.est_woba - now                       # positive = harder to hit now
+    drop01 = _clamp01(drop / _JUMP_FULL)
+    # Was he hittable last year (room to improve, not already elite)?
+    under_radar01 = _clamp01((prior.est_woba - _PITCH_STAR) / (_PITCH_HITTABLE - _PITCH_STAR))
+    # Is he actually nasty now (not just less bad)?
+    now_ok01 = _clamp01((_PITCH_LEAGUE - now) / (_PITCH_LEAGUE - _PITCH_ELITE))
+    return drop01 * (0.35 + 0.65 * under_radar01) * (0.40 + 0.60 * now_ok01), "leveling up"
+
+
 def breakout_score(
     cur: SavantBatter,
     prior: "SavantBatter | None" = None,
     age: int | None = None,
 ) -> tuple[float, str]:
-    """Return (0-100 breakout score, kind) for a hitter.
+    """Return (0-100 breakout score, kind) for a hitter or pitcher.
 
-    ``kind`` is "leveling up" (jumped vs last year) or "emerging" (new face,
+    ``kind`` is "leveling up" (improved vs last year) or "emerging" (new face,
     no real prior-year sample).
     """
 
-    now = cur.est_woba
-
-    if prior is None or prior.pa < _PRIOR_MIN_PA:
-        # New face: reward strong current contact, discounted for small sample.
-        base = _clamp01((now - _LEAGUE_WOBA) / (0.420 - _LEAGUE_WOBA))
-        raw = base * 0.85
-        kind = "emerging"
+    if cur.is_pitcher:
+        raw, kind = _pitcher_breakout(cur, prior)
     else:
-        jump = now - prior.est_woba
-        jump01 = _clamp01(jump / _JUMP_FULL)
-        # Was he under the radar last year? (prior below star level)
-        under_radar01 = _clamp01((_STAR_PRIOR - prior.est_woba) / (_STAR_PRIOR - 0.290))
-        # Did the jump make him actually good now (not just less bad)?
-        now_ok01 = _clamp01((now - 0.310) / (0.375 - 0.310))
-        raw = jump01 * (0.35 + 0.65 * under_radar01) * (0.40 + 0.60 * now_ok01)
-        kind = "leveling up"
+        raw, kind = _batter_breakout(cur, prior)
 
     raw *= _youth_mult(age)
     return round(min(1.0, raw) * 100.0, 1), kind
@@ -219,6 +253,20 @@ def breakout_reason(
     """A one-line, plain-English 'why' for an alert."""
 
     age_str = f"age {age}, " if age is not None else ""
+
+    if cur.is_pitcher:
+        if prior is None or prior.pa < _PRIOR_MIN_PA:
+            return (
+                f"{age_str}new arm — already tough to hit "
+                f"(xwOBA-against {cur.est_woba:.3f}, lower is better)"
+            )
+        drop = prior.est_woba - cur.est_woba
+        direction = "dropped" if drop >= 0 else "rose"
+        return (
+            f"{age_str}xwOBA-against {direction} {prior.est_woba:.3f} -> {cur.est_woba:.3f} "
+            f"({-drop:+.3f}) vs last year — got nastier while still under the radar"
+        )
+
     if prior is None or prior.pa < _PRIOR_MIN_PA:
         return (
             f"{age_str}new face — strong contact already (xwOBA {cur.est_woba:.3f}, "

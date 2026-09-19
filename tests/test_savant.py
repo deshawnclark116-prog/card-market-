@@ -15,7 +15,7 @@ from prehype.sources.savant import SavantBatter, breakout_score, parse_expected_
 FIXTURE = os.path.join(os.path.dirname(__file__), "fixtures", "savant_expected_sample.csv")
 
 
-def _mk(pid, now_woba, pa=400, est_slg=0.45, name=None):
+def _mk(pid, now_woba, pa=400, est_slg=0.45, name=None, player_type="batter"):
     return SavantBatter(
         player_id=pid,
         name=name or pid,
@@ -24,6 +24,7 @@ def _mk(pid, now_woba, pa=400, est_slg=0.45, name=None):
         woba=now_woba,
         est_woba=now_woba,
         est_slg=est_slg,
+        player_type=player_type,
     )
 
 
@@ -64,6 +65,42 @@ def test_youth_boosts_identical_jump():
     young, _ = breakout_score(now, prior, age=21)
     old, _ = breakout_score(now, prior, age=30)
     assert young > old
+
+
+def test_pitcher_breakout_rewards_a_drop_in_contact_allowed():
+    # Pitcher: xwOBA-against dropped a lot (got harder to hit), from a hittable
+    # prior, and he's young -> strong breakout.
+    now = _mk("nasty", 0.285, pa=400, player_type="pitcher")
+    prior = _mk("nasty", 0.345, pa=400, player_type="pitcher")
+    good, kind = breakout_score(now, prior, age=23)
+
+    # Pitcher who got WORSE (contact allowed rose) should score ~0.
+    worse_now = _mk("worse", 0.345, pa=400, player_type="pitcher")
+    worse_prior = _mk("worse", 0.285, pa=400, player_type="pitcher")
+    worse, _ = breakout_score(worse_now, worse_prior, age=23)
+
+    assert kind == "leveling up"
+    assert good > 30
+    assert good > worse
+    assert worse < 10
+
+
+def test_multi_scan_merges_batters_and_pitchers():
+    from prehype.breakouts import find_breakouts
+
+    bat = find_breakouts(
+        batters=[_mk("bat", 0.360, pa=400)],
+        prior=[_mk("bat", 0.300, pa=400)],
+        ages={"bat": 23}, min_pa=150, min_score=0.0, player_type="batter",
+    )
+    pit = find_breakouts(
+        batters=[_mk("pit", 0.285, pa=400, player_type="pitcher")],
+        prior=[_mk("pit", 0.345, pa=400, player_type="pitcher")],
+        ages={"pit": 23}, min_pa=150, min_score=0.0, player_type="pitcher",
+    )
+    assert bat and pit
+    assert bat[0].pos == "BAT"
+    assert pit[0].pos == "PIT"
 
 
 def test_new_face_is_emerging():

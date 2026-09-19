@@ -9,7 +9,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from prehype.breakouts import add_hype, add_prices, find_breakouts
+from prehype.breakouts import add_hype, add_prices, find_breakouts, find_breakouts_multi
 from prehype.pipeline import scan
 from prehype.scoring import ScoreWeights
 from prehype.sources.base import DataSource
@@ -59,13 +59,17 @@ def _cmd_scan(args: argparse.Namespace) -> int:
 
 
 def _cmd_breakouts(args: argparse.Namespace) -> int:
-    print("\nScanning hitters for breakout signals (Baseball Savant)...")
+    types = {"both": ("batter", "pitcher"), "batter": ("batter",), "pitcher": ("pitcher",)}[args.type]
+    label = {"both": "hitters and pitchers", "batter": "hitters", "pitcher": "pitchers"}[args.type]
+    print(f"\nScanning {label} for breakout signals (Baseball Savant)...")
     # Cast a wider net first so re-ranking by hype has room to work.
-    hits = find_breakouts(
+    hits = find_breakouts_multi(
         year=args.year,
-        min_pa=args.min_pa,
-        top=max(args.top * 3, args.top),
+        min_pa_batter=args.min_pa,
+        min_pa_pitcher=args.min_pa_pitcher,
+        top=args.top,
         min_score=args.min_score,
+        types=types,
     )
     if not hits:
         print(
@@ -126,7 +130,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="player-first: find MLB hitters about to break out (Statcast)",
     )
     b.add_argument("--year", type=int, default=None, help="season year (default: current)")
-    b.add_argument("--min-pa", type=int, default=150, help="minimum plate appearances")
+    b.add_argument(
+        "--type",
+        choices=["both", "batter", "pitcher"],
+        default="both",
+        help="scan hitters, pitchers, or both (default: both)",
+    )
+    b.add_argument("--min-pa", type=int, default=250, help="min plate appearances (hitters)")
+    b.add_argument(
+        "--min-pa-pitcher", type=int, default=200, help="min batters faced (pitchers)"
+    )
     b.add_argument("--top", type=int, default=15, help="how many candidates to show")
     b.add_argument("--min-score", type=float, default=20.0, help="hide breakout scores below this")
     b.add_argument(

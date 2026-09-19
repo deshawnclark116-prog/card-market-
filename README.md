@@ -32,6 +32,11 @@ ALL hitters --> who's about to break out? --> (top few) --> check card price -->
                 (Statcast leading signal)                   (eBay, only now)
 ```
 
+Covers **both hitters and pitchers**. For a pitcher the signal is flipped: it's
+xwOBA-*against* (how hard batters hit him), so a breakout is a *drop* — he got
+nastier while his ERA/name hasn't caught up. Scan `--type both` (default),
+`--type batter`, or `--type pitcher`.
+
 The breakout signal scores **improvement, not level** — this is the important
 part. Ranking hitters by skill just lists the stars (already famous, cards
 expensive, no edge). A real sleeper is someone who was average/unknown and
