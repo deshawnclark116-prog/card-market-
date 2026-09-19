@@ -58,6 +58,10 @@ python -m prehype scan --only-early
 # Live MLB fundamentals (free, no API key needed):
 python -m prehype scan --sources mlb --only-early
 
+# Real eBay sold comps for your watchlist (price + sales velocity):
+cp watchlist.example.json watchlist.json   # then edit it
+python -m prehype scan --sources ebay --only-early
+
 # Tune what "dirt cheap" means for your reference card/grade:
 python -m prehype scan --cheap-ref 20 --rich-ref 400
 ```
@@ -80,9 +84,37 @@ prehype/
     base.py            # DataSource interface — plug in any feed
     demo.py            # synthetic players so it runs offline
     mlb.py             # real, free MLB StatsAPI performance feed
+    ebay.py            # real eBay sold comps -> price + sales-velocity signals
+    watchlist.py       # score your own cards, priced by eBay comps
 tests/
   test_scoring.py      # the strategy encoded as assertions
+  test_ebay.py         # eBay parsing verified against a saved HTML fixture
 ```
+
+## eBay sold comps — the price + early-attention signal
+
+`sources/ebay.py` turns eBay sold/completed listings into two real signals:
+
+- **Price** — weekly median sold price → price momentum + cheapness.
+- **Sales velocity** — weekly sold *count* → attention. Velocity spikes
+  *before* price, so this is the earliest crowd signal we have.
+
+You drive it with a small `watchlist.json` (see `watchlist.example.json`):
+each player gets an `ebay_query` that isolates their reference card/grade, and
+an optional hand-entered `performance` series until a real fundamentals feed is
+wired for that sport.
+
+**Two backends, because eBay blocks scrapers from cloud/datacenter IPs (403):**
+
+| Backend | When to use | Notes |
+|---|---|---|
+| `ScrapeBackend` (default) | Running from your own machine / residential IP, or via a scraping proxy (`proxy_url=`) | Parses eBay HTML. Fails gracefully to `[]` on a blocked IP. |
+| `MarketplaceInsightsBackend` | Anywhere, including servers | eBay's official sold-comps API. Set `EBAY_OAUTH_TOKEN` (needs eBay approval for the `buy.marketplace.insights` scope). No IP blocking. |
+
+Comps are cached to `~/.cache/prehype/ebay` (6h TTL) and passed through
+`trim_price_outliers()` so one mispriced variant (an auto/refractor caught by a
+loose query) doesn't wreck the median. **Tighten your `ebay_query` first**;
+trimming is the safety net.
 
 Adding a data source is the whole game — implement `DataSource.candidates()`
 and return `Candidate`s with the three series filled in. The scorer doesn't
@@ -92,13 +124,13 @@ care where the numbers came from.
 
 The scoring engine is done; the value now is in **real data feeds**:
 
-- **Attention (the key early signal):** wire *sales velocity* (comps sold this
-  week vs last), Google Trends (`pytrends`), and social mention counts. This is
-  what fires before price.
-- **Price:** eBay sold comps / 130point / Card Ladder-style series for real
-  price momentum and cheapness.
+- ✅ **Price (eBay sold comps):** done — `sources/ebay.py`, weekly median with
+  outlier trimming.
+- ✅ **Attention via eBay sales velocity:** done — weekly sold counts. Can still
+  be enriched with Google Trends (`pytrends`) and social mention counts.
 - **Performance beyond MLB:** NBA/NFL stats, minor-league & prospect boards,
-  expected-stats, role/opportunity changes (snaps, PAs, minutes).
+  expected-stats, role/opportunity changes (snaps, PAs, minutes). This is the
+  biggest remaining gap — the breakout gate needs real fundamentals per sport.
 - **Delivery:** a daily scheduled scan that pushes the `EARLY` list to your
   phone, so the system truly "does all the work."
 - **Backtesting:** replay historical data to validate that `EARLY` calls

@@ -14,25 +14,29 @@ from prehype.scoring import ScoreWeights
 from prehype.sources.base import DataSource
 from prehype.sources.demo import DemoSource
 from prehype.sources.mlb import MLBStatsSource
+from prehype.sources.watchlist import WatchlistSource
 
 
-def _build_sources(names: list[str]) -> list[DataSource]:
-    registry = {
-        "demo": DemoSource,
-        "mlb": MLBStatsSource,
-    }
+def _build_sources(names: list[str], *, watchlist: str) -> list[DataSource]:
     sources: list[DataSource] = []
     for name in names:
-        factory = registry.get(name)
-        if factory is None:
-            print(f"unknown source: {name!r} (have: {', '.join(registry)})", file=sys.stderr)
+        if name == "demo":
+            sources.append(DemoSource())
+        elif name == "mlb":
+            sources.append(MLBStatsSource())
+        elif name == "ebay":
+            sources.append(WatchlistSource(watchlist))
+        else:
+            print(
+                f"unknown source: {name!r} (have: demo, mlb, ebay)",
+                file=sys.stderr,
+            )
             raise SystemExit(2)
-        sources.append(factory())
     return sources
 
 
 def _cmd_scan(args: argparse.Namespace) -> int:
-    sources = _build_sources(args.sources)
+    sources = _build_sources(args.sources, watchlist=args.watchlist)
     signals = scan(
         sources,
         weights=ScoreWeights(),
@@ -65,7 +69,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--sources",
         nargs="+",
         default=["demo"],
-        help="data sources to use (default: demo). Options: demo, mlb",
+        help="data sources to use (default: demo). Options: demo, mlb, ebay",
+    )
+    s.add_argument(
+        "--watchlist",
+        default="watchlist.json",
+        help="path to watchlist JSON (used by the ebay source)",
     )
     s.add_argument("--limit", type=int, default=10, help="max rows to print")
     s.add_argument("--min-score", type=float, default=0.0, help="hide scores below this")
