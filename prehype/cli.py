@@ -9,7 +9,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from prehype.breakouts import add_prices, find_breakouts
+from prehype.breakouts import add_hype, add_prices, find_breakouts
 from prehype.pipeline import scan
 from prehype.scoring import ScoreWeights
 from prehype.sources.base import DataSource
@@ -60,10 +60,11 @@ def _cmd_scan(args: argparse.Namespace) -> int:
 
 def _cmd_breakouts(args: argparse.Namespace) -> int:
     print("\nScanning hitters for breakout signals (Baseball Savant)...")
+    # Cast a wider net first so re-ranking by hype has room to work.
     hits = find_breakouts(
         year=args.year,
         min_pa=args.min_pa,
-        top=args.top,
+        top=max(args.top * 3, args.top),
         min_score=args.min_score,
     )
     if not hits:
@@ -72,6 +73,11 @@ def _cmd_breakouts(args: argparse.Namespace) -> int:
             "Savant may be unreachable from here, or the season/year has no data yet."
         )
         return 0
+
+    if not args.no_hype:
+        print("Checking search interest (hype meter) to find the real sleepers...")
+        hits = add_hype(hits, anchor=args.anchor)
+    hits = hits[: args.top]
 
     if args.with_prices:
         print("Checking card prices on eBay for the shortlist...")
@@ -123,6 +129,16 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--min-pa", type=int, default=150, help="minimum plate appearances")
     b.add_argument("--top", type=int, default=15, help="how many candidates to show")
     b.add_argument("--min-score", type=float, default=20.0, help="hide breakout scores below this")
+    b.add_argument(
+        "--no-hype",
+        action="store_true",
+        help="skip the Google Trends hype meter (don't re-rank to sleepers)",
+    )
+    b.add_argument(
+        "--anchor",
+        default="Aaron Judge",
+        help="famous player used to normalize search interest",
+    )
     b.add_argument(
         "--with-prices",
         action="store_true",

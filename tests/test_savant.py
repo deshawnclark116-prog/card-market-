@@ -8,7 +8,7 @@ import os
 
 import pytest
 
-from prehype.breakouts import add_prices, find_breakouts
+from prehype.breakouts import add_hype, add_prices, find_breakouts
 from prehype.sources.ebay import CompsBackend, EbayCompsClient, SoldComp
 from prehype.sources.savant import SavantBatter, breakout_score, parse_expected_stats
 
@@ -90,6 +90,22 @@ def test_find_breakouts_ranks_sleeper_first_and_filters_min_pa():
     ids = [h.batter.player_id for h in hits]
     assert "smallsample" not in ids          # filtered by min_pa
     assert hits[0].batter.player_id == "sleeper"
+
+
+def test_add_hype_demotes_the_famous_name():
+    # Two identical breakouts; one is heavily searched, one is unknown.
+    current = [_mk("famous", 0.360, pa=400), _mk("unknown", 0.360, pa=400)]
+    prior = [_mk("famous", 0.300, pa=400), _mk("unknown", 0.300, pa=400)]
+    ages = {"famous": 23, "unknown": 23}
+    hits = find_breakouts(
+        batters=current, prior=prior, ages=ages, min_pa=150, top=10, min_score=0.0
+    )
+    # famous: 80% of a star's searches; unknown: 1%.
+    hits = add_hype(hits, interest={"famous": 80.0, "unknown": 1.0})
+    assert hits[0].batter.player_id == "unknown"       # sleeper rises to the top
+    assert hits[0].sleeper_score > hits[1].sleeper_score
+    famous = next(h for h in hits if h.batter.player_id == "famous")
+    assert famous.sleeper_score < famous.score          # hype knocked it down
 
 
 class _FakeEbay(CompsBackend):

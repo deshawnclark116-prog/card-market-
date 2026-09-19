@@ -46,6 +46,26 @@ Established stars score low here on purpose: their year-over-year jump is ~zero
 and their prior level was already elite, so the "was under the radar" gate
 zeroes them out. See `sources/savant.py` and `breakouts.py`.
 
+### The hype meter (what makes a sleeper a sleeper)
+
+Improvement alone still surfaces *hyped* young studs — the toolsy prospects
+scouts and collectors already found (Elly De La Cruz, Pete Crow-Armstrong).
+Their cards are expensive; no edge. "Sleeper" is a **price/attention** fact, not
+a stats fact.
+
+So the breakout scan re-ranks by **Google Trends search interest**
+(`sources/trends.py`): a live "how hyped is he already" meter. Every player is
+measured as a percent of a famous anchor's search volume, then:
+
+```
+sleeper score = breakout score  ×  (1 − how-hyped-he-already-is)
+```
+
+A famous name with lots of searches gets crushed; an unknown who's quietly
+leveling up keeps almost all his score. This runs by default on the breakout
+shortlist (`--no-hype` to skip). Needs `pytrends` (`pip install pytrends`);
+degrades gracefully without it.
+
 Because the price check runs only on the breakout shortlist, it's a few eBay
 lookups instead of thousands — which also sidesteps most of eBay's IP blocking.
 

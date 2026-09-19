@@ -27,6 +27,7 @@ from prehype.sources.savant import (
     fetch_ages,
     fetch_expected_stats,
 )
+from prehype.sources.trends import fetch_interest, hype01
 
 
 @dataclass
@@ -38,8 +39,15 @@ class BreakoutHit:
     kind: str
     reason: str
     age: int | None = None
+    interest: float | None = None      # anchor-normalized search interest (hype)
+    sleeper_score: float | None = None  # breakout knocked down by hype
     median_price: float | None = None  # filled only if we checked eBay
     comp_count: int = 0
+
+    @property
+    def rank_score(self) -> float:
+        """What we sort by: sleeper score once hype is known, else breakout."""
+        return self.sleeper_score if self.sleeper_score is not None else self.score
 
     def as_alert(self) -> str:
         price = (
@@ -47,11 +55,22 @@ class BreakoutHit:
             if self.median_price is not None
             else "price not checked"
         )
-        return (
-            f"🔎 {self.batter.name} — breakout {self.score:.0f}/100 "
-            f"[{self.kind}] | cards {price}\n"
-            f"   • {self.reason}"
-        )
+        if self.sleeper_score is not None:
+            hype = (
+                f"{self.interest:.0f}% of a star's searches"
+                if self.interest is not None
+                else "hype unknown"
+            )
+            head = (
+                f"🔎 {self.batter.name} — SLEEPER {self.sleeper_score:.0f}/100 "
+                f"(breakout {self.score:.0f}, hype {hype}) [{self.kind}] | cards {price}"
+            )
+        else:
+            head = (
+                f"🔎 {self.batter.name} — breakout {self.score:.0f}/100 "
+                f"[{self.kind}] | cards {price}"
+            )
+        return f"{head}\n   • {self.reason}"
 
 
 def _auto_card_query(name: str) -> str:
@@ -107,6 +126,33 @@ def find_breakouts(
 
     hits.sort(key=lambda h: h.score, reverse=True)
     return hits[:top]
+
+
+def add_hype(
+    hits: list[BreakoutHit],
+    *,
+    anchor: str = "Aaron Judge",
+    interest: dict[str, float] | None = None,
+) -> list[BreakoutHit]:
+    """Fetch search interest for the shortlist and compute a sleeper score.
+
+    sleeper_score = breakout score knocked down by how hyped the player already
+    is. A famous name (high search volume) gets crushed; an unknown keeps almost
+    all of his breakout score. Re-sorts the list by sleeper score.
+
+    Pass ``interest`` to supply values (tests); otherwise fetches live.
+    """
+
+    names = [h.batter.name for h in hits]
+    interest = interest if interest is not None else fetch_interest(names, anchor=anchor)
+
+    for h in hits:
+        val = interest.get(h.batter.name)
+        h.interest = val
+        h.sleeper_score = round(h.score * (1.0 - hype01(val)), 1)
+
+    hits.sort(key=lambda h: h.rank_score, reverse=True)
+    return hits
 
 
 def add_prices(
