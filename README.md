@@ -150,6 +150,21 @@ python -m prehype scan --sources ebay --only-early
 python -m prehype scan --cheap-ref 20 --rich-ref 400
 ```
 
+Run the JSON API (for a web frontend):
+
+```bash
+python -m prehype serve
+# GET http://localhost:8000/api/sleepers          (live scan)
+# GET http://localhost:8000/api/sleepers?demo=1   (instant sample data)
+```
+
+Returns a ranked JSON array (name, position, age, dealScore, breakoutScore,
+hypePct, reason, priceTrend, priceStatus, and Bowman-1st/rookie-auto card
+prices). CORS is open so a frontend on any origin can call it; results are
+cached in memory. Point an app-builder frontend at `?demo=1` while building the
+UI, then switch to the live endpoint. Run it on a home/residential IP (or with
+an eBay API token) so the price fields populate.
+
 Run the tests:
 
 ```bash

@@ -164,7 +164,19 @@ def build_parser() -> argparse.ArgumentParser:
         help="also check eBay card prices for the shortlist (needs a non-blocked IP)",
     )
     b.set_defaults(func=_cmd_breakouts)
+
+    sv = sub.add_parser("serve", help="run the JSON API for a web frontend")
+    sv.add_argument("--host", default="0.0.0.0", help="bind host (default: 0.0.0.0)")
+    sv.add_argument("--port", type=int, default=8000, help="port (default: 8000)")
+    sv.set_defaults(func=_cmd_serve)
     return p
+
+
+def _cmd_serve(args: argparse.Namespace) -> int:
+    from prehype.api import serve
+
+    serve(host=args.host, port=args.port)
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
