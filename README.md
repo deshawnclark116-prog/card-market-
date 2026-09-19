@@ -188,6 +188,10 @@ cached in memory. Point an app-builder frontend at `?demo=1` while building the
 UI, then switch to the live endpoint. Run it on a home/residential IP (or with
 an eBay API token) so the price fields populate.
 
+Deploy it so the frontend isn't tied to your laptop: see **[DEPLOY.md](DEPLOY.md)**
+(Render / Railway / Fly / Docker; includes the eBay-token vs proxy note). The
+server honors `$PORT`; a `Procfile` and `Dockerfile` are included.
+
 Run the tests:
 
 ```bash

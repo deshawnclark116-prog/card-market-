@@ -14,7 +14,10 @@ from prehype.sources.ebay import (
     EbayCompsClient,
     SoldComp,
     CompsBackend,
+    MarketplaceInsightsBackend,
+    ScrapeBackend,
     build_sold_url,
+    default_backend,
     parse_sold_comps,
     price_series_from_comps,
     trim_price_outliers,
@@ -63,6 +66,19 @@ def test_trim_price_outliers_drops_wrong_variant():
     prices = [c.price for c in trimmed]
     assert 1250.0 not in prices
     assert 210.0 in prices and 255.0 in prices
+
+
+def test_default_backend_picks_from_env(monkeypatch):
+    monkeypatch.delenv("EBAY_OAUTH_TOKEN", raising=False)
+    monkeypatch.delenv("EBAY_PROXY_URL", raising=False)
+    assert isinstance(default_backend(), ScrapeBackend)
+
+    monkeypatch.setenv("EBAY_PROXY_URL", "http://proxy:8080")
+    b = default_backend()
+    assert isinstance(b, ScrapeBackend) and b.proxy_url == "http://proxy:8080"
+
+    monkeypatch.setenv("EBAY_OAUTH_TOKEN", "tok")
+    assert isinstance(default_backend(), MarketplaceInsightsBackend)
 
 
 def test_build_sold_url_has_sold_filters():

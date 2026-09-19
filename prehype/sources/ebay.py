@@ -282,6 +282,23 @@ class MarketplaceInsightsBackend(CompsBackend):
 # --------------------------------------------------------------------------- #
 
 
+def default_backend() -> CompsBackend:
+    """Pick a comps backend from the environment.
+
+    On a deployed server eBay 403s scraper traffic, so:
+      * EBAY_OAUTH_TOKEN set -> official Marketplace Insights API (un-blockable)
+      * EBAY_PROXY_URL set   -> scrape through a residential/rotating proxy
+      * neither              -> plain scrape (works from a home IP only)
+    """
+
+    if os.environ.get("EBAY_OAUTH_TOKEN"):
+        return MarketplaceInsightsBackend()
+    proxy = os.environ.get("EBAY_PROXY_URL")
+    if proxy:
+        return ScrapeBackend(proxy_url=proxy)
+    return ScrapeBackend()
+
+
 class EbayCompsClient:
     """Sold-comps with on-disk caching, plus helpers to build signal series."""
 
@@ -292,7 +309,7 @@ class EbayCompsClient:
         cache_dir: str | None = None,
         ttl_seconds: float = 6 * 3600,
     ) -> None:
-        self.backend = backend or ScrapeBackend()
+        self.backend = backend or default_backend()
         self.cache_dir = cache_dir or os.path.join(
             os.path.expanduser("~"), ".cache", "prehype", "ebay"
         )
