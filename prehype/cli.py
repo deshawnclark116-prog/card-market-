@@ -70,6 +70,7 @@ def _cmd_breakouts(args: argparse.Namespace) -> int:
         top=args.top,
         min_score=args.min_score,
         types=types,
+        starters_only=not args.include_relievers,
     )
     if not hits:
         print(
@@ -138,7 +139,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     b.add_argument("--min-pa", type=int, default=250, help="min plate appearances (hitters)")
     b.add_argument(
-        "--min-pa-pitcher", type=int, default=200, help="min batters faced (pitchers)"
+        "--min-pa-pitcher", type=int, default=300, help="min batters faced (pitchers)"
+    )
+    b.add_argument(
+        "--include-relievers",
+        action="store_true",
+        help="keep relievers (default: starters only — their cards carry more value)",
     )
     b.add_argument("--top", type=int, default=15, help="how many candidates to show")
     b.add_argument("--min-score", type=float, default=20.0, help="hide breakout scores below this")

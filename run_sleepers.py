@@ -30,6 +30,7 @@ def main() -> int:
     )
     ap.add_argument("--top", type=int, default=10, help="how many players to show")
     ap.add_argument("--no-prices", action="store_true", help="skip the eBay price step")
+    ap.add_argument("--include-relievers", action="store_true", help="keep relievers (default: starters only)")
     ap.add_argument("--anchor", default="Aaron Judge", help="famous player for the hype meter")
     args = ap.parse_args()
 
@@ -41,6 +42,7 @@ def main() -> int:
         min_pa_pitcher=args.min_pa_pitcher,
         top=args.top,
         types=types,
+        starters_only=not args.include_relievers,
     )
     if not hits:
         print("  Couldn't reach Baseball Savant. Check your internet and try again.")
@@ -67,10 +69,16 @@ def main() -> int:
     for i, h in enumerate(hits, 1):
         age = f"age {h.age}" if h.age is not None else "age ?"
         hype = f"{h.interest:.0f}% hype" if h.interest is not None else "hype ?"
-        price = f"~${h.median_price:,.0f}" if h.median_price is not None else "price ?"
         score = h.sleeper_score if h.sleeper_score is not None else h.score
-        print(f"{i:>2}. {h.batter.name:<22} ({h.pos}) sleeper {score:>4.0f}/100 | {age} | {hype} | cards {price}")
-        print(f"    {h.reason}\n")
+        print(f"{i:>2}. {h.batter.name:<22} ({h.pos}) sleeper {score:>4.0f}/100 | {age} | {hype}")
+        print(f"    {h.reason}")
+        if h.card_prices:
+            cards = "  ".join(
+                f"{label}: ${med:,.0f} ({cnt})" if med is not None else f"{label}: n/a"
+                for label, (med, cnt) in h.card_prices.items()
+            )
+            print(f"    cards → {cards}")
+        print()
 
     print("How to read it: high sleeper score + young + low hype + cheap cards = buy early.")
     return 0

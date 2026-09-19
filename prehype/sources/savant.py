@@ -132,6 +132,42 @@ def fetch_expected_stats(
 # --------------------------------------------------------------------------- #
 
 _PLAYERS_URL = "https://statsapi.mlb.com/api/v1/sports/1/players?season={year}"
+_PITCHING_URL = (
+    "https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching"
+    "&season={year}&sportId=1&gameType=R&playerPool=ALL&limit=2000"
+)
+
+
+def fetch_pitcher_roles(year: int | None = None, *, timeout: float = 25.0) -> dict[str, bool]:
+    """player_id -> is_starter, from games-started share. {} on failure.
+
+    A pitcher counts as a starter if he started at least half his appearances
+    (and at least 3 games), so we can drop relievers — whose cards carry far
+    less value than starters'.
+    """
+
+    year = year or date.today().year
+    try:
+        import json
+
+        req = urllib.request.Request(
+            _PITCHING_URL.format(year=year),
+            headers={"User-Agent": _UA, "Accept": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        return {}
+    roles: dict[str, bool] = {}
+    for split in (data.get("stats") or [{}])[0].get("splits", []):
+        pid = split.get("player", {}).get("id")
+        stat = split.get("stat", {})
+        gs = stat.get("gamesStarted")
+        g = stat.get("gamesPlayed")
+        if pid is None or gs is None or not g:
+            continue
+        roles[str(pid)] = gs >= 3 and gs >= 0.5 * g
+    return roles
 
 
 def fetch_ages(year: int | None = None, *, timeout: float = 25.0) -> dict[str, int]:

@@ -151,7 +151,7 @@ class _FakeEbay(CompsBackend):
         return [SoldComp(price=25.0, sold_on=date(2026, 3, 10), title=query)]
 
 
-def test_add_prices_fills_shortlist(tmp_path):
+def test_add_prices_fills_bowman_and_rookie_auto(tmp_path):
     current = [_mk("sleeper", 0.360, pa=400)]
     prior = [_mk("sleeper", 0.300, pa=400)]
     hits = find_breakouts(
@@ -159,8 +159,28 @@ def test_add_prices_fills_shortlist(tmp_path):
     )
     client = EbayCompsClient(backend=_FakeEbay(), cache_dir=str(tmp_path))
     priced = add_prices(hits, client=client)
-    assert priced[0].median_price == 25.0
-    assert priced[0].comp_count == 1
+    cards = priced[0].card_prices
+    assert "Bowman 1st auto" in cards and "Rookie auto" in cards
+    assert cards["Bowman 1st auto"][0] == 25.0
+    assert priced[0].median_price == 25.0   # primary = first card type with a price
+
+
+def test_starters_only_drops_relievers():
+    pit_start = _mk("starter", 0.285, pa=400, player_type="pitcher")
+    pit_relief = _mk("reliever", 0.285, pa=400, player_type="pitcher")
+    prior = [
+        _mk("starter", 0.345, pa=400, player_type="pitcher"),
+        _mk("reliever", 0.345, pa=400, player_type="pitcher"),
+    ]
+    roles = {"starter": True, "reliever": False}
+    hits = find_breakouts(
+        batters=[pit_start, pit_relief], prior=prior,
+        ages={"starter": 23, "reliever": 27}, roles=roles,
+        min_pa=150, min_score=0.0, player_type="pitcher", starters_only=True,
+    )
+    ids = [h.batter.player_id for h in hits]
+    assert "starter" in ids
+    assert "reliever" not in ids
 
 
 if __name__ == "__main__":

@@ -37,6 +37,16 @@ xwOBA-*against* (how hard batters hit him), so a breakout is a *drop* — he got
 nastier while his ERA/name hasn't caught up. Scan `--type both` (default),
 `--type batter`, or `--type pitcher`.
 
+Pitchers are limited to **starters** by default (relievers' cards carry little
+value) and held to a higher batters-faced floor so small samples don't top the
+list — pass `--include-relievers` to keep them.
+
+### Which cards it prices
+
+The eBay step prices the prospect cards that actually carry upside — **Bowman
+Chrome 1st autos** and **rookie autos** — not base rookies. Each candidate shows
+both. Configure in `breakouts.py` (`CARD_QUERY_BUILDERS` / `DEFAULT_CARDS`).
+
 The breakout signal scores **improvement, not level** — this is the important
 part. Ranking hitters by skill just lists the stars (already famous, cards
 expensive, no edge). A real sleeper is someone who was average/unknown and
