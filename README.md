@@ -81,6 +81,23 @@ leveling up keeps almost all his score. This runs by default on the breakout
 shortlist (`--no-hype` to skip). Needs `pytrends` (`pip install pytrends`);
 degrades gracefully without it.
 
+### The price-momentum gate (don't buy what already ran)
+
+Google Trends measures the *general public*, but card collectors are a niche —
+a card can already be climbing while search interest stays quiet. So the eBay
+step also checks each card's **price trend**: flat or falling = still asleep
+(good); already up ~30%+ = you're probably late. This produces the final
+**deal score**:
+
+```
+deal score = sleeper score  ×  (card price still asleep?)
+```
+
+Two identical sleepers with identical hype now separate correctly: the one
+whose Bowman 1st auto is flat keeps its score; the one already up 50%+ collapses
+toward zero and gets flagged LATE. See `price_momentum_from_comps` and
+`add_prices`.
+
 Because the price check runs only on the breakout shortlist, it's a few eBay
 lookups instead of thousands — which also sidesteps most of eBay's IP blocking.
 

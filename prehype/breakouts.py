@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 
 from prehype.sources.ebay import (
     EbayCompsClient,
+    price_momentum_from_comps,
     price_series_from_comps,
     trim_price_outliers,
 )
@@ -55,11 +56,17 @@ class BreakoutHit:
     comp_count: int = 0
     # Per-card-type prices: label -> (median_price|None, comp_count)
     card_prices: dict[str, tuple[float | None, int]] = field(default_factory=dict)
+    price_trend: float | None = None    # primary card price change, e.g. 0.30 = +30%
+    deal_score: float | None = None     # sleeper score gated by price momentum
 
     @property
     def rank_score(self) -> float:
-        """What we sort by: sleeper score once hype is known, else breakout."""
-        return self.sleeper_score if self.sleeper_score is not None else self.score
+        """What we sort by, best signal available: deal > sleeper > breakout."""
+        if self.deal_score is not None:
+            return self.deal_score
+        if self.sleeper_score is not None:
+            return self.sleeper_score
+        return self.score
 
     @property
     def pos(self) -> str:
@@ -77,7 +84,23 @@ class BreakoutHit:
                 parts.append(f"{label} n/a")
         return " | ".join(parts)
 
+    def _trend_str(self) -> str:
+        if self.price_trend is None:
+            return "card price trend: unknown (too few sales)"
+        if self.price_trend <= 0.05:
+            return f"card price still flat ({self.price_trend:+.0%}) — not late yet"
+        if self.price_trend >= 0.30:
+            return f"card price already +{self.price_trend:.0%} — likely LATE"
+        return f"card price starting to move (+{self.price_trend:.0%}) — window closing"
+
     def as_alert(self) -> str:
+        if self.deal_score is not None:
+            hype = f"{self.interest:.0f}% hype" if self.interest is not None else "hype ?"
+            head = (
+                f"🔎 {self.batter.name} ({self.pos}) — DEAL {self.deal_score:.0f}/100 "
+                f"(breakout {self.score:.0f}, {hype}) [{self.kind}]"
+            )
+            return f"{head}\n   • {self.reason}\n   • cards: {self._cards_str()}\n   • {self._trend_str()}"
         if self.sleeper_score is not None:
             hype = (
                 f"{self.interest:.0f}% of a star's searches"
@@ -215,33 +238,60 @@ def add_hype(
     return hits
 
 
+def _price_asleep(pct: float | None) -> float | None:
+    """0-1 'still cheap' factor from a card's price momentum.
+
+    Flat or falling -> 1.0 (fully asleep, not late). A card already up ~50%+ ->
+    ~0 (you're late). None -> None (unknown; don't penalize).
+    """
+
+    if pct is None:
+        return None
+    return max(0.0, min(1.0, 1.0 - pct / 0.50))
+
+
 def add_prices(
     hits: list[BreakoutHit],
     *,
     client: EbayCompsClient | None = None,
     cards: tuple[str, ...] = DEFAULT_CARDS,
 ) -> list[BreakoutHit]:
-    """Second stage: check eBay card prices for the breakout shortlist only.
+    """Second stage: price the shortlist and apply the price-momentum gate.
 
-    Prices the prospect cards that actually carry upside — Bowman Chrome 1st
-    autos and rookie autos by default. Runs only on the shortlist, so it's a
-    handful of eBay lookups.
+    Prices the prospect cards that carry upside — Bowman Chrome 1st autos and
+    rookie autos by default — then knocks down anyone whose card has *already
+    moved*, even if they're quiet on Google. Google measures the public; card
+    prices catch the niche collector run the hype meter misses. Re-ranks by the
+    resulting deal score. Runs only on the shortlist (a handful of lookups).
     """
 
     client = client or EbayCompsClient()
     for h in hits:
         h.card_prices = {}
+        comps_by_label: dict[str, list] = {}
         for card in cards:
             label = CARD_LABELS.get(card, card)
             query = CARD_QUERY_BUILDERS[card](h.batter.name)
             comps = trim_price_outliers(client.sold_comps(query))
+            comps_by_label[label] = comps
             median = price_series_from_comps(comps).latest
             h.card_prices[label] = (median, len(comps))
+
         # Primary = first configured card type that returned a price.
+        primary_label = None
         for card in cards:
-            median, count = h.card_prices[CARD_LABELS.get(card, card)]
+            label = CARD_LABELS.get(card, card)
+            median, count = h.card_prices[label]
             if median is not None:
-                h.median_price = median
-                h.comp_count = count
+                h.median_price, h.comp_count, primary_label = median, count, label
                 break
+
+        # Price-momentum gate, measured on the primary card.
+        if primary_label is not None:
+            h.price_trend = price_momentum_from_comps(comps_by_label[primary_label])
+        base = h.sleeper_score if h.sleeper_score is not None else h.score
+        asleep = _price_asleep(h.price_trend)
+        h.deal_score = round(base * (asleep if asleep is not None else 1.0), 1)
+
+    hits.sort(key=lambda h: h.rank_score, reverse=True)
     return hits

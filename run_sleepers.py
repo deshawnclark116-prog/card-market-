@@ -69,18 +69,28 @@ def main() -> int:
     for i, h in enumerate(hits, 1):
         age = f"age {h.age}" if h.age is not None else "age ?"
         hype = f"{h.interest:.0f}% hype" if h.interest is not None else "hype ?"
-        score = h.sleeper_score if h.sleeper_score is not None else h.score
-        print(f"{i:>2}. {h.batter.name:<22} ({h.pos}) sleeper {score:>4.0f}/100 | {age} | {hype}")
+        score = h.deal_score if h.deal_score is not None else (
+            h.sleeper_score if h.sleeper_score is not None else h.score
+        )
+        label = "deal" if h.deal_score is not None else "sleeper"
+        print(f"{i:>2}. {h.batter.name:<22} ({h.pos}) {label} {score:>4.0f}/100 | {age} | {hype}")
         print(f"    {h.reason}")
         if h.card_prices:
             cards = "  ".join(
-                f"{label}: ${med:,.0f} ({cnt})" if med is not None else f"{label}: n/a"
-                for label, (med, cnt) in h.card_prices.items()
+                f"{lbl}: ${med:,.0f} ({cnt})" if med is not None else f"{lbl}: n/a"
+                for lbl, (med, cnt) in h.card_prices.items()
             )
             print(f"    cards → {cards}")
+        if h.price_trend is not None:
+            if h.price_trend <= 0.05:
+                print(f"    price still flat ({h.price_trend:+.0%}) — not late")
+            elif h.price_trend >= 0.30:
+                print(f"    price already +{h.price_trend:.0%} — likely LATE")
+            else:
+                print(f"    price moving (+{h.price_trend:.0%}) — window closing")
         print()
 
-    print("How to read it: high sleeper score + young + low hype + cheap cards = buy early.")
+    print("How to read it: high deal score + young + low hype + card price still flat = buy early.")
     return 0
 
 

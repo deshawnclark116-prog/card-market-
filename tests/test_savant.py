@@ -151,6 +151,46 @@ class _FakeEbay(CompsBackend):
         return [SoldComp(price=25.0, sold_on=date(2026, 3, 10), title=query)]
 
 
+class _TrendEbay(CompsBackend):
+    """Returns a flat price series for 'flat' names, a rising one for 'hot' names."""
+
+    def sold_comps(self, query, *, max_results=240):
+        from datetime import date, timedelta
+        start = date(2026, 3, 1)
+        rising = query.lower().startswith("hot")
+        weekly = [20, 21, 20, 22, 40, 55, 70, 85] if rising else [20, 21, 20, 22, 21, 20, 22, 21]
+        comps = []
+        for i, price in enumerate(weekly):
+            wk = start + timedelta(weeks=i)
+            # a few sales per week so weekly medians are stable
+            comps += [SoldComp(price=float(price), sold_on=wk, title=query) for _ in range(3)]
+        return comps
+
+
+def test_price_momentum_gate_demotes_a_card_thats_already_running(tmp_path):
+    # Two identical sleepers; one's card is flat, the other's is already ripping.
+    current = [
+        _mk("flat", 0.360, pa=400, name="Flat Guy"),
+        _mk("hot", 0.360, pa=400, name="Hot Guy"),
+    ]
+    prior = [_mk("flat", 0.300, pa=400), _mk("hot", 0.300, pa=400)]
+    ages = {"flat": 23, "hot": 23}
+    hits = find_breakouts(
+        batters=current, prior=prior, ages=ages, min_pa=150, top=10, min_score=0.0
+    )
+    # Same hype for both, so only the card trend can separate them.
+    add_hype(hits, interest={"Flat Guy": 3.0, "Hot Guy": 3.0})
+    client = EbayCompsClient(backend=_TrendEbay(), cache_dir=str(tmp_path))
+    priced = add_prices(hits, client=client)
+
+    flat = next(h for h in priced if h.batter.player_id == "flat")
+    hot = next(h for h in priced if h.batter.player_id == "hot")
+    assert hot.price_trend > 0.30            # detected the run-up
+    assert (flat.price_trend or 0) <= 0.05   # flat card stays flat
+    assert flat.deal_score > hot.deal_score  # the still-cheap one wins
+    assert priced[0].batter.player_id == "flat"
+
+
 def test_add_prices_fills_bowman_and_rookie_auto(tmp_path):
     current = [_mk("sleeper", 0.360, pa=400)]
     prior = [_mk("sleeper", 0.300, pa=400)]

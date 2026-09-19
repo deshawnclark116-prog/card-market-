@@ -375,6 +375,27 @@ def price_series_from_comps(comps: list[SoldComp], *, weeks: int = 8) -> PriceSe
     return PriceSeries.of([(wk, median(prices)) for wk, prices in weekly])
 
 
+def price_momentum_from_comps(comps: list[SoldComp], *, weeks: int = 8) -> float | None:
+    """Recent price change of a card, as a fraction (e.g. 0.30 == up 30%).
+
+    Compares the recent half of the weekly-median series to the earlier half.
+    Positive = the card is already climbing (you may be late); <= 0 = still flat
+    or falling (still asleep). Returns None when there aren't enough weeks of
+    sales to judge (an illiquid card), so callers can treat it as "unknown"
+    rather than penalize it.
+    """
+
+    vals = price_series_from_comps(comps, weeks=weeks).values
+    if len(vals) < 3:
+        return None
+    mid = len(vals) // 2
+    earlier, recent = vals[:mid], vals[mid:]
+    base = sum(earlier) / len(earlier)
+    if base <= 0:
+        return None
+    return (sum(recent) / len(recent) - base) / base
+
+
 def velocity_series_from_comps(
     comps: list[SoldComp], *, weeks: int = 8, saturation: int = 25
 ) -> AttentionSeries:
