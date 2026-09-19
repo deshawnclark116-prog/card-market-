@@ -161,6 +161,10 @@ python -m prehype scan --only-early
 # Live MLB fundamentals (free, no API key needed):
 python -m prehype scan --sources mlb --only-early
 
+# Only show players whose card is actually cheap (a hard cap):
+python -m prehype breakouts --max-price 25
+python -m prehype prospects --max-price 20   # cheap Bowman 1st autos only
+
 # Real eBay sold comps for your watchlist (price + sales velocity):
 cp watchlist.example.json watchlist.json   # then edit it
 python -m prehype scan --sources ebay --only-early

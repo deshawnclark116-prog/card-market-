@@ -284,6 +284,28 @@ def add_hype(
     return hits
 
 
+def filter_max_price(
+    hits: list[BreakoutHit], max_price: float | None, *, keep_unknown: bool = True
+) -> list[BreakoutHit]:
+    """Drop hits whose primary card costs more than ``max_price``.
+
+    ``keep_unknown`` keeps cards we couldn't price (n/a) — set False for a strict
+    'only confirmed-cheap cards' view. No-op when ``max_price`` is None. Requires
+    prices to have been fetched first (via add_prices).
+    """
+
+    if max_price is None:
+        return hits
+    out = []
+    for h in hits:
+        if h.median_price is None:
+            if keep_unknown:
+                out.append(h)
+        elif h.median_price <= max_price:
+            out.append(h)
+    return out
+
+
 def _price_asleep(pct: float | None) -> float | None:
     """0-1 'not late' factor from a card's price *momentum*.
 

@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import argparse
 
-from prehype.breakouts import add_hype, add_prices, find_breakouts_multi
+from prehype.breakouts import add_hype, add_prices, filter_max_price, find_breakouts_multi
 
 
 def main() -> int:
@@ -30,6 +30,7 @@ def main() -> int:
     )
     ap.add_argument("--top", type=int, default=10, help="how many players to show")
     ap.add_argument("--no-prices", action="store_true", help="skip the eBay price step")
+    ap.add_argument("--max-price", type=float, default=None, help="only show cards at/under this price")
     ap.add_argument("--include-relievers", action="store_true", help="keep relievers (default: starters only)")
     ap.add_argument("--anchor", default="Aaron Judge", help="famous player for the hype meter")
     args = ap.parse_args()
@@ -53,18 +54,23 @@ def main() -> int:
     hits = add_hype(hits, anchor=args.anchor)
     if all(h.interest is None for h in hits):
         print("  (Trends unavailable — showing breakout order. `pip install pytrends` to enable.)")
-    hits = hits[: args.top]
 
     if not args.no_prices:
         print("Step 3/3  Checking real card prices on eBay...")
-        hits = add_prices(hits)
-        if all(h.median_price is None for h in hits):
+        pool = hits[: args.top * 2] if args.max_price is not None else hits[: args.top]
+        pool = add_prices(pool)
+        if all(h.median_price is None for h in pool):
             print("  (No eBay prices came back — likely blocked on this connection.)")
+        if args.max_price is not None:
+            pool = filter_max_price(pool, args.max_price)
+        hits = pool[: args.top]
     else:
         print("Step 3/3  Skipped (--no-prices).")
+        hits = hits[: args.top]
 
+    cap = f" under ${args.max_price:.0f}" if args.max_price is not None else ""
     print("\n" + "=" * 62)
-    print(f"  YOUR SLEEPER LIST — top {len(hits)}")
+    print(f"  YOUR SLEEPER LIST — top {len(hits)}{cap}")
     print("=" * 62 + "\n")
     for i, h in enumerate(hits, 1):
         age = f"age {h.age}" if h.age is not None else "age ?"

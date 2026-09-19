@@ -12,6 +12,7 @@ import sys
 from prehype.breakouts import (
     add_hype,
     add_prices,
+    filter_max_price,
     find_breakouts,
     find_breakouts_multi,
     find_prospects,
@@ -88,17 +89,25 @@ def _cmd_breakouts(args: argparse.Namespace) -> int:
     if not args.no_hype:
         print("Checking search interest (hype meter) to find the real sleepers...")
         hits = add_hype(hits, anchor=args.anchor)
-    hits = hits[: args.top]
 
-    if args.with_prices:
+    do_prices = args.with_prices or args.max_price is not None
+    if do_prices:
+        # Price a wider pool when filtering by price, so enough cheap ones survive.
+        pool = hits[: args.top * 2] if args.max_price is not None else hits[: args.top]
         print("Checking card prices on eBay for the shortlist...")
-        hits = add_prices(hits)
+        pool = add_prices(pool)
+        if args.max_price is not None:
+            pool = filter_max_price(pool, args.max_price, keep_unknown=not args.strict_price)
+        hits = pool[: args.top]
+    else:
+        hits = hits[: args.top]
 
-    print(f"\n=== Breakout board — top {len(hits)} (player-first) ===\n")
+    price_note = f" under ${args.max_price:.0f}" if args.max_price is not None else ""
+    print(f"\n=== Breakout board — top {len(hits)}{price_note} (player-first) ===\n")
     for i, h in enumerate(hits, 1):
         print(f"{i}. {h.as_alert()}\n")
-    if not args.with_prices:
-        print("Tip: add --with-prices to check card prices for these players.")
+    if not args.with_prices and args.max_price is None:
+        print("Tip: add --with-prices to check card prices, or --max-price 25 to only show cheap cards.")
     return 0
 
 
@@ -169,6 +178,17 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="also check eBay card prices for the shortlist (needs a non-blocked IP)",
     )
+    b.add_argument(
+        "--max-price",
+        type=float,
+        default=None,
+        help="only show players whose card is at/under this price (implies --with-prices)",
+    )
+    b.add_argument(
+        "--strict-price",
+        action="store_true",
+        help="with --max-price, also drop cards with no price data (n/a)",
+    )
     b.set_defaults(func=_cmd_breakouts)
 
     pr = sub.add_parser(
@@ -185,6 +205,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--with-prices",
         action="store_true",
         help="check Bowman 1st auto prices on eBay (needs a non-blocked IP)",
+    )
+    pr.add_argument(
+        "--max-price",
+        type=float,
+        default=None,
+        help="only show prospects whose Bowman 1st auto is at/under this price",
+    )
+    pr.add_argument(
+        "--strict-price",
+        action="store_true",
+        help="with --max-price, also drop cards with no price data (n/a)",
     )
     pr.set_defaults(func=_cmd_prospects)
 
@@ -207,17 +238,24 @@ def _cmd_prospects(args: argparse.Namespace) -> int:
     if not args.no_hype:
         print("Checking search interest (hype meter) to find the real sleepers...")
         hits = add_hype(hits, anchor=args.anchor)
-    hits = hits[: args.top]
 
-    if args.with_prices:
+    do_prices = args.with_prices or args.max_price is not None
+    if do_prices:
+        pool = hits[: args.top * 2] if args.max_price is not None else hits[: args.top]
         print("Checking Bowman 1st auto prices on eBay...")
-        hits = add_prices(hits, cards=("bowman1st",))
+        pool = add_prices(pool, cards=("bowman1st",))
+        if args.max_price is not None:
+            pool = filter_max_price(pool, args.max_price, keep_unknown=not args.strict_price)
+        hits = pool[: args.top]
+    else:
+        hits = hits[: args.top]
 
-    print(f"\n=== Prospect board — top {len(hits)} (minors) ===\n")
+    price_note = f" under ${args.max_price:.0f}" if args.max_price is not None else ""
+    print(f"\n=== Prospect board — top {len(hits)}{price_note} (minors) ===\n")
     for i, h in enumerate(hits, 1):
         print(f"{i}. {h.as_alert()}\n")
-    if not args.with_prices:
-        print("Tip: add --with-prices to check Bowman 1st auto prices.")
+    if not args.with_prices and args.max_price is None:
+        print("Tip: add --with-prices for prices, or --max-price 25 to only show cheap cards.")
     return 0
 
 

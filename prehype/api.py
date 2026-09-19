@@ -28,7 +28,7 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-from prehype.breakouts import add_hype, add_prices, find_breakouts_multi
+from prehype.breakouts import add_hype, add_prices, filter_max_price, find_breakouts_multi
 
 # ---- serialization --------------------------------------------------------- #
 
@@ -86,11 +86,13 @@ def run_scan(
     prices: bool = True,
     hype: bool = True,
     year: int | None = None,
+    max_price: float | None = None,
+    strict_price: bool = False,
     use_cache: bool = True,
 ) -> list[dict]:
     """Run the full pipeline and return serialized results."""
 
-    key = (scan_type, top, prices, hype, year)
+    key = (scan_type, top, prices, hype, year, max_price, strict_price)
     if use_cache and key in _CACHE:
         ts, data = _CACHE[key]
         if time.time() - ts < _TTL:
@@ -105,9 +107,16 @@ def run_scan(
     hits = find_breakouts_multi(year=year, top=top, types=types)
     if hype:
         hits = add_hype(hits)
-    hits = hits[:top]
-    if prices:
-        hits = add_prices(hits)
+
+    do_prices = prices or max_price is not None
+    if do_prices:
+        pool = hits[: top * 2] if max_price is not None else hits[:top]
+        pool = add_prices(pool)
+        if max_price is not None:
+            pool = filter_max_price(pool, max_price, keep_unknown=not strict_price)
+        hits = pool[:top]
+    else:
+        hits = hits[:top]
 
     data = [serialize_hit(h) for h in hits]
     _CACHE[key] = (time.time(), data)
@@ -200,6 +209,8 @@ class _Handler(BaseHTTPRequestHandler):
                     prices=flag("prices", True),
                     hype=flag("hype", True),
                     year=int(q["year"][0]) if "year" in q else None,
+                    max_price=float(q["maxPrice"][0]) if "maxPrice" in q else None,
+                    strict_price=flag("strictPrice", False),
                 )
                 self._send_json(data)
             except Exception as e:  # keep the server alive; report the error

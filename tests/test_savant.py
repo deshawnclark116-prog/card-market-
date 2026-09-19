@@ -164,6 +164,25 @@ class _PricedEbay(CompsBackend):
         ]
 
 
+def test_filter_max_price_drops_expensive_and_optionally_unknown():
+    from prehype.breakouts import BreakoutHit, filter_max_price
+    from prehype.sources.savant import SavantBatter
+
+    def hit(pid, price):
+        h = BreakoutHit(batter=SavantBatter(pid, pid, 2026, 400, 0.36, 0.36, 0.45),
+                        score=50, kind="x", reason="")
+        h.median_price = price
+        return h
+
+    hits = [hit("cheap", 10.0), hit("pricey", 120.0), hit("unknown", None)]
+    kept = filter_max_price(hits, 25.0)
+    ids = {h.batter.player_id for h in kept}
+    assert ids == {"cheap", "unknown"}                 # keep_unknown default
+    strict = filter_max_price(hits, 25.0, keep_unknown=False)
+    assert {h.batter.player_id for h in strict} == {"cheap"}
+    assert filter_max_price(hits, None) == hits         # no cap = no-op
+
+
 def test_absolute_price_gate_prefers_the_actually_cheap_card(tmp_path):
     # Two identical sleepers, both flat price — but one card is $10, one is $120.
     current = [_mk("cheap", 0.360, pa=400, name="Cheap Guy"),
