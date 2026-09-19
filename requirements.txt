@@ -1,0 +1,3 @@
+# Only one real dependency — the Google Trends "hype meter".
+# Everything else uses Python's built-in libraries.
+pytrends>=4.9
