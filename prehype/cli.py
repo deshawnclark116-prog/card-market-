@@ -122,7 +122,7 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--year", type=int, default=None, help="season year (default: current)")
     b.add_argument("--min-pa", type=int, default=150, help="minimum plate appearances")
     b.add_argument("--top", type=int, default=15, help="how many candidates to show")
-    b.add_argument("--min-score", type=float, default=40.0, help="hide breakout scores below this")
+    b.add_argument("--min-score", type=float, default=20.0, help="hide breakout scores below this")
     b.add_argument(
         "--with-prices",
         action="store_true",

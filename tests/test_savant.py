@@ -1,6 +1,7 @@
-"""Tests for the Statcast breakout engine (parsing + scoring + player-first flow).
+"""Tests for the Statcast breakout engine.
 
-Verified against a saved Savant CSV fixture so it runs offline.
+The engine scores IMPROVEMENT + youth (not raw skill), so sleepers rank above
+famous stars. These tests pin that behavior down.
 """
 
 import os
@@ -9,64 +10,104 @@ import pytest
 
 from prehype.breakouts import add_prices, find_breakouts
 from prehype.sources.ebay import CompsBackend, EbayCompsClient, SoldComp
-from prehype.sources.savant import (
-    breakout_score,
-    parse_expected_stats,
-)
+from prehype.sources.savant import SavantBatter, breakout_score, parse_expected_stats
 
 FIXTURE = os.path.join(os.path.dirname(__file__), "fixtures", "savant_expected_sample.csv")
 
 
-def _batters():
-    with open(FIXTURE, encoding="utf-8") as f:
-        return parse_expected_stats(f.read(), 2024)
+def _mk(pid, now_woba, pa=400, est_slg=0.45, name=None):
+    return SavantBatter(
+        player_id=pid,
+        name=name or pid,
+        year=2026,
+        pa=pa,
+        woba=now_woba,
+        est_woba=now_woba,
+        est_slg=est_slg,
+    )
 
 
 def test_parse_reads_names_and_stats():
-    batters = _batters()
+    with open(FIXTURE, encoding="utf-8") as f:
+        batters = parse_expected_stats(f.read(), 2024)
     assert len(batters) == 5
     spring = next(b for b in batters if b.player_id == "900001")
-    assert spring.name == "Spring Coiled"       # "Coiled, Spring" -> "Spring Coiled"
+    assert spring.name == "Spring Coiled"      # "Coiled, Spring" -> "Spring Coiled"
     assert spring.est_woba == 0.400
-    assert spring.woba == 0.310
 
 
-def test_luck_gap_sign():
-    batters = {b.player_id: b for b in _batters()}
-    # actual - expected: negative == unlucky (results lag contact)
-    assert batters["900001"].luck_gap < 0   # coiled spring, unlucky
-    assert batters["900003"].luck_gap > 0   # fluke, overperforming
+def test_sleeper_outranks_star_and_flat_average():
+    # Young player who jumped from below-average to good.
+    sleeper_now = _mk("sleeper", 0.360, pa=400)
+    sleeper_prior = _mk("sleeper", 0.300, pa=400)
+    sleeper, kind = breakout_score(sleeper_now, sleeper_prior, age=22)
+
+    # Established star: already elite last year, no real jump, older.
+    star_now = _mk("star", 0.415, pa=600)
+    star_prior = _mk("star", 0.410, pa=600)
+    star, _ = breakout_score(star_now, star_prior, age=30)
+
+    # Solid but flat veteran: no improvement.
+    flat_now = _mk("flat", 0.316, pa=500)
+    flat_prior = _mk("flat", 0.315, pa=500)
+    flat, _ = breakout_score(flat_now, flat_prior, age=29)
+
+    assert kind == "leveling up"
+    assert sleeper > star
+    assert sleeper > flat
+    assert star < 25          # the famous-star profile scores low here
 
 
-def test_breakout_score_ranks_unlucky_elite_above_fluke_and_average():
-    b = {x.player_id: x for x in _batters()}
-    spring = breakout_score(b["900001"])   # elite contact + unlucky
-    fluke = breakout_score(b["900003"])    # mediocre contact, lucky
-    joe = breakout_score(b["900004"])      # average
-    assert spring > fluke
-    assert spring > joe
-    assert spring >= 80     # elite contact + unlucky should score very high
+def test_youth_boosts_identical_jump():
+    now = _mk("p", 0.355)
+    prior = _mk("p", 0.305)
+    young, _ = breakout_score(now, prior, age=21)
+    old, _ = breakout_score(now, prior, age=30)
+    assert young > old
 
 
-def test_find_breakouts_respects_min_pa_and_ranks():
-    hits = find_breakouts(batters=_batters(), min_pa=150, top=10, min_score=0.0)
+def test_new_face_is_emerging():
+    now = _mk("rook", 0.370, pa=250)
+    score, kind = breakout_score(now, prior=None, age=22)
+    assert kind == "emerging"
+    assert score > 0
+
+
+def test_find_breakouts_ranks_sleeper_first_and_filters_min_pa():
+    current = [
+        _mk("sleeper", 0.360, pa=400),
+        _mk("star", 0.415, pa=600),
+        _mk("smallsample", 0.400, pa=80),
+    ]
+    prior = [
+        _mk("sleeper", 0.300, pa=400),
+        _mk("star", 0.410, pa=600),
+    ]
+    ages = {"sleeper": 22, "star": 30, "smallsample": 24}
+    hits = find_breakouts(
+        batters=current, prior=prior, ages=ages, min_pa=150, top=10, min_score=0.0
+    )
     ids = [h.batter.player_id for h in hits]
-    assert "900005" not in ids            # 80 PA filtered out by min_pa
-    assert hits[0].batter.player_id == "900001"   # coiled spring ranks first
+    assert "smallsample" not in ids          # filtered by min_pa
+    assert hits[0].batter.player_id == "sleeper"
 
 
 class _FakeEbay(CompsBackend):
     def sold_comps(self, query, *, max_results=240):
         from datetime import date
-        return [SoldComp(price=25.0, sold_on=date(2024, 3, 10), title=query)]
+        return [SoldComp(price=25.0, sold_on=date(2026, 3, 10), title=query)]
 
 
-def test_add_prices_fills_shortlist_only():
-    hits = find_breakouts(batters=_batters(), min_pa=150, top=2, min_score=0.0)
-    client = EbayCompsClient(backend=_FakeEbay(), cache_dir="/tmp/prehype-test-cache")
+def test_add_prices_fills_shortlist(tmp_path):
+    current = [_mk("sleeper", 0.360, pa=400)]
+    prior = [_mk("sleeper", 0.300, pa=400)]
+    hits = find_breakouts(
+        batters=current, prior=prior, ages={"sleeper": 22}, min_pa=150, min_score=0.0
+    )
+    client = EbayCompsClient(backend=_FakeEbay(), cache_dir=str(tmp_path))
     priced = add_prices(hits, client=client)
-    assert all(h.median_price == 25.0 for h in priced)
-    assert all(h.comp_count == 1 for h in priced)
+    assert priced[0].median_price == 25.0
+    assert priced[0].comp_count == 1
 
 
 if __name__ == "__main__":

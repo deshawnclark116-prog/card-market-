@@ -24,6 +24,7 @@ from prehype.sources.savant import (
     SavantBatter,
     breakout_reason,
     breakout_score,
+    fetch_ages,
     fetch_expected_stats,
 )
 
@@ -34,7 +35,9 @@ class BreakoutHit:
 
     batter: SavantBatter
     score: float
+    kind: str
     reason: str
+    age: int | None = None
     median_price: float | None = None  # filled only if we checked eBay
     comp_count: int = 0
 
@@ -45,7 +48,8 @@ class BreakoutHit:
             else "price not checked"
         )
         return (
-            f"🔎 {self.batter.name} — breakout {self.score:.0f}/100 | cards {price}\n"
+            f"🔎 {self.batter.name} — breakout {self.score:.0f}/100 "
+            f"[{self.kind}] | cards {price}\n"
             f"   • {self.reason}"
         )
 
@@ -61,24 +65,45 @@ def find_breakouts(
     year: int | None = None,
     min_pa: int = 150,
     top: int = 15,
-    min_score: float = 40.0,
+    min_score: float = 20.0,
     batters: list[SavantBatter] | None = None,
+    prior: list[SavantBatter] | None = None,
+    ages: dict[str, int] | None = None,
 ) -> list[BreakoutHit]:
     """Scan hitters and return the top breakout candidates (no price yet).
 
-    Pass ``batters`` to score a supplied list (used in tests); otherwise it
-    fetches live from Baseball Savant.
+    Scores IMPROVEMENT (this year vs last) + youth, so sleepers rise and famous
+    stars sink. Pass ``batters``/``prior``/``ages`` to score supplied data (used
+    in tests); otherwise it fetches live.
     """
 
-    batters = batters if batters is not None else fetch_expected_stats(year)
+    from datetime import date as _date
+
+    year = year or _date.today().year
+    if batters is None:
+        batters = fetch_expected_stats(year)
+        prior = fetch_expected_stats(year - 1)
+        ages = fetch_ages(year)
+    prior_map = {b.player_id: b for b in (prior or [])}
+    ages = ages or {}
+
     hits: list[BreakoutHit] = []
     for b in batters:
         if b.pa < min_pa:
             continue
-        s = breakout_score(b)
-        if s < min_score:
+        age = ages.get(b.player_id)
+        score, kind = breakout_score(b, prior_map.get(b.player_id), age)
+        if score < min_score:
             continue
-        hits.append(BreakoutHit(batter=b, score=s, reason=breakout_reason(b)))
+        hits.append(
+            BreakoutHit(
+                batter=b,
+                score=score,
+                kind=kind,
+                age=age,
+                reason=breakout_reason(b, prior_map.get(b.player_id), age),
+            )
+        )
 
     hits.sort(key=lambda h: h.score, reverse=True)
     return hits[:top]

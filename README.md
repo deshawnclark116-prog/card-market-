@@ -32,19 +32,22 @@ ALL hitters --> who's about to break out? --> (top few) --> check card price -->
                 (Statcast leading signal)                   (eBay, only now)
 ```
 
-The breakout signal uses **leading** Statcast numbers, not lagging box-score
-stats. The key one: **expected wOBA vs actual wOBA**. When a hitter's quality of
-contact (xwOBA) is elite but his actual results still lag, he's "unlucky" — his
-numbers are about to jump, and because casual fans watch the box score his cards
-are still cheap. That's the edge. See `sources/savant.py` and `breakouts.py`.
+The breakout signal scores **improvement, not level** — this is the important
+part. Ranking hitters by skill just lists the stars (already famous, cards
+expensive, no edge). A real sleeper is someone who was average/unknown and
+quietly *leveled up*. So the score rewards:
+
+* the **jump in quality of contact** (expected wOBA) vs last year,
+* **gated** so it only counts if the player wasn't already a star,
+* a **youth boost** (young cards have the most upside),
+* new faces with strong contact as "emerging."
+
+Established stars score low here on purpose: their year-over-year jump is ~zero
+and their prior level was already elite, so the "was under the radar" gate
+zeroes them out. See `sources/savant.py` and `breakouts.py`.
 
 Because the price check runs only on the breakout shortlist, it's a few eBay
 lookups instead of thousands — which also sidesteps most of eBay's IP blocking.
-
-> Note: the raw breakout board surfaces elite skill, which includes famous
-> stars (Soto, Ohtani). Those get filtered out by the `--with-prices` stage —
-> their cards are expensive, so there's no edge. The buys are the players with
-> the same underlying skill but cheap cards.
 
 ## The Pre-Hype Score
 

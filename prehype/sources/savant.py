@@ -116,44 +116,117 @@ def fetch_expected_stats(
 
 
 # --------------------------------------------------------------------------- #
-# The breakout score (player-first, no price involved yet).
+# Player ages (one call, so we can favor young players).
 # --------------------------------------------------------------------------- #
 
-# Calibration anchors for wOBA/xSLG. League-average wOBA sits ~.310-.320; .400+
-# is elite. xSLG ~.400 average, .600 elite.
-_WOBA_FLOOR, _WOBA_ELITE = 0.300, 0.420
-_SLG_FLOOR, _SLG_ELITE = 0.380, 0.600
-_LUCK_FULL = 0.030  # a .030 unlucky gap is a big coiled spring
+_PLAYERS_URL = "https://statsapi.mlb.com/api/v1/sports/1/players?season={year}"
+
+
+def fetch_ages(year: int | None = None, *, timeout: float = 25.0) -> dict[str, int]:
+    """player_id -> current age, in one MLB StatsAPI call. {} on failure."""
+
+    year = year or date.today().year
+    try:
+        req = urllib.request.Request(
+            _PLAYERS_URL.format(year=year), headers={"User-Agent": _UA, "Accept": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            import json
+
+            data = json.loads(resp.read().decode("utf-8"))
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        return {}
+    ages: dict[str, int] = {}
+    for p in data.get("people", []):
+        pid, age = p.get("id"), p.get("currentAge")
+        if pid is not None and age is not None:
+            ages[str(pid)] = int(age)
+    return ages
+
+
+# --------------------------------------------------------------------------- #
+# The breakout score — IMPROVEMENT, not level.
+# --------------------------------------------------------------------------- #
+#
+# Ranking by skill level just lists the stars (already famous, cards expensive,
+# no edge). A real sleeper is someone who was average/unknown and quietly
+# *leveled up*, or a young new face emerging. So we score:
+#
+#   * the JUMP in quality of contact vs last year (big positive = leveling up),
+#   * gated so it only counts if they weren't already a star last year,
+#   * a youth boost (young cards have the most upside),
+#   * rookies/new faces with strong contact as "emerging".
+#
+# Established stars score low here: their year-over-year jump is ~zero and their
+# prior level was already elite, so the "was under the radar" gate zeroes them.
+
+_LEAGUE_WOBA = 0.315
+_JUMP_FULL = 0.045       # a +.045 xwOBA jump year-over-year is huge
+_STAR_PRIOR = 0.360      # prior xwOBA at/above this = already known
+_PRIOR_MIN_PA = 150      # need a real prior sample to call it a "jump"
 
 
 def _clamp01(x: float) -> float:
     return max(0.0, min(1.0, x))
 
 
-def breakout_score(b: SavantBatter) -> float:
-    """0-100: elite quality of contact, amplified when results still lag it."""
+def _youth_mult(age: int | None) -> float:
+    """Multiplier: young players boosted, older ones discounted."""
 
-    woba_skill = _clamp01((b.est_woba - _WOBA_FLOOR) / (_WOBA_ELITE - _WOBA_FLOOR))
-    power_skill = _clamp01((b.est_slg - _SLG_FLOOR) / (_SLG_ELITE - _SLG_FLOOR))
-    skill = 0.7 * woba_skill + 0.3 * power_skill
-
-    # Unlucky (actual < expected) is the leading edge; cap the bonus.
-    underrated = _clamp01((-b.luck_gap) / _LUCK_FULL)
-
-    # Skill gates the score; being unlucky amplifies it.
-    return round(100.0 * skill * (0.55 + 0.45 * underrated), 1)
+    if age is None:
+        return 1.0
+    youth01 = _clamp01((27 - age) / (27 - 21))  # <=21 full, >=27 none
+    return 0.7 + 0.5 * youth01                   # 0.7x (old) .. 1.2x (very young)
 
 
-def breakout_reason(b: SavantBatter) -> str:
+def breakout_score(
+    cur: SavantBatter,
+    prior: "SavantBatter | None" = None,
+    age: int | None = None,
+) -> tuple[float, str]:
+    """Return (0-100 breakout score, kind) for a hitter.
+
+    ``kind`` is "leveling up" (jumped vs last year) or "emerging" (new face,
+    no real prior-year sample).
+    """
+
+    now = cur.est_woba
+
+    if prior is None or prior.pa < _PRIOR_MIN_PA:
+        # New face: reward strong current contact, discounted for small sample.
+        base = _clamp01((now - _LEAGUE_WOBA) / (0.420 - _LEAGUE_WOBA))
+        raw = base * 0.85
+        kind = "emerging"
+    else:
+        jump = now - prior.est_woba
+        jump01 = _clamp01(jump / _JUMP_FULL)
+        # Was he under the radar last year? (prior below star level)
+        under_radar01 = _clamp01((_STAR_PRIOR - prior.est_woba) / (_STAR_PRIOR - 0.290))
+        # Did the jump make him actually good now (not just less bad)?
+        now_ok01 = _clamp01((now - 0.310) / (0.375 - 0.310))
+        raw = jump01 * (0.35 + 0.65 * under_radar01) * (0.40 + 0.60 * now_ok01)
+        kind = "leveling up"
+
+    raw *= _youth_mult(age)
+    return round(min(1.0, raw) * 100.0, 1), kind
+
+
+def breakout_reason(
+    cur: SavantBatter,
+    prior: "SavantBatter | None" = None,
+    age: int | None = None,
+) -> str:
     """A one-line, plain-English 'why' for an alert."""
 
-    gap = b.luck_gap
-    if gap <= -0.020:
-        luck = f"crushing the ball but unlucky (stats {abs(gap):.3f} below his contact) — due to jump"
-    elif gap < 0:
-        luck = "hitting better than his line shows — trending up"
-    elif gap <= 0.010:
-        luck = "results roughly match his contact quality"
-    else:
-        luck = f"slightly overperforming (careful — some luck baked in)"
-    return f"xwOBA {b.est_woba:.3f} (elite ~.400); {luck}"
+    age_str = f"age {age}, " if age is not None else ""
+    if prior is None or prior.pa < _PRIOR_MIN_PA:
+        return (
+            f"{age_str}new face — strong contact already (xwOBA {cur.est_woba:.3f}, "
+            f"league avg ~.315)"
+        )
+    jump = cur.est_woba - prior.est_woba
+    direction = "jumped" if jump >= 0 else "slipped"
+    return (
+        f"{age_str}xwOBA {direction} {prior.est_woba:.3f} -> {cur.est_woba:.3f} "
+        f"({jump:+.3f}) vs last year — leveled up while still under the radar"
+    )
