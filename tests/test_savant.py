@@ -151,6 +151,40 @@ class _FakeEbay(CompsBackend):
         return [SoldComp(price=25.0, sold_on=date(2026, 3, 10), title=query)]
 
 
+class _PricedEbay(CompsBackend):
+    """Flat price series; 'cheap' names ~$10, 'pricey' names ~$120."""
+
+    def sold_comps(self, query, *, max_results=240):
+        from datetime import date, timedelta
+        start = date(2026, 3, 1)
+        price = 120.0 if query.lower().startswith("pricey") else 10.0
+        return [
+            SoldComp(price=price, sold_on=start + timedelta(weeks=i), title=query)
+            for i in range(6) for _ in range(3)
+        ]
+
+
+def test_absolute_price_gate_prefers_the_actually_cheap_card(tmp_path):
+    # Two identical sleepers, both flat price — but one card is $10, one is $120.
+    current = [_mk("cheap", 0.360, pa=400, name="Cheap Guy"),
+               _mk("pricey", 0.360, pa=400, name="Pricey Guy")]
+    prior = [_mk("cheap", 0.300, pa=400), _mk("pricey", 0.300, pa=400)]
+    hits = find_breakouts(
+        batters=current, prior=prior, ages={"cheap": 23, "pricey": 23},
+        min_pa=150, top=10, min_score=0.0,
+    )
+    add_hype(hits, interest={"Cheap Guy": 3.0, "Pricey Guy": 3.0})
+    client = EbayCompsClient(backend=_PricedEbay(), cache_dir=str(tmp_path))
+    priced = add_prices(hits, client=client)
+
+    cheap = next(h for h in priced if h.batter.player_id == "cheap")
+    pricey = next(h for h in priced if h.batter.player_id == "pricey")
+    assert cheap.price_level == "dirt cheap"
+    assert pricey.price_level == "pricey"
+    assert cheap.deal_score > pricey.deal_score   # dollars matter now
+    assert priced[0].batter.player_id == "cheap"
+
+
 class _TrendEbay(CompsBackend):
     """Returns a flat price series for 'flat' names, a rising one for 'hot' names."""
 

@@ -34,13 +34,16 @@ from prehype.breakouts import add_hype, add_prices, find_breakouts_multi
 
 
 def _price_status(trend: float | None) -> str:
+    """Momentum only — describes the price *trend*, not whether it's cheap."""
     if trend is None:
         return "unknown"
-    if trend <= 0.05:
-        return "still cheap"
+    if trend <= -0.05:
+        return "falling"
+    if trend < 0.05:
+        return "flat"
     if trend >= 0.30:
-        return "LATE"
-    return "window closing"
+        return "hot (late)"
+    return "rising"
 
 
 def serialize_hit(h) -> dict:
@@ -64,7 +67,8 @@ def serialize_hit(h) -> dict:
         "kind": h.kind,
         "reason": h.reason,
         "priceTrend": round(h.price_trend, 3) if h.price_trend is not None else None,
-        "priceStatus": _price_status(h.price_trend),
+        "priceStatus": _price_status(h.price_trend),   # trend: falling/flat/rising/hot
+        "priceLevel": h.price_level,                    # dollars: dirt cheap/cheap/pricey/expensive
         "cards": cards,
     }
 
@@ -115,26 +119,34 @@ def run_scan(
 DEMO_DATA: list[dict] = [
     {
         "name": "Kyle Karros", "position": "BAT", "age": 24,
-        "dealScore": 58, "breakoutScore": 64, "sleeperScore": 61, "hypePct": 2,
+        "dealScore": 43, "breakoutScore": 64, "sleeperScore": 61, "hypePct": 2,
         "kind": "leveling up",
         "reason": "xwOBA jumped .258 -> .340 (+.082) vs last year — leveled up while still under the radar",
-        "priceTrend": 0.04, "priceStatus": "still cheap",
+        "priceTrend": 0.04, "priceStatus": "flat", "priceLevel": "cheap",
         "cards": {"Bowman 1st auto": {"price": 45, "comps": 12}, "Rookie auto": {"price": 28, "comps": 7}},
     },
     {
-        "name": "Curtis Mead", "position": "BAT", "age": 25,
-        "dealScore": 49, "breakoutScore": 72, "sleeperScore": 51, "hypePct": 12,
+        "name": "Deyvison De Los Santos", "position": "BAT", "age": 22,
+        "dealScore": 58, "breakoutScore": 66, "sleeperScore": 62, "hypePct": 3,
         "kind": "leveling up",
-        "reason": "xwOBA jumped .291 -> .358 (+.067) vs last year — leveled up while still under the radar",
-        "priceTrend": 0.09, "priceStatus": "still cheap",
-        "cards": {"Bowman 1st auto": {"price": 60, "comps": 9}, "Rookie auto": {"price": 34, "comps": 5}},
+        "reason": "xwOBA jumped .270 -> .352 vs last year — leveled up while still under the radar",
+        "priceTrend": -0.02, "priceStatus": "falling", "priceLevel": "dirt cheap",
+        "cards": {"Bowman 1st auto": {"price": 12, "comps": 18}, "Rookie auto": {"price": None, "comps": 0}},
+    },
+    {
+        "name": "Leo De Vries", "position": "BAT", "age": 19,
+        "dealScore": 45, "breakoutScore": 81, "sleeperScore": 73, "hypePct": 4,
+        "kind": "prospect",
+        "reason": "19yo SS posting .390 xwOBA in A+ — young for the level",
+        "priceTrend": -0.08, "priceStatus": "falling", "priceLevel": "pricey",
+        "cards": {"Bowman 1st auto": {"price": 62, "comps": 34}, "Rookie auto": {"price": None, "comps": 0}},
     },
     {
         "name": "Payton Tolle", "position": "PIT", "age": 23,
-        "dealScore": 12, "breakoutScore": 88, "sleeperScore": 51, "hypePct": 17,
+        "dealScore": 6, "breakoutScore": 88, "sleeperScore": 51, "hypePct": 17,
         "kind": "emerging",
         "reason": "new arm — already tough to hit (xwOBA-against .253, lower is better)",
-        "priceTrend": 0.62, "priceStatus": "LATE",
+        "priceTrend": 0.62, "priceStatus": "hot (late)", "priceLevel": "expensive",
         "cards": {"Bowman 1st auto": {"price": 210, "comps": 20}, "Rookie auto": {"price": None, "comps": 0}},
     },
 ]

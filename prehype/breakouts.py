@@ -13,6 +13,7 @@ eBay's rate/IP blocking.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 
 from prehype.sources.ebay import (
@@ -57,7 +58,8 @@ class BreakoutHit:
     # Per-card-type prices: label -> (median_price|None, comp_count)
     card_prices: dict[str, tuple[float | None, int]] = field(default_factory=dict)
     price_trend: float | None = None    # primary card price change, e.g. 0.30 = +30%
-    deal_score: float | None = None     # sleeper score gated by price momentum
+    price_level: str | None = None      # absolute-dollar tier of the primary card
+    deal_score: float | None = None     # sleeper score gated by price (level + trend)
 
     @property
     def rank_score(self) -> float:
@@ -85,13 +87,16 @@ class BreakoutHit:
         return " | ".join(parts)
 
     def _trend_str(self) -> str:
+        level = f"{self.price_level} in $ — " if self.price_level and self.price_level != "unknown" else ""
         if self.price_trend is None:
-            return "card price trend: unknown (too few sales)"
-        if self.price_trend <= 0.05:
-            return f"card price still flat ({self.price_trend:+.0%}) — not late yet"
+            return f"{level}price trend: unknown (too few sales)"
+        if self.price_trend <= -0.05:
+            return f"{level}price falling ({self.price_trend:+.0%})"
+        if self.price_trend < 0.05:
+            return f"{level}price flat ({self.price_trend:+.0%})"
         if self.price_trend >= 0.30:
-            return f"card price already +{self.price_trend:.0%} — likely LATE"
-        return f"card price starting to move (+{self.price_trend:.0%}) — window closing"
+            return f"{level}price already +{self.price_trend:.0%} — likely LATE"
+        return f"{level}price rising (+{self.price_trend:.0%}) — window closing"
 
     def as_alert(self) -> str:
         if self.deal_score is not None:
@@ -280,15 +285,44 @@ def add_hype(
 
 
 def _price_asleep(pct: float | None) -> float | None:
-    """0-1 'still cheap' factor from a card's price momentum.
+    """0-1 'not late' factor from a card's price *momentum*.
 
-    Flat or falling -> 1.0 (fully asleep, not late). A card already up ~50%+ ->
-    ~0 (you're late). None -> None (unknown; don't penalize).
+    Flat or falling -> 1.0 (not late). A card already up ~50%+ -> ~0 (you're
+    late). None -> None (unknown; don't penalize).
     """
 
     if pct is None:
         return None
     return max(0.0, min(1.0, 1.0 - pct / 0.50))
+
+
+def _cheap01(price: float | None, *, cheap_ref: float = 15.0, rich_ref: float = 200.0) -> float | None:
+    """0-1 absolute-cheapness factor (dollars). Dirt cheap -> 1, expensive -> ~0.
+
+    This is the leg the tool was missing: a flat $62 card is NOT a deal just
+    because it isn't rising. Log-scaled so $8 vs $30 matters like $30 vs $120.
+    """
+
+    if price is None:
+        return None
+    if price <= cheap_ref:
+        return 1.0
+    if price >= rich_ref:
+        return 0.05
+    lo, hi = math.log(cheap_ref), math.log(rich_ref)
+    return max(0.05, 1.0 - (math.log(price) - lo) / (hi - lo))
+
+
+def _price_level(price: float | None) -> str:
+    if price is None:
+        return "unknown"
+    if price < 20:
+        return "dirt cheap"
+    if price < 50:
+        return "cheap"
+    if price < 150:
+        return "pricey"
+    return "expensive"
 
 
 def add_prices(
@@ -327,12 +361,18 @@ def add_prices(
                 h.median_price, h.comp_count, primary_label = median, count, label
                 break
 
-        # Price-momentum gate, measured on the primary card.
+        # Price gate = absolute cheapness (dollars) AND momentum (not already run).
         if primary_label is not None:
             h.price_trend = price_momentum_from_comps(comps_by_label[primary_label])
+        h.price_level = _price_level(h.median_price)
+
         base = h.sleeper_score if h.sleeper_score is not None else h.score
         asleep = _price_asleep(h.price_trend)
-        h.deal_score = round(base * (asleep if asleep is not None else 1.0), 1)
+        asleep_factor = asleep if asleep is not None else 1.0
+        cheap = _cheap01(h.median_price)
+        # Absolute price matters a lot but doesn't fully zero a great signal.
+        cheap_factor = (0.30 + 0.70 * cheap) if cheap is not None else 1.0
+        h.deal_score = round(base * asleep_factor * cheap_factor, 1)
 
     hits.sort(key=lambda h: h.rank_score, reverse=True)
     return hits

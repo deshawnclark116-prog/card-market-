@@ -14,15 +14,17 @@ def _hit():
     h.sleeper_score = 61.0
     h.deal_score = 58.0
     h.price_trend = 0.04
+    h.price_level = "cheap"
     h.card_prices = {"Bowman 1st auto": (45.0, 12), "Rookie auto": (None, 0)}
     return h
 
 
 def test_price_status_thresholds():
     assert _price_status(None) == "unknown"
-    assert _price_status(0.0) == "still cheap"
-    assert _price_status(0.20) == "window closing"
-    assert _price_status(0.55) == "LATE"
+    assert _price_status(-0.10) == "falling"
+    assert _price_status(0.0) == "flat"
+    assert _price_status(0.20) == "rising"
+    assert _price_status(0.55) == "hot (late)"
 
 
 def test_serialize_hit_shape():
@@ -33,7 +35,8 @@ def test_serialize_hit_shape():
     assert d["dealScore"] == 58
     assert d["breakoutScore"] == 64
     assert d["hypePct"] == 2
-    assert d["priceStatus"] == "still cheap"
+    assert d["priceStatus"] == "flat"       # trend describes momentum only
+    assert d["priceLevel"] == "cheap"       # dollars describe cheapness
     assert d["cards"]["Bowman 1st auto"] == {"price": 45, "comps": 12}
     assert d["cards"]["Rookie auto"] == {"price": None, "comps": 0}
 
@@ -42,7 +45,7 @@ def test_demo_data_matches_schema():
     required = {
         "name", "position", "age", "dealScore", "breakoutScore",
         "sleeperScore", "hypePct", "kind", "reason", "priceTrend",
-        "priceStatus", "cards",
+        "priceStatus", "priceLevel", "cards",
     }
     assert DEMO_DATA
     for row in DEMO_DATA:
