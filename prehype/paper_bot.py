@@ -299,6 +299,19 @@ def report(state: dict, today: date) -> dict:
     }
 
 
+def market_data_ready(candidates: list[dict], quote_lookup: QuoteLookup, day: date) -> bool:
+    """Only start the 30-day clock when fresh tradeable reference data exists."""
+    for candidate in candidates:
+        player = candidate.get("name")
+        if not isinstance(player, str) or not player.strip():
+            continue
+        cards = candidate.get("cards") or {}
+        for card in CARDS:
+            if card in cards and _quote_is_fresh(quote_lookup(player, card, day), day):
+                return True
+    return False
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="$100 / 30-day sports-card PAPER bot")
     parser.add_argument("command", choices=("run", "report"))
@@ -311,6 +324,13 @@ def main() -> int:
         from prehype.api import run_scan
         candidates = run_scan(scan_type="both", top=15, prices=True, hype=True, use_cache=False)
         lookup = make_live_quote_lookup()
+        if not Path(args.ledger).exists() and not market_data_ready(candidates, lookup, today):
+            print(json.dumps({
+                "status": "WAITING_FOR_LIVE_MARKET_DATA",
+                "candidate_count": len(candidates),
+                "message": "30-day clock has not started; no fresh reliable sold comps.",
+            }, indent=2))
+            return 0
         print(json.dumps(simulate_day(state, candidates, lookup, today), indent=2))
         save_ledger(args.ledger, state)
     print(json.dumps(report(state, today), indent=2))
