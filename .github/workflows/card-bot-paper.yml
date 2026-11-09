@@ -40,6 +40,10 @@ jobs:
       - name: Commit updated paper ledger
         if: github.event_name != 'pull_request'
         run: |
+          if [ ! -f data/card_bot_100.json ]; then
+            echo "No ledger yet: waiting for verified market prices"
+            exit 0
+          fi
           git config user.name "card-bot"
           git config user.email "card-bot@users.noreply.github.com"
           git add data/card_bot_100.json

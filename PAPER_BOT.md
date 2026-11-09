@@ -41,7 +41,7 @@ The GitHub Actions workflow (.github/workflows/card-bot-paper.yml) runs daily
 at 14:30 UTC on the repository's DEFAULT branch after this feature is merged.
 It also supports a manual workflow dispatch, and offline tests run on PRs.
 It commits data/card_bot_100.json to the repo so state survives fresh runners.
-The 30-day clock starts with the first successfully recorded run.
+The 30-day clock starts only when the live price feed provides at least one fresh, sufficiently liquid reference-card quote. If price data is missing, the daily job reports WAITING_FOR_LIVE_MARKET_DATA and does not create a ledger or consume a trial day.
 
 ## Requirements and limits
 
