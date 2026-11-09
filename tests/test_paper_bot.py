@@ -1,5 +1,5 @@
 from datetime import date, timedelta
-from prehype.paper_bot import _entry_cost, _liquidation_value, make_ledger, report, simulate_day
+from prehype.paper_bot import _entry_cost, _liquidation_value, make_ledger, report, simulate_day, market_data_ready
 
 DAY = date(2026, 11, 9)
 
@@ -94,3 +94,10 @@ def test_no_fabricated_price_for_missing_candidates():
     run = simulate_day(state, [candidate()], lambda *args: None, DAY)
     assert not run["buys"]
     assert report(state, DAY)["cash_remaining_usd"] == 100
+
+
+def test_market_must_have_fresh_comps_before_trial_starts():
+    assert not market_data_ready([], quotes(), DAY)
+    assert not market_data_ready([candidate()], quotes(comps=0), DAY)
+    assert not market_data_ready([candidate()], quotes(age_days=20), DAY)
+    assert market_data_ready([candidate()], quotes(), DAY)
