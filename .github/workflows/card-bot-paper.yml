@@ -1,0 +1,51 @@
+name: Card Bot $100 Paper Month
+
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # 14:30 UTC daily (09:30 EST / 10:30 EDT)
+    - cron: "30 14 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: card-bot-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e . pytest
+      - name: Test (offline)
+        run: python -m pytest -q
+      - name: Run 30-day paper experiment
+        if: github.event_name != 'pull_request'
+        env:
+          EBAY_OAUTH_TOKEN: ${{ secrets.EBAY_OAUTH_TOKEN }}
+          EBAY_PROXY_URL: ${{ secrets.EBAY_PROXY_URL }}
+        run: python -m prehype.paper_bot run --ledger data/card_bot_100.json
+      - name: Commit updated paper ledger
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "card-bot"
+          git config user.email "card-bot@users.noreply.github.com"
+          git add data/card_bot_100.json
+          if git diff --cached --quiet; then
+            echo "No ledger changes"
+          else
+            git commit -m "Paper bot daily $100 ledger update"
+            git push
+          fi
