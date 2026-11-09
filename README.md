@@ -14,7 +14,7 @@ then sell into the hype once everyone else catches on.
 - [Daily player scouting board](CARD_BOT_DASHBOARD.md) — who the bot checked,
   their breakout/deal scores, card reference prices, passes and purchase reasons,
   paper holdings and remaining cash.
-- [Automation runs](../../actions/workflows/card-bot-paper.yml) — run status,
+- [Automation runs](https://github.com/deshawnclark116-prog/card-market-/actions/workflows/card-bot-paper.yml) — run status,
   logs, and a detailed scouting report in each run's Summary.
 - [Simulation methodology](PAPER_BOT.md) — important limits and rules.
 
