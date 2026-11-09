@@ -320,19 +320,22 @@ def main() -> int:
     today = date.today()
     state = load_ledger(args.ledger, today)
     if args.command == "run":
-        # This is a LIVE scan. Never use the canned api.DEMO_DATA for purchases.
+        # LIVE only: canned api.DEMO_DATA must never enter the paper ledger.
         from prehype.api import run_scan
+        from prehype.scouting_report import build_scouting_report, save_scouting_report
         candidates = run_scan(scan_type="both", top=15, prices=True, hype=True, use_cache=False)
         lookup = make_live_quote_lookup()
         if not Path(args.ledger).exists() and not market_data_ready(candidates, lookup, today):
-            print(json.dumps({
-                "status": "WAITING_FOR_LIVE_MARKET_DATA",
-                "candidate_count": len(candidates),
-                "message": "30-day clock has not started; no fresh reliable sold comps.",
-            }, indent=2))
-            return 0
-        print(json.dumps(simulate_day(state, candidates, lookup, today), indent=2))
-        save_ledger(args.ledger, state)
+            status = "WAITING_FOR_LIVE_MARKET_DATA"
+            run = {"status": status, "candidate_count": len(candidates), "buys": []}
+        else:
+            run = simulate_day(state, candidates, lookup, today)
+            status = run["status"]
+            save_ledger(args.ledger, state)
+        scouting = build_scouting_report(candidates, lookup, today, state, status, run["buys"])
+        save_scouting_report(scouting)
+        print(json.dumps(run, indent=2))
+        print(f"Daily scouting board: CARD_BOT_DASHBOARD.md ({scouting['players_screened']} players)")
     print(json.dumps(report(state, today), indent=2))
     return 0
 
