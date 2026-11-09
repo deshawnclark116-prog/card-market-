@@ -1,0 +1,643 @@
+{
+  "as_of": "2026-11-09",
+  "note": "Paper fills use historical sold-price category medians, NOT live listings.",
+  "paper_buys_today": [],
+  "players": [
+    {
+      "breakout_score_not_probability": 62,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 61,
+      "hype_pct": 0,
+      "name": "Walbert Ure\u00f1a",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 1,
+      "reason": "age 22, new arm \u2014 already tough to hit (xwOBA-against 0.281, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 65,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 60,
+      "hype_pct": 3,
+      "name": "Curtis Mead",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 2,
+      "reason": "age 26, xwOBA jumped 0.291 -> 0.358 (+0.067) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 81,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 59,
+      "hype_pct": 11,
+      "name": "Logan Henderson",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 3,
+      "reason": "age 24, new arm \u2014 already tough to hit (xwOBA-against 0.257, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 59,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 58,
+      "hype_pct": 1,
+      "name": "Kyle Karros",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 4,
+      "reason": "age 24, xwOBA jumped 0.258 -> 0.334 (+0.076) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 61,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 55,
+      "hype_pct": 4,
+      "name": "Coby Mayo",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 5,
+      "reason": "age 24, xwOBA jumped 0.287 -> 0.336 (+0.049) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 56,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 51,
+      "hype_pct": 3,
+      "name": "Dalton Rushing",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 6,
+      "reason": "age 25, xwOBA jumped 0.283 -> 0.336 (+0.053) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 47,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 47,
+      "hype_pct": 0,
+      "name": "Spencer Steer",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 7,
+      "reason": "age 28, xwOBA jumped 0.293 -> 0.342 (+0.049) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 48,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 46,
+      "hype_pct": 1,
+      "name": "Blaze Alexander",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 8,
+      "reason": "age 27, xwOBA jumped 0.303 -> 0.351 (+0.048) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 63,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 46,
+      "hype_pct": 11,
+      "name": "Brady House",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 9,
+      "reason": "age 23, xwOBA jumped 0.284 -> 0.333 (+0.049) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 47,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 46,
+      "hype_pct": 2,
+      "name": "JJ Bleday",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 10,
+      "reason": "age 28, xwOBA jumped 0.276 -> 0.340 (+0.064) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 53,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 45,
+      "hype_pct": 6,
+      "name": "Trey Yesavage",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 11,
+      "reason": "age 23, new arm \u2014 already tough to hit (xwOBA-against 0.284, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 54,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 44,
+      "hype_pct": 8,
+      "name": "Jared Jones",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 12,
+      "reason": "age 25, new arm \u2014 already tough to hit (xwOBA-against 0.276, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 81,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 44,
+      "hype_pct": 18,
+      "name": "Payton Tolle",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 13,
+      "reason": "age 24, new arm \u2014 already tough to hit (xwOBA-against 0.255, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 45,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 42,
+      "hype_pct": 2,
+      "name": "Josh Jung",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 14,
+      "reason": "age 28, xwOBA jumped 0.304 -> 0.348 (+0.044) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 49,
+      "checks": [
+        {
+          "all_in_paper_usd": null,
+          "card": "Bowman 1st auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        },
+        {
+          "all_in_paper_usd": null,
+          "card": "Rookie auto",
+          "decision": "PASS",
+          "last_sale": null,
+          "note": "Broad card type; not an exact listing/variant",
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null
+        }
+      ],
+      "deal_score_not_probability": 40,
+      "hype_pct": 8,
+      "name": "Jac Caglianone",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 15,
+      "reason": "age 23, xwOBA jumped 0.321 -> 0.357 (+0.036) vs last year \u2014 leveled up while still under the radar"
+    }
+  ],
+  "players_screened": 15,
+  "portfolio": {
+    "cash_remaining_usd": 100.0,
+    "days_recorded": 0,
+    "ends_on": "2026-12-09",
+    "important": "Estimated liquidation is NOT realized profit and assumes a buyer exists at the recent sold median. All entries are synthetic category-level fills, not matched live listings.",
+    "indicative_net_liquidation_usd": 100.0,
+    "indicative_return_pct": 0.0,
+    "initial_cash_usd": 100.0,
+    "mode": "PAPER_REFERENCE_CARD_PROXY_NO_REAL_TRADES",
+    "number_of_paper_buys": 0,
+    "positions": [],
+    "stale_or_unverified_marks": 0,
+    "started_on": "2026-11-09",
+    "status": "IN_PROGRESS"
+  },
+  "source": "LIVE existing MLB top-15 scanner, never demo",
+  "status": "WAITING_FOR_LIVE_MARKET_DATA"
+}
