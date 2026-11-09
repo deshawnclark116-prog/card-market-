@@ -9,6 +9,20 @@ The goal is simple: **be way ahead of the crowd.** Buy players whose
 fundamentals point to a breakout while their cards are still cheap and quiet —
 then sell into the hype once everyone else catches on.
 
+## Watch the $100 Paper Bot
+
+- [Daily player scouting board](CARD_BOT_DASHBOARD.md) — who the bot checked,
+  their breakout/deal scores, card reference prices, passes and purchase reasons,
+  paper holdings and remaining cash.
+- [Automation runs](../../actions/workflows/card-bot-paper.yml) — run status,
+  logs, and a detailed scouting report in each run's Summary.
+- [Simulation methodology](PAPER_BOT.md) — important limits and rules.
+
+The board refreshes with each successful LIVE scheduled/manual scan, even if
+reliable eBay sold-comps are missing and the 30-day clock has not started.
+It uses **paper-only, category-level sold-comparable prices**, not verified
+buyable listings. Current discovery covers the existing MLB pipeline only.
+
 ## The thesis
 
 Price is the *last* thing to move. The chain is almost always:
