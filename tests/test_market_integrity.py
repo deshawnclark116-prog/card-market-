@@ -34,7 +34,7 @@ def test_feed_claim_of_18_dollars_never_printed_as_market_price():
     assert data["players"][0]["checks"][0]["catalog_raw_untrusted_usd"]==18.02
     assert data["players"][0]["checks"][0]["catalog_guide_price_usd"] is None
     assert data["players"][0]["checks"][0]["sold_median_usd"] is None
-    assert "NOT VERIFIED BUY" in md
+    assert data["players"][0]["checks"][0]["decision"] == "PASS"
 
 
 def test_google_trends_vs_aaron_judge_is_not_card_hype():
