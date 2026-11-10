@@ -72,12 +72,7 @@ def exact_sale_match(row, card):
     if str(year) not in pieces:
         return False
 
-    # Permit punctuation/spacing around number, not a substring of other IDs.
-    if not re.search(r"(?<![a-z0-9])#?\s*" + re.escape(compact(number)) +
-                     r"(?![a-z0-9])", compact(title).replace(compact(number), compact(number))):
-        # The compact text intentionally loses the number's boundary.
-        # Use a second, conventional presentation test on the original title.
-        pass
+    # Require explicit printed card number, never an incidental substring.
     number_pattern = r"(?:#|no\.?|card\s*#)\s*" + r"[-\s]*".join(re.escape(c) for c in compact(number)) + r"\b"
     if not re.search(number_pattern, title, flags=re.I):
         return False
