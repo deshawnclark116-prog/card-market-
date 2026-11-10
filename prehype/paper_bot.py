@@ -159,6 +159,11 @@ def _ranked_options(candidates: list[dict]) -> list[tuple[float, str, dict]]:
                     or trend is None or float(trend) > 0.15
                     or hype is None or float(hype) > 30.0):
                 continue
+            # A generic Google Trends ratio against a superstar is NOT a
+            # validated card-collector demand or hype signal. Live scans mark
+            # cardHypeVerified=False until a collector-specific model exists.
+            if candidate.get("cardHypeVerified") is False:
+                continue
             name = candidate["name"].strip()
             if not name:
                 continue
@@ -355,8 +360,17 @@ def main() -> int:
         candidates = run_scan(scan_type="both", top=30, prices=False, hype=True, use_cache=False)
         lookup = PublicCardQuotes()
         for c in candidates:
+            # This came from Google Trends versus Aaron Judge over 3 months,
+            # NOT the percentage of collectors who are interested in a player.
+            # Preserve it under the correct label; remove it from decisions.
+            c["searchInterestVsJudgePct"] = c.get("hypePct")
+            c["hypePct"] = None
+            c["cardHypeVerified"] = False
+            c["sleeperScore"] = None  # contaminated by the old "low hype" proxy
             c["dealScore"] = None
             c["priceTrend"] = None
+        # Prioritize actual on-field change; don't rank by a search ratio.
+        candidates.sort(key=lambda c: -(c.get("breakoutScore") or 0))
         diagnostics = lookup.prime(candidates, today, positions=state["positions"])
         for candidate in candidates:
             for card in candidate.get("cards", {}):
@@ -366,7 +380,9 @@ def main() -> int:
                 median_price = quote["median_cents"] / 100
                 asleep = _price_asleep(quote["price_trend"])
                 cheap = _cheap01(median_price)
-                base = candidate.get("sleeperScore") or candidate.get("breakoutScore") or 0
+                # Skill score is not a verified market opportunity; we can
+                # calculate a provisional number but not authorize a buy.
+                base = candidate.get("breakoutScore") or 0
                 if asleep is None or cheap is None:
                     continue
                 score = round(base * asleep * (0.30 + 0.70 * cheap), 1)
@@ -383,6 +399,11 @@ def main() -> int:
             status = run["status"]
             save_ledger(args.ledger, state)
         scouting = build_scouting_report(candidates, lookup, today, state, status, run["buys"])
+        diagnostics["card_hype_validated"] = False
+        diagnostics["hype_note"] = ("Historical Google search interest versus Aaron Judge "
+                                    "is not sports-card attention. Paper buys are disabled "
+                                    "until card-specific market demand can be validated.")
+        diagnostics["catalog_prices_validated"] = False
         scouting["market_data"] = diagnostics
         scouting["source"] = "MLB skill discovery + anonymous CardPricer exact-grade sales"
         scouting["note"] = ("Catalog prices are indicative, never tradeable offers. "
