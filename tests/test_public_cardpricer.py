@@ -132,4 +132,8 @@ def test_anonymous_http_headers_and_strict_paths():
     assert "X-Api-Key" not in str(calls[0].headers)
     assert "apiKey" not in calls[0].full_url
     assert "cardpricer.co" in calls[0].full_url
-    assert client.get("/api/v1/../admin") is None if False else True
+    try:
+        client.get("/api/v1/../admin")
+        assert False, "unsafe paths must be rejected"
+    except ValueError:
+        pass
