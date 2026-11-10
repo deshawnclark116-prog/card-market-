@@ -437,7 +437,11 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
     # If exposure coverage is missing, you may still create a watchlist, but
     # cannot call candidates pre-MLB or pre-hype.
     eligible=choose_log_candidates(batters,exposed,max_n=max_logs)
+    # Full-season histories use exactly the same official player game logs
+    # already downloaded for skill discovery: no new provider or API key.
+    from prehype.full_season import full_season_trajectory
     signal_rows=[]
+    all_profiles=[]
     logs_with_data=0
     if eligible:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
@@ -450,9 +454,22 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
                     logs=[]
                 if logs:
                     logs_with_data+=1
+                season_path=full_season_trajectory(
+                    logs,as_of,player_id=p.player_id)
+                all_profiles.append({
+                    "player_id":p.player_id,
+                    "name":p.name, "age":p.age,
+                    "level":p.level,
+                    "early_signal_now":False,
+                    "trajectory":season_path,
+                })
                 signal=change_signal(p,logs,as_of)
                 if not signal:
+                    # Earlier rises and current declines are retained in the
+                    # complete audit, even if the old 14v14 late-only filter
+                    # would silently omit these players from the current board.
                     continue
+                all_profiles[-1]["early_signal_now"]=True
                 # Scores are 0-100 HEURISTIC evidence grades, NOT probabilities.
                 signal_rows.append({
                     "name":p.name,"playerId":p.player_id,
@@ -466,6 +483,7 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
                     "kind":"MiLB multi-horizon skill persistence",
                     "reason":signal["reason"],
                     "earlySignal":signal,
+                    "seasonTrajectory":season_path,
                     "discoverySource":"MLB StatsAPI MiLB official game logs",
                     "timeContext":signal["phase"],
                     "mlbExposureDataOK":exposure_ok,
@@ -491,8 +509,34 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
         else:
             candidate["marketExposure"]="TOP-100 CHECK UNAVAILABLE — HOBBY HYPE UNKNOWN"
     signal_rows=[c for c in signal_rows if ranked.get(c["name"]) is not True]
+    # This report covers EVERY eligible sampled hitter, including hitters
+    # whose current 14v14 signal disappeared, worsened, or reversed.
+    # It is a research history, NOT a card-buy candidate list.
+    all_profiles.sort(key=lambda p:(p["name"].casefold(),p["player_id"]))
+    phase_counts={}
+    for profile in all_profiles:
+        phase=profile["trajectory"]["development_phase"]
+        phase_counts[phase]=phase_counts.get(phase,0)+1
+    historical=[]
+    for profile in all_profiles:
+        trajectory=profile["trajectory"]
+        if trajectory["first_observed_uptrend"] and trajectory["current_direction"]!="UPTREND":
+            historical.append({
+                "name":profile["name"],"player_id":profile["player_id"],
+                "age":profile["age"],"level":profile["level"],
+                "development_phase":trajectory["development_phase"],
+                "games_available":trajectory["games_available"],
+                "first_observed_uptrend":trajectory["first_observed_uptrend"],
+                "last_observed_downtrend":trajectory["last_observed_downtrend"],
+                "last_game":trajectory["last_game"],
+                "latest_window_status":trajectory["latest_window_status"],
+                "early_signal_now":profile["early_signal_now"],
+            })
+    historical.sort(key=lambda p:(
+        0 if p["development_phase"]=="REGRESSING_AFTER_UPTREND" else 1,
+        -p["games_available"],p["name"]))
     audit={
-        "pipeline":"PRE_HYPE_MILB_CHANGE_DETECTOR_V1",
+        "pipeline":"PRE_HYPE_MILB_FULL_SEASON_TRAJECTORY_V2",
         "season":year,"as_of":as_of.isoformat(),
         "offseason":as_of.month in (11,12,1,2),
         "minor_league_levels_available":[LEVELS[k][0] for k in LEVELS
@@ -502,6 +546,13 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
         "season_stat_rows":len(batters),
         "eligible_for_log_sampling":len(eligible),
         "game_log_records_available_for_players":logs_with_data,
+        "full_season_player_histories":len(all_profiles),
+        "total_player_games_recorded":sum(
+            p["trajectory"]["games_available"] for p in all_profiles),
+        "full_season_phase_counts":phase_counts,
+        "historical_uptrend_now_not_rising":historical,
+        "full_season_history_path":"data/card_bot_full_season_latest.json",
+        "full_season_profiles":all_profiles,
         "independent_skill_changes_found":len(signal_rows)+len(rejected),
         "windows_per_side_games":list(CONFIRMATION_WINDOWS),
         "max_history_games_compared":2*max(CONFIRMATION_WINDOWS),
@@ -514,7 +565,7 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
         "public_top100_source_available":rankings_ok,
         "public_top100_source":RANKING_URL,
         "already_publicized_excluded":rejected,
-        "notes":"14v14 early trigger, 28v28 and 42v42 nested same-team confirmation, descriptive beta rate-direction support and game bootstrap for ISO. Horizons overlap, no true outcome calibration, no article-led discovery. Top-100 is a negative publicity screen only. Offseason signals are historical; card collector demand and exact prices unknown.",
+        "notes":"ALL available 2026 games tracked for each sampled hitter, with 14-game non-overlapping season blocks, 7-game checkpoints and rolling 7/14/28 snapshots. The existing nested 14v14/28v28/42v42 evidence gates remain. Promotions and >21-day layoffs split comparable stints, not raw history. 2026 offseason is retrospective; no backtest or calibrated prediction; card collector demand and exact price remain unverified.",
     }
     return signal_rows,audit
 
