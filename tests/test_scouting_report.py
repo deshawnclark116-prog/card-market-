@@ -58,7 +58,7 @@ def test_scout_board_flags_missing_comps_and_hype():
     assert row["sold_median_usd"] is None
     assert "hype data missing" in row["reasons"]
     assert "price trend missing" in row["reasons"]
-    assert "no reliable fresh sold comps" in " ".join(row["reasons"])
+    assert "independently title-matched recent sales" in " ".join(row["reasons"])
 
 
 def test_scout_board_handles_no_candidates():
