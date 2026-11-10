@@ -88,7 +88,13 @@ def exposed_mlb_ids(year, loader=_request):
     data = loader(url)
     if not isinstance(data, dict):
         return set(), False
-    rows = ((data.get("stats") or [{}])[0].get("splits") or [])
+    stats_blocks=data.get("stats")
+    if not isinstance(stats_blocks,list) or not stats_blocks:
+        return set(), False
+    rows = (stats_blocks[0].get("splits") or [])
+    # An empty 2026 MLB season feed is not proof everyone has zero MLB PA.
+    if not rows:
+        return set(), False
     result=set()
     for row in rows:
         if _integer((row.get("stat") or {}).get("plateAppearances")) >= 100:
