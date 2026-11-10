@@ -178,3 +178,16 @@ def test_repricing_holdings_uses_one_sold_search_only():
     lookup.prime([],DAY,positions=[position])
     assert client.kinds==["sold"]
     assert lookup.lookup(NAME,CARD,DAY)["median_cents"]==2900
+
+
+def test_second_manual_run_same_day_does_not_use_more_trial_requests():
+    client=FakeClient()
+    monitor={"schema":1,"attempts":{},"last_provider_error":None,"requests_total":0}
+    row={"name":NAME,"breakoutScore":90,"sleeperScore":90,"hypePct":1}
+    first=SoldgraphQuotes(client=client,monitor=monitor)
+    first.prime([row],DAY)
+    assert client.kinds == ["sold","listings"]
+    second=SoldgraphQuotes(client=client,monitor=monitor)
+    second.prime([row],DAY)
+    assert client.kinds == ["sold","listings"]
+    assert second.lookup(NAME,CARD,DAY) is not None
