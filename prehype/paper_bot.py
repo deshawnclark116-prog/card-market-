@@ -358,23 +358,14 @@ def main() -> int:
         from prehype.breakouts import _cheap01, _price_asleep
         from prehype.scouting_report import build_scouting_report, save_scouting_report
         from prehype.sources.public_cardpricer import PublicCardQuotes
-        # FIRST discover by raw on-field skill alone. Calling run_scan with
-        # hype=True here previously let a poor Google-search ratio alter
-        # which players survived the top-30 cutoff.
-        candidates = run_scan(scan_type="both", top=30, prices=False, hype=False, use_cache=False)
-        # SECOND annotate a diagnostic search-interest measure only.
-        # No collector-hype inference is drawn from superstar search volume.
-        from prehype.sources.trends import fetch_interest
-        search_ratio = fetch_interest([c["name"] for c in candidates])
+        # EARLY FIRST: Official minor-league 14-game skill deltas, NOT MLB
+        # season-over-season breakout leaderboards or Google fame metrics.
+        from prehype.early_radar import scan_early_prospects
+        candidates, early_diagnostics = scan_early_prospects(as_of=today)
+        candidates = candidates[:30]
+        # Every player has an explicit "hype unknown" status. A low search
+        # ratio never proves collectors have not priced him in yet.
         lookup = PublicCardQuotes()
-        for c in candidates:
-            c["searchInterestVsJudgePct"] = search_ratio.get(c["name"])
-            c["hypePct"] = None
-            c["cardHypeVerified"] = False
-            c["sleeperScore"] = None
-            c["dealScore"] = None
-            c["priceTrend"] = None
-        candidates.sort(key=lambda c: -(c.get("breakoutScore") or 0))
         diagnostics = lookup.prime(candidates, today, positions=state["positions"])
         for candidate in candidates:
             for card in candidate.get("cards", {}):
@@ -398,13 +389,15 @@ def main() -> int:
                 candidate["cards"][card]["verified_median_usd"] = median_price
                 candidate["cards"][card]["verified_comps"] = quote["comps"]
         if not Path(args.ledger).exists() and not market_data_ready(candidates, lookup.lookup, today):
-            status = "WAITING_FOR_COLLECTOR_DEMAND_AND_TRUSTWORTHY_PRICES"
+            status = ("EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS" if early_diagnostics["offseason"]
+                      else "EARLY_SKILL_WATCHLIST_MARKET_NOT_VALIDATED")
             run = {"status": status, "candidate_count": len(candidates), "buys": []}
         else:
             run = simulate_day(state, candidates, lookup.lookup, today)
             status = run["status"]
             save_ledger(args.ledger, state)
         scouting = build_scouting_report(candidates, lookup, today, state, status, run["buys"])
+        diagnostics["early_discovery"] = early_diagnostics
         diagnostics["card_hype_validated"] = False
         diagnostics["hype_note"] = ("Historical Google search interest versus Aaron Judge "
                                     "is not sports-card attention. Paper buys are disabled "
@@ -412,9 +405,12 @@ def main() -> int:
         diagnostics["catalog_prices_validated"] = False
         scouting["market_data"] = diagnostics
         scouting["source"] = "MLB skill discovery + anonymous CardPricer exact-grade sales"
-        scouting["note"] = ("Catalog prices are indicative, never tradeable offers. "
-                            "Paper buys use independently title-matched same-card sales "
-                            "with 10% entry slippage and $3.50 inbound shipping.")
+        scouting["source"] = "Official MiLB early skill-change detector + public card identities"
+        scouting["discovery"] = early_diagnostics
+        scouting["note"] = ("PRE-HYPE PROSPECT RADAR. The source is minor-league "
+                            "game logs. This is a watchlist of early skill change, "
+                            "NOT confirmation that a player is unpopular or cheap. "
+                            "No actual offer, collector hype or card purchase is proven.")
         save_scouting_report(scouting)
         print(json.dumps(run, indent=2))
         print(f"Public market: {diagnostics}")
