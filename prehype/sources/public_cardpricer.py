@@ -22,7 +22,9 @@ from statistics import median
 BASE = "https://cardpricer.co"
 MAX_DETAILS = 15
 MAX_CATALOG_REQUESTS = 35
-MAX_PRICE_USD = 22.0
+# Do NOT filter market discovery by the provider's unverified guide price.
+# In practice a $250 first autograph has been assigned an $18 catalog mark.
+MAX_REFERENCE_CARDS_PER_PLAYER = 5
 MIN_SALES = 5
 FRESH_DAYS = 14
 WINDOW_DAYS = 30
@@ -41,6 +43,18 @@ def compact(value):
 
 def card_label(row):
     return f"{row['year']} {row['set']} #{row['cardNumber']} ({row['grade']})"
+
+
+def reference_priority(row):
+    """Card *identity* and collector relevance, without trusting a valuation."""
+    series = norm(row.get("set"))
+    if re.search(r"\b(autograph|autographs|autos|auto)\b", series):
+        return 0
+    if "bowman" in series and ("chrome" in series or "draft" in series):
+        return 1
+    if "rookie" in series or "topps chrome" in series:
+        return 2
+    return 3
 
 
 def _date(raw):
@@ -244,6 +258,7 @@ class PublicCardQuotes:
             self.checked += 1
             if not isinstance(catalog,list):
                 continue
+            eligible=[]
             for card in catalog:
                 if not isinstance(card,dict) or norm(card.get("player"))!=norm(player):
                     continue
@@ -252,25 +267,33 @@ class PublicCardQuotes:
                 if not all(card.get(field) for field in ("year","set","cardNumber","grade")):
                     continue
                 try:
-                    price=float(card.get("price") or 0)
-                    sales=int(card.get("salesVolume30d") or 0)
-                    label=card_label(card)
+                    price = float(card.get("price") or 0)
+                    sales = int(card.get("salesVolume30d") or 0)
+                    label = card_label(card)
                 except (ValueError,TypeError,KeyError):
                     continue
-                if not (3 <= price <= MAX_PRICE_USD):
+                if not (0 < price < 100000):
                     continue
+                eligible.append((reference_priority(card), -sales, label, card, price, sales))
+            # The public guide-price field cannot establish affordability.
+            # Prefer autograph/Bowman identity even when the feed says $250+.
+            eligible.sort(key=lambda row:(row[0],row[1],row[2]))
+            for kind, _, label, card, price, sales in eligible[:MAX_REFERENCE_CARDS_PER_PLAYER]:
                 self.cards_found += 1
-                # Catalog price is INDICATIVE; it is not independent sale proof.
                 candidate["cards"][label]={
-                    "price":price,"comps":sales,
-                    "source":"CardPricer catalog — unverified guide price",
+                    "price": price,  # RAW UNTRUSTED FEED, NOT A MARKET PRICE
+                    "comps": sales,  # vendor count, not independently verified
+                    "source":"CardPricer catalog — UNVERIFIED identifier/mark",
                     "card_id":card["id"],
                     "grade":card["grade"],
+                    "card_priority":kind,
+                    "price_validated":False,
                 }
-                available.append((-sales,-float(candidate.get("breakoutScore") or 0),
-                                  player,label,card,candidate))
-        available.sort(key=lambda x:(x[0],x[1],x[2],x[3]))
-        for _,__,player,label,card,candidate in available[:MAX_DETAILS]:
+                available.append((kind,
+                                  -float(candidate.get("breakoutScore") or 0),
+                                  -sales, player,label,card,candidate))
+        available.sort(key=lambda x:(x[0],x[1],x[2],x[3],x[4]))
+        for _,__,___,player,label,card,candidate in available[:MAX_DETAILS]:
             self.checked_card={"player":player,"card":label}
             provenance=self.client.provenance(card["id"])
             quote=exact_sold_quote(card,provenance,day)
@@ -286,6 +309,8 @@ class PublicCardQuotes:
             "requests_used":self.client.requests_used,
             "players_checked":self.checked,
             "catalog_card_rows":self.cards_found,
+            "catalog_price_field_trusted":False,
+            "feed_price_filter_used":False,
             "card_variants_with_independent_five_sale_match":self.exact_comps_found,
             "last_error":self.client.errors[-1] if self.client.errors else None,
             "caution": "Public catalog marks may be incorrectly attributed; only independently exact-matched SOLD records can trigger a PAPER proxy buy.",
