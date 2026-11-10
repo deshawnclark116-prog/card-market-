@@ -56,6 +56,7 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
         key=lambda c: (
             0 if _number(c.get("dealScore")) is not None else 1,
             -(_number(c.get("dealScore")) or 0),
+            -((c.get("earlySignal") or {}).get("evidence_tier_order") or 0),
             -(_number(c.get("breakoutScore")) or 0),
             str(c.get("name", "")).casefold(),
         ),
@@ -185,6 +186,8 @@ def to_markdown(data):
                   "- MiLB season rows read: **" + str(discovery.get("season_stat_rows",0)) + "**",
                   "- Player game-log feeds with data: **" + str(discovery.get("game_log_records_available_for_players",0)) + "**",
                   "- Skill-change candidates: **" + str(discovery.get("independent_skill_changes_found",0)) + "**",
+                  "- Comparison periods: **14v14, 28v28, 42v42** (up to 84 games of history); longer periods are overlapping diagnostics, not independent trials",
+                  "- Evidence tiers: **" + _clean(discovery.get("evidence_tier_counts") or {}) + "**",
                   "- Levels unavailable: **" + _clean(discovery.get("minor_league_levels_missing") or "none") + "**",
                   "- Major-league exposure filter: **" + ("available" if discovery.get("exposure_filter_source_available") else "UNAVAILABLE — exposure unconfirmed") + "**",
                   "- A skill-change signal is NOT proof of low card-market hype or a fair card price.",
@@ -228,25 +231,68 @@ def to_markdown(data):
         if discovery:
             lines += [
                 "**Early-signal strength is a heuristic, NOT a profit probability.** "
-                "Rows are MiLB prospect candidates, NOT confirmed cheap or unnoticed cards.",
+                "Longer-window evidence is ranked ahead of short-lived spikes. "
+                "None are confirmed cheap or unnoticed cards.",
                 "",
-                "| Signal rank | Player | MiLB level | Age | Early-skill score | Recent K% | Recent BB% | ISO change | Last game | Market attention |",
-                "|---:|---|---|---:|---:|---:|---:|---:|---|---|",
+                "| Evidence rank | Player | Level | Age | Persistence tier | Heuristic score | Last game | Collector interest |",
+                "|---:|---|---|---:|---|---:|---|---|",
             ]
+            tier_names = {
+                "SUSTAINED_ACROSS_14_28_42":"SUSTAINED — three horizons",
+                "BUILDING_14_AND_28":"BUILDING — 14 + 28",
+                "EARLY_14_ONLY":"EARLY — not confirmed",
+                "SHORT_SPIKE_NOT_CONFIRMED":"SHORT SPIKE — not confirmed",
+                "LONG_HORIZON_CONFLICT":"LONG WINDOW CONFLICT",
+            }
             for p in data["players"]:
                 signal=p.get("early_signal") or {}
-                current=signal.get("new") or {}
-                oldstats=signal.get("old") or {}
-                k=(f"{current['k_pct']:.1%}" if current.get("k_pct") is not None else "—")
-                bb=(f"{current['bb_pct']:.1%}" if current.get("bb_pct") is not None else "—")
-                iso=(f"{current['iso']-oldstats['iso']:+.3f}"
-                     if current.get("iso") is not None and oldstats.get("iso") is not None else "—")
+                tier=signal.get("evidence_tier")
                 lines.append(
                     f"| {p['rank']} | {_clean(p['name'])} | {_clean(p.get('level'))} | "
-                    f"{_clean(p.get('age'))} | {_clean(p.get('breakout_score_not_probability'))} | "
-                    f"{k} | {bb} | {iso} | {_clean(signal.get('last_game'))} | "
-                    "**NOT VERIFIED QUIET** |"
+                    f"{_clean(p.get('age'))} | {_clean(tier_names.get(tier,tier or 'UNKNOWN'))} | "
+                    f"{_clean(p.get('breakout_score_not_probability'))} | "
+                    f"{_clean(signal.get('last_game'))} | **NOT VERIFIED** |"
                 )
+            lines += [
+                "",
+                "## Multi-window skill evidence — fluke or sustained?",
+                "",
+                "Each row compares the most recent N games against the **immediately preceding N games**. "
+                "All data are as of the scan date and must remain on the same MiLB team. "
+                "Horizons overlap; confidence-support figures are descriptive, **NOT** "
+                "probabilities of future breakout.",
+                "",
+                "| Player | Window | Before → after K% | Before → after BB% | Before → after ISO | Supported metrics | Result |",
+                "|---|---|---|---|---|---|---|",
+            ]
+            for p in data["players"]:
+                comps=(p.get("early_signal") or {}).get("comparisons") or {}
+                for n in ("14","28","42"):
+                    c=comps.get(n) or {}
+                    status=c.get("status","UNAVAILABLE")
+                    if status!="AVAILABLE":
+                        lines.append(f"| {_clean(p['name'])} | {n} vs {n} | — | — | — | — | {_clean(status.replace('_',' '))} |")
+                        continue
+                    old, new = c["old"], c["new"]
+                    a_k=f"{old['k_pct']:.1%} → {new['k_pct']:.1%}"
+                    a_bb=f"{old['bb_pct']:.1%} → {new['bb_pct']:.1%}"
+                    a_iso=f"{old['iso']:.3f} → {new['iso']:.3f}"
+                    supported=", ".join(c.get("supporting_metrics") or []) or "none"
+                    verdict=("SUPPORTS CHANGE" if c.get("confirmed")
+                             else "NOT CONFIRMED")
+                    lines.append(
+                        f"| {_clean(p['name'])} | {n} vs {n} "
+                        f"({old['pa']}/{new['pa']} PA) | {a_k} | {a_bb} | "
+                        f"{a_iso} | {_clean(supported)} | {verdict} |"
+                    )
+            lines += [
+                "",
+                "**Interpretation:** A big 14-game move with no 28-game support "
+                "is a possible fluke. Agreement across longer windows strengthens "
+                "the evidence but does not prove the player's true future talent, "
+                "exclude different opponents/parks, or predict the card market.",
+                "",
+            ]
         else:
             lines += [
                 "**Ranked by underlying skill change when verified deal scores are unavailable.**",
