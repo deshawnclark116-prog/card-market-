@@ -23,15 +23,22 @@ reliable eBay sold-comps are missing and the 30-day clock has not started.
 It uses **paper-only, category-level sold-comparable prices**, not verified
 buyable listings. Current discovery covers the existing MLB pipeline only.
 
-### Turn on the bot's real card-price feed
+### $100 Card Bot: public card data, zero accounts
 
-The $100 paper bot uses an optional **SOLDGRAPH_KEY** GitHub Actions secret
-for a third-party feed of eBay sold transactions *and* active offers.
-Set it under Repository Settings -> Secrets and variables -> Actions, then
-run the Card Bot workflow. It has a no-key/read-only scouting mode but
-cannot paper-buy cards without verified prices. Get setup instructions in
-[PAPER_BOT.md](PAPER_BOT.md). The provider currently offers 100 one-time
-free searches; this bot caps itself at two new searches/day.
+The daily GitHub Actions bot runs MLB skill-change discovery and checks
+[CardPricer's public anonymous API](https://cardpricer.co/docs/api).
+**No external account, API key, secret, proxy or subscription required.**
+
+Open [Card Bot Actions](https://github.com/deshawnclark116-prog/card-market-/actions/workflows/card-bot-paper.yml)
+and choose **Run workflow**; then refresh
+[CARD_BOT_DASHBOARD.md](CARD_BOT_DASHBOARD.md) to see players, exact-grade
+card references, independent verified sold comps and paper decisions.
+The data provider may not cover a candidate, and its own card-matching
+sometimes conflates different cards. The bot independently checks year,
+set, number, grade and player before treating any recent sale as evidence.
+Missing real comps means **no paper buy** rather than invented trades.
+Any paper buy is a *synthetic sold-median proxy*, not a claim an item is
+listed for sale. [Full method and limits](PAPER_BOT.md).
 
 ## The thesis
 
