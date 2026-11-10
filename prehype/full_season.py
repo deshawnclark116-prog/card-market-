@@ -251,6 +251,7 @@ def full_season_trajectory(logs,as_of,*, player_id=None,checkpoint_step=CHECKPOI
         "games_available":len(rows),
         "teams_or_stints":len(stints),
         "season":_rounded_stats(rows),
+        "game_log":rows,  # Every accepted per-game observation, not just selected windows.
         "first_game":rows[0]["date"] if rows else None,
         "last_game":rows[-1]["date"] if rows else None,
         "stints":stint_views,"season_blocks":blocks,
