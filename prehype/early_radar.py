@@ -1,9 +1,11 @@
 """PRE-HYPE radar: raw minor-league skill CHANGE before major-league headlines.
 
 No articles, rankings or catalog prices are used for player discovery.
-We compare the most recent and immediately preceding 14 MiLB GAMES at the
-same team/level. K%, BB% and ISO are independent skills; season OPS only
-chooses which player logs are affordable to download, never the final ranking.
+We compare 14v14, 28v28, and 42v42 non-overlapping GAME windows
+(28/56/84 games of evidence), always within the same team stint.
+K%, BB%, ISO are distinct but correlated indicators. Longer horizons measure
+persistence rather than automatically treating a short spike as real.
+Season OPS only preselects which raw game logs to download.
 
 This is an *uncalibrated candidate detector*, not a profit probability.
 Card collector demand and actual card affordability are separate, unverified
@@ -12,7 +14,9 @@ questions. Nothing here authorizes a paper purchase.
 from __future__ import annotations
 
 import json
+import hashlib
 import math
+import random
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -25,8 +29,11 @@ from prehype.sources.milb import LEVELS, MilbBatter, fetch_level
 from prehype.sources.public_visibility import public_top100_flags, RANKING_URL
 
 GAMES_PER_WINDOW = 14
+CONFIRMATION_WINDOWS = (14, 28, 42)
 MIN_GAMES_PER_WINDOW = 10
 MIN_PA_PER_WINDOW = 35
+ISO_BOOTSTRAP_REPS = 192
+EVIDENCE_THRESHOLD = 0.75
 MAX_PLAYERS_FOR_LOGS = 88
 MAX_WORKERS = 8
 MIN_SEASON_PA = 110
@@ -165,45 +172,163 @@ def summarize(logs):
     }
 
 
+def _beta_direction_probability(success_old, n_old, success_new, n_new,
+                                *, prior_success, prior_failure, lower_is_better):
+    """Approximate probability of an *observed rate shift*, not a forecast.
+
+    Independent beta posteriors with explicitly weak fixed smoothing;
+    normal approximation to their difference. None of this is calibrated
+    to the event 'player will break out' or to card-price appreciation.
+    """
+    def moments(k, n):
+        a, b = k + prior_success, n-k + prior_failure
+        total = a+b
+        return a/total, a*b / (total*total*(total+1))
+    p0, v0 = moments(success_old, n_old)
+    p1, v1 = moments(success_new, n_new)
+    sd = math.sqrt(v0+v1)
+    delta = p0-p1 if lower_is_better else p1-p0
+    if sd <= 0:
+        return 0.5
+    return round(clamp(0.5*(1+math.erf(delta/(sd*math.sqrt(2))))), 3)
+
+
+def _iso_resample_probability(earlier, recent, *, seed):
+    """Deterministic GAME bootstrap; protects against a few big-hit games.
+
+    A bootstrap probability supports the DIRECTION of the current sample
+    only. It is not a probability of FUTURE power or card investment returns.
+    """
+    rng = random.Random(seed)
+    def iso_sample(rows):
+        ab = xbh = 0
+        for _ in range(len(rows)):
+            r = rows[rng.randrange(len(rows))]
+            ab += r["ab"]
+            xbh += r["dbl"] + 2*r["trp"] + 3*r["hr"]
+        return xbh / ab if ab > 0 else 0.
+    beats = 0
+    for _ in range(ISO_BOOTSTRAP_REPS):
+        if iso_sample(recent) > iso_sample(earlier):
+            beats += 1
+    return round(beats/ISO_BOOTSTRAP_REPS, 3)
+
+
+def compare_window(logs, games, *, player_id=""):
+    """Compare disjoint last N games vs the immediately preceding N games.
+
+    Each horizon uses no future games. Longer *nested* horizons overlap the
+    14-game horizon, so their statistics must not be multiplied together or
+    described as independent out-of-sample confirmation.
+    """
+    if len(logs) < games*2:
+        return {"status":"INSUFFICIENT_GAMES","games_per_window":games,
+                "games_available":len(logs)}
+    old_games = logs[-2*games:-games]
+    new_games = logs[-games:]
+    teams = [r.get("team") for r in old_games+new_games]
+    if any(not t for t in teams):
+        return {"status":"TEAM_ID_MISSING","games_per_window":games}
+    if len(set(teams)) != 1:
+        return {"status":"TEAM_CHANGE","games_per_window":games}
+    old, new = summarize(old_games), summarize(new_games)
+    pa_floor = max(MIN_PA_PER_WINDOW, int(2.5*games))
+    if min(old["pa"],new["pa"]) < pa_floor:
+        return {"status":"LOW_PA","games_per_window":games,
+                "old_pa":old["pa"],"new_pa":new["pa"],"min_pa":pa_floor}
+    if any(old[k] is None or new[k] is None for k in ("k_pct","bb_pct","iso")):
+        return {"status":"STAT_MISSING","games_per_window":games}
+    dk = new["k_pct"] - old["k_pct"]
+    db = new["bb_pct"] - old["bb_pct"]
+    di = new["iso"] - old["iso"]
+    improved = {
+        "K": dk <= -.025,
+        "BB": db >= .015,
+        "ISO": di >= .055,
+    }
+    stable_seed = int.from_bytes(hashlib.sha256(
+        (str(player_id)+"|"+str(games)+"|"+str(new_games[-1]["date"])).encode()
+    ).digest()[:8],"big")
+    posteriors = {
+        "K":_beta_direction_probability(
+            old["k_pct"]*old["pa"],old["pa"],
+            new["k_pct"]*new["pa"],new["pa"],
+            prior_success=2,prior_failure=8,lower_is_better=True),
+        "BB":_beta_direction_probability(
+            old["bb_pct"]*old["pa"],old["pa"],
+            new["bb_pct"]*new["pa"],new["pa"],
+            prior_success=1,prior_failure=9,lower_is_better=False),
+        "ISO":_iso_resample_probability(old_games,new_games,seed=stable_seed),
+    }
+    supported = [name for name,flag in improved.items()
+                 if flag and posteriors[name] >= EVIDENCE_THRESHOLD]
+    return {
+        "status":"AVAILABLE",
+        "games_per_window":games,"old":old,"new":new,
+        "team":teams[0],
+        "delta":{"K":round(dk,4),"BB":round(db,4),"ISO":round(di,4)},
+        "observed_improvements":[name for name,v in improved.items() if v],
+        "direction_support":posteriors,
+        "supporting_metrics":supported,
+        "positive_metric_count":len(improved) and sum(improved.values()),
+        "supported_metric_count":len(supported),
+        "confirmed":len(supported)>=2,
+        "start_date":old_games[0]["date"],
+        "last_date":new_games[-1]["date"],
+        "note":"Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+    }
+
+
+EVIDENCE_TIERS = {
+    "SUSTAINED_ACROSS_14_28_42":3,
+    "BUILDING_14_AND_28":2,
+    "EARLY_14_ONLY":1,
+    "SHORT_SPIKE_NOT_CONFIRMED":0,
+    "LONG_HORIZON_CONFLICT":0,
+}
+
+
 def change_signal(batter, logs, as_of):
-    """Return independent leading changes, or a transparent insufficiency."""
+    """Flag incipient skill change, then grade persistence on up to 84 games.
+
+    A 14/14 shift makes a WATCH candidate, not a declaration of true talent.
+    Requiring longer samples to exist before displaying early candidates
+    would cause the system to miss the very first detectable changes.
+    """
     logs=[row for row in logs if _date(row.get("date")) and
           _date(row["date"])<=as_of and _integer(row.get("pa"))>0]
     logs=sorted(logs,key=lambda r:(r["date"],str(r.get("game"))))
-    if len(logs)<2*MIN_GAMES_PER_WINDOW:
+    comparisons={str(g):compare_window(logs,g,player_id=batter.player_id)
+                 for g in CONFIRMATION_WINDOWS}
+    short = comparisons["14"]
+    if short["status"] != "AVAILABLE":
         return None
-    recent=logs[-GAMES_PER_WINDOW:]
-    earlier=logs[-2*GAMES_PER_WINDOW:-GAMES_PER_WINDOW]
-    if len(earlier)<MIN_GAMES_PER_WINDOW or len(recent)<MIN_GAMES_PER_WINDOW:
-        return None
-
-    # Strict no-cross-promotion comparison: team changes can alter opposing
-    # pitching quality, park and usage, so never call that a skill jump.
-    teams={r.get("team") for r in recent+earlier if r.get("team")}
-    if len(teams)>1:
-        return None
-    old=summarize(earlier)
-    new=summarize(recent)
-    if min(old["pa"],new["pa"])<MIN_PA_PER_WINDOW:
-        return None
-    if any(old[k] is None or new[k] is None for k in ("k_pct","bb_pct","iso")):
+    old, new = short["old"], short["new"]
+    if (short["positive_metric_count"]<2
+            or new["k_pct"]>.32 or new["iso"]<.095):
         return None
 
-    k_drop=old["k_pct"]-new["k_pct"]
-    bb_rise=new["bb_pct"]-old["bb_pct"]
-    iso_rise=new["iso"]-old["iso"]
-    improving=sum([k_drop>=0.025, bb_rise>=0.015, iso_rise>=0.055])
-    # Require TWO leading indicators rather than an isolated hot OPS/HR burst.
-    if improving<2 or new["k_pct"]>0.32 or new["iso"]<0.095:
-        return None
+    medium = comparisons["28"]
+    long = comparisons["42"]
+    if medium["status"]=="AVAILABLE" and not medium["confirmed"]:
+        tier="SHORT_SPIKE_NOT_CONFIRMED"
+    elif medium["status"]=="AVAILABLE" and medium["confirmed"]:
+        if long["status"]=="AVAILABLE" and not long["confirmed"]:
+            tier="LONG_HORIZON_CONFLICT"
+        elif long["status"]=="AVAILABLE" and long["confirmed"]:
+            tier="SUSTAINED_ACROSS_14_28_42"
+        else:
+            tier="BUILDING_14_AND_28"
+    else:
+        tier="EARLY_14_ONLY"
 
-    # Heuristic strength, explicitly NOT an estimated probability.
-    k_part=clamp(k_drop/0.10)
-    bb_part=clamp(bb_rise/0.07)
-    iso_part=clamp(iso_rise/0.16)
-    trend=0.42*k_part+0.28*bb_part+0.30*iso_part
-    # Shrink small samples; do not report a 14-game jump as a proven talent
-    # level. This discount is a ranking guard, not a posterior calibration.
+    # A short-term jump without consistent evidence across 28/42 games has
+    # a deliberately LOWER ranking, even with an impressive recent ISO.
+    dk = -short["delta"]["K"]
+    db = short["delta"]["BB"]
+    di = short["delta"]["ISO"]
+    trend=(.42*clamp(dk/.10) + .28*clamp(db/.07) +
+           .30*clamp(di/.16))
     coverage=clamp(min(old["pa"],new["pa"])/80)
     age_limit=MAX_AGE.get(batter.level,23)
     if batter.age is None:
@@ -214,27 +339,56 @@ def change_signal(batter, logs, as_of):
         age_factor=.90
     else:
         age_factor=.55
-    score=round(100*(.25+.75*trend)*(.60+.40*coverage)*age_factor,1)
-    last_game=_date(recent[-1]["date"])
-    age_days=(as_of-last_game).days
-    phase="OFFSEASON_REVIEW" if age_days>30 else "IN_SEASON_SIGNAL"
+    # Shared time-window grades are HEURISTIC, NOT calibrated probabilities.
+    base=100*(.25+.75*trend)*(.60+.40*coverage)*age_factor
+    multiplier={
+        "SUSTAINED_ACROSS_14_28_42":1.08,
+        "BUILDING_14_AND_28":1.0,
+        "EARLY_14_ONLY":.80,
+        "SHORT_SPIKE_NOT_CONFIRMED":.58,
+        "LONG_HORIZON_CONFLICT":.65,
+    }[tier]
+    score=round(min(100,base*multiplier),1)
+    last_game = _date(short["last_date"])
+    phase="OFFSEASON_REVIEW" if (as_of-last_game).days>30 else "IN_SEASON_SIGNAL"
+    last_horizon = max((int(g) for g,v in comparisons.items()
+                        if v["status"]=="AVAILABLE"),default=14)
+    # Contradictions should be visible, not silently omitted.
+    tail = (
+        "Persistent across the measured 14/28/42 horizons"
+        if tier=="SUSTAINED_ACROSS_14_28_42" else
+        "The 14- and 28-game trends both have supporting signals"
+        if tier=="BUILDING_14_AND_28" else
+        "Longer-window evidence conflicts with a shorter improvement"
+        if tier=="LONG_HORIZON_CONFLICT" else
+        "Recent improvement is NOT confirmed by the 28-game comparison"
+        if tier=="SHORT_SPIKE_NOT_CONFIRMED" else
+        "Only the short horizon is testable; NOT yet confirmed"
+    )
     reason=(
         f"{batter.level}, age {batter.age if batter.age is not None else '?'}: "
-        f"two 14-game samples ({old['pa']} vs {new['pa']} PA); "
-        f"K% {old['k_pct']:.1%}→{new['k_pct']:.1%}, "
+        f"14v14 K% {old['k_pct']:.1%}→{new['k_pct']:.1%}, "
         f"BB% {old['bb_pct']:.1%}→{new['bb_pct']:.1%}, "
-        f"ISO {old['iso']:.3f}→{new['iso']:.3f}. "
+        f"ISO {old['iso']:.3f}→{new['iso']:.3f}; "
+        f"{tail}. Up to {last_horizon*2} same-team games assessed. "
         f"Last game {last_game.isoformat()}. "
         "Collector interest and card price NOT validated."
     )
     return {
-        "score":score, "reason":reason, "last_game":last_game.isoformat(),
-        "phase":phase,
-        "old":old, "new":new,
-        "k_delta":round(-k_drop,4),
-        "bb_delta":round(bb_rise,4),
-        "iso_delta":round(iso_rise,4),
-        "sample_warning":"Two small recent samples; signal not backtested or calibrated",
+        "score":score, "reason":reason,"last_game":last_game.isoformat(),
+        "phase":phase,"evidence_tier":tier,
+        "evidence_tier_order":EVIDENCE_TIERS[tier],
+        "comparisons":comparisons,
+        "games_in_history":len(logs),
+        "max_comparison_games":last_horizon*2,
+        "old":old,"new":new,
+        "k_delta":round(short["delta"]["K"],4),
+        "bb_delta":round(db,4),
+        "iso_delta":round(di,4),
+        "sample_warning":("Direction-support numbers describe sampled changes only; "
+                          "windows overlap; no holdout-tested persistence probability. "
+                          "Offseason data is stale." if phase=="OFFSEASON_REVIEW"
+                          else "Direction support is not a future-breakout probability."),
     }
 
 
@@ -309,14 +463,16 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
                     "cardHypeVerified":False,
                     "marketExposure":"UNKNOWN — NOT VERIFIED QUIET",
                     "priceTrend":None, "cards":{},
-                    "kind":"MiLB 14-game skill change",
+                    "kind":"MiLB multi-horizon skill persistence",
                     "reason":signal["reason"],
                     "earlySignal":signal,
                     "discoverySource":"MLB StatsAPI MiLB official game logs",
                     "timeContext":signal["phase"],
                     "mlbExposureDataOK":exposure_ok,
                 })
-    signal_rows.sort(key=lambda c:(-c["breakoutScore"],c["name"]))
+    signal_rows.sort(key=lambda c:(
+        -(c["earlySignal"].get("evidence_tier_order") or 0),
+        -c["breakoutScore"],c["name"]))
     # Rankings are a negative-hype cross-check ONLY. Zero ranked names
     # never means nobody knows the player or his 1st Auto.
     names=[c["name"] for c in signal_rows]
@@ -347,11 +503,18 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
         "eligible_for_log_sampling":len(eligible),
         "game_log_records_available_for_players":logs_with_data,
         "independent_skill_changes_found":len(signal_rows)+len(rejected),
+        "windows_per_side_games":list(CONFIRMATION_WINDOWS),
+        "max_history_games_compared":2*max(CONFIRMATION_WINDOWS),
+        "evidence_tier_counts":{
+            tier:sum(1 for c in signal_rows
+                     if c["earlySignal"]["evidence_tier"]==tier)
+            for tier in EVIDENCE_TIERS
+        },
         "prospects_after_recognition_exclusion":len(signal_rows),
         "public_top100_source_available":rankings_ok,
         "public_top100_source":RANKING_URL,
         "already_publicized_excluded":rejected,
-        "notes":"MiLB raw-game-log K%, BB%, ISO discovery; public top-100 is only a NEGATIVE publicity screen, never discovery. Not being top-100 does NOT mean card demand is low. Offseason means past season evidence, not in-week skill growth. Card market value remains unverified.",
+        "notes":"14v14 early trigger, 28v28 and 42v42 nested same-team confirmation, descriptive beta rate-direction support and game bootstrap for ISO. Horizons overlap, no true outcome calibration, no article-led discovery. Top-100 is a negative publicity screen only. Offseason signals are historical; card collector demand and exact prices unknown.",
     }
     return signal_rows,audit
 
