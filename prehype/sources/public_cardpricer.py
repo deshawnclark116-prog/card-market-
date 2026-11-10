@@ -91,6 +91,15 @@ def exact_sale_match(row, card):
     if NUMBERED.search(title) and not NUMBERED.search(str(card.get("set", ""))):
         # Do not confuse a numbered parallel with a plain base reference.
         return False
+    variants = ("refractor", "xfractor", "superfractor", "sapphire", "mojo",
+                "shimmer", "sepia", "prism", "foil", "wave", "parallel",
+                "gold", "green", "blue", "red", "purple", "orange",
+                "black", "pink", "negative", "variation", "short print")
+    set_text = norm(series)
+    for variant in variants:
+        if re.search(r"\b" + re.escape(variant) + r"\b", text) and not re.search(
+                r"\b" + re.escape(variant) + r"\b", set_text):
+            return False
     if re.search(r"\b(reprint|replica|custom|lot|break|digital)\b", text):
         return False
     return True
@@ -103,9 +112,18 @@ def exact_sold_quote(card, provenance, day):
     comp_data = provenance.get("comps") or {}
     entries = comp_data.get("recent") or []
     matches = []
+    seen_urls = set()
     for item in entries:
         if not isinstance(item, dict) or not exact_sale_match(item, card):
             continue
+        link = item.get("url")
+        # Independent sales must have independently inspectable provenance.
+        # Never inflate sample size through duplicate snapshots of one sale.
+        if not isinstance(link, str) or not link.startswith("https://"):
+            continue
+        if link in seen_urls:
+            continue
+        seen_urls.add(link)
         try:
             price = float(item["price"])
         except (ValueError, TypeError, KeyError):
