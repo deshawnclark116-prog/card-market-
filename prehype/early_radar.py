@@ -386,7 +386,7 @@ def change_signal(batter, logs, as_of):
         "bb_delta":round(db,4),
         "iso_delta":round(di,4),
         "sample_warning":("Direction-support numbers describe sampled changes only; "
-                          "windows overlap; no holdout-tested persistence probability. "
+                          "windows overlap; no calibrated future-breakout or persistence probability. "
                           "Offseason data is stale." if phase=="OFFSEASON_REVIEW"
                           else "Direction support is not a future-breakout probability."),
     }
