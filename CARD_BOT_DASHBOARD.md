@@ -29,7 +29,7 @@
 - Individual game observations retained: **8906**
 - Compare all-season 14-game blocks plus **rolling 7/14/28-game checkpoints**, saved every seven games and at the last game
 - Separate most recent comparison periods: **14v14, 28v28, 42v42** (up to 84 recent games); those overlapping horizons do not determine the entire seasonal history
-- [**Open full-season player-by-player game logs, block stats and rise/fall events**](data/card_bot_full_season_latest.json)
+- [**Open the full-season index**](data/card_bot_full_season_latest.json) to find one readable JSON file per player (all games, rolling checkpoints, phase events)
 - Evidence tiers: **{'SUSTAINED_ACROSS_14_28_42': 0, 'BUILDING_14_AND_28': 0, 'EARLY_14_ONLY': 3, 'SHORT_SPIKE_NOT_CONFIRMED': 7, 'LONG_HORIZON_CONFLICT': 1}**
 - Levels unavailable: **none**
 - Major-league exposure filter: **available**
@@ -74,26 +74,26 @@ These phase counts include **all sampled hitters**, not merely today's top break
 
 | Player | Level | Games tracked | Earlier uptrend first seen | Current phase | Last game |
 |---|---|---:|---|---|---|
-| Leo Balcazar | AAA | 138 | 2026-07-31 | REGRESSING AFTER UPTREND | 2026-09-20 |
-| Caleb Bonemer | AA | 131 | 2026-05-06 | REGRESSING AFTER UPTREND | 2026-09-13 |
-| Eric Hartman | AA | 128 | 2026-05-07 | REGRESSING AFTER UPTREND | 2026-09-13 |
-| Carlos Sanchez | AA | 127 | 2026-05-08 | REGRESSING AFTER UPTREND | 2026-09-13 |
-| Ralphy Velazquez | AAA | 121 | 2026-05-08 | REGRESSING AFTER UPTREND | 2026-09-20 |
-| Nolan Schubart | AA | 119 | 2026-05-10 | REGRESSING AFTER UPTREND | 2026-09-13 |
-| Emil Morales | A+ | 117 | 2026-07-18 | REGRESSING AFTER UPTREND | 2026-09-05 |
-| Rainiel Rodriguez | AA | 115 | 2026-06-18 | REGRESSING AFTER UPTREND | 2026-09-12 |
-| Gabriel Gonzalez | AAA | 114 | 2026-05-01 | REGRESSING AFTER UPTREND | 2026-09-20 |
-| Michael Arroyo | AAA | 114 | 2026-06-25 | REGRESSING AFTER UPTREND | 2026-09-05 |
-| Mikey Romero | AAA | 113 | 2026-06-26 | REGRESSING AFTER UPTREND | 2026-09-19 |
-| Ryan Mitchell | A | 107 | 2026-05-13 | REGRESSING AFTER UPTREND | 2026-09-06 |
-| Xavier Neyens | A | 103 | 2026-05-15 | REGRESSING AFTER UPTREND | 2026-09-06 |
-| Kevin Alvarez | A | 99 | 2026-05-16 | REGRESSING AFTER UPTREND | 2026-09-05 |
-| Conor Essenburg | A+ | 93 | 2026-07-21 | REGRESSING AFTER UPTREND | 2026-09-06 |
-| Brailyn Antunez | A | 92 | 2026-06-20 | REGRESSING AFTER UPTREND | 2026-09-06 |
-| Luis Arana | A | 81 | 2026-08-12 | REGRESSING AFTER UPTREND | 2026-09-05 |
-| Gage Miller | AAA | 80 | 2026-05-22 | REGRESSING AFTER UPTREND | 2026-09-19 |
-| Franklin Primera | A | 78 | 2026-09-01 | REGRESSING AFTER UPTREND | 2026-09-06 |
-| Jose Silva | A | 58 | 2026-08-14 | REGRESSING AFTER UPTREND | 2026-09-04 |
+| [Leo Balcazar](data/card_bot_season_players/2026/699114.json) | AAA | 138 | 2026-07-31 | REGRESSING AFTER UPTREND | 2026-09-20 |
+| [Caleb Bonemer](data/card_bot_season_players/2026/815352.json) | AA | 131 | 2026-05-06 | REGRESSING AFTER UPTREND | 2026-09-13 |
+| [Eric Hartman](data/card_bot_season_players/2026/807080.json) | AA | 128 | 2026-05-07 | REGRESSING AFTER UPTREND | 2026-09-13 |
+| [Carlos Sanchez](data/card_bot_season_players/2026/800176.json) | AA | 127 | 2026-05-08 | REGRESSING AFTER UPTREND | 2026-09-13 |
+| [Ralphy Velazquez](data/card_bot_season_players/2026/806252.json) | AAA | 121 | 2026-05-08 | REGRESSING AFTER UPTREND | 2026-09-20 |
+| [Nolan Schubart](data/card_bot_season_players/2026/702278.json) | AA | 119 | 2026-05-10 | REGRESSING AFTER UPTREND | 2026-09-13 |
+| [Emil Morales](data/card_bot_season_players/2026/815896.json) | A+ | 117 | 2026-07-18 | REGRESSING AFTER UPTREND | 2026-09-05 |
+| [Rainiel Rodriguez](data/card_bot_season_players/2026/823787.json) | AA | 115 | 2026-06-18 | REGRESSING AFTER UPTREND | 2026-09-12 |
+| [Gabriel Gonzalez](data/card_bot_season_players/2026/694224.json) | AAA | 114 | 2026-05-01 | REGRESSING AFTER UPTREND | 2026-09-20 |
+| [Michael Arroyo](data/card_bot_season_players/2026/703197.json) | AAA | 114 | 2026-06-25 | REGRESSING AFTER UPTREND | 2026-09-05 |
+| [Mikey Romero](data/card_bot_season_players/2026/702540.json) | AAA | 113 | 2026-06-26 | REGRESSING AFTER UPTREND | 2026-09-19 |
+| [Ryan Mitchell](data/card_bot_season_players/2026/815829.json) | A | 107 | 2026-05-13 | REGRESSING AFTER UPTREND | 2026-09-06 |
+| [Xavier Neyens](data/card_bot_season_players/2026/815832.json) | A | 103 | 2026-05-15 | REGRESSING AFTER UPTREND | 2026-09-06 |
+| [Kevin Alvarez](data/card_bot_season_players/2026/829037.json) | A | 99 | 2026-05-16 | REGRESSING AFTER UPTREND | 2026-09-05 |
+| [Conor Essenburg](data/card_bot_season_players/2026/828148.json) | A+ | 93 | 2026-07-21 | REGRESSING AFTER UPTREND | 2026-09-06 |
+| [Brailyn Antunez](data/card_bot_season_players/2026/829073.json) | A | 92 | 2026-06-20 | REGRESSING AFTER UPTREND | 2026-09-06 |
+| [Luis Arana](data/card_bot_season_players/2026/829854.json) | A | 81 | 2026-08-12 | REGRESSING AFTER UPTREND | 2026-09-05 |
+| [Gage Miller](data/card_bot_season_players/2026/824028.json) | AAA | 80 | 2026-05-22 | REGRESSING AFTER UPTREND | 2026-09-19 |
+| [Franklin Primera](data/card_bot_season_players/2026/829398.json) | A | 78 | 2026-09-01 | REGRESSING AFTER UPTREND | 2026-09-06 |
+| [Jose Silva](data/card_bot_season_players/2026/834925.json) | A | 58 | 2026-08-14 | REGRESSING AFTER UPTREND | 2026-09-04 |
 More histories (38) are in the full-season JSON.
 
 
@@ -115,19 +115,19 @@ No paper holdings yet.
 
 **Early-signal strength is a heuristic, NOT a profit probability.** Longer-window evidence is ranked ahead of short-lived spikes. None are confirmed cheap or unnoticed cards.
 
-| Evidence rank | Player | Level | Age | Games tracked | Full-season phase | Latest persistence tier | Heuristic score | Market hype |
+| Evidence rank | Player | Level | Age | Games tracked | Full-season phase | Latest persistence tier | Heuristic score | Per-game file |
 |---:|---|---|---:|---:|---|---|---:|---|
-| 1 | Sebastian Dos Santos | A | 18 | 82 | CURRENT UPTREND | EARLY — not confirmed | 62.8 | **NOT VERIFIED** |
-| 2 | Luis Escudero | A | 20 | 58 | REBOUNDING AFTER DOWNTREND | EARLY — not confirmed | 54.2 | **NOT VERIFIED** |
-| 3 | Josiah Ragsdale | AA | 22 | 116 | REBOUNDING AFTER DOWNTREND | EARLY — not confirmed | 43.3 | **NOT VERIFIED** |
-| 4 | Johanfran Garcia | AA | 21 | 80 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 45.8 | **NOT VERIFIED** |
-| 5 | Handelfry Encarnacion | A | 19 | 111 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 42.4 | **NOT VERIFIED** |
-| 6 | Jaison Chourio | AA | 21 | 115 | REBOUNDING AFTER DOWNTREND | LONG WINDOW CONFLICT | 39.7 | **NOT VERIFIED** |
-| 7 | Andrew Fischer | AA | 22 | 126 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 38.6 | **NOT VERIFIED** |
-| 8 | Starlyn Caba | A+ | 20 | 81 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 38.2 | **NOT VERIFIED** |
-| 9 | Zach Ehrhard | AAA | 23 | 138 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 35.0 | **NOT VERIFIED** |
-| 10 | Cristofer Torin | AA | 21 | 118 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 28.8 | **NOT VERIFIED** |
-| 11 | Aroon Escobar | AA | 21 | 132 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 25.2 | **NOT VERIFIED** |
+| 1 | Sebastian Dos Santos | A | 18 | 82 | CURRENT UPTREND | EARLY — not confirmed | 62.8 | [Full season](data/card_bot_season_players/2026/829741.json) |
+| 2 | Luis Escudero | A | 20 | 58 | REBOUNDING AFTER DOWNTREND | EARLY — not confirmed | 54.2 | [Full season](data/card_bot_season_players/2026/806884.json) |
+| 3 | Josiah Ragsdale | AA | 22 | 116 | REBOUNDING AFTER DOWNTREND | EARLY — not confirmed | 43.3 | [Full season](data/card_bot_season_players/2026/828824.json) |
+| 4 | Johanfran Garcia | AA | 21 | 80 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 45.8 | [Full season](data/card_bot_season_players/2026/703190.json) |
+| 5 | Handelfry Encarnacion | A | 19 | 111 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 42.4 | [Full season](data/card_bot_season_players/2026/821136.json) |
+| 6 | Jaison Chourio | AA | 21 | 115 | REBOUNDING AFTER DOWNTREND | LONG WINDOW CONFLICT | 39.7 | [Full season](data/card_bot_season_players/2026/702693.json) |
+| 7 | Andrew Fischer | AA | 22 | 126 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 38.6 | [Full season](data/card_bot_season_players/2026/702652.json) |
+| 8 | Starlyn Caba | A+ | 20 | 81 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 38.2 | [Full season](data/card_bot_season_players/2026/806965.json) |
+| 9 | Zach Ehrhard | AAA | 23 | 138 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 35.0 | [Full season](data/card_bot_season_players/2026/701394.json) |
+| 10 | Cristofer Torin | AA | 21 | 118 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 28.8 | [Full season](data/card_bot_season_players/2026/800198.json) |
+| 11 | Aroon Escobar | AA | 21 | 132 | REBOUNDING AFTER DOWNTREND | SHORT SPIKE — not confirmed | 25.2 | [Full season](data/card_bot_season_players/2026/800169.json) |
 
 ## Multi-window skill evidence — fluke or sustained?
 
