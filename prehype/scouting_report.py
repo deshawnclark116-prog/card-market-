@@ -150,7 +150,7 @@ def to_markdown(data):
     market = data.get("market_data") or {}
     if market:
         lines += ["", "## Live pricing diagnostics", "",
-                  "- Provider: **CardPricer public anonymous API** (no key/account)",
+                  "- Provider: **[CardPricer public anonymous API](https://cardpricer.co)** (no key/account)",
                   "- HTTP requests this scan: **" + str(market.get("requests_used", 0)) + "**",
                   "- MLB players checked for public cards: **" + str(market.get("players_checked", 0)) + "**",
                   "- Catalog cards discovered: **" + str(market.get("catalog_card_rows", 0)) + "**",
