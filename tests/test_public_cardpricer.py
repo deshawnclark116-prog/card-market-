@@ -21,7 +21,7 @@ TITLE="2025 Topps Chrome #TC1 Coby Mayo PSA 9 Mint"
 def sale(days, price=11.0, title=TITLE):
     return {"title":title,"price":price,
             "soldDate":(DAY-timedelta(days=days)).isoformat()+"T00:00:00Z",
-            "grade":"PSA 9","url":"https://polygonscan.com/tx/0xsafe"}
+            "grade":"PSA 9","url":f"https://polygonscan.com/tx/0x{days:064x}"}
 
 
 SALES=[sale(28,11.0),sale(20,11.5),sale(12,11.2),sale(5,11.4),sale(1,11.0)]
@@ -137,3 +137,11 @@ def test_anonymous_http_headers_and_strict_paths():
         assert False, "unsafe paths must be rejected"
     except ValueError:
         pass
+
+
+def test_no_duplicate_sales_counted_as_liquidity():
+    dupes=[sale(25),sale(25),sale(25),sale(8),sale(1)]
+    assert exact_sold_quote(CARD,{"comps":{"recent":dupes}},DAY) is None
+
+def test_other_parallel_not_sold_comp_of_base():
+    assert not exact_sale_match(sale(2,title=TITLE+" Blue Refractor"),CARD)
