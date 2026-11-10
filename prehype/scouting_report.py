@@ -29,7 +29,9 @@ def _score_reasons(candidate):
         reasons.append("missing or low deal score")
     if breakout is None or breakout < MIN_BREAKOUT_SCORE:
         reasons.append("missing or low breakout score")
-    if hype is None:
+    if candidate.get("cardHypeVerified") is False:
+        reasons.append("card-collector hype NOT measured; search ratio is not proof of quiet demand")
+    elif hype is None:
         reasons.append("hype data missing")
     elif hype > 30:
         reasons.append("already too much hype")
@@ -47,9 +49,17 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
     bought_ids = {b["position_id"] for b in buys}
     held_ids = {p["id"] for p in state["positions"]}
     held_players = {p["player"].casefold() for p in state["positions"]}
+    # Never sort alphabetically just because every deal score is unavailable.
+    # Distinguish a skill-change watchlist from an investable deal ranking.
     sorted_candidates = sorted(
-        candidates, key=lambda c: (-(_number(c.get("dealScore")) or -1),
-                                   str(c.get("name", "")).casefold()))
+        candidates,
+        key=lambda c: (
+            0 if _number(c.get("dealScore")) is not None else 1,
+            -(_number(c.get("dealScore")) or 0),
+            -(_number(c.get("breakoutScore")) or 0),
+            str(c.get("name", "")).casefold(),
+        ),
+    )
     players = []
     for index, candidate in enumerate(sorted_candidates, 1):
         name = str(candidate.get("name") or "").strip()
@@ -91,7 +101,10 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             checks.append({
                 "card": card, "decision": decision, "reasons": reasons,
                 "sold_median_usd": round(median_cents/100,2) if fresh else None,
-                "catalog_guide_price_usd": (candidate.get("cards") or {}).get(card,{}).get("price"),
+                # Keep vendor values in JSON for audit but do not print
+                # unvalidated source estimates as market prices.
+                "catalog_raw_untrusted_usd": (candidate.get("cards") or {}).get(card,{}).get("price"),
+                "catalog_guide_price_usd": None,
                 "card_id": (candidate.get("cards") or {}).get(card,{}).get("card_id"),
                 "all_in_paper_usd": round(entry_cents/100,2) if fresh else None,
                 "sold_comps": int(quote["comps"]) if quote else None,
@@ -111,7 +124,10 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             "position": candidate.get("position"),
             "deal_score_not_probability": candidate.get("dealScore"),
             "breakout_score_not_probability": candidate.get("breakoutScore"),
-            "hype_pct": candidate.get("hypePct"),
+            "hype_pct": candidate.get("hypePct") if candidate.get("cardHypeVerified") is not False else None,
+            "search_interest_vs_aaron_judge_pct": candidate.get("searchInterestVsJudgePct"),
+            "collector_hype_status": ("NOT MEASURED" if candidate.get("cardHypeVerified") is False
+                                     else "LEGACY UNVERIFIED"),
             "price_trend": candidate.get("priceTrend"),
             "reason": candidate.get("reason"),
             "checks": checks,
@@ -138,8 +154,9 @@ def to_markdown(data):
     lines = [
         "# Card Bot — Daily Scouting Board", "",
         f"**Last scan:** {data['as_of']} | **Status:** {_clean(data['status'])}", "",
-        "**Paper-only experiment:** verified reference-card sold-price proxies, not active offers. "
-        "Catalog price estimates are NEVER used as paper purchase prices.",
+        "**Paper-only experiment:** unverified catalog dollar values are HIDDEN. "
+        "A verified same-card sale median is NOT an active offer. "
+        "A player skill-change score is NOT an investment score.",
         "", "## Current paper bankroll", "",
         f"- Cash remaining: **{_money(port['cash_remaining_usd'])}**",
         f"- Paper purchases recorded: **{port['number_of_paper_buys']}**",
@@ -156,7 +173,9 @@ def to_markdown(data):
                   "- Catalog cards discovered: **" + str(market.get("catalog_card_rows", 0)) + "**",
                   "- Exact variant prices with >=5 independently title-matched sales: **" + str(market.get("card_variants_with_independent_five_sale_match", 0)) + "**",
                   "- Feed status: **" + _clean(market.get("last_error") or "No API error reported") + "**",
-                  "- These catalog prices are INDICATIVE and NOT proof of available inventory.", ""]
+                  "- Catalog price estimates: **QUARANTINED / NOT SHOWN** (independent values disagreed substantially).",
+                  "- Card-collector hype: **NOT VERIFIED**. Google search interest relative to Aaron Judge is not card demand.",
+                  "- Paper buying from unverified card-attention data: **BLOCKED**.", ""]
     if not port["positions"]:
         lines.append("No paper holdings yet.")
     else:
@@ -167,23 +186,36 @@ def to_markdown(data):
     if not data["players"]:
         lines.append("**No candidates returned.** This may mean source coverage was empty or unavailable; it does not imply no good cards exist.")
     else:
-        lines += ["| Rank | Player | Deal score | Breakout | Hype | Price trend |",
-                  "|---:|---|---:|---:|---:|---:|"]
+        lines += [
+            "**Ranked by underlying skill change when verified deal scores are unavailable.**",
+            "Search-interest percentages are RELATIVE TO AARON JUDGE over the last three months, NOT percentages of market hype.",
+            "",
+            "| Skill rank | Player | Breakout score | Searches vs. Judge | Collector hype | Verified deal score |",
+            "|---:|---|---:|---:|---|---:|",
+        ]
         for p in data["players"]:
-            trend = f"{float(p['price_trend'])*100:+.1f}%" if p["price_trend"] is not None else "unknown"
-            lines.append(f"| {p['rank']} | {_clean(p['name'])} | {_clean(p['deal_score_not_probability'])} | {_clean(p['breakout_score_not_probability'])} | {_clean(p['hype_pct'])}% | {trend} |")
-        lines += ["", "## Each card checked and why", "",
-                  "| Player | Exact card and grade | Guide only | Verified sold median | Verified sales | Decision | Reasons |",
-                  "|---|---|---:|---:|---:|---|---|"]
+            ratio = p.get("search_interest_vs_aaron_judge_pct")
+            shown = ("not available" if ratio is None else f"{ratio}% of Judge")
+            lines.append(
+                f"| {p['rank']} | {_clean(p['name'])} | "
+                f"{_clean(p['breakout_score_not_probability'])} | {shown} | "
+                f"{_clean(p['collector_hype_status'])} | "
+                f"{_clean(p['deal_score_not_probability'])} |"
+            )
+        lines += ["", "## Card identity watchlist — not buy prices", "",
+                  "The public feed supplied some grossly inconsistent catalog estimates. They are retained in the machine-readable audit record, NOT shown as actionable prices.",
+                  "",
+                  "| Player | Identified card and grade | Catalog price | Verified matching sale median | Verified sales | Status | Why not a buy |",
+                  "|---|---|---|---:|---:|---|---|"]
         for p in data["players"]:
             for c in p["checks"]:
                 reasons = "; ".join(c["reasons"]) or "Meets filters; daily limit/ranking may apply"
-                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | {_money(c['catalog_guide_price_usd'])} | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {_clean(c['decision'])} | {_clean(reasons)} |")
+                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | **UNVERIFIED — HIDDEN** | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {_clean(c['decision'])} | {_clean(reasons)} |")
         lines += ["", "## Player skill-change explanations", ""]
         for p in data["players"]:
             if p["reason"]:
                 lines.append(f"- **{_clean(p['name'])}:** {_clean(p['reason'])}")
-    lines += ["", "---", "Not a guarantee of profits. Scores are NOT win probabilities. No NBA/NFL analysis is performed by this version.", ""]
+    lines += ["", "---", "Not a guarantee of profits. No catalog guide value is a real offer. Scores are NOT probabilities. Card-collector interest is NOT measured. No NBA/NFL discovery in this version.", ""]
     return "\n".join(lines)
 
 def save_scouting_report(data, json_path=DEFAULT_SCOUTING_JSON, md_path=DEFAULT_DASHBOARD):
