@@ -326,6 +326,25 @@ class SoldgraphQuotes:
         if not self.client.key:
             self.monitor["last_provider_error"]="SOLDGRAPH_KEY missing — no pricing requests made"
             return
+        # Manual reruns on the same calendar day must NOT spend another pair
+        # of one-time trial credits. Reload the already checked quote instead.
+        today_label = day.isoformat()
+        previous_today = [
+            (key, value) for key, value in self.monitor["attempts"].items()
+            if value.get("checked_on") == today_label
+        ]
+        if previous_today:
+            for key, value in previous_today:
+                parts = key.split("|")
+                if parts[0] == "MARK" and len(parts) == 3:
+                    player, card = parts[1], parts[2]
+                elif len(parts) == 2:
+                    player, card = parts
+                else:
+                    continue
+                self.today_quotes[(player, card, today_label)] = value.get("quote")
+                self.checked_card = {"player": player, "card": card}
+            return
         # With a small free quota, refresh each held card about weekly,
         # preserving the card's exact matched variant identity.
         due=[]
