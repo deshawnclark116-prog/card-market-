@@ -10,7 +10,10 @@ descriptive threshold hits, NOT calibrated future breakout probabilities.
 """
 from __future__ import annotations
 
+import json
+import re
 from datetime import date
+from pathlib import Path
 from prehype.early_radar import _date, _integer, summarize
 
 CHECKPOINT_GAMES = 7
@@ -269,3 +272,56 @@ def full_season_trajectory(logs,as_of,*, player_id=None,checkpoint_step=CHECKPOI
                           "teams/gaps. Changes are descriptive, NOT independently "
                           "validated future-breakout signals or card-price predictions."),
     }
+
+
+
+def write_full_season_archive(profiles, as_of, index_path="data/card_bot_full_season_latest.json"):
+    """Publish GitHub-readable index + one complete JSON per sampled player.
+
+    GitHub's regular Contents API stops including content for files >1 MiB;
+    this split makes *every* player inspectable without any other account.
+    Previous-season histories remain in separate year directories.
+    """
+    index_path=Path(index_path)
+    index_path.parent.mkdir(parents=True,exist_ok=True)
+    folder=index_path.parent / "card_bot_season_players" / str(as_of.year)
+    folder.mkdir(parents=True,exist_ok=True)
+    index=[]
+    for profile in sorted(profiles,key=lambda p:(p["name"].casefold(),p["player_id"])):
+        pid=str(profile["player_id"])
+        if not re.fullmatch(r"\d{1,12}",pid):
+            continue
+        detail_path=folder / f"{pid}.json"
+        detail_path.write_text(json.dumps({
+            "schema":"MILB_PLAYER_FULL_SEASON_V1","as_of":as_of.isoformat(),
+            "source":"Public official MLB StatsAPI MiLB game logs",
+            "candidate_status":"RESEARCH ONLY, collector hype and card prices NOT verified",
+            "player":profile,
+        },sort_keys=True,indent=2)+"\n",encoding="utf-8")
+        t=profile["trajectory"]
+        index.append({
+            "player_id":pid,"name":profile["name"],"age":profile["age"],
+            "level":profile["level"],
+            "early_signal_now":profile["early_signal_now"],
+            "development_phase":t["development_phase"],
+            "games_available":t["games_available"],
+            "season_pa":t["season"]["pa"],
+            "first_game":t["first_game"],"last_game":t["last_game"],
+            "first_observed_uptrend":t["first_observed_uptrend"],
+            "last_observed_downtrend":t["last_observed_downtrend"],
+            "last_observed_uptrend":t["last_observed_uptrend"],
+            "current_direction":t["current_direction"],
+            "history_path":f"data/card_bot_season_players/{as_of.year}/{pid}.json",
+        })
+    output={
+        "schema":"MILB_FULL_SEASON_ARCHIVE_INDEX_V2",
+        "as_of":as_of.isoformat(),
+        "source":"Public official MLB StatsAPI MiLB game logs",
+        "scope":"All source-sampled hitters; not the full 3,527 MiLB universe",
+        "player_count":len(index),
+        "games_recorded":sum(r["games_available"] for r in index),
+        "players":index,
+        "note":"Click each history_path for all per-game records, 14-game blocks, 7-game checkpoints, phase events, season totals and team stints. Development phases are descriptive, not future-breakout or investment odds.",
+    }
+    index_path.write_text(json.dumps(output,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    return output
