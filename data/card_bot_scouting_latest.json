@@ -1,633 +1,927 @@
 {
-  "as_of": "2026-11-09",
-  "note": "Paper fills use historical sold-price category medians, NOT live listings.",
+  "as_of": "2026-11-10",
+  "market_data": {
+    "card_variants_with_independent_five_sale_match": 0,
+    "catalog_card_rows": 25,
+    "caution": "Public catalog marks may be incorrectly attributed; only independently exact-matched SOLD records can trigger a PAPER proxy buy.",
+    "last_error": null,
+    "no_accounts": true,
+    "players_checked": 30,
+    "provider": "CardPricer anonymous public API (NO KEY)",
+    "requests_used": 45
+  },
+  "note": "Catalog prices are indicative, never tradeable offers. Paper buys use independently title-matched same-card sales with 10% entry slippage and $3.50 inbound shipping.",
   "paper_buys_today": [],
   "players": [
     {
-      "breakout_score_not_probability": 62,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 61,
+      "breakout_score_not_probability": 37,
+      "checks": [],
+      "deal_score_not_probability": null,
       "hype_pct": 0,
-      "name": "Walbert Ure\u00f1a",
-      "position": "PIT",
+      "name": "Angel Mart\u00ednez",
+      "position": "BAT",
       "price_trend": null,
       "rank": 1,
-      "reason": "age 22, new arm \u2014 already tough to hit (xwOBA-against 0.281, lower is better)"
-    },
-    {
-      "breakout_score_not_probability": 65,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 60,
-      "hype_pct": 3,
-      "name": "Curtis Mead",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 2,
-      "reason": "age 26, xwOBA jumped 0.291 -> 0.358 (+0.067) vs last year \u2014 leveled up while still under the radar"
-    },
-    {
-      "breakout_score_not_probability": 81,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 59,
-      "hype_pct": 11,
-      "name": "Logan Henderson",
-      "position": "PIT",
-      "price_trend": null,
-      "rank": 3,
-      "reason": "age 24, new arm \u2014 already tough to hit (xwOBA-against 0.257, lower is better)"
-    },
-    {
-      "breakout_score_not_probability": 59,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 58,
-      "hype_pct": 1,
-      "name": "Kyle Karros",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 4,
-      "reason": "age 24, xwOBA jumped 0.258 -> 0.334 (+0.076) vs last year \u2014 leveled up while still under the radar"
-    },
-    {
-      "breakout_score_not_probability": 61,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 55,
-      "hype_pct": 4,
-      "name": "Coby Mayo",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 5,
-      "reason": "age 24, xwOBA jumped 0.287 -> 0.336 (+0.049) vs last year \u2014 leveled up while still under the radar"
-    },
-    {
-      "breakout_score_not_probability": 56,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 51,
-      "hype_pct": 3,
-      "name": "Dalton Rushing",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 6,
-      "reason": "age 25, xwOBA jumped 0.283 -> 0.336 (+0.053) vs last year \u2014 leveled up while still under the radar"
-    },
-    {
-      "breakout_score_not_probability": 47,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 47,
-      "hype_pct": 0,
-      "name": "Spencer Steer",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 7,
-      "reason": "age 28, xwOBA jumped 0.293 -> 0.342 (+0.049) vs last year \u2014 leveled up while still under the radar"
+      "reason": "age 24, xwOBA jumped 0.255 -> 0.299 (+0.044) vs last year \u2014 leveled up while still under the radar"
     },
     {
       "breakout_score_not_probability": 48,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 46,
+      "checks": [],
+      "deal_score_not_probability": null,
       "hype_pct": 1,
       "name": "Blaze Alexander",
       "position": "BAT",
       "price_trend": null,
-      "rank": 8,
+      "rank": 2,
       "reason": "age 27, xwOBA jumped 0.303 -> 0.351 (+0.048) vs last year \u2014 leveled up while still under the radar"
     },
     {
       "breakout_score_not_probability": 63,
       "checks": [
         {
+          "active_offer_all_in_usd": null,
           "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
+          "card": "2021 Bowman's Best #40 (PSA 10)",
+          "card_id": "b360d07b-f09b-4b8a-85c1-e783ff63b5cf",
+          "catalog_guide_price_usd": 14.89,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
             "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
           ],
           "sold_comps": null,
-          "sold_median_usd": null
+          "sold_median_usd": null,
+          "variant_key": null
         },
         {
+          "active_offer_all_in_usd": null,
           "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
+          "card": "2021 Bowman Draft #BDC186 (PSA 9)",
+          "card_id": "2226f082-5c73-408b-bf43-d8a70cb7edc0",
+          "catalog_guide_price_usd": 14.72,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
             "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
           ],
           "sold_comps": null,
-          "sold_median_usd": null
+          "sold_median_usd": null,
+          "variant_key": null
         }
       ],
-      "deal_score_not_probability": 46,
+      "deal_score_not_probability": null,
       "hype_pct": 11,
       "name": "Brady House",
       "position": "BAT",
       "price_trend": null,
-      "rank": 9,
+      "rank": 3,
       "reason": "age 23, xwOBA jumped 0.284 -> 0.333 (+0.049) vs last year \u2014 leveled up while still under the radar"
     },
     {
-      "breakout_score_not_probability": 47,
+      "breakout_score_not_probability": 35,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 2,
+      "name": "Brandon Pfaadt",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 4,
+      "reason": "age 28, xwOBA-against dropped 0.352 -> 0.305 (-0.047) vs last year \u2014 got nastier while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 40,
       "checks": [
         {
+          "active_offer_all_in_usd": null,
           "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
+          "card": "2023 Bowman Draft #BDC107 (PSA 9)",
+          "card_id": "65a4aa45-b986-4ea7-9794-0b4116760a5d",
+          "catalog_guide_price_usd": 11.35,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
+            "missing or low breakout score",
             "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
           ],
           "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
+          "sold_median_usd": null,
+          "variant_key": null
         }
       ],
-      "deal_score_not_probability": 46,
+      "deal_score_not_probability": null,
+      "hype_pct": 5,
+      "name": "Bryce Eldridge",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 5,
+      "reason": "age 22, new face \u2014 strong contact already (xwOBA 0.359, league avg ~.315)"
+    },
+    {
+      "breakout_score_not_probability": 40,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 4,
+      "name": "Bryce Miller",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 6,
+      "reason": "age 28, xwOBA-against dropped 0.352 -> 0.297 (-0.055) vs last year \u2014 got nastier while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 61,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Topps Chrome 1990 Topps #90CB17 (PSA 9)",
+          "card_id": "97017a54-68e3-4c9f-97b1-f489f78d73f3",
+          "catalog_guide_price_usd": 12.48,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 4,
+      "name": "Coby Mayo",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 7,
+      "reason": "age 24, xwOBA jumped 0.287 -> 0.336 (+0.049) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 65,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 3,
+      "name": "Curtis Mead",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 8,
+      "reason": "age 26, xwOBA jumped 0.291 -> 0.358 (+0.067) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 56,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 3,
+      "name": "Dalton Rushing",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 9,
+      "reason": "age 25, xwOBA jumped 0.283 -> 0.336 (+0.053) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 34,
+      "checks": [],
+      "deal_score_not_probability": null,
       "hype_pct": 2,
-      "name": "JJ Bleday",
+      "name": "Edmundo Sosa",
       "position": "BAT",
       "price_trend": null,
       "rank": 10,
-      "reason": "age 28, xwOBA jumped 0.276 -> 0.340 (+0.064) vs last year \u2014 leveled up while still under the radar"
+      "reason": "age 30, xwOBA jumped 0.290 -> 0.328 (+0.038) vs last year \u2014 leveled up while still under the radar"
     },
     {
-      "breakout_score_not_probability": 53,
+      "breakout_score_not_probability": 36,
       "checks": [
         {
+          "active_offer_all_in_usd": null,
           "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
+          "card": "2024 Topps #39 (PSA 10)",
+          "card_id": "804d874c-329c-4fe4-bbe3-cc6a8dcd961c",
+          "catalog_guide_price_usd": 18.36,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
+            "missing or low breakout score",
             "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
           ],
           "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
+          "sold_median_usd": null,
+          "variant_key": null
         }
       ],
-      "deal_score_not_probability": 45,
-      "hype_pct": 6,
-      "name": "Trey Yesavage",
+      "deal_score_not_probability": null,
+      "hype_pct": 1,
+      "name": "Emerson Hancock",
       "position": "PIT",
       "price_trend": null,
       "rank": 11,
-      "reason": "age 23, new arm \u2014 already tough to hit (xwOBA-against 0.284, lower is better)"
+      "reason": "age 27, xwOBA-against dropped 0.358 -> 0.308 (-0.050) vs last year \u2014 got nastier while still under the radar"
     },
     {
-      "breakout_score_not_probability": 54,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 44,
-      "hype_pct": 8,
-      "name": "Jared Jones",
-      "position": "PIT",
-      "price_trend": null,
-      "rank": 12,
-      "reason": "age 25, new arm \u2014 already tough to hit (xwOBA-against 0.276, lower is better)"
-    },
-    {
-      "breakout_score_not_probability": 81,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 44,
-      "hype_pct": 18,
-      "name": "Payton Tolle",
-      "position": "PIT",
-      "price_trend": null,
-      "rank": 13,
-      "reason": "age 24, new arm \u2014 already tough to hit (xwOBA-against 0.255, lower is better)"
-    },
-    {
-      "breakout_score_not_probability": 45,
-      "checks": [
-        {
-          "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        },
-        {
-          "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
-          "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
-          "quote_fresh": false,
-          "reasons": [
-            "missing or low deal score",
-            "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
-          ],
-          "sold_comps": null,
-          "sold_median_usd": null
-        }
-      ],
-      "deal_score_not_probability": 42,
-      "hype_pct": 2,
-      "name": "Josh Jung",
+      "breakout_score_not_probability": 28,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 0,
+      "name": "Ezequiel Duran",
       "position": "BAT",
       "price_trend": null,
-      "rank": 14,
-      "reason": "age 28, xwOBA jumped 0.304 -> 0.348 (+0.044) vs last year \u2014 leveled up while still under the radar"
+      "rank": 12,
+      "reason": "age 27, xwOBA jumped 0.247 -> 0.300 (+0.053) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 31,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 2,
+      "name": "Griffin Conine",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 13,
+      "reason": "age 29, new face \u2014 strong contact already (xwOBA 0.369, league avg ~.315)"
     },
     {
       "breakout_score_not_probability": 49,
       "checks": [
         {
+          "active_offer_all_in_usd": null,
           "all_in_paper_usd": null,
-          "card": "Bowman 1st auto",
-          "decision": "PASS",
+          "card": "2026 Topps #138 (PSA 9)",
+          "card_id": "6ebf1a18-28fe-4691-8e71-e895a9d088cf",
+          "catalog_guide_price_usd": 13.36,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
             "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
           ],
           "sold_comps": null,
-          "sold_median_usd": null
+          "sold_median_usd": null,
+          "variant_key": null
         },
         {
+          "active_offer_all_in_usd": null,
           "all_in_paper_usd": null,
-          "card": "Rookie auto",
-          "decision": "PASS",
+          "card": "2026 Topps 1991 Topps Baseball #42 (PSA 8)",
+          "card_id": "850d5919-c43c-4dd4-b466-d1235b2b8891",
+          "catalog_guide_price_usd": 13.78,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
-          "note": "Broad card type; not an exact listing/variant",
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
             "price trend missing",
-            "no reliable fresh sold comps (5 within 45 days; latest within 14)"
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
           ],
           "sold_comps": null,
-          "sold_median_usd": null
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2024 Bowman Draft #BDC8 (PSA 8)",
+          "card_id": "ff2a7cbd-8413-45fe-9b7a-718036851325",
+          "catalog_guide_price_usd": 13.49,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2024 Bowman Draft Chrome Prospect Autographs #CPAJC (MINT 9)",
+          "card_id": "df13a237-dbcf-497a-af92-01fec2f7bf5e",
+          "catalog_guide_price_usd": 18.02,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
         }
       ],
-      "deal_score_not_probability": 40,
-      "hype_pct": 8,
+      "deal_score_not_probability": null,
+      "hype_pct": 7,
       "name": "Jac Caglianone",
       "position": "BAT",
       "price_trend": null,
-      "rank": 15,
+      "rank": 14,
       "reason": "age 23, xwOBA jumped 0.321 -> 0.357 (+0.036) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 42,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 3,
+      "name": "Jake Bennett",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 15,
+      "reason": "age 25, new arm \u2014 already tough to hit (xwOBA-against 0.286, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 54,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 7,
+      "name": "Jared Jones",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 16,
+      "reason": "age 25, new arm \u2014 already tough to hit (xwOBA-against 0.276, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 47,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2020 Bowman Sterling Prospect Autographs #JJB (PSA 9)",
+          "card_id": "61e3b7bf-7316-4eec-9487-4d37663ea8d7",
+          "catalog_guide_price_usd": 13.45,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 2,
+      "name": "JJ Bleday",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 17,
+      "reason": "age 29, xwOBA jumped 0.276 -> 0.340 (+0.064) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 64,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2020 Bowman Draft #BD57 (PSA 10)",
+          "card_id": "f9e6dca2-d198-4257-bef4-5e555e484410",
+          "catalog_guide_price_usd": 20.81,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2021 Bowman Draft #BDC187 (PSA 9)",
+          "card_id": "033c1250-25b1-42be-a137-8d54169917b2",
+          "catalog_guide_price_usd": 9.25,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2020 Bowman Draft #BD57 (PSA 9)",
+          "card_id": "3889075a-2c42-4f9b-b9de-1f6e5519e4f1",
+          "catalog_guide_price_usd": 16.5,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 19,
+      "name": "Jordan Walker",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 18,
+      "reason": "age 24, xwOBA jumped 0.278 -> 0.340 (+0.062) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 45,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2023 Topps Holiday #H120 (PSA 9)",
+          "card_id": "f99c7cc8-ac35-4a1d-9a80-506617a94d7a",
+          "catalog_guide_price_usd": 10.85,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 2,
+      "name": "Josh Jung",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 19,
+      "reason": "age 28, xwOBA jumped 0.304 -> 0.348 (+0.044) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 36,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 2,
+      "name": "Keider Montero",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 20,
+      "reason": "age 26, xwOBA-against dropped 0.332 -> 0.290 (-0.042) vs last year \u2014 got nastier while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 59,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 1,
+      "name": "Kyle Karros",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 21,
+      "reason": "age 24, xwOBA jumped 0.258 -> 0.334 (+0.076) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 81,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 11,
+      "name": "Logan Henderson",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 22,
+      "reason": "age 24, new arm \u2014 already tough to hit (xwOBA-against 0.257, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 57,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 13,
+      "name": "Miguel Vargas",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 23,
+      "reason": "age 26, xwOBA jumped 0.319 -> 0.378 (+0.059) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 31,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2020 Bowman Draft #BD81 (PSA 10)",
+          "card_id": "fd01b414-0aaf-4e00-8e13-d10cc57da871",
+          "catalog_guide_price_usd": 9.0,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 2,
+      "name": "Nick Gonzales",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 24,
+      "reason": "age 27, xwOBA jumped 0.291 -> 0.327 (+0.036) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 81,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 18,
+      "name": "Payton Tolle",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 25,
+      "reason": "age 24, new arm \u2014 already tough to hit (xwOBA-against 0.255, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 37,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 10,
+      "name": "Riley Greene",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 26,
+      "reason": "age 26, xwOBA jumped 0.332 -> 0.369 (+0.037) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 36,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Topps #558 (PSA 9)",
+          "card_id": "a35fc34d-4fb6-4bd7-a0f4-927ef50bb8f8",
+          "catalog_guide_price_usd": 12.06,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Topps Stadium Club Yours for the Taking #10 (PSA 9)",
+          "card_id": "c2e8f246-d873-46d8-bbaf-c093fceb51eb",
+          "catalog_guide_price_usd": 11.76,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Topps Chrome #217 (PSA 9)",
+          "card_id": "7fb198f0-c2da-4e8b-9284-20a002a25b83",
+          "catalog_guide_price_usd": 11.5,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Bowman #12 (PSA 9)",
+          "card_id": "0a3d19bc-57c5-425e-b5a9-437f069ee22d",
+          "catalog_guide_price_usd": 6.45,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2023 Topps World Baseball Classic GlobAL Stars Flags of A Nation #F8 (PSA 9)",
+          "card_id": "c69ad7bb-e262-48fa-bd99-6616622497ea",
+          "catalog_guide_price_usd": 10.0,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Bowman Chrome Mega Box #12 (PSA 8)",
+          "card_id": "37803e69-4c18-4024-87a4-2c9cc1632979",
+          "catalog_guide_price_usd": 11.6,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2025 Topps Stadium Club #187 (PSA 8)",
+          "card_id": "d51e177d-053b-4287-a754-f61ec7be4d63",
+          "catalog_guide_price_usd": 17.5,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "missing or low breakout score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 8,
+      "name": "Roki Sasaki",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 27,
+      "reason": "age 25, xwOBA-against dropped 0.362 -> 0.318 (-0.044) vs last year \u2014 got nastier while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 47,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2019 Bowman Draft #BDC153 (PSA 10)",
+          "card_id": "dd5bd92d-2925-42b6-a649-39fc091a01f2",
+          "catalog_guide_price_usd": 11.24,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        },
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2023 Topps Chrome Rookie Autograph #RASS (PSA 8)",
+          "card_id": "784ee186-b9c8-4939-adb4-09e186609456",
+          "catalog_guide_price_usd": 15.57,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 0,
+      "name": "Spencer Steer",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 28,
+      "reason": "age 28, xwOBA jumped 0.293 -> 0.342 (+0.049) vs last year \u2014 leveled up while still under the radar"
+    },
+    {
+      "breakout_score_not_probability": 53,
+      "checks": [
+        {
+          "active_offer_all_in_usd": null,
+          "all_in_paper_usd": null,
+          "card": "2024 Bowman Draft #BDC92 (PSA 9)",
+          "card_id": "03bf8f3b-b223-4a9f-b384-343b665ecd20",
+          "catalog_guide_price_usd": 11.0,
+          "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
+          "last_sale": null,
+          "listing_title": null,
+          "listing_url": null,
+          "note": "Unverified price guide unless exact sold comps exist",
+          "provenance_url": null,
+          "quote_fresh": false,
+          "reasons": [
+            "missing or low deal score",
+            "price trend missing",
+            "no 5 independently title-matched recent sales of this EXACT card/grade"
+          ],
+          "sold_comps": null,
+          "sold_median_usd": null,
+          "variant_key": null
+        }
+      ],
+      "deal_score_not_probability": null,
+      "hype_pct": 6,
+      "name": "Trey Yesavage",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 29,
+      "reason": "age 23, new arm \u2014 already tough to hit (xwOBA-against 0.284, lower is better)"
+    },
+    {
+      "breakout_score_not_probability": 62,
+      "checks": [],
+      "deal_score_not_probability": null,
+      "hype_pct": 0,
+      "name": "Walbert Ure\u00f1a",
+      "position": "PIT",
+      "price_trend": null,
+      "rank": 30,
+      "reason": "age 22, new arm \u2014 already tough to hit (xwOBA-against 0.281, lower is better)"
     }
   ],
-  "players_screened": 15,
+  "players_screened": 30,
   "portfolio": {
     "cash_remaining_usd": 100.0,
     "days_recorded": 0,
-    "ends_on": "2026-12-09",
-    "important": "Estimated liquidation is NOT realized profit and assumes a buyer exists at the recent sold median. All entries are synthetic category-level fills, not matched live listings.",
+    "ends_on": "2026-12-10",
+    "important": "Estimated liquidation is NOT realized profit and assumes a buyer exists at the recent sold median. All entries are simulated fills from active listing snapshots where available; last valuation may be up to 7 days old. No real transaction occurs.",
     "indicative_net_liquidation_usd": 100.0,
     "indicative_return_pct": 0.0,
     "initial_cash_usd": 100.0,
@@ -635,9 +929,9 @@
     "number_of_paper_buys": 0,
     "positions": [],
     "stale_or_unverified_marks": 0,
-    "started_on": "2026-11-09",
+    "started_on": "2026-11-10",
     "status": "IN_PROGRESS"
   },
-  "source": "LIVE existing MLB top-15 scanner, never demo",
-  "status": "WAITING_FOR_LIVE_MARKET_DATA"
+  "source": "MLB skill discovery + anonymous CardPricer exact-grade sales",
+  "status": "WAITING_FOR_EXACT_CARD_SOLD_COMPS"
 }
