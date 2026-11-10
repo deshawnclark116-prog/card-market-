@@ -354,7 +354,6 @@ def main() -> int:
     if args.command == "run":
         # Public no-account pricing: never use synthetic demo data or API
         # catalog prices as if they were matching completed transactions.
-        from prehype.api import run_scan
         from prehype.breakouts import _cheap01, _price_asleep
         from prehype.scouting_report import build_scouting_report, save_scouting_report
         from prehype.sources.public_cardpricer import PublicCardQuotes
@@ -399,12 +398,12 @@ def main() -> int:
         scouting = build_scouting_report(candidates, lookup, today, state, status, run["buys"])
         diagnostics["early_discovery"] = early_diagnostics
         diagnostics["card_hype_validated"] = False
-        diagnostics["hype_note"] = ("Historical Google search interest versus Aaron Judge "
-                                    "is not sports-card attention. Paper buys are disabled "
-                                    "until card-specific market demand can be validated.")
+        diagnostics["hype_note"] = ("No Google-search percentage is used to classify "
+                                    "a prospect as quiet. Top-100 ranking membership is "
+                                    "only evidence of already-publicized prospects. "
+                                    "Paper buys require card-specific market validation.")
         diagnostics["catalog_prices_validated"] = False
         scouting["market_data"] = diagnostics
-        scouting["source"] = "MLB skill discovery + anonymous CardPricer exact-grade sales"
         scouting["source"] = "Official MiLB early skill-change detector + public card identities"
         scouting["discovery"] = early_diagnostics
         scouting["note"] = ("PRE-HYPE PROSPECT RADAR. The source is minor-league "
