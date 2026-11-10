@@ -332,14 +332,15 @@ def report(state: dict, today: date) -> dict:
 
 def market_data_ready(candidates: list[dict], quote_lookup: QuoteLookup, day: date) -> bool:
     """Only start the 30-day clock when fresh tradeable reference data exists."""
-    for candidate in candidates:
+    # Do NOT start the 30-day experiment on a priced card if we have
+    # not independently verified the collector-hype and market-opportunity
+    # gates. Otherwise the clock can run with ZERO possible purchases.
+    for _, card, candidate in _ranked_options(candidates):
         player = candidate.get("name")
         if not isinstance(player, str) or not player.strip():
             continue
-        cards = candidate.get("cards") or {}
-        for card in cards:
-            if _quote_is_fresh(quote_lookup(player, card, day), day):
-                return True
+        if _quote_is_fresh(quote_lookup(player, card, day), day):
+            return True
     return False
 
 
@@ -386,13 +387,15 @@ def main() -> int:
                 if asleep is None or cheap is None:
                     continue
                 score = round(base * asleep * (0.30 + 0.70 * cheap), 1)
-                if candidate["dealScore"] is None or score > candidate["dealScore"]:
-                    candidate["dealScore"] = score
-                    candidate["priceTrend"] = quote["price_trend"]
+                candidate["provisional_price_factor_score"] = score
+                # NO VERIFIED DEAL score until independent collector-demand
+                # proof and correct-card prices both pass.
+                candidate["dealScore"] = None
+                candidate["priceTrend"] = quote["price_trend"]
                 candidate["cards"][card]["verified_median_usd"] = median_price
                 candidate["cards"][card]["verified_comps"] = quote["comps"]
         if not Path(args.ledger).exists() and not market_data_ready(candidates, lookup.lookup, today):
-            status = "WAITING_FOR_EXACT_CARD_SOLD_COMPS"
+            status = "WAITING_FOR_COLLECTOR_DEMAND_AND_TRUSTWORTHY_PRICES"
             run = {"status": status, "candidate_count": len(candidates), "buys": []}
         else:
             run = simulate_day(state, candidates, lookup.lookup, today)
