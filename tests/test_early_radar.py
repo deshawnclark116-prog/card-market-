@@ -69,6 +69,8 @@ def test_mlb_source_uncertainty_is_not_false_zero():
     def dead(_):return None
     ids,ok=exposed_mlb_ids(2026,loader=dead)
     assert not ok and not ids
+    ids,ok=exposed_mlb_ids(2026,loader=lambda url:{"stats":[]})
+    assert not ok and not ids
     def populated(_):
         return {"stats":[{"splits":[
             {"player":{"id":44},"stat":{"plateAppearances":150}},
