@@ -44,7 +44,10 @@ jobs:
           python - <<'PY'
           from prehype.early_radar import scan_early_prospects
           rows, meta = scan_early_prospects(max_logs=16)
-          print("SOURCE_DIAGNOSTICS", meta, flush=True)
+          print("SOURCE_DIAGNOSTICS", {k:v for k,v in meta.items() if k!="full_season_profiles"}, flush=True)
+          for profile in meta.get("full_season_profiles", [])[:3]:
+              t=profile["trajectory"]
+              print("SEASON_HISTORY", profile["name"],t["games_available"],t["development_phase"],flush=True)
           for row in rows[:8]:
               print("EARLY_SIGNAL", row["name"], row["breakoutScore"], row["reason"], flush=True)
           PY
@@ -64,7 +67,7 @@ jobs:
         run: |
           git config user.name "card-bot"
           git config user.email "card-bot@users.noreply.github.com"
-          git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json
+          git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json data/card_bot_full_season_latest.json
           if [ -f data/card_bot_100.json ]; then
             git add data/card_bot_100.json
           fi
