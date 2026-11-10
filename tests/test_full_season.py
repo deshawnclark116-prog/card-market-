@@ -43,7 +43,7 @@ def test_all_126_games_including_first_and_final_games():
 
 
 def test_real_development_then_regression_is_visible_not_only_final_84():
-    rows=make_games([POOR]*3+[BETTER]*4+[FADE]*2)
+    rows=make_games([POOR]*3+[BETTER]*4+[FADE])
     result=full_season_trajectory(rows,ASOF)
     assert result["first_observed_uptrend"] is not None
     assert result["last_observed_downtrend"] is not None
@@ -55,7 +55,7 @@ def test_real_development_then_regression_is_visible_not_only_final_84():
 
 
 def test_current_rising_after_prior_downtrend_is_rebound_not_first_breakout():
-    rows=make_games([BETTER]*3+[FADE]*3+[BETTER]*2)
+    rows=make_games([BETTER]*3+[FADE]*4+[BETTER])
     result=full_season_trajectory(rows,ASOF)
     assert result["last_observed_downtrend"] is not None
     assert result["current_direction"]=="UPTREND"
