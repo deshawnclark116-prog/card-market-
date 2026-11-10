@@ -22,6 +22,7 @@ from pathlib import Path
 from statistics import median
 
 from prehype.sources.milb import LEVELS, MilbBatter, fetch_level
+from prehype.sources.public_visibility import public_top100_flags, RANKING_URL
 
 GAMES_PER_WINDOW = 14
 MIN_GAMES_PER_WINDOW = 10
@@ -260,6 +261,7 @@ def choose_log_candidates(batters, exposed_ids, *, max_n=MAX_PLAYERS_FOR_LOGS):
 
 def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
                          logs_fetch=load_game_logs, exposure_fetch=exposed_mlb_ids,
+                         visibility_fetch=public_top100_flags,
                          max_logs=MAX_PLAYERS_FOR_LOGS):
     as_of=as_of or date.today()
     year=year or as_of.year
@@ -309,6 +311,24 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
                     "mlbExposureDataOK":exposure_ok,
                 })
     signal_rows.sort(key=lambda c:(-c["breakoutScore"],c["name"]))
+    # Rankings are a negative-hype cross-check ONLY. Zero ranked names
+    # never means nobody knows the player or his 1st Auto.
+    names=[c["name"] for c in signal_rows]
+    ranked, rankings_ok=visibility_fetch(names)
+    rejected=[]
+    for candidate in signal_rows:
+        membership=ranked.get(candidate["name"])
+        if membership is True:
+            candidate["marketExposure"]="PUBLIC TOP-100 PROSPECT — NOT PRE-HYPE"
+            rejected.append({"name":candidate["name"],
+                             "skill_score":candidate["breakoutScore"],
+                             "reason":"Appears on published MLB Pipeline Top-100 aggregation",
+                             "source":RANKING_URL})
+        elif membership is False:
+            candidate["marketExposure"]="NOT ON CHECKED TOP-100 — HOBBY HYPE UNKNOWN"
+        else:
+            candidate["marketExposure"]="TOP-100 CHECK UNAVAILABLE — HOBBY HYPE UNKNOWN"
+    signal_rows=[c for c in signal_rows if ranked.get(c["name"]) is not True]
     audit={
         "pipeline":"PRE_HYPE_MILB_CHANGE_DETECTOR_V1",
         "season":year,"as_of":as_of.isoformat(),
@@ -320,8 +340,12 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
         "season_stat_rows":len(batters),
         "eligible_for_log_sampling":len(eligible),
         "game_log_records_available_for_players":logs_with_data,
-        "independent_skill_changes_found":len(signal_rows),
-        "notes":"MiLB game-log K%, BB%, ISO window-to-window; no articles or player popularity used in discovery. Offseason means previous season evidence, NOT fresh in-week signal. No collector hype or card price verified.",
+        "independent_skill_changes_found":len(signal_rows)+len(rejected),
+        "prospects_after_recognition_exclusion":len(signal_rows),
+        "public_top100_source_available":rankings_ok,
+        "public_top100_source":RANKING_URL,
+        "already_publicized_excluded":rejected,
+        "notes":"MiLB raw-game-log K%, BB%, ISO discovery; public top-100 is only a NEGATIVE publicity screen, never discovery. Not being top-100 does NOT mean card demand is low. Offseason means past season evidence, not in-week skill growth. Card market value remains unverified.",
     }
     return signal_rows,audit
 
