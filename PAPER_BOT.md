@@ -6,14 +6,40 @@ The bot's previous MLB season-over-season xwOBA leaderboard was not a
 pre-hype prospect radar. That funnel could rank already prominent players.
 As of November 10, 2026, discovery is rebuilt around **MiLB hitters**.
 
-The live source is the official **free MLB StatsAPI**. The new detector
-looks at the most recent 14 games against the preceding 14 games for a
-player, using K% (plate contact/discipline), BB% (strike-zone recognition)
-and ISO (extra-base-hit power). It requires two of these to improve, enough
-plate appearances in both windows, appropriate age for the level, and no
-unmodeled team-level switch. A sample-size discount limits overconfidence.
-The ranking is a HEURISTIC for further investigation, not a calibrated
-probability that the player's cards will appreciate.
+The live source is the official **free MLB StatsAPI**. The detector
+looks for early skill change with **three historical horizons**: the most
+recent 14 games versus the preceding 14 (28 games), the most recent 28 versus
+the preceding 28 (56 games), and the most recent 42 versus the preceding 42
+(**84 games maximum**). The comparison uses K% (plate contact/discipline),
+BB% (strike-zone recognition) and ISO (extra-base-hit power), requiring two
+distinct improved skills for an early watch signal. All comparisons use
+non-overlapping before/after halves at the *same team* and minimum plate
+appearances, avoiding accidental promotion-driven comparisons.
+
+Each player receives a transparent **reliability tier**:
+- **EARLY — not confirmed:** the 14-game signal is present, but a longer
+  comparison is not yet testable. Watch for the next games.
+- **SHORT SPIKE — not confirmed:** 14-game change looks promising but
+  28-game confirmation disagrees. Possible noise or a newer, still-unproven
+  shift; *not* a validated breakout.
+- **BUILDING:** 14- and 28-game comparisons show multiple supported skill
+  changes; an 84-game test may be unavailable.
+- **SUSTAINED:** the 14-, 28-, and 42-game before/after comparisons all
+  support improvements. The windows overlap, so this is **not** three
+  independent statistical tests.
+- **LONG WINDOW CONFLICT:** short and middle periods improve, but the
+  longest comparison points to mixed, potentially reversible evidence.
+
+A weak beta-binomial prior estimates *directional evidence* for K% and BB%,
+while a deterministic game bootstrap tests how often a positive ISO change
+persists when **games** are resampled. The outputs explicitly **are NOT
+calibrated probabilities of future player breakouts or investment profit**.
+Ranks give more weight to persistent signals and discount isolated spikes.
+Age/level and sample-size guards remain. Forward-season holdouts are still
+needed before any classification should be trusted as predictive.
+
+During the offseason these are reviews of **2026 played games**, not new
+November games. No new account, API token or paid service is used.
 
 **Already known?** A public MLB Pipeline Top-100 ranking is a veto,
 not a discovery source. We use publicly visible rankings only to identify
