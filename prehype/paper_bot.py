@@ -365,17 +365,8 @@ def main() -> int:
         # players who improved in June but fell off by September. The full
         # file is deliberately separate from the concise trading dashboard.
         all_profiles = early_diagnostics.pop("full_season_profiles", [])
-        full_history_path = Path("data/card_bot_full_season_latest.json")
-        full_history_path.parent.mkdir(parents=True, exist_ok=True)
-        full_history_path.write_text(json.dumps({
-            "schema":"MILB_FULL_SEASON_EVOLUTION_V1",
-            "as_of":today.isoformat(),
-            "source":"MLB StatsAPI public minor-league gameLog",
-            "scope":"All analyzed players, not just currently improving card candidates",
-            "player_count":len(all_profiles),
-            "players":all_profiles,
-            "caution":"Every game is historical. Development phases are uncalibrated descriptive observations, not predictions of future play or card prices.",
-        },indent=2,sort_keys=True)+"\n",encoding="utf-8")
+        from prehype.full_season import write_full_season_archive
+        write_full_season_archive(all_profiles,today)
         candidates = candidates[:30]
         # Every player has an explicit "hype unknown" status. A low search
         # ratio never proves collectors have not priced him in yet.
@@ -421,11 +412,11 @@ def main() -> int:
         scouting["market_data"] = diagnostics
         scouting["source"] = "Official MiLB early skill-change detector + public card identities"
         scouting["discovery"] = early_diagnostics
-        scouting["note"] = ("PRE-HYPE PROSPECT RADAR. All available per-game 2026 "
-                            "logs, rolling history and observed rise/fall phases are "
-                            "stored in data/card_bot_full_season_latest.json. The "
-                            "shortlist is not proof of low hype, accurate card prices, "
-                            "or future breakout. No unverified paper purchase.")
+        scouting["note"] = ("PRE-HYPE PROSPECT RADAR. The GitHub-readable index "
+                            "data/card_bot_full_season_latest.json links to a "
+                            "full per-player game-log, block and rolling-checkpoint "
+                            "history. This is not proof of low card hype, affordable "
+                            "prices or a future breakout; no unverified paper buy.")
         save_scouting_report(scouting)
         print(json.dumps(run, indent=2))
         print(f"Public market: {diagnostics}")
