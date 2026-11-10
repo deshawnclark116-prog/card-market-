@@ -3,31 +3,34 @@
 **Paper experiment only.** The bot never makes real purchases, places orders,
 transfers funds, or claims a real completed trade.
 
-## What it does
+## What the active bot actually does
 
-- Starts with $100 and scans once daily for 30 calendar days.
-- Reuses the app's existing live MLB breakout + Google Trends + eBay sold-comps
-  scanner, rather than its canned demo.
-- Considers Bowman 1st auto and rookie auto reference-card categories.
-- Requires deal score >= 50, breakout score >= 45, hype <= 30%, price momentum
-  <= 15%, and 5 sold comps in the past 45 days, with a sale within 14 days.
-  Missing or old data blocks purchases.
-- Makes a *hypothetical* category-level reference purchase at the median recent
-  sold price plus 5% simulated price slippage and $3.50 inbound shipping.
-  This is NOT an available listing or an actual executable offer.
-- Allows at most 1 buy/day, 5 positions, $25 all-in per position, and never
-  more than 1 position per player. Unspent money remains in cash.
-- Reprices holdings daily when fresh comparable sales exist.
-- Reports estimated liquidation value after a 15% selling haircut plus $3.50
-  outbound shipping, separately from cash; stale quotes make P&L unavailable.
-- Stops opening positions after 30 days. It does not pretend the cards were
-  physically acquired or sold.
+- Starts with $100 in **paper money only**.
+- Uses MLB skill-change data and Google Trends to rank up to 30 players.
+- Uses CardPricer's **public anonymous API** for a catalog of real card
+  references (player, year, set, card number, grade and guide price).
+- Does not call a guide price a real trade. Every eligible buy requires at
+  least five source-linked, individually validated **sales of the exact
+  card/grade** during the previous 30 days, with recent activity in both
+  halves of the window and a sale in the last 14 days.
+- Requires deal score >= 50, breakout score >= 45, hype <= 30% and verified
+  card-price trend <= 15%. Missing data means no paper purchase.
+- Simulates an exact-card **sold-median reference fill** plus 10% slippage and
+  $3.50 inbound shipping. This is **NOT** a real offered listing or executable
+  bid; transaction feasibility is not proven.
+- Never spends more than $25 all-in on a card, opens more than one paper
+  position a day, holds more than five positions or exceeds its $100 bank.
+- Tracks remaining cash, card identity and audit link. It revalues holdings
+  from exact-card sold records where sufficiently fresh.
+- Estimates liquidation after 15% selling fees and $3.50 outbound shipping;
+  no realized profits, real orders, real inventory or real sales are implied.
+- Stops opening new positions 30 days after a qualifying priced card starts
+  the experiment. If the feed remains too thin, the clock does not start.
 
-**Critical limitation:** category searches can mix years, grades, conditions,
-parallels and brands. Results are research-grade *proxy trading*, NOT a
-validated executable-listing simulator. The future upgrade is exact variant
-identification plus real active-listing URLs/prices, tax and shipping, and sales
-of precisely comparable cards.
+**Critical limitation:** Many promising MLB players aren't yet covered by
+the public catalog. Certain public price-series matches were incorrectly
+attributed to similarly named cards; our independent title-matching gate
+rejects those. The real experiment may make zero paper purchases.
 
 ## Run commands
 
@@ -41,21 +44,18 @@ The GitHub Actions workflow (.github/workflows/card-bot-paper.yml) runs daily
 at 14:30 UTC on the repository's DEFAULT branch after this feature is merged.
 It also supports a manual workflow dispatch, and offline tests run on PRs.
 It commits data/card_bot_100.json to the repo so state survives fresh runners.
-The 30-day clock starts only when the live price feed provides at least one fresh, sufficiently liquid reference-card quote. If price data is missing, the daily job reports WAITING_FOR_LIVE_MARKET_DATA and does not create a ledger or consume a trial day.
+The 30-day clock starts only when the live price feed provides at least one fresh, sufficiently liquid reference-card quote. If price data is missing, the daily job reports WAITING_FOR_EXACT_CARD_SOLD_COMPS and does not create a ledger or consume a trial day.
 
 ## Requirements and limits
 
-Live eBay sold comps are unreliable from GitHub-hosted/datacenter IPs. Unless
-an authorized eBay Marketplace Insights token is available, the scan may have
-no trustworthy price data and the bot WILL NOT BUY ANYTHING. If approved, set
-EBAY_OAUTH_TOKEN in GitHub Actions Secrets; the existing eBay backend handles it.
-The existing scraper supports EBAY_PROXY_URL as a fallback. Never commit tokens.
-Google Trends may rate-limit or fail, and missing hype blocks entries.
-
-The repository currently implements MLB prospect/breakout data only. In the
-November offseason, player skill feeds are not updating with new games. This
-is an exploratory paper test of candidate ranking and card-price monitoring,
-not a cross-sport live-breakout bot.
+No additional accounts, API keys, paid plans or proxies are required.
+The existing eBay HTML scraper and key-based Soldgraph adapter are **not**
+used by the active paper bot. CardPricer's public API has uneven sports-card
+coverage and its eBay ingestion currently reports zero recent records;
+source provenance and on-field MLB signals determine what can be monitored.
+November is baseball offseason, so there are no new live games feeding
+skill-change discovery. Nothing in this run should be described as a
+guaranteed executable card investment.
 
 ## Monthly review
 
