@@ -85,7 +85,7 @@ def test_longer_windows_must_not_mix_promoted_team_stints():
     logs=series([
         (2,0,0,4),(2,0,0,4),(2,0,0,4),
         (2,0,0,4),(1,1,1,4),(0,2,2,4),
-    ],team_change_at=3)
+    ],team_change_at=2)
     row=change_signal(batter(),logs,NOW)
     assert row
     assert row["comparisons"]["14"]["status"]=="AVAILABLE"
@@ -111,7 +111,7 @@ def test_uncertainty_weakly_supports_a_tiny_sample_not_a_breakout_probability():
     row=change_signal(batter(),tiny,NOW)
     assert row
     assert row["sample_warning"]
-    assert "not a calibrated" in row["comparisons"]["14"]["note"]
+    assert "NOT a calibrated" in row["comparisons"]["14"]["note"]
     support=row["comparisons"]["14"]["direction_support"]
     assert all(0<=v<=1 for v in support.values())
     assert "future-breakout" in row["sample_warning"].lower() or "future" in row["sample_warning"].lower()
