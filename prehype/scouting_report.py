@@ -129,7 +129,12 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             "time_context": candidate.get("timeContext"),
             "market_exposure": candidate.get("marketExposure"),
             "early_signal": candidate.get("earlySignal"),
-            "season_trajectory": candidate.get("seasonTrajectory"),
+            # Full raw games and rolling checkpoints live in each player's
+            # separate GitHub JSON. Keep board JSON below 1MiB/readable.
+            "season_trajectory": ({
+                k:v for k,v in candidate["seasonTrajectory"].items()
+                if k not in ("game_log","checkpoints")
+            } if candidate.get("seasonTrajectory") else None),
             "deal_score_not_probability": candidate.get("dealScore"),
             "breakout_score_not_probability": candidate.get("breakoutScore"),
             "hype_pct": candidate.get("hypePct") if candidate.get("cardHypeVerified") is not False else None,
@@ -192,7 +197,7 @@ def to_markdown(data):
                   "- Individual game observations retained: **" + str(discovery.get("total_player_games_recorded", 0)) + "**",
                   "- Compare all-season 14-game blocks plus **rolling 7/14/28-game checkpoints**, saved every seven games and at the last game",
                   "- Separate most recent comparison periods: **14v14, 28v28, 42v42** (up to 84 recent games); those overlapping horizons do not determine the entire seasonal history",
-                  "- [**Open full-season player-by-player game logs, block stats and rise/fall events**](data/card_bot_full_season_latest.json)",
+                  "- [**Open the full-season index**](data/card_bot_full_season_latest.json) to find one readable JSON file per player (all games, rolling checkpoints, phase events)",
                   "- Evidence tiers: **" + _clean(discovery.get("evidence_tier_counts") or {}) + "**",
                   "- Levels unavailable: **" + _clean(discovery.get("minor_league_levels_missing") or "none") + "**",
                   "- Major-league exposure filter: **" + ("available" if discovery.get("exposure_filter_source_available") else "UNAVAILABLE — exposure unconfirmed") + "**",
@@ -233,8 +238,12 @@ def to_markdown(data):
                       "| Player | Level | Games tracked | Earlier uptrend first seen | Current phase | Last game |",
                       "|---|---|---:|---|---|---|"]
             for item in earlier[:20]:
+                pid=str(item.get("player_id") or "")
+                pname=_clean(item["name"])
+                if pid.isdigit():
+                    pname=f"[{pname}](data/card_bot_season_players/{discovery.get('season')}/{pid}.json)"
                 lines.append(
-                    f"| {_clean(item['name'])} | {_clean(item['level'])} | "
+                    f"| {pname} | {_clean(item['level'])} | "
                     f"{item['games_available']} | {_clean(item.get('first_observed_uptrend'))} | "
                     f"{_clean(item.get('development_phase','').replace('_',' '))} | "
                     f"{_clean(item.get('last_game'))} |"
@@ -270,7 +279,7 @@ def to_markdown(data):
                 "Longer-window evidence is ranked ahead of short-lived spikes. "
                 "None are confirmed cheap or unnoticed cards.",
                 "",
-                "| Evidence rank | Player | Level | Age | Games tracked | Full-season phase | Latest persistence tier | Heuristic score | Market hype |",
+                "| Evidence rank | Player | Level | Age | Games tracked | Full-season phase | Latest persistence tier | Heuristic score | Per-game file |",
                 "|---:|---|---|---:|---:|---|---|---:|---|",
             ]
             tier_names = {
@@ -284,12 +293,16 @@ def to_markdown(data):
                 signal=p.get("early_signal") or {}
                 tier=signal.get("evidence_tier")
                 trajectory=p.get("season_trajectory") or {}
+                player_id=str(p.get("player_id") or "")
+                history_link=(f"[Full season](data/card_bot_season_players/"
+                              f"{discovery.get('season')}/{player_id}.json)"
+                              if player_id.isdigit() else "not available")
                 lines.append(
                     f"| {p['rank']} | {_clean(p['name'])} | {_clean(p.get('level'))} | "
                     f"{_clean(p.get('age'))} | {_clean(trajectory.get('games_available'))} | "
                     f"{_clean((trajectory.get('development_phase') or 'UNKNOWN').replace('_',' '))} | "
                     f"{_clean(tier_names.get(tier,tier or 'UNKNOWN'))} | "
-                    f"{_clean(p.get('breakout_score_not_probability'))} | **NOT VERIFIED** |"
+                    f"{_clean(p.get('breakout_score_not_probability'))} | {history_link} |"
                 )
             lines += [
                 "",
