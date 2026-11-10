@@ -78,6 +78,10 @@ def exact_sale_match(row, card):
 
     if not player or not series or not number or not grade or not title:
         return False
+    # "MINT 9" without PSA/BGS/SGC/CGC/TAG does not identify the grader.
+    # It must never be pooled with a PSA 9 or called the same variant.
+    if not re.match(r"^(PSA|BGS|SGC|CGC|TAG)\s+[0-9]+(?:\.[0-9]+)?$", grade, re.I):
+        return False
     text = norm(title)
     pieces = text.split()
     if not all(re.search(r"\b" + re.escape(word) + r"\b", text)
