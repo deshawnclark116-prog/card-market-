@@ -47,6 +47,32 @@ def inspect(path: str):
         print("SOURCE", path, "ERROR", type(e).__name__, str(e)[:230])
 
 
+
+
+def coverage():
+    """Get genuine live names, matching card detail and provenance fields."""
+    names = ["Walbert Urena", "Curtis Mead", "Logan Henderson", "Kyle Karros",
+             "Coby Mayo", "Dalton Rushing", "Brady House", "Roman Anthony"]
+    for player in names:
+        params=urllib.parse.urlencode({"sport":"baseball","player":player,"limit":40})
+        path="/api/v1/cards?"+params
+        req=urllib.request.Request(BASE+path,headers={"Accept":"application/json","User-Agent":"PreHype/1.0"})
+        try:
+            with urllib.request.urlopen(req,timeout=18) as resp:
+                p=json.load(resp)
+            data=p.get("data") or []
+            good=[d for d in data if str(d.get("player","")).casefold()==player.casefold()
+                  and (d.get("price") or 0) <= 35]
+            print("COVERAGE",player,"total",p.get("meta",{}).get("pagination",{}).get("total"),
+                  "priced_<=35",len(good))
+            for row in good[:2]:
+                print("MATCH",json.dumps(row,ensure_ascii=False)[:950])
+        except Exception as e:
+            print("COVERAGE_ERROR",player,type(e).__name__,str(e)[:150])
+    for id in ("d2b4882a-b696-4b72-a908-f4a91bfd0d51",
+               "47345c71-1ea9-422a-816e-ba6d68d697c0"):
+        inspect("/api/v1/cards/"+id+"/provenance")
+        inspect("/api/v1/cards/"+id)
+
 if __name__ == "__main__":
-    for path in ENDPOINTS:
-        inspect(path)
+    coverage()
