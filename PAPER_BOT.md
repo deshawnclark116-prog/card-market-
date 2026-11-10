@@ -1,5 +1,47 @@
 # Card Market: $100 / 30-day autonomous paper challenge
 
+## Full-season skill evolution — now active
+
+The daily GitHub scout no longer discards games outside the final 84-game
+window. For each of up to 88 **raw-stat-selected** MiLB hitters, it preserves
+**every available 2026 regular-season player game** from the first to the
+last. The list of 88 is a preselected sample, **not all 3,527 MiLB season
+records**. This is a transparent coverage limit.
+
+The new source-only development tracker records:
+
+- **Complete per-game history:** official player date, game ID, team,
+  plate appearances, at-bats, hits, doubles, triples, HR, walks, strikeouts,
+  and other available hitting counts.
+- **Chronological non-overlapping 14-game blocks** from season start through
+  season end, including the final partial block, with PA, AVG/OBP/SLG/OPS,
+  ISO, K%, BB%, HR and contact opportunity counts.
+- **Every-seven-game checkpoints** with rolling 7-, 14- and 28-game
+  performance, plus cumulative season and current-team totals.
+- **As-of evidence events** identifying the first observed uptrend,
+  the later falloff, flat/unclear stretches, and potential rebounds.
+  Earlier uptrends that no longer qualify for an early breakout TODAY
+  are retained in a separate cooling/regressing research table.
+- **Context guards:** games are never mixed across different teams or
+  lengthy 21+-day gaps in a single before/after comparison. Full-season
+  history still includes the games on both sides of any change.
+- **Previous 14v14, 28v28 and 42v42 checks** remain as recent
+  evidence and sample-quality gates. They do not replace the
+  full-season timeline.
+
+Detailed data is automatically published at
+[data/card_bot_full_season_latest.json](data/card_bot_full_season_latest.json);
+the human-readable highlights appear in
+[CARD_BOT_DASHBOARD.md](CARD_BOT_DASHBOARD.md). These histories show
+*what was observed up to each date*, not that the bot successfully
+predicted the move at that earlier date. There is no retrospective
+backfilling of future games into earlier checkpoints.
+
+**These phases are descriptive, not calibrated breakout odds.** The
+current 2026 regular-season MiLB record is already finished in November.
+Collector attention and usable exact-card prices remain unverified.
+The $100 paper bankroll does not buy on season-history scores.
+
 ## Mission: find early talent BEFORE mainstream card hype
 
 The bot's previous MLB season-over-season xwOBA leaderboard was not a

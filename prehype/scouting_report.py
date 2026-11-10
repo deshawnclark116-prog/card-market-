@@ -129,6 +129,7 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             "time_context": candidate.get("timeContext"),
             "market_exposure": candidate.get("marketExposure"),
             "early_signal": candidate.get("earlySignal"),
+            "season_trajectory": candidate.get("seasonTrajectory"),
             "deal_score_not_probability": candidate.get("dealScore"),
             "breakout_score_not_probability": candidate.get("breakoutScore"),
             "hype_pct": candidate.get("hypePct") if candidate.get("cardHypeVerified") is not False else None,
@@ -186,7 +187,12 @@ def to_markdown(data):
                   "- MiLB season rows read: **" + str(discovery.get("season_stat_rows",0)) + "**",
                   "- Player game-log feeds with data: **" + str(discovery.get("game_log_records_available_for_players",0)) + "**",
                   "- Skill-change candidates: **" + str(discovery.get("independent_skill_changes_found",0)) + "**",
-                  "- Comparison periods: **14v14, 28v28, 42v42** (up to 84 games of history); longer periods are overlapping diagnostics, not independent trials",
+                  "- Full-season tracking: **every available game** from first to last in a sampled player's season, including earlier streaks, slumps, rebounds and team changes",
+                  "- Players with complete development histories: **" + str(discovery.get("full_season_player_histories", 0)) + "**",
+                  "- Individual game observations retained: **" + str(discovery.get("total_player_games_recorded", 0)) + "**",
+                  "- Compare all-season 14-game blocks plus **rolling 7/14/28-game checkpoints**, saved every seven games and at the last game",
+                  "- Separate most recent comparison periods: **14v14, 28v28, 42v42** (up to 84 recent games); those overlapping horizons do not determine the entire seasonal history",
+                  "- [**Open full-season player-by-player game logs, block stats and rise/fall events**](data/card_bot_full_season_latest.json)",
                   "- Evidence tiers: **" + _clean(discovery.get("evidence_tier_counts") or {}) + "**",
                   "- Levels unavailable: **" + _clean(discovery.get("minor_league_levels_missing") or "none") + "**",
                   "- Major-league exposure filter: **" + ("available" if discovery.get("exposure_filter_source_available") else "UNAVAILABLE — exposure unconfirmed") + "**",
@@ -206,6 +212,36 @@ def to_markdown(data):
             lines.append("")
         if not discovery.get("public_top100_source_available"):
             lines += ["**Public ranking check unavailable — nobody is labeled 'unhyped'.**", ""]
+        phases = discovery.get("full_season_phase_counts") or {}
+        if phases:
+            lines += ["", "### Across the full season: what happened to every analyzed hitter?", "",
+                      "These phase counts include **all sampled hitters**, not merely today's top breakout signals. "
+                      "A player who rose in June but fell in August remains in the research archive.",
+                      "",
+                      "| Development phase (descriptive) | Players |",
+                      "|---|---:|"]
+            for key,amount in sorted(phases.items(),key=lambda x:(-x[1],x[0])):
+                lines.append(f"| {_clean(key.replace('_',' '))} | {amount} |")
+            lines.append("")
+        earlier = discovery.get("historical_uptrend_now_not_rising") or []
+        if earlier:
+            lines += ["", "### Earlier season improvement that later faded or became unclear", "",
+                      "**Research-only:** this is the falling-off / cooling-off detector. These names "
+                      "are **NOT** recommended card buys. Disappearing from today's breakout list "
+                      "does not mean the earlier improvement never occurred.",
+                      "",
+                      "| Player | Level | Games tracked | Earlier uptrend first seen | Current phase | Last game |",
+                      "|---|---|---:|---|---|---|"]
+            for item in earlier[:20]:
+                lines.append(
+                    f"| {_clean(item['name'])} | {_clean(item['level'])} | "
+                    f"{item['games_available']} | {_clean(item.get('first_observed_uptrend'))} | "
+                    f"{_clean(item.get('development_phase','').replace('_',' '))} | "
+                    f"{_clean(item.get('last_game'))} |"
+                )
+            if len(earlier)>20:
+                lines.append(f"More histories ({len(earlier)-20}) are in the full-season JSON.")
+            lines.append("")
     market = data.get("market_data") or {}
     if market:
         lines += ["", "## Live pricing diagnostics", "",
@@ -234,8 +270,8 @@ def to_markdown(data):
                 "Longer-window evidence is ranked ahead of short-lived spikes. "
                 "None are confirmed cheap or unnoticed cards.",
                 "",
-                "| Evidence rank | Player | Level | Age | Persistence tier | Heuristic score | Last game | Collector interest |",
-                "|---:|---|---|---:|---|---:|---|---|",
+                "| Evidence rank | Player | Level | Age | Games tracked | Full-season phase | Latest persistence tier | Heuristic score | Market hype |",
+                "|---:|---|---|---:|---:|---|---|---:|---|",
             ]
             tier_names = {
                 "SUSTAINED_ACROSS_14_28_42":"SUSTAINED — three horizons",
@@ -247,11 +283,13 @@ def to_markdown(data):
             for p in data["players"]:
                 signal=p.get("early_signal") or {}
                 tier=signal.get("evidence_tier")
+                trajectory=p.get("season_trajectory") or {}
                 lines.append(
                     f"| {p['rank']} | {_clean(p['name'])} | {_clean(p.get('level'))} | "
-                    f"{_clean(p.get('age'))} | {_clean(tier_names.get(tier,tier or 'UNKNOWN'))} | "
-                    f"{_clean(p.get('breakout_score_not_probability'))} | "
-                    f"{_clean(signal.get('last_game'))} | **NOT VERIFIED** |"
+                    f"{_clean(p.get('age'))} | {_clean(trajectory.get('games_available'))} | "
+                    f"{_clean((trajectory.get('development_phase') or 'UNKNOWN').replace('_',' '))} | "
+                    f"{_clean(tier_names.get(tier,tier or 'UNKNOWN'))} | "
+                    f"{_clean(p.get('breakout_score_not_probability'))} | **NOT VERIFIED** |"
                 )
             lines += [
                 "",
@@ -285,6 +323,63 @@ def to_markdown(data):
                         f"({old['pa']}/{new['pa']} PA) | {a_k} | {a_bb} | "
                         f"{a_iso} | {_clean(supported)} | {verdict} |"
                     )
+            if any(p.get("season_trajectory") for p in data["players"]):
+                lines += [
+                    "",
+                    "## Full-season progression: 14-game blocks, beginning to end",
+                    "",
+                    "Each line represents a **separate chronological block** of games. "
+                    "The final block may be shorter. Blocks never mix players' "
+                    "different teams or long layoffs; the full per-game audit also "
+                    "contains rolling 7/14/28-game checkpoints.",
+                    "",
+                    "| Player | Team stint | Games in stint | Through | PA | AVG | OBP | SLG | ISO | K% | BB% | HR |",
+                    "|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+                ]
+                def f_stat(obj,key,pct=False):
+                    val=obj.get(key)
+                    if val is None:
+                        return "—"
+                    return f"{val:.1%}" if pct else f"{val:.3f}"
+                for p in data["players"]:
+                    for block in (p.get("season_trajectory") or {}).get("season_blocks", []):
+                        stats=block["stats"]
+                        period=f"{block['game_start']}-{block['game_end']}"
+                        if block.get("partial"):
+                            period+=" (partial)"
+                        lines.append(
+                            f"| {_clean(p['name'])} | {block['stint']} / {_clean(block['team'])} | "
+                            f"{period} | {_clean(block['last_date'])} | {stats['pa']} | "
+                            f"{f_stat(stats,'avg')} | {f_stat(stats,'obp')} | "
+                            f"{f_stat(stats,'slg')} | {f_stat(stats,'iso')} | "
+                            f"{f_stat(stats,'k_pct',True)} | "
+                            f"{f_stat(stats,'bb_pct',True)} | {stats['hr']} |"
+                        )
+                lines += [
+                    "",
+                    "### When the rolling game statistics changed direction",
+                    "",
+                    "Events below are **as-of observations** of a 14v14 comparison "
+                    "at the date shown—not predictions made on that date.",
+                    "",
+                    "| Player | As of | Season game | Observed direction | K% Δ | BB% Δ | ISO Δ |",
+                    "|---|---|---:|---|---:|---:|---:|",
+                ]
+                for p in data["players"]:
+                    for event in (p.get("season_trajectory") or {}).get("phase_events", []):
+                        changes=event["deltas"]
+                        lines.append(
+                            f"| {_clean(p['name'])} | {_clean(event['as_of'])} | "
+                            f"{event['season_game']} | {_clean(event['direction'])} | "
+                            f"{changes['K']:+.1%} | {changes['BB']:+.1%} | "
+                            f"{changes['ISO']:+.3f} |"
+                        )
+                lines += [
+                    "",
+                    "A sudden jump may still be sampling noise or reflect unmodeled "
+                    "opponents, ballparks, fatigue or injuries. The historical timeline "
+                    "does not establish future breakout odds or cheap card prices.",
+                ]
             lines += [
                 "",
                 "**Interpretation:** A big 14-game move with no 28-game support "

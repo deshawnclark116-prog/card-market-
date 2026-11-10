@@ -36,6 +36,13 @@ players; discovery itself is based entirely on raw baseball data.
 
 The scouting dashboard now shows age, minor-league level, precise skill
 changes, last played date, and players removed for already being recognized.
+It also tracks **every available MiLB game in each sampled player's full
+2026 season**, not just recent 84-game summaries: 14-game chronology, rolling
+7/14/28-game development, rising/declining/flattening/rebounding events,
+and player-specific promotions or long-gap boundaries.
+The automatic [full-season audit file](data/card_bot_full_season_latest.json)
+contains every observed game for the sampled cohort, including earlier
+breakouts that no longer look strong today.
 Card-specific collector interest and affordable buyable cards remain
 unverified until reliable free public records can prove them. **The $100
 paper-trading ledger stays untouched until then.** No accounts are needed.
