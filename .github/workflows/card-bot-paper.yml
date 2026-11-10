@@ -31,6 +31,9 @@ jobs:
           pip install -e . pytest
       - name: Test (offline)
         run: python -m pytest -q
+      - name: Probe anonymous public card-price API
+        if: github.event_name == 'pull_request'
+        run: python scripts/probe_public_card_prices.py
       - name: Run 30-day paper experiment
         if: github.event_name != 'pull_request'
         env:
