@@ -36,6 +36,7 @@ jobs:
         env:
           EBAY_OAUTH_TOKEN: ${{ secrets.EBAY_OAUTH_TOKEN }}
           EBAY_PROXY_URL: ${{ secrets.EBAY_PROXY_URL }}
+          SOLDGRAPH_KEY: ${{ secrets.SOLDGRAPH_KEY }}
         run: python -m prehype.paper_bot run --ledger data/card_bot_100.json
       - name: Show scouting results in GitHub Actions summary
         if: github.event_name != 'pull_request'
@@ -50,7 +51,7 @@ jobs:
         run: |
           git config user.name "card-bot"
           git config user.email "card-bot@users.noreply.github.com"
-          git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json
+          git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json data/card_bot_market_monitor.json
           if [ -f data/card_bot_100.json ]; then
             git add data/card_bot_100.json
           fi
