@@ -22,6 +22,7 @@ TRIAL_DAYS = 30
 MAX_ENTRY_CENTS = 2_500
 MAX_POSITIONS = 5
 MAX_BUYS_PER_DAY = 1
+MARK_TTL_DAYS = 7
 MIN_COMPS = 5
 RECENT_DAYS = 45
 FRESH_SALE_DAYS = 14
@@ -270,7 +271,11 @@ def report(state: dict, today: date) -> dict:
     for p in state["positions"]:
         mark = p.get("last_mark_cents")
         mark_day = p.get("last_mark_date")
-        is_fresh = (mark is not None and mark_day == today.isoformat())
+        try:
+            mark_age = (today - date.fromisoformat(mark_day)).days
+        except (TypeError, ValueError):
+            mark_age = 999
+        is_fresh = mark is not None and 0 <= mark_age <= MARK_TTL_DAYS
         if not is_fresh:
             stale += 1
         exit_value = _liquidation_value(int(mark)) if mark is not None else None
@@ -283,7 +288,8 @@ def report(state: dict, today: date) -> dict:
             "last_reference_median_usd": round(mark / 100, 2) if mark is not None else None,
             "estimated_net_exit_usd": round(exit_value / 100, 2) if exit_value is not None else None,
             "mark_date": mark_day,
-            "mark_fresh_today": is_fresh,
+            "mark_fresh_today": mark_day == today.isoformat(),
+            "mark_within_7_days": is_fresh,
             "note": "Card category proxy; not a specific verified listing",
         })
     gross_paper_value = state["cash_cents"] + estimated_net
@@ -304,7 +310,8 @@ def report(state: dict, today: date) -> dict:
                                   if stale == 0 else None),
         "important": ("Estimated liquidation is NOT realized profit and assumes "
                       "a buyer exists at the recent sold median. All entries "
-                      "are synthetic category-level fills, not matched live listings."),
+                      "are simulated fills from active listing snapshots where available; "
+                      "last valuation may be up to 7 days old. No real transaction occurs."),
     }
 
 
@@ -341,7 +348,7 @@ def main() -> int:
             c["cards"] = {"Bowman 1st auto": {}, "Rookie auto": {}}
             c["dealScore"] = None  # no pretend deal score without sold prices
             c["priceTrend"] = None
-        lookup.prime(candidates, today)
+        lookup.prime(candidates, today, positions=state["positions"])
         for c in candidates:
             for card in ("Bowman 1st auto", "Rookie auto"):
                 quote = lookup.lookup(c["name"], card, today)
