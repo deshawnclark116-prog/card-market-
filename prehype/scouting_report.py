@@ -55,16 +55,16 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
         name = str(candidate.get("name") or "").strip()
         score_reasons = _score_reasons(candidate)
         checks = []
-        for card in CARDS:
-            if card not in (candidate.get("cards") or {}):
-                continue
+        for card in (candidate.get("cards") or {}):
             quote = (lookup.peek(name, card, day) if hasattr(lookup, "peek") else lookup(name, card, day)) if name else None
             fresh = _quote_is_fresh(quote, day)
             median_cents = int(quote["median_cents"]) if fresh else None
-            entry_cents = _entry_cost(median_cents) if fresh else None
+            entry_cents = ((int(round(median_cents * 1.10)) + 350)
+                           if fresh and quote.get("source") == "cardpricer_public_exact_sold_proxy"
+                           else (_entry_cost(median_cents) if fresh else None))
             reasons = list(score_reasons)
             if not fresh:
-                reasons.append("no reliable fresh sold comps (5 within 45 days; latest within 14)")
+                reasons.append("no 5 independently title-matched recent sales of this EXACT card/grade")
             elif median_cents < 500:
                 reasons.append("reference price under 5 dollars")
             elif entry_cents > MAX_ENTRY_CENTS:
@@ -77,6 +77,8 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
                 decision = "PAPER BOUGHT TODAY"
             elif identity in held_ids or name.casefold() in held_players:
                 decision = "ALREADY HELD"
+            elif not fresh and hasattr(lookup, "cards_found"):
+                decision = "PRICE GUIDE ONLY (NOT VERIFIED BUY)"
             elif not fresh and not was_checked and hasattr(lookup, "peek"):
                 decision = "NOT CHECKED (API QUOTA)"
                 reasons = ["Daily request budget: checking one reference card per day"]
@@ -89,6 +91,8 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             checks.append({
                 "card": card, "decision": decision, "reasons": reasons,
                 "sold_median_usd": round(median_cents/100,2) if fresh else None,
+                "catalog_guide_price_usd": (candidate.get("cards") or {}).get(card,{}).get("price"),
+                "card_id": (candidate.get("cards") or {}).get(card,{}).get("card_id"),
                 "all_in_paper_usd": round(entry_cents/100,2) if fresh else None,
                 "sold_comps": int(quote["comps"]) if quote else None,
                 "last_sale": quote.get("last_sale") if quote else None,
@@ -97,7 +101,10 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
                 "listing_title": quote.get("listing_title") if quote else None,
                 "variant_key": quote.get("variant_key") if quote else None,
                 "active_offer_all_in_usd": round(int(quote["all_in_ask_cents"])/100,2) if quote and quote.get("all_in_ask_cents") else None,
-                "note": "Only an active-listing snapshot, not a completed purchase; fresh sold comps match a conservative variant key",
+                "provenance_url": quote.get("provenance_url") if quote else None,
+                "note": ("Exact card-grade verified sold-price PAPER proxy; no live listing"
+                         if quote and quote.get("source") == "cardpricer_public_exact_sold_proxy"
+                         else "Unverified price guide unless exact sold comps exist"),
             })
         players.append({
             "rank": index, "name": name,
@@ -111,7 +118,7 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
         })
     return {
         "as_of": day.isoformat(), "status": run_status,
-        "source": "LIVE existing MLB top-15 scanner, never demo",
+        "source": "LIVE MLB scanner plus public anonymous card sales; never demo",
         "players_screened": len(players),
         "players": players, "paper_buys_today": list(buys),
         "portfolio": report(state, day),
@@ -131,7 +138,8 @@ def to_markdown(data):
     lines = [
         "# Card Bot — Daily Scouting Board", "",
         f"**Last scan:** {data['as_of']} | **Status:** {_clean(data['status'])}", "",
-        "**Paper-only experiment:** these are category-level sold-price proxies, not active items for sale.",
+        "**Paper-only experiment:** verified reference-card sold-price proxies, not active offers. "
+        "Catalog price estimates are NEVER used as paper purchase prices.",
         "", "## Current paper bankroll", "",
         f"- Cash remaining: **{_money(port['cash_remaining_usd'])}**",
         f"- Paper purchases recorded: **{port['number_of_paper_buys']}**",
@@ -142,12 +150,13 @@ def to_markdown(data):
     market = data.get("market_data") or {}
     if market:
         lines += ["", "## Live pricing diagnostics", "",
-                  "- Provider: Soldgraph (eBay sold and active listing snapshots)",
-                  "- API key configured: **" + ("YES" if market.get("configured") else "NO") + "**",
-                  "- New price searches today: **" + str(market.get("searches_used_today", 0)) + "**",
-                  "- Card searched: **" + _clean(market.get("checked_card")) + "**",
+                  "- Provider: **[CardPricer public anonymous API](https://cardpricer.co)** (no key/account)",
+                  "- HTTP requests this scan: **" + str(market.get("requests_used", 0)) + "**",
+                  "- MLB players checked for public cards: **" + str(market.get("players_checked", 0)) + "**",
+                  "- Catalog cards discovered: **" + str(market.get("catalog_card_rows", 0)) + "**",
+                  "- Exact variant prices with >=5 independently title-matched sales: **" + str(market.get("card_variants_with_independent_five_sale_match", 0)) + "**",
                   "- Feed status: **" + _clean(market.get("last_error") or "No API error reported") + "**",
-                  "- Data searched only for selected players; unpriced players are not failures.", ""]
+                  "- These catalog prices are INDICATIVE and NOT proof of available inventory.", ""]
     if not port["positions"]:
         lines.append("No paper holdings yet.")
     else:
@@ -164,13 +173,12 @@ def to_markdown(data):
             trend = f"{float(p['price_trend'])*100:+.1f}%" if p["price_trend"] is not None else "unknown"
             lines.append(f"| {p['rank']} | {_clean(p['name'])} | {_clean(p['deal_score_not_probability'])} | {_clean(p['breakout_score_not_probability'])} | {_clean(p['hype_pct'])}% | {trend} |")
         lines += ["", "## Each card checked and why", "",
-                  "| Player | Card | Sold median | Comps | Active listing | Decision | Reasons |",
-                  "|---|---|---:|---:|---|---|---|"]
+                  "| Player | Exact card and grade | Guide only | Verified sold median | Verified sales | Decision | Reasons |",
+                  "|---|---|---:|---:|---:|---|---|"]
         for p in data["players"]:
             for c in p["checks"]:
                 reasons = "; ".join(c["reasons"]) or "Meets filters; daily limit/ranking may apply"
-                offer = ("[Offer](" + c["listing_url"] + ") (" + _money(c["active_offer_all_in_usd"]) + " all-in)" if c.get("listing_url") else "none")
-                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {offer} | {_clean(c['decision'])} | {_clean(reasons)} |")
+                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | {_money(c['catalog_guide_price_usd'])} | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {_clean(c['decision'])} | {_clean(reasons)} |")
         lines += ["", "## Player skill-change explanations", ""]
         for p in data["players"]:
             if p["reason"]:
