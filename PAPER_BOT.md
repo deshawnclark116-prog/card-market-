@@ -1,5 +1,45 @@
 # Card Market: $100 / 30-day autonomous paper challenge
 
+## Mission: find early talent BEFORE mainstream card hype
+
+The bot's previous MLB season-over-season xwOBA leaderboard was not a
+pre-hype prospect radar. That funnel could rank already prominent players.
+As of November 10, 2026, discovery is rebuilt around **MiLB hitters**.
+
+The live source is the official **free MLB StatsAPI**. The new detector
+looks at the most recent 14 games against the preceding 14 games for a
+player, using K% (plate contact/discipline), BB% (strike-zone recognition)
+and ISO (extra-base-hit power). It requires two of these to improve, enough
+plate appearances in both windows, appropriate age for the level, and no
+unmodeled team-level switch. A sample-size discount limits overconfidence.
+The ranking is a HEURISTIC for further investigation, not a calibrated
+probability that the player's cards will appreciate.
+
+**Already known?** A public MLB Pipeline Top-100 ranking is a veto,
+not a discovery source. We use publicly visible rankings only to identify
+players who have already attracted mainstream prospect attention. A name
+not appearing on that list is **not proof** it is un-hyped among collectors.
+Card-specific collector attention, and exact listed/sold prices, must be
+established separately before a buy can be authorized. Google searches
+relative to Aaron Judge are NOT a valid collector-hype test.
+
+The output separates:
+1. **Early skill evidence:** recent underlying skill-change and uncertainty.
+2. **Prior recognition:** major-league playing-time and public ranking vetoes.
+3. **Card price and hobby hype:** often UNKNOWN with free sources; no fake cheap
+   prices or simulated trades from incomplete card-value guides.
+
+**November is the MiLB offseason.** The newest 2026 player games were months
+ago. The report explicitly labels this as a retrospective 2026 candidate list
+for offseason follow-up, not a real-time November breakout.
+
+The current leading-signal radar covers MiLB **hitters**. Minor-league
+pitcher-specific velocity, K/BB, pitch mix and workload tracking have not
+been implemented; pretending those are already measured would be misleading.
+The user needs NO new account or API key. Github Actions refreshes the
+board daily. The $100 challenge remains paper-only and cannot start until
+a genuinely actionable, affordable, underpriced player card is verified.
+
 > **November 10 price/hype integrity alert:** The old catalog displayed a
 > plausible-looking $18.02 mark for a Jac Caglianone Bowman autograph while
 > independently published graded references were in the hundreds. The previous
@@ -15,7 +55,7 @@ transfers funds, or claims a real completed trade.
 ## What the active bot actually does
 
 - Starts with $100 in **paper money only**.
-- Uses MLB skill-change data and Google Trends to rank up to 30 players.
+- Uses official 2026 minor-league **player game logs** to find two-window skill changes before adding card references.
 - Uses CardPricer's **public anonymous API** for reference identities,
   but does not trust or display its dollar price marks as market values.
 - Does not call a guide price a real trade. Every eligible buy requires at

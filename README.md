@@ -23,6 +23,24 @@ reliable eBay sold-comps are missing and the 30-day clock has not started.
 It uses **paper-only, category-level sold-comparable prices**, not verified
 buyable listings. Current discovery covers the existing MLB pipeline only.
 
+### The actual pre-hype prospect mission
+
+**Find a minor-leaguer whose underlying contact, discipline and developing
+power are improving BEFORE his reputation and Bowman-card prices react.**
+This is different from chasing MLB players after a strong year. The Card Bot
+daily research workflow now discovers age-appropriate MiLB hitters from
+official MLB game logs, compares two consecutive 14-game windows of K%,
+BB% and ISO, and rejects players already appearing in a publicly checked
+Top-100 prospect ranking. Ranking information is used only to VETO famous
+players; discovery itself is based entirely on raw baseball data.
+
+The scouting dashboard now shows age, minor-league level, precise skill
+changes, last played date, and players removed for already being recognized.
+Card-specific collector interest and affordable buyable cards remain
+unverified until reliable free public records can prove them. **The $100
+paper-trading ledger stays untouched until then.** No accounts are needed.
+See [full pre-hype methodology](PAPER_BOT.md).
+
 ### $100 Card Bot: public card data, zero accounts
 
 **Important data-quality audit (November 10, 2026):** public vendor card

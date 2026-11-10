@@ -37,6 +37,17 @@ jobs:
           pip install -e . pytest
       - name: Test (offline)
         run: python -m pytest -q
+      - name: Live MiLB data-feed smoke test (PR only)
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 3
+        run: |
+          python - <<'PY'
+          from prehype.early_radar import scan_early_prospects
+          rows, meta = scan_early_prospects(max_logs=16)
+          print("SOURCE_DIAGNOSTICS", meta, flush=True)
+          for row in rows[:8]:
+              print("EARLY_SIGNAL", row["name"], row["breakoutScore"], row["reason"], flush=True)
+          PY
       - name: Run 30-day paper experiment
         if: github.event_name != 'pull_request'
         run: python -m prehype.paper_bot run --ledger data/card_bot_100.json

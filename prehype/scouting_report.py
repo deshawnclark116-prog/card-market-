@@ -122,6 +122,12 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
         players.append({
             "rank": index, "name": name,
             "position": candidate.get("position"),
+            "level": candidate.get("level"),
+            "age": candidate.get("age"),
+            "player_id": candidate.get("playerId"),
+            "time_context": candidate.get("timeContext"),
+            "market_exposure": candidate.get("marketExposure"),
+            "early_signal": candidate.get("earlySignal"),
             "deal_score_not_probability": candidate.get("dealScore"),
             "breakout_score_not_probability": candidate.get("breakoutScore"),
             "hype_pct": candidate.get("hypePct") if candidate.get("cardHypeVerified") is not False else None,
@@ -164,6 +170,39 @@ def to_markdown(data):
         f"- Estimated net liquidation, not realized: **{_money(port['indicative_net_liquidation_usd']) if port['indicative_net_liquidation_usd'] is not None else 'unavailable due to stale marks'}**",
         "", "## Paper holdings", "",
     ]
+    discovery = data.get("discovery") or {}
+    if discovery:
+        lines += ["",
+                  "## What the bot is actually hunting", "",
+                  "**GOAL:** Younger MiLB players whose strikeout discipline, walk discipline "
+                  "and extra-base-hit production are improving *before* public recognition. "
+                  "This is **NOT** a ranked list of hyped MLB breakout stars.", "",
+                  "- Discovery source: **Official MLB StatsAPI minor-league season stats and player game logs**",
+                  "- Season reviewed: **" + str(discovery.get("season","?")) + "**",
+                  "- Context: **" + ("OFFSEASON / retrospectively reviewing last season (no new games today)"
+                                    if discovery.get("offseason") else
+                                    "IN-SEASON / recent games") + "**",
+                  "- MiLB season rows read: **" + str(discovery.get("season_stat_rows",0)) + "**",
+                  "- Player game-log feeds with data: **" + str(discovery.get("game_log_records_available_for_players",0)) + "**",
+                  "- Skill-change candidates: **" + str(discovery.get("independent_skill_changes_found",0)) + "**",
+                  "- Levels unavailable: **" + _clean(discovery.get("minor_league_levels_missing") or "none") + "**",
+                  "- Major-league exposure filter: **" + ("available" if discovery.get("exposure_filter_source_available") else "UNAVAILABLE — exposure unconfirmed") + "**",
+                  "- A skill-change signal is NOT proof of low card-market hype or a fair card price.",
+                  ""]
+        already = discovery.get("already_publicized_excluded") or []
+        if already:
+            lines += ["### Already-publicized names removed from early shortlist", "",
+                      "These players passed some raw skill-change checks, but are "
+                      "already publicly ranked prospects. **They are NOT pre-hype picks.**", "",
+                      "| Player | Skill score (not probability) | Reason for exclusion |",
+                      "|---|---:|---|"]
+            for player in already:
+                lines.append(f"| {_clean(player['name'])} | "
+                             f"{_clean(player.get('skill_score'))} | "
+                             f"[Already on a published Top-100 list]({discovery.get('public_top100_source')}) |")
+            lines.append("")
+        if not discovery.get("public_top100_source_available"):
+            lines += ["**Public ranking check unavailable — nobody is labeled 'unhyped'.**", ""]
     market = data.get("market_data") or {}
     if market:
         lines += ["", "## Live pricing diagnostics", "",
@@ -186,22 +225,42 @@ def to_markdown(data):
     if not data["players"]:
         lines.append("**No candidates returned.** This may mean source coverage was empty or unavailable; it does not imply no good cards exist.")
     else:
-        lines += [
-            "**Ranked by underlying skill change when verified deal scores are unavailable.**",
-            "Search-interest percentages are RELATIVE TO AARON JUDGE over the last three months, NOT percentages of market hype.",
-            "",
-            "| Skill rank | Player | Breakout score | Searches vs. Judge | Collector hype | Verified deal score |",
-            "|---:|---|---:|---:|---|---:|",
-        ]
-        for p in data["players"]:
-            ratio = p.get("search_interest_vs_aaron_judge_pct")
-            shown = ("not available" if ratio is None else f"{ratio}% of Judge")
-            lines.append(
-                f"| {p['rank']} | {_clean(p['name'])} | "
-                f"{_clean(p['breakout_score_not_probability'])} | {shown} | "
-                f"{_clean(p['collector_hype_status'])} | "
-                f"{_clean(p['deal_score_not_probability'])} |"
-            )
+        if discovery:
+            lines += [
+                "**Early-signal strength is a heuristic, NOT a profit probability.** "
+                "Rows are MiLB prospect candidates, NOT confirmed cheap or unnoticed cards.",
+                "",
+                "| Signal rank | Player | MiLB level | Age | Early-skill score | Recent K% | Recent BB% | ISO change | Last game | Market attention |",
+                "|---:|---|---|---:|---:|---:|---:|---:|---|---|",
+            ]
+            for p in data["players"]:
+                signal=p.get("early_signal") or {}
+                current=signal.get("new") or {}
+                oldstats=signal.get("old") or {}
+                k=(f"{current['k_pct']:.1%}" if current.get("k_pct") is not None else "—")
+                bb=(f"{current['bb_pct']:.1%}" if current.get("bb_pct") is not None else "—")
+                iso=(f"{current['iso']-oldstats['iso']:+.3f}"
+                     if current.get("iso") is not None and oldstats.get("iso") is not None else "—")
+                lines.append(
+                    f"| {p['rank']} | {_clean(p['name'])} | {_clean(p.get('level'))} | "
+                    f"{_clean(p.get('age'))} | {_clean(p.get('breakout_score_not_probability'))} | "
+                    f"{k} | {bb} | {iso} | {_clean(signal.get('last_game'))} | "
+                    "**NOT VERIFIED QUIET** |"
+                )
+        else:
+            lines += [
+                "**Ranked by underlying skill change when verified deal scores are unavailable.**",
+                "Search interest is NOT verified card-collector demand.", "",
+                "| Skill rank | Player | Breakout score | Searches vs. Judge | Collector hype | Verified deal score |",
+                "|---:|---|---:|---:|---|---:|",
+            ]
+            for p in data["players"]:
+                ratio=p.get("search_interest_vs_aaron_judge_pct")
+                shown=("not available" if ratio is None else f"{ratio}% of Judge")
+                lines.append(f"| {p['rank']} | {_clean(p['name'])} | "
+                             f"{_clean(p['breakout_score_not_probability'])} | {shown} | "
+                             f"{_clean(p['collector_hype_status'])} | "
+                             f"{_clean(p['deal_score_not_probability'])} |")
         lines += ["", "## Card identity watchlist — not buy prices", "",
                   "The public feed supplied some grossly inconsistent catalog estimates. They are retained in the machine-readable audit record, NOT shown as actionable prices.",
                   "",
@@ -215,6 +274,10 @@ def to_markdown(data):
         for p in data["players"]:
             if p["reason"]:
                 lines.append(f"- **{_clean(p['name'])}:** {_clean(p['reason'])}")
+        if discovery:
+            lines += ["", "**Why it isn't a buy:** the bot has measured early MiLB skill changes, "
+                      "but cannot yet verify card-specific collector attention and an "
+                      "affordable active purchase price. No fabricated trades."]
     lines += ["", "---", "Not a guarantee of profits. No catalog guide value is a real offer. Scores are NOT probabilities. Card-collector interest is NOT measured. No NBA/NFL discovery in this version.", ""]
     return "\n".join(lines)
 
