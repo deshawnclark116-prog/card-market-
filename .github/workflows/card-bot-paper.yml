@@ -67,7 +67,7 @@ jobs:
         run: |
           git config user.name "card-bot"
           git config user.email "card-bot@users.noreply.github.com"
-          git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json data/card_bot_full_season_latest.json
+          git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json data/card_bot_full_season_latest.json data/card_bot_season_players/
           if [ -f data/card_bot_100.json ]; then
             git add data/card_bot_100.json
           fi
