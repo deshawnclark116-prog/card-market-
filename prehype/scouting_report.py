@@ -189,6 +189,20 @@ def to_markdown(data):
                   "- Major-league exposure filter: **" + ("available" if discovery.get("exposure_filter_source_available") else "UNAVAILABLE — exposure unconfirmed") + "**",
                   "- A skill-change signal is NOT proof of low card-market hype or a fair card price.",
                   ""]
+        already = discovery.get("already_publicized_excluded") or []
+        if already:
+            lines += ["### Already-publicized names removed from early shortlist", "",
+                      "These players passed some raw skill-change checks, but are "
+                      "already publicly ranked prospects. **They are NOT pre-hype picks.**", "",
+                      "| Player | Skill score (not probability) | Reason for exclusion |",
+                      "|---|---:|---|"]
+            for player in already:
+                lines.append(f"| {_clean(player['name'])} | "
+                             f"{_clean(player.get('skill_score'))} | "
+                             f"[Already on a published Top-100 list]({discovery.get('public_top100_source')}) |")
+            lines.append("")
+        if not discovery.get("public_top100_source_available"):
+            lines += ["**Public ranking check unavailable — nobody is labeled 'unhyped'.**", ""]
     market = data.get("market_data") or {}
     if market:
         lines += ["", "## Live pricing diagnostics", "",
