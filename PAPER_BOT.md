@@ -29,10 +29,12 @@ The new source-only development tracker records:
   evidence and sample-quality gates. They do not replace the
   full-season timeline.
 
-Detailed data is automatically published at
-[data/card_bot_full_season_latest.json](data/card_bot_full_season_latest.json);
-the human-readable highlights appear in
-[CARD_BOT_DASHBOARD.md](CARD_BOT_DASHBOARD.md). These histories show
+The compact [full-season index](data/card_bot_full_season_latest.json)
+links to **one per-player JSON** under data/card_bot_season_players/2026/.
+Each player file includes ALL recorded games, blocks, rolling checkpoints,
+team stints and inflection events. We separate files so GitHub can actually
+display them without exceeding its regular file-viewer limits. Highlights
+appear in [CARD_BOT_DASHBOARD.md](CARD_BOT_DASHBOARD.md). These histories show
 *what was observed up to each date*, not that the bot successfully
 predicted the move at that earlier date. There is no retrospective
 backfilling of future games into earlier checkpoints.
