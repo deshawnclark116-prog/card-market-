@@ -25,6 +25,15 @@ buyable listings. Current discovery covers the existing MLB pipeline only.
 
 ### $100 Card Bot: public card data, zero accounts
 
+**Important data-quality audit (November 10, 2026):** public vendor card
+price marks were materially inconsistent with independent autograph prices,
+and the old percentage called "hype" was actually player-name Google
+searches relative to Aaron Judge. The dashboard now **hides unverified
+prices**, labels search-interest correctly, and blocks any new paper buys
+until market pricing and collector attention can be validated.
+[Read the data-integrity audit](MARKET_DATA_AUDIT.md).
+
+
 The daily GitHub Actions bot runs MLB skill-change discovery and checks
 [CardPricer's public anonymous API](https://cardpricer.co/docs/api).
 **No external account, API key, secret, proxy or subscription required.**
