@@ -58,7 +58,7 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
         for card in CARDS:
             if card not in (candidate.get("cards") or {}):
                 continue
-            quote = lookup(name, card, day) if name else None
+            quote = (lookup.peek(name, card, day) if hasattr(lookup, "peek") else lookup(name, card, day)) if name else None
             fresh = _quote_is_fresh(quote, day)
             median_cents = int(quote["median_cents"]) if fresh else None
             entry_cents = _entry_cost(median_cents) if fresh else None
@@ -72,10 +72,14 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             elif entry_cents > state["cash_cents"] and card_id(name, card) not in held_ids:
                 reasons.append("insufficient unspent cash")
             identity = card_id(name, card)
+            was_checked = (getattr(lookup, "checked_card", None) == {"player": name, "card": card})
             if identity in bought_ids:
                 decision = "PAPER BOUGHT TODAY"
             elif identity in held_ids or name.casefold() in held_players:
                 decision = "ALREADY HELD"
+            elif not fresh and not was_checked and hasattr(lookup, "peek"):
+                decision = "NOT CHECKED (API QUOTA)"
+                reasons = ["Daily request budget: checking one reference card per day"]
             elif reasons:
                 decision = "PASS"
             elif len(state["positions"]) >= MAX_POSITIONS:
@@ -89,7 +93,11 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
                 "sold_comps": int(quote["comps"]) if quote else None,
                 "last_sale": quote.get("last_sale") if quote else None,
                 "quote_fresh": fresh,
-                "note": "Broad card type; not an exact listing/variant",
+                "listing_url": quote.get("listing_url") if quote else None,
+                "listing_title": quote.get("listing_title") if quote else None,
+                "variant_key": quote.get("variant_key") if quote else None,
+                "active_offer_all_in_usd": round(int(quote["all_in_ask_cents"])/100,2) if quote and quote.get("all_in_ask_cents") else None,
+                "note": "Only an active-listing snapshot, not a completed purchase; fresh sold comps match a conservative variant key",
             })
         players.append({
             "rank": index, "name": name,
@@ -131,6 +139,15 @@ def to_markdown(data):
         f"- Estimated net liquidation, not realized: **{_money(port['indicative_net_liquidation_usd']) if port['indicative_net_liquidation_usd'] is not None else 'unavailable due to stale marks'}**",
         "", "## Paper holdings", "",
     ]
+    market = data.get("market_data") or {}
+    if market:
+        lines += ["", "## Live pricing diagnostics", "",
+                  "- Provider: Soldgraph (eBay sold and active listing snapshots)",
+                  "- API key configured: **" + ("YES" if market.get("configured") else "NO") + "**",
+                  "- New price searches today: **" + str(market.get("searches_used_today", 0)) + "**",
+                  "- Card searched: **" + _clean(market.get("checked_card")) + "**",
+                  "- Feed status: **" + _clean(market.get("last_error") or "No API error reported") + "**",
+                  "- Data searched only for selected players; unpriced players are not failures.", ""]
     if not port["positions"]:
         lines.append("No paper holdings yet.")
     else:
@@ -147,12 +164,13 @@ def to_markdown(data):
             trend = f"{float(p['price_trend'])*100:+.1f}%" if p["price_trend"] is not None else "unknown"
             lines.append(f"| {p['rank']} | {_clean(p['name'])} | {_clean(p['deal_score_not_probability'])} | {_clean(p['breakout_score_not_probability'])} | {_clean(p['hype_pct'])}% | {trend} |")
         lines += ["", "## Each card checked and why", "",
-                  "| Player | Card | Sold median | Comps | Decision | Reasons |",
-                  "|---|---|---:|---:|---|---|"]
+                  "| Player | Card | Sold median | Comps | Active listing | Decision | Reasons |",
+                  "|---|---|---:|---:|---|---|---|"]
         for p in data["players"]:
             for c in p["checks"]:
                 reasons = "; ".join(c["reasons"]) or "Meets filters; daily limit/ranking may apply"
-                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {_clean(c['decision'])} | {_clean(reasons)} |")
+                offer = ("[Offer](" + c["listing_url"] + ") (" + _money(c["active_offer_all_in_usd"]) + " all-in)" if c.get("listing_url") else "none")
+                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {offer} | {_clean(c['decision'])} | {_clean(reasons)} |")
         lines += ["", "## Player skill-change explanations", ""]
         for p in data["players"]:
             if p["reason"]:
