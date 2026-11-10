@@ -192,6 +192,35 @@ def compute_quote(sold_rows, listing_rows, player, card, day: date) -> dict | No
     return quote
 
 
+def compute_variant_mark(sold_rows, player, card, variant, day):
+    """A new value estimate for a HELD exact reference-card variant."""
+    prices=[]
+    cutoff=day-timedelta(days=45)
+    dates=[]
+    for row in sold_rows:
+        if (card_signature(row.get("title"),player,card) != variant
+                or row.get("best_offer_accepted") or row.get("displayed_price_range")):
+            continue
+        try:
+            sold_day=date.fromisoformat(str(row["sold_date"])[:10])
+        except (KeyError,ValueError,TypeError):
+            continue
+        price=listing_amount(row)
+        if price is None or price<=0 or sold_day<cutoff or sold_day>day:
+            continue
+        prices.append(price)
+        dates.append(sold_day)
+    if len(prices)<5 or (day-max(dates)).days>14:
+        return None
+    return {
+        "median_cents":int(round(median(prices))),
+        "comps":len(prices),
+        "last_sale":max(dates).isoformat(),
+        "source":"soldgraph_mark",
+        "variant_key":variant,
+    }
+
+
 class SoldgraphClient:
     def __init__(self, key=None, opener=None, max_searches=MAX_NEW_SEARCHES):
         self.key = key if key is not None else os.environ.get("SOLDGRAPH_KEY", "")
@@ -293,9 +322,47 @@ class SoldgraphQuotes:
 
     peek = lookup
 
-    def prime(self, candidates, day):
+    def prime(self, candidates, day, positions=()):
         if not self.client.key:
             self.monitor["last_provider_error"]="SOLDGRAPH_KEY missing — no pricing requests made"
+            return
+        # With a small free quota, refresh each held card about weekly,
+        # preserving the card's exact matched variant identity.
+        due=[]
+        for position in positions:
+            last=position.get("last_mark_date")
+            if not position.get("variant_key"):
+                continue
+            try:
+                age=(day-date.fromisoformat(last)).days
+            except (ValueError,TypeError):
+                age=99
+            key="MARK|"+position["player"]+"|"+position["card"]
+            checked=self.monitor["attempts"].get(key,{}).get("checked_on")
+            try:
+                recently_tried=(day-date.fromisoformat(checked)).days<3
+            except (ValueError,TypeError):
+                recently_tried=False
+            if age>=5 and not recently_tried:
+                due.append((-age,position,key))
+        if due:
+            due.sort(key=lambda pair: pair[0])
+            _,position,key=due[0]
+            player=position["player"]
+            card=position["card"]
+            query=(player+" bowman chrome 1st auto" if card=="Bowman 1st auto"
+                   else player+" rookie auto")
+            sold=self.client.search("sold",query)
+            mark=compute_variant_mark(sold or [],player,card,
+                                      position["variant_key"],day) if sold is not None else None
+            self.today_quotes[(player,card,day.isoformat())]=mark
+            self.checked_card={"player":player,"card":card}
+            self.monitor["attempts"][key]={
+                "checked_on":day.isoformat(),"mark_refresh":True,
+                "sold_rows":len(sold or []),"quote":mark,
+            }
+            self.monitor["requests_total"] += self.client.searches_used
+            self.monitor["last_provider_error"]=self.client.last_error
             return
         # Examine the strongest qualified-not-held reference we have not just
         # examined in the past week. Rotate instead of wasting 100 free credits
