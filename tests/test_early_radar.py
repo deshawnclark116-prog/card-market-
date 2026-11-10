@@ -88,12 +88,13 @@ def test_early_radar_does_not_rank_by_old_mlb_xwoba_or_cards():
     rows,diag=scan_early_prospects(as_of=DAY,
                                   level_fetch=levels, logs_fetch=loglookup,
                                   exposure_fetch=lambda year:({"11"},True),
+                                  visibility_fetch=lambda names:({n:False for n in names},True),
                                   max_logs=30)
     assert [c["name"] for c in rows]==["A Player Nobody Knows"]
     c=rows[0]
     assert c["hypePct"] is None
     assert not c["cardHypeVerified"]
-    assert c["marketExposure"].startswith("UNKNOWN")
+    assert "HOBBY HYPE UNKNOWN" in c["marketExposure"]
     assert c["dealScore"] is None and not c["cards"]
     assert diag["independent_skill_changes_found"]==1
     assert diag["offseason"]
@@ -116,7 +117,21 @@ def test_raw_game_logs_includes_milb_game_date_and_team():
 def test_insufficient_historical_data_cannot_become_false_pre_hype_claim():
     p=batter()
     rows,diag=scan_early_prospects(as_of=DAY,level_fetch=lambda y,s:[p] if s==12 else [],
-            logs_fetch=lambda pid,year:[], exposure_fetch=lambda y:(set(),False),max_logs=10)
+            logs_fetch=lambda pid,year:[], exposure_fetch=lambda y:(set(),False),
+            visibility_fetch=lambda names:({n:False for n in names},True),max_logs=10)
     assert rows==[]
     assert not diag["exposure_filter_source_available"]
     assert diag["game_log_records_available_for_players"]==0
+
+
+def test_popular_ranked_player_is_excluded_even_if_skill_change_real():
+    a=batter("Famous Ranked Prospect","8","AA",20)
+    b=batter("Obscure Raw Prospect","9","AA",19)
+    rows,diag=scan_early_prospects(
+        as_of=DAY,level_fetch=lambda y,s:[a,b] if s==12 else [],
+        logs_fetch=lambda pid,year:logs(),exposure_fetch=lambda y:(set(),True),
+        visibility_fetch=lambda names:({n:(n=="Famous Ranked Prospect") for n in names},True),
+        max_logs=20)
+    assert [c["name"] for c in rows]==["Obscure Raw Prospect"]
+    assert diag["already_publicized_excluded"][0]["name"]=="Famous Ranked Prospect"
+    assert not rows[0]["cardHypeVerified"]
