@@ -22,6 +22,7 @@ TRIAL_DAYS = 30
 MAX_ENTRY_CENTS = 2_500
 MAX_POSITIONS = 5
 MAX_BUYS_PER_DAY = 1
+MARK_TTL_DAYS = 7
 MIN_COMPS = 5
 RECENT_DAYS = 45
 FRESH_SALE_DAYS = 14
@@ -213,7 +214,9 @@ def simulate_day(state: dict, candidates: list[dict], quote_lookup: QuoteLookup,
             if not _quote_is_fresh(quote, day):
                 continue
             median_cents = int(quote["median_cents"])
-            entry_cents = _entry_cost(median_cents)
+            # Actual observed active ask + known shipping + estimated 6% tax
+            # when supported; never pretend the sold median was a listing.
+            entry_cents = int(quote["all_in_ask_cents"]) if quote.get("source") == "soldgraph" else _entry_cost(median_cents)
             if median_cents < 500 or entry_cents > MAX_ENTRY_CENTS:
                 continue
             if entry_cents > state["cash_cents"]:
@@ -225,6 +228,10 @@ def simulate_day(state: dict, candidates: list[dict], quote_lookup: QuoteLookup,
                 "entry_date": today,
                 "entry_reference_median_cents": median_cents,
                 "entry_total_cents": entry_cents,
+                "listing_url": quote.get("listing_url"),
+                "listing_title": quote.get("listing_title"),
+                "variant_key": quote.get("variant_key"),
+                "entry_basis": "ACTIVE_LISTING_SNAPSHOT" if quote.get("source") == "soldgraph" else "SOLD_MEDIAN_PROXY",
                 "entry_comps": int(quote["comps"]),
                 "deal_score_not_probability": float(candidate["dealScore"]),
                 "breakout_score_not_probability": float(candidate["breakoutScore"]),
@@ -242,6 +249,9 @@ def simulate_day(state: dict, candidates: list[dict], quote_lookup: QuoteLookup,
                 "player": player,
                 "card": card,
                 "entry_total_cents": entry_cents,
+                "listing_url": quote.get("listing_url"),
+                "listing_title": quote.get("listing_title"),
+                "variant_key": quote.get("variant_key"),
                 "reference_median_cents": median_cents,
                 "comps": int(quote["comps"]),
             }
@@ -261,7 +271,11 @@ def report(state: dict, today: date) -> dict:
     for p in state["positions"]:
         mark = p.get("last_mark_cents")
         mark_day = p.get("last_mark_date")
-        is_fresh = (mark is not None and mark_day == today.isoformat())
+        try:
+            mark_age = (today - date.fromisoformat(mark_day)).days
+        except (TypeError, ValueError):
+            mark_age = 999
+        is_fresh = mark is not None and 0 <= mark_age <= MARK_TTL_DAYS
         if not is_fresh:
             stale += 1
         exit_value = _liquidation_value(int(mark)) if mark is not None else None
@@ -274,7 +288,8 @@ def report(state: dict, today: date) -> dict:
             "last_reference_median_usd": round(mark / 100, 2) if mark is not None else None,
             "estimated_net_exit_usd": round(exit_value / 100, 2) if exit_value is not None else None,
             "mark_date": mark_day,
-            "mark_fresh_today": is_fresh,
+            "mark_fresh_today": mark_day == today.isoformat(),
+            "mark_within_7_days": is_fresh,
             "note": "Card category proxy; not a specific verified listing",
         })
     gross_paper_value = state["cash_cents"] + estimated_net
@@ -295,7 +310,8 @@ def report(state: dict, today: date) -> dict:
                                   if stale == 0 else None),
         "important": ("Estimated liquidation is NOT realized profit and assumes "
                       "a buyer exists at the recent sold median. All entries "
-                      "are synthetic category-level fills, not matched live listings."),
+                      "are simulated fills from active listing snapshots where available; "
+                      "last valuation may be up to 7 days old. No real transaction occurs."),
     }
 
 
@@ -320,21 +336,54 @@ def main() -> int:
     today = date.today()
     state = load_ledger(args.ledger, today)
     if args.command == "run":
-        # LIVE only: canned api.DEMO_DATA must never enter the paper ledger.
+        # LIVE only: use existing player discovery, but bypass blocked eBay
+        # scraper for price. Soldgraph independently checks sold AND active cards.
         from prehype.api import run_scan
         from prehype.scouting_report import build_scouting_report, save_scouting_report
-        candidates = run_scan(scan_type="both", top=15, prices=True, hype=True, use_cache=False)
-        lookup = make_live_quote_lookup()
-        if not Path(args.ledger).exists() and not market_data_ready(candidates, lookup, today):
-            status = "WAITING_FOR_LIVE_MARKET_DATA"
+        from prehype.sources.soldgraph import SoldgraphQuotes, save_monitor
+        from prehype.breakouts import _cheap01, _price_asleep
+        candidates = run_scan(scan_type="both", top=15, prices=False, hype=True, use_cache=False)
+        lookup = SoldgraphQuotes()
+        for c in candidates:
+            c["cards"] = {"Bowman 1st auto": {}, "Rookie auto": {}}
+            c["dealScore"] = None  # no pretend deal score without sold prices
+            c["priceTrend"] = None
+        lookup.prime(candidates, today, positions=state["positions"])
+        for c in candidates:
+            for card in ("Bowman 1st auto", "Rookie auto"):
+                quote = lookup.lookup(c["name"], card, today)
+                if not quote:
+                    continue
+                median_price = quote["median_cents"] / 100
+                asleep = _price_asleep(quote["price_trend"])
+                cheap = _cheap01(median_price)
+                base = c.get("sleeperScore") or c.get("breakoutScore") or 0
+                if asleep is None or cheap is None:
+                    continue
+                c["dealScore"] = round(base * asleep * (0.30 + 0.70 * cheap), 1)
+                c["priceTrend"] = quote["price_trend"]
+                c["cards"][card] = {"price": median_price, "comps": quote["comps"]}
+        if not Path(args.ledger).exists() and not market_data_ready(candidates, lookup.lookup, today):
+            status = ("WAITING_FOR_SOLDGRAPH_KEY" if not lookup.client.key
+                      else "WAITING_FOR_VERIFIED_CARD_OFFER")
             run = {"status": status, "candidate_count": len(candidates), "buys": []}
         else:
-            run = simulate_day(state, candidates, lookup, today)
+            run = simulate_day(state, candidates, lookup.lookup, today)
             status = run["status"]
             save_ledger(args.ledger, state)
         scouting = build_scouting_report(candidates, lookup, today, state, status, run["buys"])
+        scouting["market_data"] = {
+            "provider": "Soldgraph sold and active eBay searches",
+            "configured": bool(lookup.client.key),
+            "checked_card": lookup.checked_card,
+            "searches_used_today": lookup.client.searches_used,
+            "last_error": lookup.monitor.get("last_provider_error"),
+            "free_allowance_note": "100 one-time free searches; 2 max per day by default",
+        }
         save_scouting_report(scouting)
+        save_monitor(lookup.monitor)
         print(json.dumps(run, indent=2))
+        print(f"Market: {scouting['market_data']}")
         print(f"Daily scouting board: CARD_BOT_DASHBOARD.md ({scouting['players_screened']} players)")
     print(json.dumps(report(state, today), indent=2))
     return 0

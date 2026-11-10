@@ -63,3 +63,48 @@ Read the daily ledger, card categories chosen, cash remaining, estimated
 net liquidation, pricing freshness and rejection/no-trade days. This is not
 realized profit, and a 30-day experiment is not statistical proof of an edge.
 The trading rules are frozen for the trial, avoiding retrospective tuning.
+
+## Live prices: now using Soldgraph (key required)
+
+The first live scan discovered 15 MLB candidates but no card prices because the
+original eBay scraper is blocked or fails on cloud hosts. The bot now has a
+provider for both eBay **sold** listings and **active Buy It Now** offers.
+
+**Activate it:**
+
+1. Create a key at https://soldgraph.com/ (third-party service).
+2. In the GitHub repository go to **Settings -> Secrets and variables ->
+   Actions -> New repository secret**.
+3. Name it exactly **SOLDGRAPH_KEY** and paste the value. Do not send the
+   key in chat, in issues, or in code.
+4. Under **Actions -> Card Bot $100 Paper Month**, select **Run workflow**.
+5. Read **CARD_BOT_DASHBOARD.md** and the **Live pricing diagnostics** section.
+
+A new Soldgraph account currently advertises **100 free searches total** (one
+time, not monthly). Each screened reference requires **two** queries: recent
+sold and active listings. To conserve this allowance, the bot checks **one
+player-card pair each day** (or refreshes one held exact card by a single sold
+query) and rotates the shortlist. The monitor persists checked dates and
+requests in data/card_bot_market_monitor.json. Never enable a paid plan
+without deciding whether its fees are worth the experiment.
+
+**Buy conditions:** same named player, year, set, raw autograph and card
+number across comparable sales and an actual eBay fixed-price listing; 5
+matching sold transactions in 45 days including 2 from each half and 1 in
+the last 14 days; reject unknown shipping, slabs, numbered parallels,
+reprints, auctions, accepted Best Offers with unknown actual sold prices and
+mismatched grades/variants. The bot records the active listing URL and
+snapshot ask, known shipping, and 6% *estimated* sales tax. It also requires
+at least $2 theoretical room after a 15% selling-fee allowance and $3.50
+outbound shipping. Nothing is purchased from eBay.
+
+**Limits:** These are listing snapshots and title-based matches, NOT
+confirmed actual available inventory at a checkout. Conditions and seller
+details may differ. The code does not capture true destination-dependent
+shipping/tax or exact final sale prices. Zero buys with valid data is an
+honest possible outcome.
+
+The 30-day clock does not start until at least one sufficiently matched,
+priced ACTIVE listing and sold history becomes available. Before that the
+daily monitor and scouting board will still update. P&L uses the newest
+qualifying same-variant sold marks within 7 days, never assumed realized gains.

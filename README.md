@@ -23,6 +23,16 @@ reliable eBay sold-comps are missing and the 30-day clock has not started.
 It uses **paper-only, category-level sold-comparable prices**, not verified
 buyable listings. Current discovery covers the existing MLB pipeline only.
 
+### Turn on the bot's real card-price feed
+
+The $100 paper bot uses an optional **SOLDGRAPH_KEY** GitHub Actions secret
+for a third-party feed of eBay sold transactions *and* active offers.
+Set it under Repository Settings -> Secrets and variables -> Actions, then
+run the Card Bot workflow. It has a no-key/read-only scouting mode but
+cannot paper-buy cards without verified prices. Get setup instructions in
+[PAPER_BOT.md](PAPER_BOT.md). The provider currently offers 100 one-time
+free searches; this bot caps itself at two new searches/day.
+
 ## The thesis
 
 Price is the *last* thing to move. The chain is almost always:
