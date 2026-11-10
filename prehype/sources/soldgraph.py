@@ -30,7 +30,7 @@ DISALLOW = re.compile(
 )
 COLOURS = ("sapphire", "refractor", "purple", "orange", "green", "yellow",
            "black", "blue", "gold", "red", "mojo", "shimmer", "wave", "sparkle")
-EXCLUDE_SERIAL = re.compile(r"\b\d{1,3}\s*/\s*\d{1,3}\b")
+EXCLUDE_SERIAL = re.compile(r"(?:\b\d{1,3}\s*)?/\s*\d{1,3}\b")
 YEARS = re.compile(r"\b20(?:0[0-9]|1[0-9]|2[0-9]|3[0-9])\b")
 NUMBER = re.compile(r"(?:#\s*|\b)((?:bca|cpa|bcp|cda|bcpa|pa|ra|rda)[- ]?[a-z0-9]{1,8})\b", re.I)
 
