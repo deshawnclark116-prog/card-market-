@@ -83,7 +83,9 @@ def test_no_double_position_same_player():
 def test_report_marks_stale_as_unknown_not_profits():
     state = make_ledger(DAY)
     simulate_day(state, [candidate()], quotes(), DAY)
-    rep = report(state, DAY + timedelta(days=1))
+    next_day = report(state, DAY + timedelta(days=1))
+    assert next_day["stale_or_unverified_marks"] == 0  # explicitly seven-day-old valuation window
+    rep = report(state, DAY + timedelta(days=8))
     assert rep["stale_or_unverified_marks"] == 1
     assert rep["indicative_return_pct"] is None
     assert rep["number_of_paper_buys"] == 1
