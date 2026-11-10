@@ -1,6 +1,7 @@
 """Full-season evolution: no early/late observations omitted or leaked."""
+import json
 from datetime import date,timedelta
-from prehype.full_season import full_season_trajectory
+from prehype.full_season import full_season_trajectory,write_full_season_archive
 
 ASOF=date(2026,11,10)
 
@@ -129,3 +130,40 @@ def test_pa_weighted_rates_and_real_extra_base_hits():
     assert stats["iso"]==0.5
     assert stats["slg"]==1.0
     assert stats["avg"]==0.5
+
+
+
+def test_archive_index_and_player_files_are_separately_browsable(tmp_path):
+    rows=make_games([POOR]*3+[BETTER]*4+[FADE]*2)
+    trajectory=full_season_trajectory(rows,ASOF,player_id="987123")
+    profile={"name":"Unnoticed Prospect","player_id":"987123",
+             "age":20,"level":"AA","early_signal_now":False,
+             "trajectory":trajectory}
+    index_file=tmp_path/"data"/"card_bot_full_season_latest.json"
+    index=write_full_season_archive([profile],ASOF,index_path=index_file)
+    assert index["player_count"]==1
+    assert index["games_recorded"]==126
+    assert len(index_file.read_bytes())<1024*1024
+    assert len(json.loads(index_file.read_text())["players"])==1
+    assert "game_log" not in index_file.read_text()
+    link=index["players"][0]["history_path"]
+    assert link=="data/card_bot_season_players/2026/987123.json"
+    detail_file=tmp_path/link
+    content=json.loads(detail_file.read_text())
+    t=content["player"]["trajectory"]
+    assert len(t["game_log"])==126
+    assert sum(b["stats"]["games"] for b in t["season_blocks"])==126
+    assert t["checkpoints"]
+    assert detail_file.stat().st_size < 1024*1024
+    assert t["first_observed_uptrend"] is not None
+    assert t["last_observed_downtrend"] is not None
+
+
+def test_archive_index_never_names_invalid_player_path(tmp_path):
+    profile={"player_id":"../../etc/passwd","name":"Bad ID","age":20,
+             "level":"A","early_signal_now":False,
+             "trajectory":full_season_trajectory([],ASOF)}
+    result=write_full_season_archive([profile],ASOF,
+             index_path=tmp_path/"data"/"card_bot_full_season_latest.json")
+    assert result["player_count"]==0
+    assert not list((tmp_path/"data"/"card_bot_season_players"/"2026").glob("*.json"))
