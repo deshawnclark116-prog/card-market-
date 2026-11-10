@@ -3,65 +3,73 @@
   "discovery": {
     "already_publicized_excluded": [
       {
+        "name": "Edward Florentino",
+        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+        "skill_score": 67.6,
+        "source": "https://prospectpulsev1.com/pipeline/"
+      },
+      {
         "name": "Demetrio Crisantes",
         "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 79.2,
-        "source": "https://prospectpulsev1.com/pipeline/"
-      },
-      {
-        "name": "Josh Adamczewski",
-        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 77.2,
-        "source": "https://prospectpulsev1.com/pipeline/"
-      },
-      {
-        "name": "Jes\u00fas Made",
-        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 75.0,
+        "skill_score": 63.4,
         "source": "https://prospectpulsev1.com/pipeline/"
       },
       {
         "name": "Dax Kilby",
         "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 72.5,
+        "skill_score": 58.0,
         "source": "https://prospectpulsev1.com/pipeline/"
       },
       {
         "name": "Walker Jenkins",
         "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 68.7,
+        "skill_score": 54.9,
         "source": "https://prospectpulsev1.com/pipeline/"
       },
       {
         "name": "Lazaro Montes",
         "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 66.6,
-        "source": "https://prospectpulsev1.com/pipeline/"
-      },
-      {
-        "name": "Bryan Rincon",
-        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 65.1,
-        "source": "https://prospectpulsev1.com/pipeline/"
-      },
-      {
-        "name": "Edward Florentino",
-        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 62.6,
+        "skill_score": 53.2,
         "source": "https://prospectpulsev1.com/pipeline/"
       },
       {
         "name": "Franklin Arias",
         "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-        "skill_score": 40.8,
+        "skill_score": 32.7,
+        "source": "https://prospectpulsev1.com/pipeline/"
+      },
+      {
+        "name": "Josh Adamczewski",
+        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+        "skill_score": 44.7,
+        "source": "https://prospectpulsev1.com/pipeline/"
+      },
+      {
+        "name": "Jes\u00fas Made",
+        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+        "skill_score": 43.5,
+        "source": "https://prospectpulsev1.com/pipeline/"
+      },
+      {
+        "name": "Bryan Rincon",
+        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+        "skill_score": 37.7,
         "source": "https://prospectpulsev1.com/pipeline/"
       }
     ],
     "as_of": "2026-11-10",
     "eligible_for_log_sampling": 88,
+    "evidence_tier_counts": {
+      "BUILDING_14_AND_28": 0,
+      "EARLY_14_ONLY": 3,
+      "LONG_HORIZON_CONFLICT": 1,
+      "SHORT_SPIKE_NOT_CONFIRMED": 7,
+      "SUSTAINED_ACROSS_14_28_42": 0
+    },
     "exposure_filter_source_available": true,
     "game_log_records_available_for_players": 88,
     "independent_skill_changes_found": 20,
+    "max_history_games_compared": 84,
     "minor_league_levels_available": [
       "AAA",
       "AA",
@@ -69,14 +77,19 @@
       "A"
     ],
     "minor_league_levels_missing": [],
-    "notes": "MiLB raw-game-log K%, BB%, ISO discovery; public top-100 is only a NEGATIVE publicity screen, never discovery. Not being top-100 does NOT mean card demand is low. Offseason means past season evidence, not in-week skill growth. Card market value remains unverified.",
+    "notes": "14v14 early trigger, 28v28 and 42v42 nested same-team confirmation, descriptive beta rate-direction support and game bootstrap for ISO. Horizons overlap, no true outcome calibration, no article-led discovery. Top-100 is a negative publicity screen only. Offseason signals are historical; card collector demand and exact prices unknown.",
     "offseason": true,
     "pipeline": "PRE_HYPE_MILB_CHANGE_DETECTOR_V1",
     "prospects_after_recognition_exclusion": 11,
     "public_top100_source": "https://prospectpulsev1.com/pipeline/",
     "public_top100_source_available": true,
     "season": 2026,
-    "season_stat_rows": 3527
+    "season_stat_rows": 3527,
+    "windows_per_side_games": [
+      14,
+      28,
+      42
+    ]
   },
   "market_data": {
     "card_hype_validated": false,
@@ -88,65 +101,73 @@
     "early_discovery": {
       "already_publicized_excluded": [
         {
+          "name": "Edward Florentino",
+          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+          "skill_score": 67.6,
+          "source": "https://prospectpulsev1.com/pipeline/"
+        },
+        {
           "name": "Demetrio Crisantes",
           "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 79.2,
-          "source": "https://prospectpulsev1.com/pipeline/"
-        },
-        {
-          "name": "Josh Adamczewski",
-          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 77.2,
-          "source": "https://prospectpulsev1.com/pipeline/"
-        },
-        {
-          "name": "Jes\u00fas Made",
-          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 75.0,
+          "skill_score": 63.4,
           "source": "https://prospectpulsev1.com/pipeline/"
         },
         {
           "name": "Dax Kilby",
           "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 72.5,
+          "skill_score": 58.0,
           "source": "https://prospectpulsev1.com/pipeline/"
         },
         {
           "name": "Walker Jenkins",
           "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 68.7,
+          "skill_score": 54.9,
           "source": "https://prospectpulsev1.com/pipeline/"
         },
         {
           "name": "Lazaro Montes",
           "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 66.6,
-          "source": "https://prospectpulsev1.com/pipeline/"
-        },
-        {
-          "name": "Bryan Rincon",
-          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 65.1,
-          "source": "https://prospectpulsev1.com/pipeline/"
-        },
-        {
-          "name": "Edward Florentino",
-          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 62.6,
+          "skill_score": 53.2,
           "source": "https://prospectpulsev1.com/pipeline/"
         },
         {
           "name": "Franklin Arias",
           "reason": "Appears on published MLB Pipeline Top-100 aggregation",
-          "skill_score": 40.8,
+          "skill_score": 32.7,
+          "source": "https://prospectpulsev1.com/pipeline/"
+        },
+        {
+          "name": "Josh Adamczewski",
+          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+          "skill_score": 44.7,
+          "source": "https://prospectpulsev1.com/pipeline/"
+        },
+        {
+          "name": "Jes\u00fas Made",
+          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+          "skill_score": 43.5,
+          "source": "https://prospectpulsev1.com/pipeline/"
+        },
+        {
+          "name": "Bryan Rincon",
+          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+          "skill_score": 37.7,
           "source": "https://prospectpulsev1.com/pipeline/"
         }
       ],
       "as_of": "2026-11-10",
       "eligible_for_log_sampling": 88,
+      "evidence_tier_counts": {
+        "BUILDING_14_AND_28": 0,
+        "EARLY_14_ONLY": 3,
+        "LONG_HORIZON_CONFLICT": 1,
+        "SHORT_SPIKE_NOT_CONFIRMED": 7,
+        "SUSTAINED_ACROSS_14_28_42": 0
+      },
       "exposure_filter_source_available": true,
       "game_log_records_available_for_players": 88,
       "independent_skill_changes_found": 20,
+      "max_history_games_compared": 84,
       "minor_league_levels_available": [
         "AAA",
         "AA",
@@ -154,14 +175,19 @@
         "A"
       ],
       "minor_league_levels_missing": [],
-      "notes": "MiLB raw-game-log K%, BB%, ISO discovery; public top-100 is only a NEGATIVE publicity screen, never discovery. Not being top-100 does NOT mean card demand is low. Offseason means past season evidence, not in-week skill growth. Card market value remains unverified.",
+      "notes": "14v14 early trigger, 28v28 and 42v42 nested same-team confirmation, descriptive beta rate-direction support and game bootstrap for ISO. Horizons overlap, no true outcome calibration, no article-led discovery. Top-100 is a negative publicity screen only. Offseason signals are historical; card collector demand and exact prices unknown.",
       "offseason": true,
       "pipeline": "PRE_HYPE_MILB_CHANGE_DETECTOR_V1",
       "prospects_after_recognition_exclusion": 11,
       "public_top100_source": "https://prospectpulsev1.com/pipeline/",
       "public_top100_source_available": true,
       "season": 2026,
-      "season_stat_rows": 3527
+      "season_stat_rows": 3527,
+      "windows_per_side_games": [
+        14,
+        28,
+        42
+      ]
     },
     "feed_price_filter_used": false,
     "hype_note": "No Google-search percentage is used to classify a prospect as quiet. Top-100 ranking membership is only evidence of already-publicized prospects. Paper buys require card-specific market validation.",
@@ -175,60 +201,77 @@
   "paper_buys_today": [],
   "players": [
     {
-      "age": 21,
-      "breakout_score_not_probability": 79.0,
-      "checks": [],
-      "collector_hype_status": "NOT MEASURED",
-      "deal_score_not_probability": null,
-      "early_signal": {
-        "bb_delta": 0.0548,
-        "iso_delta": 0.1159,
-        "k_delta": -0.1066,
-        "last_game": "2026-09-12",
-        "new": {
-          "bb_pct": 0.125,
-          "games": 14,
-          "hr": 4,
-          "iso": 0.2727272727272727,
-          "k_pct": 0.296875,
-          "pa": 64
-        },
-        "old": {
-          "bb_pct": 0.07017543859649122,
-          "games": 14,
-          "hr": 2,
-          "iso": 0.1568627450980392,
-          "k_pct": 0.40350877192982454,
-          "pa": 57
-        },
-        "phase": "OFFSEASON_REVIEW",
-        "reason": "AA, age 21: two 14-game samples (57 vs 64 PA); K% 40.4%\u219229.7%, BB% 7.0%\u219212.5%, ISO 0.157\u21920.273. Last game 2026-09-12. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 79.0
-      },
-      "hype_pct": null,
-      "level": "AA",
-      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
-      "name": "Johanfran Garcia",
-      "player_id": "703190",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 1,
-      "reason": "AA, age 21: two 14-game samples (57 vs 64 PA); K% 40.4%\u219229.7%, BB% 7.0%\u219212.5%, ISO 0.157\u21920.273. Last game 2026-09-12. Collector interest and card price NOT validated.",
-      "search_interest_vs_aaron_judge_pct": null,
-      "time_context": "OFFSEASON_REVIEW"
-    },
-    {
       "age": 18,
-      "breakout_score_not_probability": 78.6,
+      "breakout_score_not_probability": 62.8,
       "checks": [],
       "collector_hype_status": "NOT MEASURED",
       "deal_score_not_probability": null,
       "early_signal": {
         "bb_delta": 0.026,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": 0.026,
+              "ISO": 0.2367,
+              "K": -0.12
+            },
+            "direction_support": {
+              "BB": 0.64,
+              "ISO": 0.932,
+              "K": 0.936
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-06",
+            "new": {
+              "bb_pct": 0.20634920634920634,
+              "games": 14,
+              "hr": 5,
+              "iso": 0.4,
+              "k_pct": 0.15873015873015872,
+              "pa": 63
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.18032786885245902,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.16326530612244897,
+              "k_pct": 0.2786885245901639,
+              "pa": 61
+            },
+            "positive_metric_count": 3,
+            "start_date": "2026-07-26",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "ISO"
+            ],
+            "team": "279"
+          },
+          "28": {
+            "games_per_window": 28,
+            "status": "TEAM_CHANGE"
+          },
+          "42": {
+            "games_available": 82,
+            "games_per_window": 42,
+            "status": "INSUFFICIENT_GAMES"
+          }
+        },
+        "evidence_tier": "EARLY_14_ONLY",
+        "evidence_tier_order": 1,
+        "games_in_history": 82,
         "iso_delta": 0.2367,
         "k_delta": -0.12,
         "last_game": "2026-09-06",
+        "max_comparison_games": 28,
         "new": {
           "bb_pct": 0.20634920634920634,
           "games": 14,
@@ -246,9 +289,9 @@
           "pa": 61
         },
         "phase": "OFFSEASON_REVIEW",
-        "reason": "A, age 18: two 14-game samples (61 vs 63 PA); K% 27.9%\u219215.9%, BB% 18.0%\u219220.6%, ISO 0.163\u21920.400. Last game 2026-09-06. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 78.6
+        "reason": "A, age 18: 14v14 K% 27.9%\u219215.9%, BB% 18.0%\u219220.6%, ISO 0.163\u21920.400; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 62.8
       },
       "hype_pct": null,
       "level": "A",
@@ -257,66 +300,83 @@
       "player_id": "829741",
       "position": "BAT",
       "price_trend": null,
-      "rank": 2,
-      "reason": "A, age 18: two 14-game samples (61 vs 63 PA); K% 27.9%\u219215.9%, BB% 18.0%\u219220.6%, ISO 0.163\u21920.400. Last game 2026-09-06. Collector interest and card price NOT validated.",
-      "search_interest_vs_aaron_judge_pct": null,
-      "time_context": "OFFSEASON_REVIEW"
-    },
-    {
-      "age": 19,
-      "breakout_score_not_probability": 73.1,
-      "checks": [],
-      "collector_hype_status": "NOT MEASURED",
-      "deal_score_not_probability": null,
-      "early_signal": {
-        "bb_delta": -0.0208,
-        "iso_delta": 0.1715,
-        "k_delta": -0.1265,
-        "last_game": "2026-08-28",
-        "new": {
-          "bb_pct": 0.11764705882352941,
-          "games": 14,
-          "hr": 2,
-          "iso": 0.1896551724137931,
-          "k_pct": 0.07352941176470588,
-          "pa": 68
-        },
-        "old": {
-          "bb_pct": 0.13846153846153847,
-          "games": 14,
-          "hr": 0,
-          "iso": 0.01818181818181818,
-          "k_pct": 0.2,
-          "pa": 65
-        },
-        "phase": "OFFSEASON_REVIEW",
-        "reason": "A, age 19: two 14-game samples (65 vs 68 PA); K% 20.0%\u21927.4%, BB% 13.8%\u219211.8%, ISO 0.018\u21920.190. Last game 2026-08-28. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 73.1
-      },
-      "hype_pct": null,
-      "level": "A",
-      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
-      "name": "Handelfry Encarnacion",
-      "player_id": "821136",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 3,
-      "reason": "A, age 19: two 14-game samples (65 vs 68 PA); K% 20.0%\u21927.4%, BB% 13.8%\u219211.8%, ISO 0.018\u21920.190. Last game 2026-08-28. Collector interest and card price NOT validated.",
+      "rank": 1,
+      "reason": "A, age 18: 14v14 K% 27.9%\u219215.9%, BB% 18.0%\u219220.6%, ISO 0.163\u21920.400; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "time_context": "OFFSEASON_REVIEW"
     },
     {
       "age": 20,
-      "breakout_score_not_probability": 67.7,
+      "breakout_score_not_probability": 54.2,
       "checks": [],
       "collector_hype_status": "NOT MEASURED",
       "deal_score_not_probability": null,
       "early_signal": {
         "bb_delta": 0.0154,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": 0.0154,
+              "ISO": 0.1224,
+              "K": -0.115
+            },
+            "direction_support": {
+              "BB": 0.58,
+              "ISO": 0.797,
+              "K": 0.936
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-06",
+            "new": {
+              "bb_pct": 0.18518518518518517,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.2619047619047619,
+              "k_pct": 0.09259259259259259,
+              "pa": 54
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.16981132075471697,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.13953488372093023,
+              "k_pct": 0.20754716981132076,
+              "pa": 53
+            },
+            "positive_metric_count": 3,
+            "start_date": "2026-07-21",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "ISO"
+            ],
+            "team": "587"
+          },
+          "28": {
+            "games_per_window": 28,
+            "status": "TEAM_CHANGE"
+          },
+          "42": {
+            "games_available": 58,
+            "games_per_window": 42,
+            "status": "INSUFFICIENT_GAMES"
+          }
+        },
+        "evidence_tier": "EARLY_14_ONLY",
+        "evidence_tier_order": 1,
+        "games_in_history": 58,
         "iso_delta": 0.1224,
         "k_delta": -0.115,
         "last_game": "2026-09-06",
+        "max_comparison_games": 28,
         "new": {
           "bb_pct": 0.18518518518518517,
           "games": 14,
@@ -334,9 +394,9 @@
           "pa": 53
         },
         "phase": "OFFSEASON_REVIEW",
-        "reason": "A, age 20: two 14-game samples (53 vs 54 PA); K% 20.8%\u21929.3%, BB% 17.0%\u219218.5%, ISO 0.140\u21920.262. Last game 2026-09-06. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 67.7
+        "reason": "A, age 20: 14v14 K% 20.8%\u21929.3%, BB% 17.0%\u219218.5%, ISO 0.140\u21920.262; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 54.2
       },
       "hype_pct": null,
       "level": "A",
@@ -345,198 +405,80 @@
       "player_id": "806884",
       "position": "BAT",
       "price_trend": null,
-      "rank": 4,
-      "reason": "A, age 20: two 14-game samples (53 vs 54 PA); K% 20.8%\u21929.3%, BB% 17.0%\u219218.5%, ISO 0.140\u21920.262. Last game 2026-09-06. Collector interest and card price NOT validated.",
+      "rank": 2,
+      "reason": "A, age 20: 14v14 K% 20.8%\u21929.3%, BB% 17.0%\u219218.5%, ISO 0.140\u21920.262; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "time_context": "OFFSEASON_REVIEW"
     },
     {
       "age": 22,
-      "breakout_score_not_probability": 66.5,
-      "checks": [],
-      "collector_hype_status": "NOT MEASURED",
-      "deal_score_not_probability": null,
-      "early_signal": {
-        "bb_delta": 0.2589,
-        "iso_delta": -0.0214,
-        "k_delta": -0.0938,
-        "last_game": "2026-09-13",
-        "new": {
-          "bb_pct": 0.3125,
-          "games": 14,
-          "hr": 6,
-          "iso": 0.4186046511627907,
-          "k_pct": 0.28125,
-          "pa": 64
-        },
-        "old": {
-          "bb_pct": 0.05357142857142857,
-          "games": 14,
-          "hr": 7,
-          "iso": 0.44,
-          "k_pct": 0.375,
-          "pa": 56
-        },
-        "phase": "OFFSEASON_REVIEW",
-        "reason": "AA, age 22: two 14-game samples (56 vs 64 PA); K% 37.5%\u219228.1%, BB% 5.4%\u219231.2%, ISO 0.440\u21920.419. Last game 2026-09-13. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 66.5
-      },
-      "hype_pct": null,
-      "level": "AA",
-      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
-      "name": "Andrew Fischer",
-      "player_id": "702652",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 5,
-      "reason": "AA, age 22: two 14-game samples (56 vs 64 PA); K% 37.5%\u219228.1%, BB% 5.4%\u219231.2%, ISO 0.440\u21920.419. Last game 2026-09-13. Collector interest and card price NOT validated.",
-      "search_interest_vs_aaron_judge_pct": null,
-      "time_context": "OFFSEASON_REVIEW"
-    },
-    {
-      "age": 20,
-      "breakout_score_not_probability": 65.9,
-      "checks": [],
-      "collector_hype_status": "NOT MEASURED",
-      "deal_score_not_probability": null,
-      "early_signal": {
-        "bb_delta": 0.0392,
-        "iso_delta": 0.1328,
-        "k_delta": -0.0565,
-        "last_game": "2026-08-25",
-        "new": {
-          "bb_pct": 0.21666666666666667,
-          "games": 14,
-          "hr": 2,
-          "iso": 0.2127659574468085,
-          "k_pct": 0.25,
-          "pa": 60
-        },
-        "old": {
-          "bb_pct": 0.1774193548387097,
-          "games": 14,
-          "hr": 0,
-          "iso": 0.08,
-          "k_pct": 0.3064516129032258,
-          "pa": 62
-        },
-        "phase": "OFFSEASON_REVIEW",
-        "reason": "A+, age 20: two 14-game samples (62 vs 60 PA); K% 30.6%\u219225.0%, BB% 17.7%\u219221.7%, ISO 0.080\u21920.213. Last game 2026-08-25. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 65.9
-      },
-      "hype_pct": null,
-      "level": "A+",
-      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
-      "name": "Starlyn Caba",
-      "player_id": "806965",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 6,
-      "reason": "A+, age 20: two 14-game samples (62 vs 60 PA); K% 30.6%\u219225.0%, BB% 17.7%\u219221.7%, ISO 0.080\u21920.213. Last game 2026-08-25. Collector interest and card price NOT validated.",
-      "search_interest_vs_aaron_judge_pct": null,
-      "time_context": "OFFSEASON_REVIEW"
-    },
-    {
-      "age": 21,
-      "breakout_score_not_probability": 61.1,
-      "checks": [],
-      "collector_hype_status": "NOT MEASURED",
-      "deal_score_not_probability": null,
-      "early_signal": {
-        "bb_delta": -0.0283,
-        "iso_delta": 0.0786,
-        "k_delta": -0.1133,
-        "last_game": "2026-09-13",
-        "new": {
-          "bb_pct": 0.13114754098360656,
-          "games": 14,
-          "hr": 0,
-          "iso": 0.09615384615384616,
-          "k_pct": 0.14754098360655737,
-          "pa": 61
-        },
-        "old": {
-          "bb_pct": 0.15942028985507245,
-          "games": 14,
-          "hr": 0,
-          "iso": 0.017543859649122806,
-          "k_pct": 0.2608695652173913,
-          "pa": 69
-        },
-        "phase": "OFFSEASON_REVIEW",
-        "reason": "AA, age 21: two 14-game samples (69 vs 61 PA); K% 26.1%\u219214.8%, BB% 15.9%\u219213.1%, ISO 0.018\u21920.096. Last game 2026-09-13. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 61.1
-      },
-      "hype_pct": null,
-      "level": "AA",
-      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
-      "name": "Jaison Chourio",
-      "player_id": "702693",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 7,
-      "reason": "AA, age 21: two 14-game samples (69 vs 61 PA); K% 26.1%\u219214.8%, BB% 15.9%\u219213.1%, ISO 0.018\u21920.096. Last game 2026-09-13. Collector interest and card price NOT validated.",
-      "search_interest_vs_aaron_judge_pct": null,
-      "time_context": "OFFSEASON_REVIEW"
-    },
-    {
-      "age": 23,
-      "breakout_score_not_probability": 60.3,
-      "checks": [],
-      "collector_hype_status": "NOT MEASURED",
-      "deal_score_not_probability": null,
-      "early_signal": {
-        "bb_delta": 0.0267,
-        "iso_delta": 0.0097,
-        "k_delta": -0.1349,
-        "last_game": "2026-09-20",
-        "new": {
-          "bb_pct": 0.10606060606060606,
-          "games": 14,
-          "hr": 1,
-          "iso": 0.15254237288135594,
-          "k_pct": 0.16666666666666666,
-          "pa": 66
-        },
-        "old": {
-          "bb_pct": 0.07936507936507936,
-          "games": 14,
-          "hr": 2,
-          "iso": 0.14285714285714285,
-          "k_pct": 0.30158730158730157,
-          "pa": 63
-        },
-        "phase": "OFFSEASON_REVIEW",
-        "reason": "AAA, age 23: two 14-game samples (63 vs 66 PA); K% 30.2%\u219216.7%, BB% 7.9%\u219210.6%, ISO 0.143\u21920.153. Last game 2026-09-20. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 60.3
-      },
-      "hype_pct": null,
-      "level": "AAA",
-      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
-      "name": "Zach Ehrhard",
-      "player_id": "701394",
-      "position": "BAT",
-      "price_trend": null,
-      "rank": 8,
-      "reason": "AAA, age 23: two 14-game samples (63 vs 66 PA); K% 30.2%\u219216.7%, BB% 7.9%\u219210.6%, ISO 0.143\u21920.153. Last game 2026-09-20. Collector interest and card price NOT validated.",
-      "search_interest_vs_aaron_judge_pct": null,
-      "time_context": "OFFSEASON_REVIEW"
-    },
-    {
-      "age": 22,
-      "breakout_score_not_probability": 54.1,
+      "breakout_score_not_probability": 43.3,
       "checks": [],
       "collector_hype_status": "NOT MEASURED",
       "deal_score_not_probability": null,
       "early_signal": {
         "bb_delta": 0.0152,
+        "comparisons": {
+          "14": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0152,
+              "ISO": -0.0126,
+              "K": -0.0909
+            },
+            "direction_support": {
+              "BB": 0.598,
+              "ISO": 0.448,
+              "K": 0.872
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.13636363636363635,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.14814814814814814,
+              "k_pct": 0.21212121212121213,
+              "pa": 66
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.12121212121212122,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.16071428571428573,
+              "k_pct": 0.30303030303030304,
+              "pa": 66
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-08-07",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "K"
+            ],
+            "team": "440"
+          },
+          "28": {
+            "games_per_window": 28,
+            "status": "TEAM_CHANGE"
+          },
+          "42": {
+            "games_per_window": 42,
+            "status": "TEAM_CHANGE"
+          }
+        },
+        "evidence_tier": "EARLY_14_ONLY",
+        "evidence_tier_order": 1,
+        "games_in_history": 116,
         "iso_delta": -0.0126,
         "k_delta": -0.0909,
         "last_game": "2026-09-13",
+        "max_comparison_games": 28,
         "new": {
           "bb_pct": 0.13636363636363635,
           "games": 14,
@@ -554,9 +496,9 @@
           "pa": 66
         },
         "phase": "OFFSEASON_REVIEW",
-        "reason": "AA, age 22: two 14-game samples (66 vs 66 PA); K% 30.3%\u219221.2%, BB% 12.1%\u219213.6%, ISO 0.161\u21920.148. Last game 2026-09-13. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 54.1
+        "reason": "AA, age 22: 14v14 K% 30.3%\u219221.2%, BB% 12.1%\u219213.6%, ISO 0.161\u21920.148; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 43.3
       },
       "hype_pct": null,
       "level": "AA",
@@ -565,14 +507,967 @@
       "player_id": "828824",
       "position": "BAT",
       "price_trend": null,
-      "rank": 9,
-      "reason": "AA, age 22: two 14-game samples (66 vs 66 PA); K% 30.3%\u219221.2%, BB% 12.1%\u219213.6%, ISO 0.161\u21920.148. Last game 2026-09-13. Collector interest and card price NOT validated.",
+      "rank": 3,
+      "reason": "AA, age 22: 14v14 K% 30.3%\u219221.2%, BB% 12.1%\u219213.6%, ISO 0.161\u21920.148; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "time_context": "OFFSEASON_REVIEW"
     },
     {
       "age": 21,
-      "breakout_score_not_probability": 49.7,
+      "breakout_score_not_probability": 45.8,
+      "checks": [],
+      "collector_hype_status": "NOT MEASURED",
+      "deal_score_not_probability": null,
+      "early_signal": {
+        "bb_delta": 0.0548,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": 0.0548,
+              "ISO": 0.1159,
+              "K": -0.1066
+            },
+            "direction_support": {
+              "BB": 0.829,
+              "ISO": 0.818,
+              "K": 0.873
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-12",
+            "new": {
+              "bb_pct": 0.125,
+              "games": 14,
+              "hr": 4,
+              "iso": 0.2727272727272727,
+              "k_pct": 0.296875,
+              "pa": 64
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.07017543859649122,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.1568627450980392,
+              "k_pct": 0.40350877192982454,
+              "pa": 57
+            },
+            "positive_metric_count": 3,
+            "start_date": "2026-07-11",
+            "status": "AVAILABLE",
+            "supported_metric_count": 3,
+            "supporting_metrics": [
+              "K",
+              "BB",
+              "ISO"
+            ],
+            "team": "546"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0661,
+              "ISO": 0.0532,
+              "K": 0.0909
+            },
+            "direction_support": {
+              "BB": 0.976,
+              "ISO": 0.708,
+              "K": 0.066
+            },
+            "games_per_window": 28,
+            "last_date": "2026-09-12",
+            "new": {
+              "bb_pct": 0.09917355371900827,
+              "games": 28,
+              "hr": 6,
+              "iso": 0.2169811320754717,
+              "k_pct": 0.34710743801652894,
+              "pa": 121
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.03305785123966942,
+              "games": 28,
+              "hr": 4,
+              "iso": 0.16379310344827586,
+              "k_pct": 0.256198347107438,
+              "pa": 121
+            },
+            "positive_metric_count": 1,
+            "start_date": "2026-05-30",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "BB"
+            ],
+            "team": "546"
+          },
+          "42": {
+            "games_available": 80,
+            "games_per_window": 42,
+            "status": "INSUFFICIENT_GAMES"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 80,
+        "iso_delta": 0.1159,
+        "k_delta": -0.1066,
+        "last_game": "2026-09-12",
+        "max_comparison_games": 56,
+        "new": {
+          "bb_pct": 0.125,
+          "games": 14,
+          "hr": 4,
+          "iso": 0.2727272727272727,
+          "k_pct": 0.296875,
+          "pa": 64
+        },
+        "old": {
+          "bb_pct": 0.07017543859649122,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.1568627450980392,
+          "k_pct": 0.40350877192982454,
+          "pa": 57
+        },
+        "phase": "OFFSEASON_REVIEW",
+        "reason": "AA, age 21: 14v14 K% 40.4%\u219229.7%, BB% 7.0%\u219212.5%, ISO 0.157\u21920.273; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-12. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 45.8
+      },
+      "hype_pct": null,
+      "level": "AA",
+      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
+      "name": "Johanfran Garcia",
+      "player_id": "703190",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 4,
+      "reason": "AA, age 21: 14v14 K% 40.4%\u219229.7%, BB% 7.0%\u219212.5%, ISO 0.157\u21920.273; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-12. Collector interest and card price NOT validated.",
+      "search_interest_vs_aaron_judge_pct": null,
+      "time_context": "OFFSEASON_REVIEW"
+    },
+    {
+      "age": 19,
+      "breakout_score_not_probability": 42.4,
+      "checks": [],
+      "collector_hype_status": "NOT MEASURED",
+      "deal_score_not_probability": null,
+      "early_signal": {
+        "bb_delta": -0.0208,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": -0.0208,
+              "ISO": 0.1715,
+              "K": -0.1265
+            },
+            "direction_support": {
+              "BB": 0.368,
+              "ISO": 0.995,
+              "K": 0.975
+            },
+            "games_per_window": 14,
+            "last_date": "2026-08-28",
+            "new": {
+              "bb_pct": 0.11764705882352941,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.1896551724137931,
+              "k_pct": 0.07352941176470588,
+              "pa": 68
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.13846153846153847,
+              "games": 14,
+              "hr": 0,
+              "iso": 0.01818181818181818,
+              "k_pct": 0.2,
+              "pa": 65
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-07-21",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "ISO"
+            ],
+            "team": "249"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0438,
+              "ISO": -0.0901,
+              "K": -0.0139
+            },
+            "direction_support": {
+              "BB": 0.163,
+              "ISO": 0.073,
+              "K": 0.622
+            },
+            "games_per_window": 28,
+            "last_date": "2026-08-28",
+            "new": {
+              "bb_pct": 0.12781954887218044,
+              "games": 28,
+              "hr": 2,
+              "iso": 0.10619469026548672,
+              "k_pct": 0.13533834586466165,
+              "pa": 133
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [],
+            "old": {
+              "bb_pct": 0.17164179104477612,
+              "games": 28,
+              "hr": 4,
+              "iso": 0.19626168224299065,
+              "k_pct": 0.14925373134328357,
+              "pa": 134
+            },
+            "positive_metric_count": 0,
+            "start_date": "2026-06-11",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "249"
+          },
+          "42": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0448,
+              "ISO": -0.0155,
+              "K": -0.011
+            },
+            "direction_support": {
+              "BB": 0.114,
+              "ISO": 0.438,
+              "K": 0.619
+            },
+            "games_per_window": 42,
+            "last_date": "2026-08-28",
+            "new": {
+              "bb_pct": 0.14356435643564355,
+              "games": 42,
+              "hr": 4,
+              "iso": 0.1317365269461078,
+              "k_pct": 0.14356435643564355,
+              "pa": 202
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [],
+            "old": {
+              "bb_pct": 0.18840579710144928,
+              "games": 42,
+              "hr": 4,
+              "iso": 0.147239263803681,
+              "k_pct": 0.15458937198067632,
+              "pa": 207
+            },
+            "positive_metric_count": 0,
+            "start_date": "2026-05-06",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "249"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 111,
+        "iso_delta": 0.1715,
+        "k_delta": -0.1265,
+        "last_game": "2026-08-28",
+        "max_comparison_games": 84,
+        "new": {
+          "bb_pct": 0.11764705882352941,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.1896551724137931,
+          "k_pct": 0.07352941176470588,
+          "pa": 68
+        },
+        "old": {
+          "bb_pct": 0.13846153846153847,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.01818181818181818,
+          "k_pct": 0.2,
+          "pa": 65
+        },
+        "phase": "OFFSEASON_REVIEW",
+        "reason": "A, age 19: 14v14 K% 20.0%\u21927.4%, BB% 13.8%\u219211.8%, ISO 0.018\u21920.190; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-08-28. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 42.4
+      },
+      "hype_pct": null,
+      "level": "A",
+      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
+      "name": "Handelfry Encarnacion",
+      "player_id": "821136",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 5,
+      "reason": "A, age 19: 14v14 K% 20.0%\u21927.4%, BB% 13.8%\u219211.8%, ISO 0.018\u21920.190; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-08-28. Collector interest and card price NOT validated.",
+      "search_interest_vs_aaron_judge_pct": null,
+      "time_context": "OFFSEASON_REVIEW"
+    },
+    {
+      "age": 21,
+      "breakout_score_not_probability": 39.7,
+      "checks": [],
+      "collector_hype_status": "NOT MEASURED",
+      "deal_score_not_probability": null,
+      "early_signal": {
+        "bb_delta": -0.0283,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": -0.0283,
+              "ISO": 0.0786,
+              "K": -0.1133
+            },
+            "direction_support": {
+              "BB": 0.327,
+              "ISO": 0.896,
+              "K": 0.936
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.13114754098360656,
+              "games": 14,
+              "hr": 0,
+              "iso": 0.09615384615384616,
+              "k_pct": 0.14754098360655737,
+              "pa": 61
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.15942028985507245,
+              "games": 14,
+              "hr": 0,
+              "iso": 0.017543859649122806,
+              "k_pct": 0.2608695652173913,
+              "pa": 69
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-08-08",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "ISO"
+            ],
+            "team": "402"
+          },
+          "28": {
+            "confirmed": true,
+            "delta": {
+              "BB": 0.0413,
+              "ISO": -0.0917,
+              "K": -0.0423
+            },
+            "direction_support": {
+              "BB": 0.834,
+              "ISO": 0.016,
+              "K": 0.781
+            },
+            "games_per_window": 28,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.14615384615384616,
+              "games": 28,
+              "hr": 0,
+              "iso": 0.05504587155963303,
+              "k_pct": 0.2076923076923077,
+              "pa": 130
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.10483870967741936,
+              "games": 28,
+              "hr": 3,
+              "iso": 0.14678899082568808,
+              "k_pct": 0.25,
+              "pa": 124
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-07-03",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "BB"
+            ],
+            "team": "402"
+          },
+          "42": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0195,
+              "ISO": -0.107,
+              "K": 0.0148
+            },
+            "direction_support": {
+              "BB": 0.713,
+              "ISO": 0.031,
+              "K": 0.365
+            },
+            "games_per_window": 42,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.1377551020408163,
+              "games": 42,
+              "hr": 1,
+              "iso": 0.08433734939759036,
+              "k_pct": 0.22448979591836735,
+              "pa": 196
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.11827956989247312,
+              "games": 42,
+              "hr": 6,
+              "iso": 0.19135802469135801,
+              "k_pct": 0.20967741935483872,
+              "pa": 186
+            },
+            "positive_metric_count": 1,
+            "start_date": "2026-05-29",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "402"
+          }
+        },
+        "evidence_tier": "LONG_HORIZON_CONFLICT",
+        "evidence_tier_order": 0,
+        "games_in_history": 115,
+        "iso_delta": 0.0786,
+        "k_delta": -0.1133,
+        "last_game": "2026-09-13",
+        "max_comparison_games": 84,
+        "new": {
+          "bb_pct": 0.13114754098360656,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.09615384615384616,
+          "k_pct": 0.14754098360655737,
+          "pa": 61
+        },
+        "old": {
+          "bb_pct": 0.15942028985507245,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.017543859649122806,
+          "k_pct": 0.2608695652173913,
+          "pa": 69
+        },
+        "phase": "OFFSEASON_REVIEW",
+        "reason": "AA, age 21: 14v14 K% 26.1%\u219214.8%, BB% 15.9%\u219213.1%, ISO 0.018\u21920.096; Longer-window evidence conflicts with a shorter improvement. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 39.7
+      },
+      "hype_pct": null,
+      "level": "AA",
+      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
+      "name": "Jaison Chourio",
+      "player_id": "702693",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 6,
+      "reason": "AA, age 21: 14v14 K% 26.1%\u219214.8%, BB% 15.9%\u219213.1%, ISO 0.018\u21920.096; Longer-window evidence conflicts with a shorter improvement. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+      "search_interest_vs_aaron_judge_pct": null,
+      "time_context": "OFFSEASON_REVIEW"
+    },
+    {
+      "age": 22,
+      "breakout_score_not_probability": 38.6,
+      "checks": [],
+      "collector_hype_status": "NOT MEASURED",
+      "deal_score_not_probability": null,
+      "early_signal": {
+        "bb_delta": 0.2589,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": 0.2589,
+              "ISO": -0.0214,
+              "K": -0.0938
+            },
+            "direction_support": {
+              "BB": 1.0,
+              "ISO": 0.542,
+              "K": 0.843
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.3125,
+              "games": 14,
+              "hr": 6,
+              "iso": 0.4186046511627907,
+              "k_pct": 0.28125,
+              "pa": 64
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.05357142857142857,
+              "games": 14,
+              "hr": 7,
+              "iso": 0.44,
+              "k_pct": 0.375,
+              "pa": 56
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-08-12",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "BB"
+            ],
+            "team": "5015"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0276,
+              "ISO": 0.168,
+              "K": -0.0109
+            },
+            "direction_support": {
+              "BB": 0.708,
+              "ISO": 0.896,
+              "K": 0.575
+            },
+            "games_per_window": 28,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.19166666666666668,
+              "games": 28,
+              "hr": 13,
+              "iso": 0.43010752688172044,
+              "k_pct": 0.325,
+              "pa": 120
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "BB",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.1640625,
+              "games": 28,
+              "hr": 7,
+              "iso": 0.2621359223300971,
+              "k_pct": 0.3359375,
+              "pa": 128
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-07-07",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "ISO"
+            ],
+            "team": "5015"
+          },
+          "42": {
+            "games_per_window": 42,
+            "status": "TEAM_CHANGE"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 126,
+        "iso_delta": -0.0214,
+        "k_delta": -0.0938,
+        "last_game": "2026-09-13",
+        "max_comparison_games": 56,
+        "new": {
+          "bb_pct": 0.3125,
+          "games": 14,
+          "hr": 6,
+          "iso": 0.4186046511627907,
+          "k_pct": 0.28125,
+          "pa": 64
+        },
+        "old": {
+          "bb_pct": 0.05357142857142857,
+          "games": 14,
+          "hr": 7,
+          "iso": 0.44,
+          "k_pct": 0.375,
+          "pa": 56
+        },
+        "phase": "OFFSEASON_REVIEW",
+        "reason": "AA, age 22: 14v14 K% 37.5%\u219228.1%, BB% 5.4%\u219231.2%, ISO 0.440\u21920.419; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 38.6
+      },
+      "hype_pct": null,
+      "level": "AA",
+      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
+      "name": "Andrew Fischer",
+      "player_id": "702652",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 7,
+      "reason": "AA, age 22: 14v14 K% 37.5%\u219228.1%, BB% 5.4%\u219231.2%, ISO 0.440\u21920.419; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+      "search_interest_vs_aaron_judge_pct": null,
+      "time_context": "OFFSEASON_REVIEW"
+    },
+    {
+      "age": 20,
+      "breakout_score_not_probability": 38.2,
+      "checks": [],
+      "collector_hype_status": "NOT MEASURED",
+      "deal_score_not_probability": null,
+      "early_signal": {
+        "bb_delta": 0.0392,
+        "comparisons": {
+          "14": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0392,
+              "ISO": 0.1328,
+              "K": -0.0565
+            },
+            "direction_support": {
+              "BB": 0.697,
+              "ISO": 0.943,
+              "K": 0.746
+            },
+            "games_per_window": 14,
+            "last_date": "2026-08-25",
+            "new": {
+              "bb_pct": 0.21666666666666667,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.2127659574468085,
+              "k_pct": 0.25,
+              "pa": 60
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.1774193548387097,
+              "games": 14,
+              "hr": 0,
+              "iso": 0.08,
+              "k_pct": 0.3064516129032258,
+              "pa": 62
+            },
+            "positive_metric_count": 3,
+            "start_date": "2026-07-11",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "ISO"
+            ],
+            "team": "554"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0107,
+              "ISO": 0.0193,
+              "K": 0.0491
+            },
+            "direction_support": {
+              "BB": 0.412,
+              "ISO": 0.583,
+              "K": 0.192
+            },
+            "games_per_window": 28,
+            "last_date": "2026-08-25",
+            "new": {
+              "bb_pct": 0.19672131147540983,
+              "games": 28,
+              "hr": 2,
+              "iso": 0.14432989690721648,
+              "k_pct": 0.2786885245901639,
+              "pa": 122
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [],
+            "old": {
+              "bb_pct": 0.2074074074074074,
+              "games": 28,
+              "hr": 2,
+              "iso": 0.125,
+              "k_pct": 0.22962962962962963,
+              "pa": 135
+            },
+            "positive_metric_count": 0,
+            "start_date": "2026-05-12",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "554"
+          },
+          "42": {
+            "games_available": 81,
+            "games_per_window": 42,
+            "status": "INSUFFICIENT_GAMES"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 81,
+        "iso_delta": 0.1328,
+        "k_delta": -0.0565,
+        "last_game": "2026-08-25",
+        "max_comparison_games": 56,
+        "new": {
+          "bb_pct": 0.21666666666666667,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.2127659574468085,
+          "k_pct": 0.25,
+          "pa": 60
+        },
+        "old": {
+          "bb_pct": 0.1774193548387097,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.08,
+          "k_pct": 0.3064516129032258,
+          "pa": 62
+        },
+        "phase": "OFFSEASON_REVIEW",
+        "reason": "A+, age 20: 14v14 K% 30.6%\u219225.0%, BB% 17.7%\u219221.7%, ISO 0.080\u21920.213; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-08-25. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 38.2
+      },
+      "hype_pct": null,
+      "level": "A+",
+      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
+      "name": "Starlyn Caba",
+      "player_id": "806965",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 8,
+      "reason": "A+, age 20: 14v14 K% 30.6%\u219225.0%, BB% 17.7%\u219221.7%, ISO 0.080\u21920.213; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-08-25. Collector interest and card price NOT validated.",
+      "search_interest_vs_aaron_judge_pct": null,
+      "time_context": "OFFSEASON_REVIEW"
+    },
+    {
+      "age": 23,
+      "breakout_score_not_probability": 35.0,
+      "checks": [],
+      "collector_hype_status": "NOT MEASURED",
+      "deal_score_not_probability": null,
+      "early_signal": {
+        "bb_delta": 0.0267,
+        "comparisons": {
+          "14": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0267,
+              "ISO": 0.0097,
+              "K": -0.1349
+            },
+            "direction_support": {
+              "BB": 0.687,
+              "ISO": 0.557,
+              "K": 0.957
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-20",
+            "new": {
+              "bb_pct": 0.10606060606060606,
+              "games": 14,
+              "hr": 1,
+              "iso": 0.15254237288135594,
+              "k_pct": 0.16666666666666666,
+              "pa": 66
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.07936507936507936,
+              "games": 14,
+              "hr": 2,
+              "iso": 0.14285714285714285,
+              "k_pct": 0.30158730158730157,
+              "pa": 63
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-08-20",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "K"
+            ],
+            "team": "238"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.1055,
+              "ISO": -0.0141,
+              "K": 0.0634
+            },
+            "direction_support": {
+              "BB": 0.008,
+              "ISO": 0.328,
+              "K": 0.106
+            },
+            "games_per_window": 28,
+            "last_date": "2026-09-20",
+            "new": {
+              "bb_pct": 0.09302325581395349,
+              "games": 28,
+              "hr": 3,
+              "iso": 0.14782608695652175,
+              "k_pct": 0.23255813953488372,
+              "pa": 129
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [],
+            "old": {
+              "bb_pct": 0.19852941176470587,
+              "games": 28,
+              "hr": 3,
+              "iso": 0.1619047619047619,
+              "k_pct": 0.16911764705882354,
+              "pa": 136
+            },
+            "positive_metric_count": 0,
+            "start_date": "2026-07-12",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "238"
+          },
+          "42": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0285,
+              "ISO": -0.0723,
+              "K": 0.0009
+            },
+            "direction_support": {
+              "BB": 0.221,
+              "ISO": 0.151,
+              "K": 0.491
+            },
+            "games_per_window": 42,
+            "last_date": "2026-09-20",
+            "new": {
+              "bb_pct": 0.1407035175879397,
+              "games": 42,
+              "hr": 5,
+              "iso": 0.16666666666666666,
+              "k_pct": 0.20603015075376885,
+              "pa": 199
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [],
+            "old": {
+              "bb_pct": 0.16923076923076924,
+              "games": 42,
+              "hr": 10,
+              "iso": 0.2389937106918239,
+              "k_pct": 0.20512820512820512,
+              "pa": 195
+            },
+            "positive_metric_count": 0,
+            "start_date": "2026-06-07",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "238"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 138,
+        "iso_delta": 0.0097,
+        "k_delta": -0.1349,
+        "last_game": "2026-09-20",
+        "max_comparison_games": 84,
+        "new": {
+          "bb_pct": 0.10606060606060606,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.15254237288135594,
+          "k_pct": 0.16666666666666666,
+          "pa": 66
+        },
+        "old": {
+          "bb_pct": 0.07936507936507936,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.14285714285714285,
+          "k_pct": 0.30158730158730157,
+          "pa": 63
+        },
+        "phase": "OFFSEASON_REVIEW",
+        "reason": "AAA, age 23: 14v14 K% 30.2%\u219216.7%, BB% 7.9%\u219210.6%, ISO 0.143\u21920.153; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-20. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 35.0
+      },
+      "hype_pct": null,
+      "level": "AAA",
+      "market_exposure": "NOT ON CHECKED TOP-100 \u2014 HOBBY HYPE UNKNOWN",
+      "name": "Zach Ehrhard",
+      "player_id": "701394",
+      "position": "BAT",
+      "price_trend": null,
+      "rank": 9,
+      "reason": "AAA, age 23: 14v14 K% 30.2%\u219216.7%, BB% 7.9%\u219210.6%, ISO 0.143\u21920.153; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-20. Collector interest and card price NOT validated.",
+      "search_interest_vs_aaron_judge_pct": null,
+      "time_context": "OFFSEASON_REVIEW"
+    },
+    {
+      "age": 21,
+      "breakout_score_not_probability": 28.8,
       "checks": [
         {
           "active_offer_all_in_usd": null,
@@ -590,6 +1485,7 @@
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
+            "missing or low breakout score",
             "card-collector hype NOT measured; search ratio is not proof of quiet demand",
             "price trend missing",
             "no 5 independently title-matched recent sales of this EXACT card/grade"
@@ -603,9 +1499,146 @@
       "deal_score_not_probability": null,
       "early_signal": {
         "bb_delta": 0.0524,
+        "comparisons": {
+          "14": {
+            "confirmed": true,
+            "delta": {
+              "BB": 0.0524,
+              "ISO": 0.0063,
+              "K": -0.0386
+            },
+            "direction_support": {
+              "BB": 0.861,
+              "ISO": 0.505,
+              "K": 0.751
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.09859154929577464,
+              "games": 14,
+              "hr": 3,
+              "iso": 0.20634920634920634,
+              "k_pct": 0.08450704225352113,
+              "pa": 71
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.046153846153846156,
+              "games": 14,
+              "hr": 3,
+              "iso": 0.2,
+              "k_pct": 0.12307692307692308,
+              "pa": 65
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-08-08",
+            "status": "AVAILABLE",
+            "supported_metric_count": 2,
+            "supporting_metrics": [
+              "K",
+              "BB"
+            ],
+            "team": "5368"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0138,
+              "ISO": 0.1123,
+              "K": -0.0161
+            },
+            "direction_support": {
+              "BB": 0.346,
+              "ISO": 0.948,
+              "K": 0.657
+            },
+            "games_per_window": 28,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.07352941176470588,
+              "games": 28,
+              "hr": 6,
+              "iso": 0.2032520325203252,
+              "k_pct": 0.10294117647058823,
+              "pa": 136
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.0873015873015873,
+              "games": 28,
+              "hr": 2,
+              "iso": 0.09090909090909091,
+              "k_pct": 0.11904761904761904,
+              "pa": 126
+            },
+            "positive_metric_count": 1,
+            "start_date": "2026-06-28",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "ISO"
+            ],
+            "team": "5368"
+          },
+          "42": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0292,
+              "ISO": 0.013,
+              "K": 0.0137
+            },
+            "direction_support": {
+              "BB": 0.857,
+              "ISO": 0.583,
+              "K": 0.332
+            },
+            "games_per_window": 42,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.09045226130653267,
+              "games": 42,
+              "hr": 6,
+              "iso": 0.1534090909090909,
+              "k_pct": 0.10552763819095477,
+              "pa": 199
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "BB"
+            ],
+            "old": {
+              "bb_pct": 0.061224489795918366,
+              "games": 42,
+              "hr": 6,
+              "iso": 0.1404494382022472,
+              "k_pct": 0.09183673469387756,
+              "pa": 196
+            },
+            "positive_metric_count": 1,
+            "start_date": "2026-05-23",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "BB"
+            ],
+            "team": "5368"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 118,
         "iso_delta": 0.0063,
         "k_delta": -0.0386,
         "last_game": "2026-09-13",
+        "max_comparison_games": 84,
         "new": {
           "bb_pct": 0.09859154929577464,
           "games": 14,
@@ -623,9 +1656,9 @@
           "pa": 65
         },
         "phase": "OFFSEASON_REVIEW",
-        "reason": "AA, age 21: two 14-game samples (65 vs 71 PA); K% 12.3%\u21928.5%, BB% 4.6%\u21929.9%, ISO 0.200\u21920.206. Last game 2026-09-13. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 49.7
+        "reason": "AA, age 21: 14v14 K% 12.3%\u21928.5%, BB% 4.6%\u21929.9%, ISO 0.200\u21920.206; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 28.8
       },
       "hype_pct": null,
       "level": "AA",
@@ -635,13 +1668,13 @@
       "position": "BAT",
       "price_trend": null,
       "rank": 10,
-      "reason": "AA, age 21: two 14-game samples (65 vs 71 PA); K% 12.3%\u21928.5%, BB% 4.6%\u21929.9%, ISO 0.200\u21920.206. Last game 2026-09-13. Collector interest and card price NOT validated.",
+      "reason": "AA, age 21: 14v14 K% 12.3%\u21928.5%, BB% 4.6%\u21929.9%, ISO 0.200\u21920.206; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "time_context": "OFFSEASON_REVIEW"
     },
     {
       "age": 21,
-      "breakout_score_not_probability": 43.5,
+      "breakout_score_not_probability": 25.2,
       "checks": [
         {
           "active_offer_all_in_usd": null,
@@ -673,9 +1706,143 @@
       "deal_score_not_probability": null,
       "early_signal": {
         "bb_delta": -0.0526,
+        "comparisons": {
+          "14": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0526,
+              "ISO": 0.0933,
+              "K": -0.0351
+            },
+            "direction_support": {
+              "BB": 0.203,
+              "ISO": 0.745,
+              "K": 0.681
+            },
+            "games_per_window": 14,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.08771929824561403,
+              "games": 14,
+              "hr": 3,
+              "iso": 0.26,
+              "k_pct": 0.14035087719298245,
+              "pa": 57
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "K",
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.14035087719298245,
+              "games": 14,
+              "hr": 1,
+              "iso": 0.16666666666666666,
+              "k_pct": 0.17543859649122806,
+              "pa": 57
+            },
+            "positive_metric_count": 2,
+            "start_date": "2026-08-11",
+            "status": "AVAILABLE",
+            "supported_metric_count": 0,
+            "supporting_metrics": [],
+            "team": "522"
+          },
+          "28": {
+            "confirmed": false,
+            "delta": {
+              "BB": 0.0039,
+              "ISO": 0.1335,
+              "K": -0.0116
+            },
+            "direction_support": {
+              "BB": 0.536,
+              "ISO": 0.938,
+              "K": 0.59
+            },
+            "games_per_window": 28,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.11403508771929824,
+              "games": 28,
+              "hr": 4,
+              "iso": 0.21428571428571427,
+              "k_pct": 0.15789473684210525,
+              "pa": 114
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.11016949152542373,
+              "games": 28,
+              "hr": 2,
+              "iso": 0.08080808080808081,
+              "k_pct": 0.1694915254237288,
+              "pa": 118
+            },
+            "positive_metric_count": 1,
+            "start_date": "2026-07-02",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "ISO"
+            ],
+            "team": "522"
+          },
+          "42": {
+            "confirmed": false,
+            "delta": {
+              "BB": -0.0474,
+              "ISO": 0.1505,
+              "K": 0.0038
+            },
+            "direction_support": {
+              "BB": 0.095,
+              "ISO": 0.995,
+              "K": 0.458
+            },
+            "games_per_window": 42,
+            "last_date": "2026-09-13",
+            "new": {
+              "bb_pct": 0.11046511627906977,
+              "games": 42,
+              "hr": 6,
+              "iso": 0.19594594594594594,
+              "k_pct": 0.1511627906976744,
+              "pa": 172
+            },
+            "note": "Nested, overlapping horizons; direction support is descriptive, NOT a calibrated future-breakout probability.",
+            "observed_improvements": [
+              "ISO"
+            ],
+            "old": {
+              "bb_pct": 0.15789473684210525,
+              "games": 42,
+              "hr": 2,
+              "iso": 0.045454545454545456,
+              "k_pct": 0.14736842105263157,
+              "pa": 190
+            },
+            "positive_metric_count": 1,
+            "start_date": "2026-05-30",
+            "status": "AVAILABLE",
+            "supported_metric_count": 1,
+            "supporting_metrics": [
+              "ISO"
+            ],
+            "team": "522"
+          }
+        },
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "evidence_tier_order": 0,
+        "games_in_history": 132,
         "iso_delta": 0.0933,
         "k_delta": -0.0351,
         "last_game": "2026-09-13",
+        "max_comparison_games": 84,
         "new": {
           "bb_pct": 0.08771929824561403,
           "games": 14,
@@ -693,9 +1860,9 @@
           "pa": 57
         },
         "phase": "OFFSEASON_REVIEW",
-        "reason": "AA, age 21: two 14-game samples (57 vs 57 PA); K% 17.5%\u219214.0%, BB% 14.0%\u21928.8%, ISO 0.167\u21920.260. Last game 2026-09-13. Collector interest and card price NOT validated.",
-        "sample_warning": "Two small recent samples; signal not backtested or calibrated",
-        "score": 43.5
+        "reason": "AA, age 21: 14v14 K% 17.5%\u219214.0%, BB% 14.0%\u21928.8%, ISO 0.167\u21920.260; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
+        "sample_warning": "Direction-support numbers describe sampled changes only; windows overlap; no calibrated future-breakout or persistence probability. Offseason data is stale.",
+        "score": 25.2
       },
       "hype_pct": null,
       "level": "AA",
@@ -705,7 +1872,7 @@
       "position": "BAT",
       "price_trend": null,
       "rank": 11,
-      "reason": "AA, age 21: two 14-game samples (57 vs 57 PA); K% 17.5%\u219214.0%, BB% 14.0%\u21928.8%, ISO 0.167\u21920.260. Last game 2026-09-13. Collector interest and card price NOT validated.",
+      "reason": "AA, age 21: 14v14 K% 17.5%\u219214.0%, BB% 14.0%\u21928.8%, ISO 0.167\u21920.260; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "time_context": "OFFSEASON_REVIEW"
     }
