@@ -1,5 +1,14 @@
 # Card Market: $100 / 30-day autonomous paper challenge
 
+> **November 10 price/hype integrity alert:** The old catalog displayed a
+> plausible-looking $18.02 mark for a Jac Caglianone Bowman autograph while
+> independently published graded references were in the hundreds. The previous
+> "hypePct" was merely Google searches relative to Aaron Judge, not card hype.
+> The board now **quarantines all unverified vendor prices and collector-hype
+> claims**. The $100 paper-trading clock and purchases remain paused until
+> source-specific market value AND collector attention are defensibly validated.
+> See [MARKET_DATA_AUDIT.md](MARKET_DATA_AUDIT.md).
+
 **Paper experiment only.** The bot never makes real purchases, places orders,
 transfers funds, or claims a real completed trade.
 
@@ -7,14 +16,16 @@ transfers funds, or claims a real completed trade.
 
 - Starts with $100 in **paper money only**.
 - Uses MLB skill-change data and Google Trends to rank up to 30 players.
-- Uses CardPricer's **public anonymous API** for a catalog of real card
-  references (player, year, set, card number, grade and guide price).
+- Uses CardPricer's **public anonymous API** for reference identities,
+  but does not trust or display its dollar price marks as market values.
 - Does not call a guide price a real trade. Every eligible buy requires at
   least five source-linked, individually validated **sales of the exact
   card/grade** during the previous 30 days, with recent activity in both
   halves of the window and a sale in the last 14 days.
-- Requires deal score >= 50, breakout score >= 45, hype <= 30% and verified
-  card-price trend <= 15%. Missing data means no paper purchase.
+- Requires deal score >= 50, breakout score >= 45, verified market
+  pricing and *independently validated card-collector interest*. The old
+  Google Trends ratio versus Aaron Judge DOES NOT satisfy the last gate.
+  Missing data blocks paper purchases.
 - Simulates an exact-card **sold-median reference fill** plus 10% slippage and
   $3.50 inbound shipping. This is **NOT** a real offered listing or executable
   bid; transaction feasibility is not proven.
@@ -24,8 +35,9 @@ transfers funds, or claims a real completed trade.
   from exact-card sold records where sufficiently fresh.
 - Estimates liquidation after 15% selling fees and $3.50 outbound shipping;
   no realized profits, real orders, real inventory or real sales are implied.
-- Stops opening new positions 30 days after a qualifying priced card starts
-  the experiment. If the feed remains too thin, the clock does not start.
+- Stops opening new positions 30 days after a fully qualified,
+  independently market-verified card starts the experiment. The clock does not
+  start merely because a guide price or skill-change signal exists.
 
 **Critical limitation:** Many promising MLB players aren't yet covered by
 the public catalog. Certain public price-series matches were incorrectly
