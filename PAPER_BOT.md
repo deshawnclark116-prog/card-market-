@@ -64,47 +64,47 @@ net liquidation, pricing freshness and rejection/no-trade days. This is not
 realized profit, and a 30-day experiment is not statistical proof of an edge.
 The trading rules are frozen for the trial, avoiding retrospective tuning.
 
-## Live prices: now using Soldgraph (key required)
+## Live card prices — now entirely account-free
 
-The first live scan discovered 15 MLB candidates but no card prices because the
-original eBay scraper is blocked or fails on cloud hosts. The bot now has a
-provider for both eBay **sold** listings and **active Buy It Now** offers.
+The GitHub Actions runner uses CardPricer's **documented public anonymous API**:
+https://cardpricer.co/docs/api. No signup, API token, secret, credit card,
+proxy, paid plan, manual download, or other user's account is required. An
+actual GitHub-hosted probe on November 9, 2026 returned HTTP 200 for its
+baseball directory, recent-sales feed and data-freshness endpoint.
 
-**Activate it:**
+**How to run:** GitHub -> Actions -> Card Bot $100 Paper Month -> Run workflow.
+The report updates CARD_BOT_DASHBOARD.md and data/card_bot_scouting_latest.json
+after a successful run, even when no purchase can be justified.
 
-1. Create a key at https://soldgraph.com/ (third-party service).
-2. In the GitHub repository go to **Settings -> Secrets and variables ->
-   Actions -> New repository secret**.
-3. Name it exactly **SOLDGRAPH_KEY** and paste the value. Do not send the
-   key in chat, in issues, or in code.
-4. Under **Actions -> Card Bot $100 Paper Month**, select **Run workflow**.
-5. Read **CARD_BOT_DASHBOARD.md** and the **Live pricing diagnostics** section.
+The system reuses real on-field MLB data to rank up to 30 players, then checks
+their published baseball card directory records. A catalog guide price is
+displayed for information only. **Catalog prices cannot trigger trades.**
 
-A new Soldgraph account currently advertises **100 free searches total** (one
-time, not monthly). Each screened reference requires **two** queries: recent
-sold and active listings. To conserve this allowance, the bot checks **one
-player-card pair each day** (or refreshes one held exact card by a single sold
-query) and rotates the shortlist. The monitor persists checked dates and
-requests in data/card_bot_market_monitor.json. Never enable a paid plan
-without deciding whether its fees are worth the experiment.
+Before any paper buy, it fetches that exact card's provenance and independently
+checks at least five RECENT completed sale titles for the **same player, year,
+set, card number and grading lane**. At least two sales must fall in each
+half of the 30-day window, and the latest sale must be no more than 14 days old.
+This matters: the public provider's matcher has occasionally attached sales
+from unrelated sets/cards with only the same player and grade. Those are
+rejected even if the provider's headline confidence looks high.
 
-**Buy conditions:** same named player, year, set, raw autograph and card
-number across comparable sales and an actual eBay fixed-price listing; 5
-matching sold transactions in 45 days including 2 from each half and 1 in
-the last 14 days; reject unknown shipping, slabs, numbered parallels,
-reprints, auctions, accepted Best Offers with unknown actual sold prices and
-mismatched grades/variants. The bot records the active listing URL and
-snapshot ask, known shipping, and 6% *estimated* sales tax. It also requires
-at least $2 theoretical room after a 15% selling-fee allowance and $3.50
-outbound shipping. Nothing is purchased from eBay.
+If a valid quote exists, this is **still a reference-only paper buy**. The
+system cannot assert that anyone is currently selling that exact card for the
+sold median. It records the card identity, comp provenance link and simulated
+entry at the matched median + 10% slippage + $3.50 shipping; estimated
+liquidation subtracts 15% selling fees and $3.50 shipping. Strict $25 all-in
+position cap, five positions and one paper purchase per day still apply.
 
-**Limits:** These are listing snapshots and title-based matches, NOT
-confirmed actual available inventory at a checkout. Conditions and seller
-details may differ. The code does not capture true destination-dependent
-shipping/tax or exact final sale prices. Zero buys with valid data is an
-honest possible outcome.
+**Limitations:** At the time of the live November 9 test, CardPricer's baseball
+catalog showed roughly 2,377 cards but direct eBay ingestion reported zero
+recent records; active sources were mostly tokenized/graded card venues. Many
+of the existing MLB shortlist players had zero coverage and some provenance
+matches were invalid. The bot therefore may make **zero purchases**. That's
+the honest result of this no-account source, not evidence of no market
+opportunity. Do not confuse graded card guide prices with same-card sold
+prices or eBay available offers.
 
-The 30-day clock does not start until at least one sufficiently matched,
-priced ACTIVE listing and sold history becomes available. Before that the
-daily monitor and scouting board will still update. P&L uses the newest
-qualifying same-variant sold marks within 7 days, never assumed realized gains.
+See https://cardpricer.co/docs/api for the source attribution and usage terms.
+The repository retains the earlier Soldgraph integration as inactive legacy
+code; it is not imported or used by the daily bot and **no user key is needed**.
+
