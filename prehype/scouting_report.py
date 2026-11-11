@@ -220,6 +220,81 @@ def to_markdown(data):
                   "- Major-league exposure filter: **" + ("available" if discovery.get("exposure_filter_source_available") else "UNAVAILABLE — exposure unconfirmed") + "**",
                   "- A skill-change signal is NOT proof of low card-market hype or a fair card price.",
                   ""]
+        all_improving=discovery.get("all_skill_improvement_candidates") or []
+        if all_improving:
+            lines += [
+                "",
+                "## ALL players with current baseball improvement signals",
+                "",
+                "**Every player discovered from the raw game logs appears here,** "
+                "including publicly ranked prospects, players without a Bowman "
+                "1st autograph, and players whose cards are not cheap. "
+                "Do NOT treat the separate card-buy shortlist as the complete "
+                "baseball research list. Numeric scores are uncalibrated "
+                "skill-change heuristics—not breakout likelihoods.",
+                "",
+                f"**{len(all_improving)} skill-change candidates** across "
+                f"{discovery.get('full_season_player_histories',0)} "
+                "sampled players. Each 14v14 change compares the most recent "
+                "14 games with the 14 games before them; negative K% changes "
+                "mean fewer strikeouts, positive BB% and ISO changes mean "
+                "more walks and extra-base power. These late-season patterns "
+                "have NOT yet been forward-validated.",
+                "",
+                "| Signal rank | Player / full game history | Age / level | Games | Skill score | Recent 14v14 deltas | Evidence tier | Public recognition |",
+                "|---:|---|---|---:|---:|---|---|---|",
+            ]
+            for rank,c in enumerate(all_improving,1):
+                pid=str(c.get("player_id") or "")
+                name=_clean(c.get("name"))
+                if pid.isdigit():
+                    name=f"[{name}](data/card_bot_season_players/{discovery.get('season')}/{pid}.json)"
+                changes=c.get("short_window_delta") or {}
+                delta_text=(
+                    f"K {changes['K']:+.1%} / "
+                    f"BB {changes['BB']:+.1%} / "
+                    f"ISO {changes['ISO']:+.3f}"
+                ) if all(k in changes for k in ("K","BB","ISO")) else "not available"
+                public=(
+                    "RANKED — not a quiet-card claim"
+                    if c.get("public_top100_ranked") else
+                    "Unranked on checked Top-100; hobby hype unknown"
+                    if c.get("public_top100_status")=="NOT_RANKED_CHECKED" else
+                    "Rank-check unavailable; hobby hype unknown"
+                )
+                lines.append(
+                    f"| {rank} | {name} | {_clean(c.get('age'))} / {_clean(c.get('level'))} | "
+                    f"{_clean(c.get('games_tracked'))} | "
+                    f"{_clean(c.get('skill_score_not_probability'))} | "
+                    f"{delta_text} | {_clean(c.get('evidence_tier','UNKNOWN').replace('_',' '))} | "
+                    f"{public} |"
+                )
+            lines.append("")
+        additional=discovery.get("additional_upward_trajectories") or []
+        if additional:
+            lines += [
+                "### Additional players with an improving rolling trajectory",
+                "",
+                "These players had an **upward full-season 14v14 checkpoint** "
+                "but did **not** meet the stricter main skill-change trigger. "
+                "They are research leads only; no retrospective signal is "
+                "a proven future breakout or card buy.",
+                "",
+                "| Player / full game history | Age / level | Games | Observed phase | Last observed uptrend |",
+                "|---|---|---:|---|---|",
+            ]
+            for c in additional:
+                pid=str(c.get("player_id") or "")
+                name=_clean(c.get("name"))
+                if pid.isdigit():
+                    name=f"[{name}](data/card_bot_season_players/{discovery.get('season')}/{pid}.json)"
+                lines.append(
+                    f"| {name} | {_clean(c.get('age'))} / {_clean(c.get('level'))} | "
+                    f"{_clean(c.get('games_tracked'))} | "
+                    f"{_clean(c.get('full_season_phase','UNKNOWN').replace('_',' '))} | "
+                    f"{_clean(c.get('last_observed_uptrend'))} |"
+                )
+            lines.append("")
         already = discovery.get("already_publicized_excluded") or []
         if already:
             lines += ["### Already-publicized names removed from early shortlist", "",
