@@ -13,8 +13,13 @@ machine-readable source audit at
   is *already publicly prominent*, not under the collector radar.
 - Track observable, directly sourced pitcher fastball **event peak**
   velocities from two public events (2026 June national championship and
-  2026 October Jupiter championship). A 3+ mph increase at two different
-  events is an **unconfirmed observation**, NOT a validated breakout.
+  2026 October Jupiter championship), with the public Perfect Game
+  cross-event raw fastball-record table as a fallback when an event's own
+  velocity table is unavailable. That fallback is **only a selected
+  top-velocity leaderboard**, not a comprehensive or representative
+  sample, and is never used to discover players by rank.
+  A 3+ mph increase at two different events is an
+  **unconfirmed observation**, NOT a validated breakout.
   Single event peaks don't reveal pitch quality, average velocity,
   command, innings load, strength of opponents or instrument bias.
 - Paid DiamondKast player performance pages are excluded, and there
