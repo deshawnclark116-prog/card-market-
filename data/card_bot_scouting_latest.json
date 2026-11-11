@@ -1,6 +1,897 @@
 {
   "as_of": "2026-11-11",
   "discovery": {
+    "additional_upward_trajectories": [
+      {
+        "age": 22,
+        "card_buy_eligible": false,
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 113,
+        "last_game": "2026-09-01",
+        "last_observed_uptrend": "2026-08-26",
+        "level": "AAA",
+        "name": "Manuel Pena",
+        "player_id": "694211",
+        "recent_window": {
+          "after": {
+            "ab": 53,
+            "avg": 0.3396,
+            "bb": 4,
+            "bb_pct": 0.0678,
+            "doubles": 1,
+            "games": 14,
+            "hits": 18,
+            "hr": 0,
+            "iso": 0.0189,
+            "k": 11,
+            "k_pct": 0.1864,
+            "obp": 0.3898,
+            "ops": 0.7483,
+            "pa": 59,
+            "slg": 0.3585,
+            "triples": 0
+          },
+          "before": {
+            "ab": 60,
+            "avg": 0.2,
+            "bb": 3,
+            "bb_pct": 0.0476,
+            "doubles": 3,
+            "games": 14,
+            "hits": 12,
+            "hr": 1,
+            "iso": 0.1,
+            "k": 20,
+            "k_pct": 0.3175,
+            "obp": 0.2381,
+            "ops": 0.5381,
+            "pa": 63,
+            "slg": 0.3,
+            "triples": 0
+          },
+          "deltas": {
+            "BB": 0.0202,
+            "ISO": -0.0811,
+            "K": -0.1311
+          },
+          "direction": "UPTREND",
+          "down_metrics": [
+            "ISO"
+          ],
+          "method": "2-of-3 raw K/BB/ISO deltas, NOT a probability",
+          "status": "AVAILABLE",
+          "up_metrics": [
+            "K",
+            "BB"
+          ]
+        },
+        "skill_score_not_probability": null,
+        "status": "ROLLING_UPTREND_ONLY_DID_NOT_PASS_CORE_EARLY_TRIGGER"
+      }
+    ],
+    "all_positive_development_names_count": 21,
+    "all_skill_evidence_tier_counts": {
+      "BUILDING_14_AND_28": 0,
+      "EARLY_14_ONLY": 8,
+      "LONG_HORIZON_CONFLICT": 1,
+      "SHORT_SPIKE_NOT_CONFIRMED": 10,
+      "SUSTAINED_ACROSS_14_28_42": 1
+    },
+    "all_skill_improvement_candidates": [
+      {
+        "age": 20,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SUSTAINED_ACROSS_14_28_42",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 103,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-06",
+        "level": "A+",
+        "name": "Edward Florentino",
+        "player_id": "821273",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.17647058823529413,
+          "games": 14,
+          "hr": 5,
+          "iso": 0.4117647058823529,
+          "k_pct": 0.17647058823529413,
+          "pa": 68
+        },
+        "short_window_before": {
+          "bb_pct": 0.13432835820895522,
+          "games": 14,
+          "hr": 4,
+          "iso": 0.27586206896551724,
+          "k_pct": 0.208955223880597,
+          "pa": 67
+        },
+        "short_window_delta": {
+          "BB": 0.0421,
+          "ISO": 0.1359,
+          "K": -0.0325
+        },
+        "skill_score_not_probability": 67.6,
+        "supporting_metrics": [
+          "ISO"
+        ]
+      },
+      {
+        "age": 22,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 91,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-20",
+        "level": "AAA",
+        "name": "Demetrio Crisantes",
+        "player_id": "702679",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.17543859649122806,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.2127659574468085,
+          "k_pct": 0.07017543859649122,
+          "pa": 57
+        },
+        "short_window_before": {
+          "bb_pct": 0.07272727272727272,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.12,
+          "k_pct": 0.23636363636363636,
+          "pa": 55
+        },
+        "short_window_delta": {
+          "BB": 0.1027,
+          "ISO": 0.0928,
+          "K": -0.1662
+        },
+        "skill_score_not_probability": 63.4,
+        "supporting_metrics": [
+          "K",
+          "BB",
+          "ISO"
+        ]
+      },
+      {
+        "age": 18,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "CURRENT_UPTREND",
+        "games_tracked": 82,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-06",
+        "level": "A",
+        "name": "Sebastian Dos Santos",
+        "player_id": "829741",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.20634920634920634,
+          "games": 14,
+          "hr": 5,
+          "iso": 0.4,
+          "k_pct": 0.15873015873015872,
+          "pa": 63
+        },
+        "short_window_before": {
+          "bb_pct": 0.18032786885245902,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.16326530612244897,
+          "k_pct": 0.2786885245901639,
+          "pa": 61
+        },
+        "short_window_delta": {
+          "BB": 0.026,
+          "ISO": 0.2367,
+          "K": -0.12
+        },
+        "skill_score_not_probability": 62.8,
+        "supporting_metrics": [
+          "K",
+          "ISO"
+        ]
+      },
+      {
+        "age": 19,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "CURRENT_UPTREND",
+        "games_tracked": 36,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-06",
+        "level": "A",
+        "name": "Dax Kilby",
+        "player_id": "828076",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.3181818181818182,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.2,
+          "k_pct": 0.16666666666666666,
+          "pa": 66
+        },
+        "short_window_before": {
+          "bb_pct": 0.22857142857142856,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.1111111111111111,
+          "k_pct": 0.22857142857142856,
+          "pa": 70
+        },
+        "short_window_delta": {
+          "BB": 0.0896,
+          "ISO": 0.0889,
+          "K": -0.0619
+        },
+        "skill_score_not_probability": 58.0,
+        "supporting_metrics": [
+          "K",
+          "BB",
+          "ISO"
+        ]
+      },
+      {
+        "age": 21,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "CURRENT_UPTREND",
+        "games_tracked": 73,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-08-26",
+        "level": "AAA",
+        "name": "Walker Jenkins",
+        "player_id": "805805",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.16923076923076924,
+          "games": 14,
+          "hr": 6,
+          "iso": 0.3888888888888889,
+          "k_pct": 0.15384615384615385,
+          "pa": 65
+        },
+        "short_window_before": {
+          "bb_pct": 0.07936507936507936,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.1896551724137931,
+          "k_pct": 0.1746031746031746,
+          "pa": 63
+        },
+        "short_window_delta": {
+          "BB": 0.0899,
+          "ISO": 0.1992,
+          "K": -0.0208
+        },
+        "skill_score_not_probability": 54.9,
+        "supporting_metrics": [
+          "BB",
+          "ISO"
+        ]
+      },
+      {
+        "age": 20,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 58,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-06",
+        "level": "A",
+        "name": "Luis Escudero",
+        "player_id": "806884",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.18518518518518517,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.2619047619047619,
+          "k_pct": 0.09259259259259259,
+          "pa": 54
+        },
+        "short_window_before": {
+          "bb_pct": 0.16981132075471697,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.13953488372093023,
+          "k_pct": 0.20754716981132076,
+          "pa": 53
+        },
+        "short_window_delta": {
+          "BB": 0.0154,
+          "ISO": 0.1224,
+          "K": -0.115
+        },
+        "skill_score_not_probability": 54.2,
+        "supporting_metrics": [
+          "K",
+          "ISO"
+        ]
+      },
+      {
+        "age": 22,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 123,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-08-30",
+        "level": "AAA",
+        "name": "Lazaro Montes",
+        "player_id": "703155",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.16393442622950818,
+          "games": 14,
+          "hr": 3,
+          "iso": 0.22,
+          "k_pct": 0.2459016393442623,
+          "pa": 61
+        },
+        "short_window_before": {
+          "bb_pct": 0.09090909090909091,
+          "games": 14,
+          "hr": 7,
+          "iso": 0.4067796610169492,
+          "k_pct": 0.3333333333333333,
+          "pa": 66
+        },
+        "short_window_delta": {
+          "BB": 0.073,
+          "ISO": -0.1868,
+          "K": -0.0874
+        },
+        "skill_score_not_probability": 53.2,
+        "supporting_metrics": [
+          "K",
+          "BB"
+        ]
+      },
+      {
+        "age": 21,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 80,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-12",
+        "level": "AA",
+        "name": "Johanfran Garcia",
+        "player_id": "703190",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.125,
+          "games": 14,
+          "hr": 4,
+          "iso": 0.2727272727272727,
+          "k_pct": 0.296875,
+          "pa": 64
+        },
+        "short_window_before": {
+          "bb_pct": 0.07017543859649122,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.1568627450980392,
+          "k_pct": 0.40350877192982454,
+          "pa": 57
+        },
+        "short_window_delta": {
+          "BB": 0.0548,
+          "ISO": 0.1159,
+          "K": -0.1066
+        },
+        "skill_score_not_probability": 45.8,
+        "supporting_metrics": [
+          "K",
+          "BB",
+          "ISO"
+        ]
+      },
+      {
+        "age": 21,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 114,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Josh Adamczewski",
+        "player_id": "815304",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.2222222222222222,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.16666666666666666,
+          "k_pct": 0.19047619047619047,
+          "pa": 63
+        },
+        "short_window_before": {
+          "bb_pct": 0.05357142857142857,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.09433962264150944,
+          "k_pct": 0.32142857142857145,
+          "pa": 56
+        },
+        "short_window_delta": {
+          "BB": 0.1687,
+          "ISO": 0.0723,
+          "K": -0.131
+        },
+        "skill_score_not_probability": 44.7,
+        "supporting_metrics": [
+          "K",
+          "BB",
+          "ISO"
+        ]
+      },
+      {
+        "age": 19,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 122,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Jes\u00fas Made",
+        "player_id": "815908",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.09523809523809523,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.14814814814814814,
+          "k_pct": 0.1111111111111111,
+          "pa": 63
+        },
+        "short_window_before": {
+          "bb_pct": 0.06666666666666667,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.01818181818181818,
+          "k_pct": 0.23333333333333334,
+          "pa": 60
+        },
+        "short_window_delta": {
+          "BB": 0.0286,
+          "ISO": 0.13,
+          "K": -0.1222
+        },
+        "skill_score_not_probability": 43.5,
+        "supporting_metrics": [
+          "K",
+          "ISO"
+        ]
+      },
+      {
+        "age": 22,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 116,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Josiah Ragsdale",
+        "player_id": "828824",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.13636363636363635,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.14814814814814814,
+          "k_pct": 0.21212121212121213,
+          "pa": 66
+        },
+        "short_window_before": {
+          "bb_pct": 0.12121212121212122,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.16071428571428573,
+          "k_pct": 0.30303030303030304,
+          "pa": 66
+        },
+        "short_window_delta": {
+          "BB": 0.0152,
+          "ISO": -0.0126,
+          "K": -0.0909
+        },
+        "skill_score_not_probability": 43.3,
+        "supporting_metrics": [
+          "K"
+        ]
+      },
+      {
+        "age": 19,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 111,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-08-28",
+        "level": "A",
+        "name": "Handelfry Encarnacion",
+        "player_id": "821136",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.11764705882352941,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.1896551724137931,
+          "k_pct": 0.07352941176470588,
+          "pa": 68
+        },
+        "short_window_before": {
+          "bb_pct": 0.13846153846153847,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.01818181818181818,
+          "k_pct": 0.2,
+          "pa": 65
+        },
+        "short_window_delta": {
+          "BB": -0.0208,
+          "ISO": 0.1715,
+          "K": -0.1265
+        },
+        "skill_score_not_probability": 42.4,
+        "supporting_metrics": [
+          "K",
+          "ISO"
+        ]
+      },
+      {
+        "age": 21,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "LONG_HORIZON_CONFLICT",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 115,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Jaison Chourio",
+        "player_id": "702693",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.13114754098360656,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.09615384615384616,
+          "k_pct": 0.14754098360655737,
+          "pa": 61
+        },
+        "short_window_before": {
+          "bb_pct": 0.15942028985507245,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.017543859649122806,
+          "k_pct": 0.2608695652173913,
+          "pa": 69
+        },
+        "short_window_delta": {
+          "BB": -0.0283,
+          "ISO": 0.0786,
+          "K": -0.1133
+        },
+        "skill_score_not_probability": 39.7,
+        "supporting_metrics": [
+          "K",
+          "ISO"
+        ]
+      },
+      {
+        "age": 22,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 126,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Andrew Fischer",
+        "player_id": "702652",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.3125,
+          "games": 14,
+          "hr": 6,
+          "iso": 0.4186046511627907,
+          "k_pct": 0.28125,
+          "pa": 64
+        },
+        "short_window_before": {
+          "bb_pct": 0.05357142857142857,
+          "games": 14,
+          "hr": 7,
+          "iso": 0.44,
+          "k_pct": 0.375,
+          "pa": 56
+        },
+        "short_window_delta": {
+          "BB": 0.2589,
+          "ISO": -0.0214,
+          "K": -0.0938
+        },
+        "skill_score_not_probability": 38.6,
+        "supporting_metrics": [
+          "K",
+          "BB"
+        ]
+      },
+      {
+        "age": 20,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 81,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-08-25",
+        "level": "A+",
+        "name": "Starlyn Caba",
+        "player_id": "806965",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.21666666666666667,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.2127659574468085,
+          "k_pct": 0.25,
+          "pa": 60
+        },
+        "short_window_before": {
+          "bb_pct": 0.1774193548387097,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.08,
+          "k_pct": 0.3064516129032258,
+          "pa": 62
+        },
+        "short_window_delta": {
+          "BB": 0.0392,
+          "ISO": 0.1328,
+          "K": -0.0565
+        },
+        "skill_score_not_probability": 38.2,
+        "supporting_metrics": [
+          "ISO"
+        ]
+      },
+      {
+        "age": 22,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 118,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Bryan Rincon",
+        "player_id": "804858",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.26153846153846155,
+          "games": 14,
+          "hr": 5,
+          "iso": 0.35555555555555557,
+          "k_pct": 0.18461538461538463,
+          "pa": 65
+        },
+        "short_window_before": {
+          "bb_pct": 0.14705882352941177,
+          "games": 14,
+          "hr": 3,
+          "iso": 0.2631578947368421,
+          "k_pct": 0.22058823529411764,
+          "pa": 68
+        },
+        "short_window_delta": {
+          "BB": 0.1145,
+          "ISO": 0.0924,
+          "K": -0.036
+        },
+        "skill_score_not_probability": 37.7,
+        "supporting_metrics": [
+          "BB"
+        ]
+      },
+      {
+        "age": 23,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 138,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-20",
+        "level": "AAA",
+        "name": "Zach Ehrhard",
+        "player_id": "701394",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.10606060606060606,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.15254237288135594,
+          "k_pct": 0.16666666666666666,
+          "pa": 66
+        },
+        "short_window_before": {
+          "bb_pct": 0.07936507936507936,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.14285714285714285,
+          "k_pct": 0.30158730158730157,
+          "pa": 63
+        },
+        "short_window_delta": {
+          "BB": 0.0267,
+          "ISO": 0.0097,
+          "K": -0.1349
+        },
+        "skill_score_not_probability": 35.0,
+        "supporting_metrics": [
+          "K"
+        ]
+      },
+      {
+        "age": 20,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 117,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-19",
+        "level": "AAA",
+        "name": "Franklin Arias",
+        "player_id": "808265",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.08823529411764706,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.1694915254237288,
+          "k_pct": 0.10294117647058823,
+          "pa": 68
+        },
+        "short_window_before": {
+          "bb_pct": 0.057692307692307696,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.14583333333333334,
+          "k_pct": 0.1346153846153846,
+          "pa": 52
+        },
+        "short_window_delta": {
+          "BB": 0.0305,
+          "ISO": 0.0237,
+          "K": -0.0317
+        },
+        "skill_score_not_probability": 32.7,
+        "supporting_metrics": []
+      },
+      {
+        "age": 21,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 118,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Cristofer Torin",
+        "player_id": "800198",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.09859154929577464,
+          "games": 14,
+          "hr": 3,
+          "iso": 0.20634920634920634,
+          "k_pct": 0.08450704225352113,
+          "pa": 71
+        },
+        "short_window_before": {
+          "bb_pct": 0.046153846153846156,
+          "games": 14,
+          "hr": 3,
+          "iso": 0.2,
+          "k_pct": 0.12307692307692308,
+          "pa": 65
+        },
+        "short_window_delta": {
+          "BB": 0.0524,
+          "ISO": 0.0063,
+          "K": -0.0386
+        },
+        "skill_score_not_probability": 28.8,
+        "supporting_metrics": [
+          "K",
+          "BB"
+        ]
+      },
+      {
+        "age": 21,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 132,
+        "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+        "last_game": "2026-09-13",
+        "level": "AA",
+        "name": "Aroon Escobar",
+        "player_id": "800169",
+        "public_top100_ranked": false,
+        "public_top100_status": "NOT_RANKED_CHECKED",
+        "short_window_after": {
+          "bb_pct": 0.08771929824561403,
+          "games": 14,
+          "hr": 3,
+          "iso": 0.26,
+          "k_pct": 0.14035087719298245,
+          "pa": 57
+        },
+        "short_window_before": {
+          "bb_pct": 0.14035087719298245,
+          "games": 14,
+          "hr": 1,
+          "iso": 0.16666666666666666,
+          "k_pct": 0.17543859649122806,
+          "pa": 57
+        },
+        "short_window_delta": {
+          "BB": -0.0526,
+          "ISO": 0.0933,
+          "K": -0.0351
+        },
+        "skill_score_not_probability": 25.2,
+        "supporting_metrics": []
+      }
+    ],
     "already_publicized_excluded": [
       {
         "name": "Edward Florentino",
@@ -868,6 +1759,897 @@
     "catalog_prices_validated": false,
     "caution": "Public catalog marks may be incorrectly attributed; only independently exact-matched SOLD records can trigger a PAPER proxy buy.",
     "early_discovery": {
+      "additional_upward_trajectories": [
+        {
+          "age": 22,
+          "card_buy_eligible": false,
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 113,
+          "last_game": "2026-09-01",
+          "last_observed_uptrend": "2026-08-26",
+          "level": "AAA",
+          "name": "Manuel Pena",
+          "player_id": "694211",
+          "recent_window": {
+            "after": {
+              "ab": 53,
+              "avg": 0.3396,
+              "bb": 4,
+              "bb_pct": 0.0678,
+              "doubles": 1,
+              "games": 14,
+              "hits": 18,
+              "hr": 0,
+              "iso": 0.0189,
+              "k": 11,
+              "k_pct": 0.1864,
+              "obp": 0.3898,
+              "ops": 0.7483,
+              "pa": 59,
+              "slg": 0.3585,
+              "triples": 0
+            },
+            "before": {
+              "ab": 60,
+              "avg": 0.2,
+              "bb": 3,
+              "bb_pct": 0.0476,
+              "doubles": 3,
+              "games": 14,
+              "hits": 12,
+              "hr": 1,
+              "iso": 0.1,
+              "k": 20,
+              "k_pct": 0.3175,
+              "obp": 0.2381,
+              "ops": 0.5381,
+              "pa": 63,
+              "slg": 0.3,
+              "triples": 0
+            },
+            "deltas": {
+              "BB": 0.0202,
+              "ISO": -0.0811,
+              "K": -0.1311
+            },
+            "direction": "UPTREND",
+            "down_metrics": [
+              "ISO"
+            ],
+            "method": "2-of-3 raw K/BB/ISO deltas, NOT a probability",
+            "status": "AVAILABLE",
+            "up_metrics": [
+              "K",
+              "BB"
+            ]
+          },
+          "skill_score_not_probability": null,
+          "status": "ROLLING_UPTREND_ONLY_DID_NOT_PASS_CORE_EARLY_TRIGGER"
+        }
+      ],
+      "all_positive_development_names_count": 21,
+      "all_skill_evidence_tier_counts": {
+        "BUILDING_14_AND_28": 0,
+        "EARLY_14_ONLY": 8,
+        "LONG_HORIZON_CONFLICT": 1,
+        "SHORT_SPIKE_NOT_CONFIRMED": 10,
+        "SUSTAINED_ACROSS_14_28_42": 1
+      },
+      "all_skill_improvement_candidates": [
+        {
+          "age": 20,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SUSTAINED_ACROSS_14_28_42",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 103,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-06",
+          "level": "A+",
+          "name": "Edward Florentino",
+          "player_id": "821273",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.17647058823529413,
+            "games": 14,
+            "hr": 5,
+            "iso": 0.4117647058823529,
+            "k_pct": 0.17647058823529413,
+            "pa": 68
+          },
+          "short_window_before": {
+            "bb_pct": 0.13432835820895522,
+            "games": 14,
+            "hr": 4,
+            "iso": 0.27586206896551724,
+            "k_pct": 0.208955223880597,
+            "pa": 67
+          },
+          "short_window_delta": {
+            "BB": 0.0421,
+            "ISO": 0.1359,
+            "K": -0.0325
+          },
+          "skill_score_not_probability": 67.6,
+          "supporting_metrics": [
+            "ISO"
+          ]
+        },
+        {
+          "age": 22,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 91,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-20",
+          "level": "AAA",
+          "name": "Demetrio Crisantes",
+          "player_id": "702679",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.17543859649122806,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.2127659574468085,
+            "k_pct": 0.07017543859649122,
+            "pa": 57
+          },
+          "short_window_before": {
+            "bb_pct": 0.07272727272727272,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.12,
+            "k_pct": 0.23636363636363636,
+            "pa": 55
+          },
+          "short_window_delta": {
+            "BB": 0.1027,
+            "ISO": 0.0928,
+            "K": -0.1662
+          },
+          "skill_score_not_probability": 63.4,
+          "supporting_metrics": [
+            "K",
+            "BB",
+            "ISO"
+          ]
+        },
+        {
+          "age": 18,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "CURRENT_UPTREND",
+          "games_tracked": 82,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-06",
+          "level": "A",
+          "name": "Sebastian Dos Santos",
+          "player_id": "829741",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.20634920634920634,
+            "games": 14,
+            "hr": 5,
+            "iso": 0.4,
+            "k_pct": 0.15873015873015872,
+            "pa": 63
+          },
+          "short_window_before": {
+            "bb_pct": 0.18032786885245902,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.16326530612244897,
+            "k_pct": 0.2786885245901639,
+            "pa": 61
+          },
+          "short_window_delta": {
+            "BB": 0.026,
+            "ISO": 0.2367,
+            "K": -0.12
+          },
+          "skill_score_not_probability": 62.8,
+          "supporting_metrics": [
+            "K",
+            "ISO"
+          ]
+        },
+        {
+          "age": 19,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "CURRENT_UPTREND",
+          "games_tracked": 36,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-06",
+          "level": "A",
+          "name": "Dax Kilby",
+          "player_id": "828076",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.3181818181818182,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.2,
+            "k_pct": 0.16666666666666666,
+            "pa": 66
+          },
+          "short_window_before": {
+            "bb_pct": 0.22857142857142856,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.1111111111111111,
+            "k_pct": 0.22857142857142856,
+            "pa": 70
+          },
+          "short_window_delta": {
+            "BB": 0.0896,
+            "ISO": 0.0889,
+            "K": -0.0619
+          },
+          "skill_score_not_probability": 58.0,
+          "supporting_metrics": [
+            "K",
+            "BB",
+            "ISO"
+          ]
+        },
+        {
+          "age": 21,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "CURRENT_UPTREND",
+          "games_tracked": 73,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-08-26",
+          "level": "AAA",
+          "name": "Walker Jenkins",
+          "player_id": "805805",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.16923076923076924,
+            "games": 14,
+            "hr": 6,
+            "iso": 0.3888888888888889,
+            "k_pct": 0.15384615384615385,
+            "pa": 65
+          },
+          "short_window_before": {
+            "bb_pct": 0.07936507936507936,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.1896551724137931,
+            "k_pct": 0.1746031746031746,
+            "pa": 63
+          },
+          "short_window_delta": {
+            "BB": 0.0899,
+            "ISO": 0.1992,
+            "K": -0.0208
+          },
+          "skill_score_not_probability": 54.9,
+          "supporting_metrics": [
+            "BB",
+            "ISO"
+          ]
+        },
+        {
+          "age": 20,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 58,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-06",
+          "level": "A",
+          "name": "Luis Escudero",
+          "player_id": "806884",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.18518518518518517,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.2619047619047619,
+            "k_pct": 0.09259259259259259,
+            "pa": 54
+          },
+          "short_window_before": {
+            "bb_pct": 0.16981132075471697,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.13953488372093023,
+            "k_pct": 0.20754716981132076,
+            "pa": 53
+          },
+          "short_window_delta": {
+            "BB": 0.0154,
+            "ISO": 0.1224,
+            "K": -0.115
+          },
+          "skill_score_not_probability": 54.2,
+          "supporting_metrics": [
+            "K",
+            "ISO"
+          ]
+        },
+        {
+          "age": 22,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 123,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-08-30",
+          "level": "AAA",
+          "name": "Lazaro Montes",
+          "player_id": "703155",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.16393442622950818,
+            "games": 14,
+            "hr": 3,
+            "iso": 0.22,
+            "k_pct": 0.2459016393442623,
+            "pa": 61
+          },
+          "short_window_before": {
+            "bb_pct": 0.09090909090909091,
+            "games": 14,
+            "hr": 7,
+            "iso": 0.4067796610169492,
+            "k_pct": 0.3333333333333333,
+            "pa": 66
+          },
+          "short_window_delta": {
+            "BB": 0.073,
+            "ISO": -0.1868,
+            "K": -0.0874
+          },
+          "skill_score_not_probability": 53.2,
+          "supporting_metrics": [
+            "K",
+            "BB"
+          ]
+        },
+        {
+          "age": 21,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 80,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-12",
+          "level": "AA",
+          "name": "Johanfran Garcia",
+          "player_id": "703190",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.125,
+            "games": 14,
+            "hr": 4,
+            "iso": 0.2727272727272727,
+            "k_pct": 0.296875,
+            "pa": 64
+          },
+          "short_window_before": {
+            "bb_pct": 0.07017543859649122,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.1568627450980392,
+            "k_pct": 0.40350877192982454,
+            "pa": 57
+          },
+          "short_window_delta": {
+            "BB": 0.0548,
+            "ISO": 0.1159,
+            "K": -0.1066
+          },
+          "skill_score_not_probability": 45.8,
+          "supporting_metrics": [
+            "K",
+            "BB",
+            "ISO"
+          ]
+        },
+        {
+          "age": 21,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 114,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Josh Adamczewski",
+          "player_id": "815304",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.2222222222222222,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.16666666666666666,
+            "k_pct": 0.19047619047619047,
+            "pa": 63
+          },
+          "short_window_before": {
+            "bb_pct": 0.05357142857142857,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.09433962264150944,
+            "k_pct": 0.32142857142857145,
+            "pa": 56
+          },
+          "short_window_delta": {
+            "BB": 0.1687,
+            "ISO": 0.0723,
+            "K": -0.131
+          },
+          "skill_score_not_probability": 44.7,
+          "supporting_metrics": [
+            "K",
+            "BB",
+            "ISO"
+          ]
+        },
+        {
+          "age": 19,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 122,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Jes\u00fas Made",
+          "player_id": "815908",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.09523809523809523,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.14814814814814814,
+            "k_pct": 0.1111111111111111,
+            "pa": 63
+          },
+          "short_window_before": {
+            "bb_pct": 0.06666666666666667,
+            "games": 14,
+            "hr": 0,
+            "iso": 0.01818181818181818,
+            "k_pct": 0.23333333333333334,
+            "pa": 60
+          },
+          "short_window_delta": {
+            "BB": 0.0286,
+            "ISO": 0.13,
+            "K": -0.1222
+          },
+          "skill_score_not_probability": 43.5,
+          "supporting_metrics": [
+            "K",
+            "ISO"
+          ]
+        },
+        {
+          "age": 22,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 116,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Josiah Ragsdale",
+          "player_id": "828824",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.13636363636363635,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.14814814814814814,
+            "k_pct": 0.21212121212121213,
+            "pa": 66
+          },
+          "short_window_before": {
+            "bb_pct": 0.12121212121212122,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.16071428571428573,
+            "k_pct": 0.30303030303030304,
+            "pa": 66
+          },
+          "short_window_delta": {
+            "BB": 0.0152,
+            "ISO": -0.0126,
+            "K": -0.0909
+          },
+          "skill_score_not_probability": 43.3,
+          "supporting_metrics": [
+            "K"
+          ]
+        },
+        {
+          "age": 19,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 111,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-08-28",
+          "level": "A",
+          "name": "Handelfry Encarnacion",
+          "player_id": "821136",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.11764705882352941,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.1896551724137931,
+            "k_pct": 0.07352941176470588,
+            "pa": 68
+          },
+          "short_window_before": {
+            "bb_pct": 0.13846153846153847,
+            "games": 14,
+            "hr": 0,
+            "iso": 0.01818181818181818,
+            "k_pct": 0.2,
+            "pa": 65
+          },
+          "short_window_delta": {
+            "BB": -0.0208,
+            "ISO": 0.1715,
+            "K": -0.1265
+          },
+          "skill_score_not_probability": 42.4,
+          "supporting_metrics": [
+            "K",
+            "ISO"
+          ]
+        },
+        {
+          "age": 21,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "LONG_HORIZON_CONFLICT",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 115,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Jaison Chourio",
+          "player_id": "702693",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.13114754098360656,
+            "games": 14,
+            "hr": 0,
+            "iso": 0.09615384615384616,
+            "k_pct": 0.14754098360655737,
+            "pa": 61
+          },
+          "short_window_before": {
+            "bb_pct": 0.15942028985507245,
+            "games": 14,
+            "hr": 0,
+            "iso": 0.017543859649122806,
+            "k_pct": 0.2608695652173913,
+            "pa": 69
+          },
+          "short_window_delta": {
+            "BB": -0.0283,
+            "ISO": 0.0786,
+            "K": -0.1133
+          },
+          "skill_score_not_probability": 39.7,
+          "supporting_metrics": [
+            "K",
+            "ISO"
+          ]
+        },
+        {
+          "age": 22,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 126,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Andrew Fischer",
+          "player_id": "702652",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.3125,
+            "games": 14,
+            "hr": 6,
+            "iso": 0.4186046511627907,
+            "k_pct": 0.28125,
+            "pa": 64
+          },
+          "short_window_before": {
+            "bb_pct": 0.05357142857142857,
+            "games": 14,
+            "hr": 7,
+            "iso": 0.44,
+            "k_pct": 0.375,
+            "pa": 56
+          },
+          "short_window_delta": {
+            "BB": 0.2589,
+            "ISO": -0.0214,
+            "K": -0.0938
+          },
+          "skill_score_not_probability": 38.6,
+          "supporting_metrics": [
+            "K",
+            "BB"
+          ]
+        },
+        {
+          "age": 20,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 81,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-08-25",
+          "level": "A+",
+          "name": "Starlyn Caba",
+          "player_id": "806965",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.21666666666666667,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.2127659574468085,
+            "k_pct": 0.25,
+            "pa": 60
+          },
+          "short_window_before": {
+            "bb_pct": 0.1774193548387097,
+            "games": 14,
+            "hr": 0,
+            "iso": 0.08,
+            "k_pct": 0.3064516129032258,
+            "pa": 62
+          },
+          "short_window_delta": {
+            "BB": 0.0392,
+            "ISO": 0.1328,
+            "K": -0.0565
+          },
+          "skill_score_not_probability": 38.2,
+          "supporting_metrics": [
+            "ISO"
+          ]
+        },
+        {
+          "age": 22,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 118,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Bryan Rincon",
+          "player_id": "804858",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.26153846153846155,
+            "games": 14,
+            "hr": 5,
+            "iso": 0.35555555555555557,
+            "k_pct": 0.18461538461538463,
+            "pa": 65
+          },
+          "short_window_before": {
+            "bb_pct": 0.14705882352941177,
+            "games": 14,
+            "hr": 3,
+            "iso": 0.2631578947368421,
+            "k_pct": 0.22058823529411764,
+            "pa": 68
+          },
+          "short_window_delta": {
+            "BB": 0.1145,
+            "ISO": 0.0924,
+            "K": -0.036
+          },
+          "skill_score_not_probability": 37.7,
+          "supporting_metrics": [
+            "BB"
+          ]
+        },
+        {
+          "age": 23,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 138,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-20",
+          "level": "AAA",
+          "name": "Zach Ehrhard",
+          "player_id": "701394",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.10606060606060606,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.15254237288135594,
+            "k_pct": 0.16666666666666666,
+            "pa": 66
+          },
+          "short_window_before": {
+            "bb_pct": 0.07936507936507936,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.14285714285714285,
+            "k_pct": 0.30158730158730157,
+            "pa": 63
+          },
+          "short_window_delta": {
+            "BB": 0.0267,
+            "ISO": 0.0097,
+            "K": -0.1349
+          },
+          "skill_score_not_probability": 35.0,
+          "supporting_metrics": [
+            "K"
+          ]
+        },
+        {
+          "age": 20,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 117,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-19",
+          "level": "AAA",
+          "name": "Franklin Arias",
+          "player_id": "808265",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.08823529411764706,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.1694915254237288,
+            "k_pct": 0.10294117647058823,
+            "pa": 68
+          },
+          "short_window_before": {
+            "bb_pct": 0.057692307692307696,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.14583333333333334,
+            "k_pct": 0.1346153846153846,
+            "pa": 52
+          },
+          "short_window_delta": {
+            "BB": 0.0305,
+            "ISO": 0.0237,
+            "K": -0.0317
+          },
+          "skill_score_not_probability": 32.7,
+          "supporting_metrics": []
+        },
+        {
+          "age": 21,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 118,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Cristofer Torin",
+          "player_id": "800198",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.09859154929577464,
+            "games": 14,
+            "hr": 3,
+            "iso": 0.20634920634920634,
+            "k_pct": 0.08450704225352113,
+            "pa": 71
+          },
+          "short_window_before": {
+            "bb_pct": 0.046153846153846156,
+            "games": 14,
+            "hr": 3,
+            "iso": 0.2,
+            "k_pct": 0.12307692307692308,
+            "pa": 65
+          },
+          "short_window_delta": {
+            "BB": 0.0524,
+            "ISO": 0.0063,
+            "K": -0.0386
+          },
+          "skill_score_not_probability": 28.8,
+          "supporting_metrics": [
+            "K",
+            "BB"
+          ]
+        },
+        {
+          "age": 21,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "SHORT_SPIKE_NOT_CONFIRMED",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 132,
+          "hype_note": "Not on checked Top-100; collector hype UNKNOWN",
+          "last_game": "2026-09-13",
+          "level": "AA",
+          "name": "Aroon Escobar",
+          "player_id": "800169",
+          "public_top100_ranked": false,
+          "public_top100_status": "NOT_RANKED_CHECKED",
+          "short_window_after": {
+            "bb_pct": 0.08771929824561403,
+            "games": 14,
+            "hr": 3,
+            "iso": 0.26,
+            "k_pct": 0.14035087719298245,
+            "pa": 57
+          },
+          "short_window_before": {
+            "bb_pct": 0.14035087719298245,
+            "games": 14,
+            "hr": 1,
+            "iso": 0.16666666666666666,
+            "k_pct": 0.17543859649122806,
+            "pa": 57
+          },
+          "short_window_delta": {
+            "BB": -0.0526,
+            "ISO": 0.0933,
+            "K": -0.0351
+          },
+          "skill_score_not_probability": 25.2,
+          "supporting_metrics": []
+        }
+      ],
       "already_publicized_excluded": [
         {
           "name": "Edward Florentino",
