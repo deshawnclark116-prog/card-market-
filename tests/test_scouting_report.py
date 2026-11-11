@@ -12,13 +12,20 @@ def candidate(name="Hidden Prospect", deal=73, breakout=80, hype=2, trend=0.01):
     return {
         "name": name, "dealScore": deal, "breakoutScore": breakout,
         "hypePct": hype, "priceTrend": trend,
-        "reason": "xwOBA improved while card prices are flat",
-        "cards": {"Bowman 1st auto": {"price": 12, "comps": 8}}
+        "cardHypeVerified": True,
+        "reason": "raw-game-log hitting skill improved while card attention is independently screened",
+        "cards": {"Bowman 1st auto": {
+            "price": 12, "comps": 8, # untrusted guide mark must stay hidden
+            "manufacturer_first_bowman_auto_verified": True}}
     }
 
 
 def lookup(player, card, day):
-    return {"median_cents": 1200, "comps": 8, "last_sale": day.isoformat()}
+    return {"median_cents": 1200, "comps": 8, "last_sale": day.isoformat(),
+            "independent_exact_sold_comps_verified":True,
+            "active_listing_verified":True,
+            "listing_url":"https://example.com/real-listing/123",
+            "item_ask_cents":400,"all_in_ask_cents":750}
 
 
 def test_scouting_board_shows_every_candidate_and_reason():
@@ -33,8 +40,9 @@ def test_scouting_board_shows_every_candidate_and_reason():
     markdown = to_markdown(data)
     assert "Hidden Prospect" in markdown
     assert "Uninteresting" in markdown
-    assert "xwOBA improved" in markdown
-    assert "USD 12.00" in markdown
+    assert "raw-game-log hitting skill improved" in markdown
+    assert "USD 7.50" in markdown
+    assert "USD 12.00" not in markdown  # unverified guide value isn't an asking price
 
 
 def test_scout_board_shows_paper_bought_and_portfolio():

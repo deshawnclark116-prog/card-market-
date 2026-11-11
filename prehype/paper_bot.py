@@ -17,9 +17,13 @@ from pathlib import Path
 from statistics import median
 from typing import Callable
 
+from prehype.price_discipline import (
+    CHEAP_CARD_MAX_CENTS, CHEAP_ALL_IN_MAX_CENTS, assess_low_entry,
+)
+
 START_CENTS = 10_000
 TRIAL_DAYS = 30
-MAX_ENTRY_CENTS = 2_500
+MAX_ENTRY_CENTS = CHEAP_ALL_IN_MAX_CENTS
 MAX_POSITIONS = 5
 MAX_BUYS_PER_DAY = 1
 MARK_TTL_DAYS = 7
@@ -32,7 +36,7 @@ BUY_SLIPPAGE_RATE = 0.05
 BUY_SHIPPING_CENTS = 350
 SELL_FEE_RATE = 0.15
 SELL_SHIPPING_CENTS = 350
-CARDS = ("Bowman 1st auto", "Rookie auto")
+CARDS = ("Bowman 1st auto",)
 DEFAULT_LEDGER = "data/card_bot_100.json"
 QuoteLookup = Callable[[str, str, date], dict | None]
 
@@ -162,12 +166,18 @@ def _ranked_options(candidates: list[dict]) -> list[tuple[float, str, dict]]:
             # A generic Google Trends ratio against a superstar is NOT a
             # validated card-collector demand or hype signal. Live scans mark
             # cardHypeVerified=False until a collector-specific model exists.
-            if candidate.get("cardHypeVerified") is False:
+            # 'Unknown' is not evidence of low collector attention.
+            if candidate.get("cardHypeVerified") is not True:
                 continue
             name = candidate["name"].strip()
             if not name:
                 continue
-            for card in (candidate.get("cards") or {}):
+            for card, meta in (candidate.get("cards") or {}).items():
+                # A cheap base card or aftermarket/in-person autograph is not
+                # the authenticated, manufacturer-issued Bowman 1st AUTO target.
+                if (not isinstance(meta,dict)
+                        or meta.get("manufacturer_first_bowman_auto_verified") is not True):
+                    continue
                 result.append((deal, card, candidate))
         except (TypeError, KeyError, ValueError, AttributeError):
             continue
@@ -218,15 +228,16 @@ def simulate_day(state: dict, candidates: list[dict], quote_lookup: QuoteLookup,
             if not _quote_is_fresh(quote, day):
                 continue
             median_cents = int(quote["median_cents"])
-            # Actual observed active ask + known shipping + estimated 6% tax
-            # when supported; never pretend the sold median was a listing.
-            if quote.get("source") == "soldgraph":
-                entry_cents = int(quote["all_in_ask_cents"])
-            elif quote.get("source") == "cardpricer_public_exact_sold_proxy":
-                entry_cents = int(round(median_cents * 1.10)) + BUY_SHIPPING_CENTS
-            else:
-                entry_cents = _entry_cost(median_cents)
-            if median_cents < 500 or entry_cents > MAX_ENTRY_CENTS:
+            # NO 'synthetic sold-median fills': a card with no active listing
+            # is not buyable, even in paper. Low entry != low hype or value.
+            card_meta=(candidate.get("cards") or {}).get(card,{})
+            cheap=assess_low_entry(card_meta,quote)
+            if not cheap["low_entry_verified"]:
+                continue
+            if quote.get("independent_exact_sold_comps_verified") is not True:
+                continue
+            entry_cents = int(quote["all_in_ask_cents"])
+            if entry_cents > MAX_ENTRY_CENTS:
                 continue
             if entry_cents > state["cash_cents"]:
                 continue
@@ -240,9 +251,7 @@ def simulate_day(state: dict, candidates: list[dict], quote_lookup: QuoteLookup,
                 "listing_url": quote.get("listing_url"),
                 "listing_title": quote.get("listing_title"),
                 "variant_key": quote.get("variant_key"),
-                "entry_basis": ("ACTIVE_LISTING_SNAPSHOT" if quote.get("source") == "soldgraph" else
-                                "INDEPENDENTLY_MATCHED_SOLD_COMPS_PROXY_NO_AVAILABLE_LISTING"
-                                if quote.get("source") == "cardpricer_public_exact_sold_proxy" else "SOLD_MEDIAN_PROXY"),
+                "entry_basis": "VERIFIED_ACTIVE_FIRST_BOWMAN_AUTO_LISTING_PAPER_ONLY",
                 "provenance_url": quote.get("provenance_url"),
                 "entry_comps": int(quote["comps"]),
                 "deal_score_not_probability": float(candidate["dealScore"]),
@@ -250,9 +259,7 @@ def simulate_day(state: dict, candidates: list[dict], quote_lookup: QuoteLookup,
                 "last_mark_cents": median_cents,
                 "last_mark_date": today,
                 "last_mark_comps": int(quote["comps"]),
-                "fill_type": ("SYNTHETIC_EXACT_CARD_SOLD_PROXY_NOT_REAL_LISTING"
-                              if quote.get("source") == "cardpricer_public_exact_sold_proxy"
-                              else "SIMULATED_SOLD_MEDIAN_PROXY_NOT_A_REAL_LISTING"),
+                "fill_type": "PAPER_SIMULATED_FROM_VERIFIED_ACTIVE_LISTING_NOT_REAL_PURCHASE",
             }
             state["positions"].append(position)
             state["cash_cents"] -= entry_cents
@@ -339,7 +346,10 @@ def market_data_ready(candidates: list[dict], quote_lookup: QuoteLookup, day: da
         player = candidate.get("name")
         if not isinstance(player, str) or not player.strip():
             continue
-        if _quote_is_fresh(quote_lookup(player, card, day), day):
+        quote=quote_lookup(player, card, day)
+        if (_quote_is_fresh(quote,day)
+                and quote.get("independent_exact_sold_comps_verified") is True
+                and assess_low_entry(candidate["cards"].get(card),quote)["low_entry_verified"]):
             return True
     return False
 

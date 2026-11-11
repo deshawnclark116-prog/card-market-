@@ -292,6 +292,11 @@ class PublicCardQuotes:
                     "grade":card["grade"],
                     "card_priority":kind,
                     "price_validated":False,
+                    # Catalog identity alone does NOT prove that a particular
+                    # card is a factory-issued Bowman *1st* autographed variant.
+                    # Post-purchase signatures, non-1st autos, and parallel
+                    # mismatches must never pass this gate on text alone.
+                    "manufacturer_first_bowman_auto_verified":False,
                 }
                 available.append((kind,
                                   -float(candidate.get("breakoutScore") or 0),

@@ -7,17 +7,25 @@ def candidate(name="Test Prospect", deal=76, breakout=82, hype=3, trend=0.02):
     return {
         "name": name, "dealScore": deal, "breakoutScore": breakout,
         "hypePct": hype, "priceTrend": trend,
+        "cardHypeVerified":True,
         "cards": {
-            "Bowman 1st auto": {"price": 10, "comps": 8},
-            "Rookie auto": {"price": 12, "comps": 8}
+            "Bowman 1st auto": {
+                "manufacturer_first_bowman_auto_verified":True
+            },
         },
     }
 
-def quotes(price=1000, comps=8, age_days=1):
+def quotes(price=1000, comps=8, age_days=1, item=300, all_in=650,
+           active=True, exact=True):
     def lookup(player, card, day):
         return {
             "median_cents": price, "comps": comps,
-            "last_sale": (day - timedelta(days=age_days)).isoformat()
+            "last_sale": (day - timedelta(days=age_days)).isoformat(),
+            "source":"verified_active_marketplace_listing",
+            "active_listing_verified":active,
+            "independent_exact_sold_comps_verified":exact,
+            "item_ask_cents":item,"all_in_ask_cents":all_in,
+            "listing_url":"https://example.com/verified-reference/123"
         }
     return lookup
 
@@ -28,7 +36,7 @@ def test_records_one_reference_buy_and_costs():
     assert len(state["positions"]) == 1
     assert len(state["events"]) == 1
     assert state["positions"][0]["card"] == "Bowman 1st auto"
-    assert state["cash_cents"] == 10_000 - _entry_cost(1_000)
+    assert state["cash_cents"] == 10_000 - 650
     assert _liquidation_value(1_000) == 500
     assert "SIMULATED" in state["positions"][0]["fill_type"]
 
@@ -65,7 +73,7 @@ def test_entry_budget_and_cash_never_exceeded():
         simulate_day(state, [candidate(f"Prospect {n}")], quotes(price=1900), day)
     assert len(state["positions"]) <= 5
     assert state["cash_cents"] >= 0
-    assert all(p["entry_total_cents"] <= 2500 for p in state["positions"])
+    assert all(p["entry_total_cents"] <= 1000 for p in state["positions"])
     assert len(state["events"]) <= 5
 
 def test_no_buy_after_thirty_day_window():
@@ -103,3 +111,51 @@ def test_market_must_have_fresh_comps_before_trial_starts():
     assert not market_data_ready([candidate()], quotes(comps=0), DAY)
     assert not market_data_ready([candidate()], quotes(age_days=20), DAY)
     assert market_data_ready([candidate()], quotes(), DAY)
+
+
+
+def test_cheap_not_same_as_affordable_no_10_to_25_dollar_cards():
+    for item,delivered in ((1099,1450),(1700,2000),(2499,2500)):
+        state=make_ledger(DAY)
+        simulate_day(state,[candidate()],quotes(item=item,all_in=delivered),DAY)
+        assert not state["positions"]
+        assert state["cash_cents"]==10000
+
+
+def test_cheap_item_can_still_be_expensive_after_shipping():
+    state=make_ledger(DAY)
+    simulate_day(state,[candidate()],quotes(item=350,all_in=1250),DAY)
+    assert not state["positions"]
+
+
+def test_cheap_unverified_listing_or_pack_autograph_cannot_buy():
+    row=candidate()
+    row["cards"]["Bowman 1st auto"]["manufacturer_first_bowman_auto_verified"]=False
+    state=make_ledger(DAY)
+    simulate_day(state,[row],quotes(),DAY)
+    assert not state["positions"]
+    row=candidate()
+    for lookup in [quotes(active=False),quotes(exact=False),
+                   quotes(item=None),quotes(all_in=None)]:
+        state=make_ledger(DAY)
+        simulate_day(state,[row],lookup,DAY)
+        assert not state["positions"]
+
+
+def test_rejected_low_hype_evidence_must_be_explicitly_verified():
+    row=candidate()
+    del row["cardHypeVerified"]
+    state=make_ledger(DAY)
+    simulate_day(state,[row],quotes(),DAY)
+    assert not state["positions"]
+    assert not market_data_ready([row],quotes(),DAY)
+
+
+def test_low_cost_3_dollar_manufacturer_auto_can_start_paper_trial_if_everything_verified():
+    state=make_ledger(DAY)
+    row=candidate()
+    assert market_data_ready([row],quotes(item=300,all_in=650),DAY)
+    result=simulate_day(state,[row],quotes(item=300,all_in=650),DAY)
+    assert len(result["buys"])==1
+    assert state["positions"][0]["entry_total_cents"]==650
+    assert state["positions"][0]["entry_basis"]=="VERIFIED_ACTIVE_FIRST_BOWMAN_AUTO_LISTING_PAPER_ONLY"

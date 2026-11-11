@@ -1,5 +1,38 @@
 # Card Market: $100 / 30-day autonomous paper challenge
 
+## Cheap is NOT the same thing as affordable
+
+The user is trying to buy **before** collector excitement prices in a
+real player-development breakout. The previous $25 all-in budget cap was
+only an *affordability constraint*, and the old simulator mistakenly
+discarded sub-$5 card reference values. Neither was a valid cheapness test.
+
+**Provisional low-entry research lane (can be tuned after actual market
+data, not an assertion that every $5 auto is a deal):**
+
+- Target ONLY a manufacturer's pack-issued **1st Bowman autograph** for
+  the exact player/card/parallel, never merely a Bowman 1st base card,
+  non-1st autograph, in-person signature or mislabeled graded guide row.
+- Card item price must be **$5 or less**; verified shipping/tax bring the
+  total delivered cost to **$10 or less**. A $12-$25 card is **affordable**
+  under the previous bankroll policy but does NOT pass this low-entry lane.
+- The price must be for a **real active, individually linkable listing**,
+  not the vendor's guide mark or a synthetic fill at a sold median.
+  The source must explicitly verify the offered price, card identity and
+  actual all-in amount; missing fields yield UNKNOWN, not $0.
+- Low entry is only one necessary condition. A $3 auto could still be
+  overpriced for its talent, have abundant supply, lack buyers, or belong
+  to an already hyped prospect. **Separate verification** of real
+  recent *exact-card* sales, collector market lag, player skill and exit
+  liquidity remains necessary.
+- The $100 bot still must never buy when hype, listing or pricing evidence
+  is absent. In November 2026 the public card source cannot prove these
+  requirements; zero paper buys is the correct decision.
+
+The scanner explicitly reports cheapness **separately from** inexpensive
+purchase eligibility and player talent. It does not automatically label
+a low-priced card 'undervalued' or imply future returns.
+
 ## Full-season skill evolution — now active
 
 The daily GitHub scout no longer discards games outside the final 84-game
@@ -136,10 +169,12 @@ transfers funds, or claims a real completed trade.
   pricing and *independently validated card-collector interest*. The old
   Google Trends ratio versus Aaron Judge DOES NOT satisfy the last gate.
   Missing data blocks paper purchases.
-- Simulates an exact-card **sold-median reference fill** plus 10% slippage and
-  $3.50 inbound shipping. This is **NOT** a real offered listing or executable
-  bid; transaction feasibility is not proven.
-- Never spends more than $25 all-in on a card, opens more than one paper
+- Paper entries, if ever fully validated, now require a specific verified
+  **active listing** with its actual offered item price and delivered total.
+  Sold median is a comparison reference only, never an assumed purchase fill.
+- The provisional low-entry lane requires a verified $5-or-less 1st Bowman
+  factory auto and $10-or-less delivered. This is a target acquisition cap,
+  **not** proof that the card is undervalued. Opens no more than one paper
   position a day, holds more than five positions or exceeds its $100 bank.
 - Tracks remaining cash, card identity and audit link. It revalues holdings
   from exact-card sold records where sufficiently fresh.

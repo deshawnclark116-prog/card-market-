@@ -85,16 +85,16 @@ def test_public_bot_prices_player_and_logs_hypothetical_exact_card():
     assert monitor["card_variants_with_independent_five_sale_match"]==1
     label=card_label(CARD)
     assert label in candidate["cards"]
-    assert market_data_ready([candidate],lookup.lookup,DAY)
+    # Five real same-card SOLD comps are usable for valuation but NEVER
+    # proof of a live $5-or-less first Bowman auto. Coby Mayo's Topps
+    # Chrome PSA 9 is not a 1st Bowman autograph in any case.
+    assert candidate["cards"][label]["manufacturer_first_bowman_auto_verified"] is False
+    assert not market_data_ready([candidate],lookup.lookup,DAY)
     ledger=make_ledger(DAY)
     result=simulate_day(ledger,[candidate],lookup.lookup,DAY)
-    assert result["status"]=="PAPER_BUY_RECORDED"
-    position=ledger["positions"][0]
-    assert position["card"]==label
-    assert position["listing_url"] is None
-    assert position["entry_basis"]=="INDEPENDENTLY_MATCHED_SOLD_COMPS_PROXY_NO_AVAILABLE_LISTING"
-    assert position["entry_total_cents"]==1582  # 11.20 * 1.10 + 3.50
-    assert ledger["cash_cents"]==10000-1582
+    assert not result["buys"]
+    assert not ledger["positions"]
+    assert ledger["cash_cents"]==10000
 
 
 def test_unavailable_feed_never_makes_trades():
