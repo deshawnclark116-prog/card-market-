@@ -1,5 +1,36 @@
 # Card Market: $100 / 30-day autonomous paper challenge
 
+## 2027 high-school draft lane (2026-27 offseason)
+
+Card Bot now maintains a **separate, account-free pre-draft research board**
+at [HS_DRAFT_2027_BOARD.md](HS_DRAFT_2027_BOARD.md), with its
+machine-readable source audit at
+[data/card_bot_hs_draft_2027_latest.json](data/card_bot_hs_draft_2027_latest.json).
+
+- Identify class-of-2027 graduation **only from public roster records**,
+  including official USA Baseball 18U national-team and Perfect Game
+  2026 tournament rosters. National-team selection indicates a player
+  is *already publicly prominent*, not under the collector radar.
+- Track observable, directly sourced pitcher fastball **event peak**
+  velocities from two public events (2026 June national championship and
+  2026 October Jupiter championship). A 3+ mph increase at two different
+  events is an **unconfirmed observation**, NOT a validated breakout.
+  Single event peaks don't reveal pitch quality, average velocity,
+  command, innings load, strength of opponents or instrument bias.
+- Paid DiamondKast player performance pages are excluded, and there
+  are no invented batting stats, hard-hit percentages, exit velocities,
+  draft probabilities, or phantom rankings. Missing data stays missing.
+- A player can graduate in 2027 and attend college; no 2027 signing
+  is presumed. The system doesn't claim any player's 1st Bowman auto
+  has been released or that a low-cost card is purchasable.
+- The source cohort includes only the *public visible roster pages* of
+  two major tournaments and one national team; it's very incomplete and
+  likely biased toward highly exposed prospects. The goal is to
+  gradually add additional raw, public events and repeat observations
+  with grade checks, not copy prospect-article riser lists.
+- The full MiLB detector remains active and the $100 paper card bot
+  does **not** buy based on high-school observations.
+
 ## Cheap is NOT the same thing as affordable
 
 The user is trying to buy **before** collector excitement prices in a
