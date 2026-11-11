@@ -529,10 +529,17 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
             "short_window_delta":short.get("delta"),
             "supporting_metrics":short.get("supporting_metrics",[]),
             "public_top100_ranked":ranked.get(c["name"]) is True,
+            "public_top100_status":(
+                "RANKED" if ranked.get(c["name"]) is True else
+                "NOT_RANKED_CHECKED" if ranked.get(c["name"]) is False else
+                "UNKNOWN"
+            ),
             "collector_hype_verified":False,
             "card_buy_eligible":False,
             "hype_note":("Already publicly ranked" if ranked.get(c["name"]) is True
-                         else "Not on checked Top-100; collector hype UNKNOWN"),
+                         else "Not on checked Top-100; collector hype UNKNOWN"
+                         if ranked.get(c["name"]) is False
+                         else "Top-100 source unavailable; collector hype UNKNOWN"),
         })
     signal_rows=[c for c in signal_rows if ranked.get(c["name"]) is not True]
     # This report covers EVERY eligible sampled hitter, including hitters
