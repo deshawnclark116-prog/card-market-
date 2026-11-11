@@ -43,7 +43,15 @@ and player-specific promotions or long-gap boundaries.
 The automatic [full-season audit file](data/card_bot_full_season_latest.json)
 contains every observed game for the sampled cohort, including earlier
 breakouts that no longer look strong today.
-Card-specific collector interest and affordable buyable cards remain
+**CHEAP ≠ AFFORDABLE.** A 1st Bowman autograph costing $15 or $20 is
+not automatically an early-stage bargain because it fits a $25 budget.
+The current low-entry research lane targets **verified manufacturer-issued
+1st Bowman autographs at $5 or less for the card and $10 or less
+delivered**. A real active offer, collector quietness, identical sold
+comparables and player-development validation are separate gates.
+A cheap-looking catalog mark is NOT a live offer or an investment edge.
+
+Card-specific collector interest and actually low-priced buyable cards remain
 unverified until reliable free public records can prove them. **The $100
 paper-trading ledger stays untouched until then.** No accounts are needed.
 See [full pre-hype methodology](PAPER_BOT.md).
