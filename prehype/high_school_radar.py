@@ -24,6 +24,7 @@ DRAFT_CLASS = 2027
 USA_ROSTER = "https://www.usabaseball.com/team/18u/roster"
 # Official USA Baseball news archive dates final 2026 18U roster Aug 26.
 USA_ROSTER_PUBLISHED = date(2026,8,26)
+PG_GLOBAL_PUBLIC_EVENT_RECORDS = "https://www.perfectgame.org/Records/statrankings.aspx"
 # Unauthenticated publicly rendered roster and FB-velocity tables.
 # Do NOT request Perfect Game DiamondKast game statistics or login pages.
 EVENTS = (
@@ -188,6 +189,40 @@ def pg_event_velocities(html, event):
     return list(best.values())
 
 
+def pg_public_global_event_velocities(html):
+    """Match source-published FB numbers to events with verified dates.
+
+    This public cross-event table is a top-velocity LEADERBOARD and its
+    visibility is not a neutral/random sample. Never use it to choose
+    athletes or label them as hidden; ONLY enrich grad-verified players.
+    """
+    found={}
+    for table in parse_tables(html):
+        for v in _row_mapping(table,{
+            "name":("player","players"),
+            "mph":("fb",),
+            "event":("event",),
+        }):
+            event=next((e for e in EVENTS if key(v["event"])==key(e["label"])),None)
+            if event is None:
+                continue
+            try:
+                mph=int(v["mph"])
+            except (TypeError,ValueError):
+                continue
+            if not (55<=mph<=106) or not (2<=len(v["name"].split())<=5):
+                continue
+            k=(key(v["name"]),event["id"])
+            row={"name":v["name"],"event_id":event["id"],
+                 "event":event["label"],"event_end":event["date"],
+                 "fastball_peak_mph":mph,
+                 "source":PG_GLOBAL_PUBLIC_EVENT_RECORDS,
+                 "type":"TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"}
+            if k not in found or mph>found[k]["fastball_peak_mph"]:
+                found[k]=row
+    return list(found.values())
+
+
 def _unique(players):
     rows={}
     for p in players:
@@ -197,7 +232,8 @@ def _unique(players):
 
 def get_public_html(url,*,opener=None,timeout=14):
     allow=(
-        url==USA_ROSTER or any(url in (e["roster"],e["velocities"]) for e in EVENTS)
+        url in (USA_ROSTER,PG_GLOBAL_PUBLIC_EVENT_RECORDS)
+        or any(url in (e["roster"],e["velocities"]) for e in EVENTS)
     )
     if not allow:
         raise ValueError("Unapproved public source")
@@ -220,6 +256,7 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
     sources=[]
     qualifying={}
     event_peaks=defaultdict(list)
+    event_roster_keys={}
     usa_is_public=as_of>=USA_ROSTER_PUBLISHED
     usa_html=fetch(USA_ROSTER) if usa_is_public else None
     usa=usa_18u_players(usa_html) if usa_html else []
@@ -240,6 +277,7 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
         roster_html=fetch(event["roster"])
         roster=pg_event_roster(roster_html,event["roster"]) if roster_html else []
         event_verified_keys={key(p["name"]) for p in roster}
+        event_roster_keys[event["id"]]=event_verified_keys
         usa_verified_keys={key(p["name"]) for p in usa}
         sources.append({"url":event["roster"],"available":bool(roster_html),
                         "2027_players_extracted":len(roster),
@@ -266,6 +304,28 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
                 k in event_verified_keys or k in usa_verified_keys
             ):
                 event_peaks[k].append(v)
+    # Fallback for a publicly posted single-event velocity feed that
+    # refuses to load, but ONLY for class-verified players. The global
+    # list is highly selected and cannot provide 'normal' velocity.
+    global_html=fetch(PG_GLOBAL_PUBLIC_EVENT_RECORDS)
+    global_velos=pg_public_global_event_velocities(global_html) if global_html else []
+    sources.append({"url":PG_GLOBAL_PUBLIC_EVENT_RECORDS,
+                    "available":bool(global_html),
+                    "raw_velocities_extracted":len(global_velos),
+                    "purpose":"Public cross-event top FB speeds; TOP-ONLY BIAS"})
+    usa_verified_keys={key(p["name"]) for p in usa}
+    for v in global_velos:
+        k=key(v["name"])
+        if (v["event_end"]>as_of.isoformat() or k not in qualifying
+                or not (k in usa_verified_keys or
+                        k in event_roster_keys.get(v["event_id"],set()))):
+            continue
+        existing=[row for row in event_peaks[k] if row["event_id"]==v["event_id"]]
+        if not existing:
+            event_peaks[k].append(v)
+        elif v["fastball_peak_mph"]>max(row["fastball_peak_mph"] for row in existing):
+            event_peaks[k]=[row for row in event_peaks[k]
+                            if row["event_id"]!=v["event_id"]]+[v]
     rows=[]
     for k,p in sorted(qualifying.items(),key=lambda x:x[1]["name"].casefold()):
         measurements=sorted(event_peaks[k],key=lambda v:(v["event_end"],v["event_id"]))
@@ -324,8 +384,9 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
             "Partial PUBLIC tournament-roster and event-max-velocity snapshots, "
             "not a comprehensive national high-school database. No free "
             "DiamondKast access, hitting game logs, pitching command, spin, "
-            "or replicated pitch-quality evidence. Showcase selection biases "
-            "against unknown players. A 3+ mph jump between event PEAKS may "
+            "or replicated pitch-quality evidence. Showcase and public "
+            "top-velocity leaderboard selection bias against unknown players. "
+            "A 3+ mph jump between event PEAKS may "
             "be noise, environment, measurement changes or small sample; "
             "it does NOT establish a future skill breakout. Event "
             "name joins are not verified persistent identities; no Bowman "
