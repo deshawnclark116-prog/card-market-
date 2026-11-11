@@ -152,12 +152,17 @@ def test_one_pair_a_day_and_ledger_can_buy_actual_listed_card():
     lookup.prime([c],DAY)
     assert client.kinds == ["sold","listings"]
     assert monitor["requests_total"]==2
-    assert market_data_ready([c],lookup.lookup,DAY)
+    # The provider correctly finds a $10 card with $12.72 delivered,
+    # but that is AFFORDABLE under the old $25 cap, NOT our $5/$10
+    # low-entry target. Nor has raw card hype/identity been independently
+    # confirmed. A listing is not sufficient to buy.
+    assert lookup.lookup(NAME,CARD,DAY)["all_in_ask_cents"]==1272
+    assert not market_data_ready([c],lookup.lookup,DAY)
     state=make_ledger(DAY)
     run=simulate_day(state,[c],lookup.lookup,DAY)
-    assert run["status"]=="PAPER_BUY_RECORDED"
-    assert state["positions"][0]["entry_total_cents"]==1272
-    assert state["positions"][0]["listing_url"]=="https://www.ebay.com/itm/1234567890"
+    assert not run["buys"]
+    assert not state["positions"]
+    assert state["cash_cents"]==10000
 
 
 def test_unconfigured_feed_is_quiet_and_never_makes_up_prices():
