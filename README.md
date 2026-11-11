@@ -9,6 +9,30 @@ The goal is simple: **be way ahead of the crowd.** Buy players whose
 fundamentals point to a breakout while their cards are still cheap and quiet —
 then sell into the hype once everyone else catches on.
 
+## New: 2027 high-school draft watch — pre-card research
+
+During the 2026-27 MiLB offseason, the same free GitHub Actions workflow
+also analyzes **publicly verifiable high-school class-of-2027 rosters** and
+publicly posted event **fastball velocity maxima**.
+
+[Open the 2027 high-school draft watch](HS_DRAFT_2027_BOARD.md) ·
+[Research data](data/card_bot_hs_draft_2027_latest.json)
+
+The feed is intentionally not a prospect-article list, a rankings roundup
+or a Bowman shopping list. It separates official USA Baseball 18U
+national-team players (**already prominently scouted**) from additional
+2027 graduates on public tournament rosters. It compares *only observed*
+June vs. October event peak fastball velocities when both are available.
+One peak per event cannot validate real player development, so all early
+3+ mph jumps are labeled **NOT CONFIRMED**, with timestamps and sources.
+No college commitment or future professional signing is assumed.
+
+High-school players typically have **no verified buyable 1st Bowman auto
+yet**. This board is intended to establish a before-the-draft observation
+history for when stronger 2027 game and showcase data arrives. Paid
+DiamondKast stat tables aren't accessed, and no new account is needed.
+The MiLB scout and $100 paper-only buy safeguards are unchanged.
+
 ## Watch the $100 Paper Bot
 
 - [Daily player scouting board](CARD_BOT_DASHBOARD.md) — who the bot checked,

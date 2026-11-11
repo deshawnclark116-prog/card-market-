@@ -51,6 +51,15 @@ jobs:
           for row in rows[:8]:
               print("EARLY_SIGNAL", row["name"], row["breakoutScore"], row["reason"], flush=True)
           PY
+      - name: Live 2027 high-school public-source smoke test (PR only)
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 3
+        run: |
+          python -m prehype.high_school_radar --as-of 2026-11-11
+      - name: Refresh 2027 high-school pre-draft research board
+        if: github.event_name != 'pull_request'
+        timeout-minutes: 3
+        run: python -m prehype.high_school_radar
       - name: Run 30-day paper experiment
         if: github.event_name != 'pull_request'
         run: python -m prehype.paper_bot run --ledger data/card_bot_100.json
@@ -59,6 +68,10 @@ jobs:
         run: |
           if [ -f CARD_BOT_DASHBOARD.md ]; then
             cat CARD_BOT_DASHBOARD.md >> "$GITHUB_STEP_SUMMARY"
+            if [ -f HS_DRAFT_2027_BOARD.md ]; then
+              printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+              cat HS_DRAFT_2027_BOARD.md >> "$GITHUB_STEP_SUMMARY"
+            fi
           else
             echo "Scanner did not produce a scouting report." >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -68,6 +81,9 @@ jobs:
           git config user.name "card-bot"
           git config user.email "card-bot@users.noreply.github.com"
           git add CARD_BOT_DASHBOARD.md data/card_bot_scouting_latest.json data/card_bot_full_season_latest.json data/card_bot_season_players/
+          if [ -f HS_DRAFT_2027_BOARD.md ] && [ -f data/card_bot_hs_draft_2027_latest.json ]; then
+            git add HS_DRAFT_2027_BOARD.md data/card_bot_hs_draft_2027_latest.json
+          fi
           if [ -f data/card_bot_100.json ]; then
             git add data/card_bot_100.json
           fi
