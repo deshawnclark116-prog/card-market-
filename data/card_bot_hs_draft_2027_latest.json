@@ -1,0 +1,1306 @@
+{
+  "as_of": "2026-11-11",
+  "confirmed_breakout_players": 0,
+  "coverage_warning": "Partial PUBLIC tournament-roster and event-max-velocity snapshots, not a comprehensive national high-school database. No free DiamondKast access, hitting game logs, pitching command, spin, or replicated pitch-quality evidence. Showcase and public top-velocity leaderboard selection bias against unknown players. A 3+ mph jump between event PEAKS may be noise, environment, measurement changes or small sample; it does NOT establish a future skill breakout. Event name joins are not verified persistent identities; no Bowman card market claims or purchase recommendations.",
+  "draft_class": 2027,
+  "observed_velocity_increases": 0,
+  "players": [
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Brogan Witcher",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG 17U WWBA National Championship",
+          "event_end": "2026-06-30",
+          "event_id": "pg_2026_17u_wwba",
+          "fastball_peak_mph": 96,
+          "name": "Brogan Witcher",
+          "source": "https://www.perfectgame.org/Records/statrankings.aspx",
+          "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
+        }
+      ],
+      "position": "RHP/C",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Chase Fuller",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG 17U WWBA National Championship",
+          "event_end": "2026-06-30",
+          "event_id": "pg_2026_17u_wwba",
+          "fastball_peak_mph": 94,
+          "name": "Chase Fuller",
+          "source": "https://www.perfectgame.org/Records/statrankings.aspx",
+          "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
+        }
+      ],
+      "position": "INF/RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Connor Salerno",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG 17U WWBA National Championship",
+          "event_end": "2026-06-30",
+          "event_id": "pg_2026_17u_wwba",
+          "fastball_peak_mph": 96,
+          "name": "Connor Salerno",
+          "source": "https://www.perfectgame.org/Records/statrankings.aspx",
+          "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
+        }
+      ],
+      "position": "LHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Ethan Gustus",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG 17U WWBA National Championship",
+          "event_end": "2026-06-30",
+          "event_id": "pg_2026_17u_wwba",
+          "fastball_peak_mph": 93,
+          "name": "Ethan Gustus",
+          "source": "https://www.perfectgame.org/Records/statrankings.aspx",
+          "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
+        }
+      ],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "George Ferguson",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG 17U WWBA National Championship",
+          "event_end": "2026-06-30",
+          "event_id": "pg_2026_17u_wwba",
+          "fastball_peak_mph": 98,
+          "name": "George Ferguson",
+          "source": "https://www.perfectgame.org/Records/statrankings.aspx",
+          "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
+        }
+      ],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Jake Ivey",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG WWBA World Championship",
+          "event_end": "2026-10-12",
+          "event_id": "pg_2026_wwba_jupiter",
+          "fastball_peak_mph": 94,
+          "name": "Jake Ivey",
+          "source": "https://www.perfectgame.org/Events/velocities/default.aspx?event=139793",
+          "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
+        }
+      ],
+      "position": "LHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Johnny Evans",
+      "national_team_2026": false,
+      "observations": [
+        {
+          "event": "2026 PG WWBA World Championship",
+          "event_end": "2026-10-12",
+          "event_id": "pg_2026_wwba_jupiter",
+          "fastball_peak_mph": 90,
+          "name": "Johnny Evans",
+          "source": "https://www.perfectgame.org/Events/velocities/default.aspx?event=139793",
+          "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
+        }
+      ],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "SINGLE_EVENT_PEAK_NO_CHANGE_DETECTABLE",
+      "name": "Justin Fanning",
+      "national_team_2026": false,
+      "observations": [
+        {
+          "event": "2026 PG WWBA World Championship",
+          "event_end": "2026-10-12",
+          "event_id": "pg_2026_wwba_jupiter",
+          "fastball_peak_mph": 87,
+          "name": "Justin Fanning",
+          "source": "https://www.perfectgame.org/Events/velocities/default.aspx?event=139793",
+          "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
+        }
+      ],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": 2,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_LARGE_CHANGE_IN_EVENT_PEAK_VELOCITY",
+      "name": "Samir Mohammed",
+      "national_team_2026": true,
+      "observations": [
+        {
+          "event": "2026 PG 17U WWBA National Championship",
+          "event_end": "2026-06-30",
+          "event_id": "pg_2026_17u_wwba",
+          "fastball_peak_mph": 98,
+          "name": "Samir Mohammed",
+          "source": "https://www.perfectgame.org/Records/statrankings.aspx",
+          "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
+        },
+        {
+          "event": "2026 PG WWBA World Championship",
+          "event_end": "2026-10-12",
+          "event_id": "pg_2026_wwba_jupiter",
+          "fastball_peak_mph": 100,
+          "name": "Samir Mohammed",
+          "source": "https://www.perfectgame.org/Events/velocities/default.aspx?event=139793",
+          "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
+        }
+      ],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Adryan Diaz",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Andrew Carlson",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Ashton Boyajian",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Beau Tait",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Brayden Longo",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Broder Katke",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "C",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Connor Geraci",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Connor Smith",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "MIF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Cooper Collins",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "C",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Daniel Alvarez",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Donovan Marotto",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Drake Hawpe",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Dustin Reveles",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Dylan Seward",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "INF",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Ethan Broome",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Ethan Dubois",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "SS",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Gavin Jenkins",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Gian Diaz",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Graham Houston",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "UT",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Hayden Hatcher",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "MIF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Heath Richardson",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "C",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Hunter Abifadel",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "C",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Isaac Vidal",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Izmael Hernandez",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jace Garcia",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "SS",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jack Swanson",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "UT",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jackson Beasley",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jacob Boone",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jacob Budarz",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "3B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "James Cole Jr.",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jayden Fillyaw",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jayden Montanez",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "SS",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Jaylen Dumas",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Joaquin Durazo",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "C",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Justin Brown",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Justin Kirchner",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Justin Olivo",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "3B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Kade McReynolds",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "3B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Landon Brewster",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "SS",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Logan Hill",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "MIF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Logan Umfress",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Lubin Rincon",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "UT",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Luke Ayers",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Malachi Butler",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "INF",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Mason Rosenberg",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "1B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Matthew Gryskiewicz",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "3B",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Michael Caraballo",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Owen Maddux",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Preston Jones",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Preston Stevens",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "LHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Sebastian Castillo",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "UT",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "NATIONAL_TEAM_PUBLICLY_RECOGNIZED",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Sebastian Wilson",
+      "national_team_2026": true,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.usabaseball.com/team/18u/roster"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Seth Vann",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Thijs Remy",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "SS",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Tripp Layng",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Vincent Kasunich",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "William Valdez",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "OF",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Xzavier Guzman",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "SS",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    },
+    {
+      "bowman_first_auto_status": "NOT_VERIFIED_OR_NOT_YET_ISSUED",
+      "card_buy_eligible": false,
+      "draft_outcome": "NOT_EVALUATED_NO_SIGNING_PROJECTION",
+      "evidence_not_prediction": true,
+      "fastball_peak_change_mph": null,
+      "graduation_year": 2027,
+      "market_exposure": "COLLECTOR_HYPE_UNKNOWN",
+      "measurement_status": "NO_PUBLIC_MEASUREMENT_AVAILABLE",
+      "name": "Yariel Martinez",
+      "national_team_2026": false,
+      "observations": [],
+      "position": "RHP",
+      "source_roster_urls": [
+        "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+      ]
+    }
+  ],
+  "players_with_verified_2027_graduation": 68,
+  "public_event_velocity_measurements": 10,
+  "schema": "HS_PRE_DRAFT_RAW_EVENT_RADAR_V1",
+  "source_diagnostics": [
+    {
+      "2027_players_extracted": 20,
+      "available": true,
+      "purpose": "Official high-exposure roster",
+      "url": "https://www.usabaseball.com/team/18u/roster"
+    },
+    {
+      "2027_players_extracted": 37,
+      "available": true,
+      "purpose": "Public graduation-year eligibility",
+      "url": "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
+    },
+    {
+      "available": false,
+      "purpose": "Public event-level measured max FB mph",
+      "raw_velocities_extracted": 0,
+      "url": "https://www.perfectgame.org/Events/velocities/default.aspx?event=141563"
+    },
+    {
+      "2027_players_extracted": 11,
+      "available": true,
+      "purpose": "Public graduation-year eligibility",
+      "url": "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
+    },
+    {
+      "available": true,
+      "purpose": "Public event-level measured max FB mph",
+      "raw_velocities_extracted": 1426,
+      "url": "https://www.perfectgame.org/Events/velocities/default.aspx?event=139793"
+    },
+    {
+      "available": true,
+      "purpose": "Public cross-event top FB speeds; TOP-ONLY BIAS",
+      "raw_velocities_extracted": 299,
+      "url": "https://www.perfectgame.org/Records/statrankings.aspx"
+    }
+  ],
+  "verified_cheap_bowman_first_autos": 0
+}
