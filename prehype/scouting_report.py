@@ -79,9 +79,10 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
                          if cheap["low_entry_verified"] else None)
             reasons = list(score_reasons)
             if cheap["status"]!="LOW_ENTRY_COST_VERIFIED_UNDERVALUATION_UNKNOWN":
-                reasons.append("1st Bowman auto bargain not validated: "+cheap["status"])
-            else:
-                reasons.append("Low entry price is NOT proof of undervaluation or future card appreciation")
+                reasons.append("Low-entry 1st Bowman auto not verified: "+cheap["status"])
+            # A verified low-dollar offer may pass the ACQUISITION screen,
+            # but must never be described as an undervalued card or a
+            # validated market lag. That warning lives in cheap_entry_screen.
             if not fresh:
                 reasons.append("no five independently title-matched recent sales of this EXACT card/grade")
             if not (quote and quote.get("independent_exact_sold_comps_verified") is True):
