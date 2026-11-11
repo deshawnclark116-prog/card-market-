@@ -5,8 +5,8 @@ from datetime import date
 import pytest
 
 from prehype.high_school_radar import (
-    EVENTS, USA_ROSTER, key, parse_tables, pg_event_roster,
-    pg_event_velocities, render_markdown, run_hs_scan,
+    EVENTS, USA_ROSTER, PG_GLOBAL_PUBLIC_EVENT_RECORDS, key, parse_tables, pg_event_roster,
+    pg_event_velocities, pg_public_global_event_velocities, render_markdown, run_hs_scan,
     usa_18u_players, write_hs_results,
 )
 
@@ -159,3 +159,49 @@ def test_parser_ignores_non_table_data_and_malformed_measurements():
        "<tr><td>5</td><td>Too Slow</td></tr>"
        "<tr><td>99</td><td>Valid Arm</td></tr>"
        "<tr><td>145</td><td>Too Fast</td></tr></table>",EVENTS[0])[0]["name"]=="Valid Arm"
+
+
+GLOBAL_VELO_HTML = """
+<table>
+<tr><th>Rk</th><th>Player</th><th>FB</th><th>Event</th><th>Commitment</th></tr>
+<tr><td>5</td><td>Unheralded Arm</td><td>87</td><td>2026 PG 17U WWBA National Championship</td><td>none</td></tr>
+<tr><td>4</td><td>Unheralded Arm</td><td>92</td><td>2026 PG WWBA World Championship</td><td>none</td></tr>
+<tr><td>1</td><td>Unknown Grad Pitcher</td><td>101</td><td>2026 PG WWBA World Championship</td><td>none</td></tr>
+<tr><td>3</td><td>High Profile Arm</td><td>94</td><td>2026 PG WWBA World Championship</td><td>none</td></tr>
+<tr><td>1</td><td>Unknown Event</td><td>95</td><td>Another tournament</td><td>none</td></tr>
+</table>
+"""
+
+
+def test_global_public_peak_table_recovers_june_when_direct_table_unavailable():
+    matched=pg_public_global_event_velocities(GLOBAL_VELO_HTML)
+    assert len(matched)==4
+    def getter(url):
+        if url==EVENTS[0]["velocities"]:
+            return None
+        if url==PG_GLOBAL_PUBLIC_EVENT_RECORDS:
+            return GLOBAL_VELO_HTML
+        return mock_fetch(url)
+    result=run_hs_scan(as_of=date(2026,11,11),fetch=getter)
+    assert result["players_with_verified_2027_graduation"]==2
+    assert result["public_event_velocity_measurements"]==4
+    assert result["observed_velocity_increases"]==1
+    p=next(x for x in result["players"] if x["name"]=="Unheralded Arm")
+    assert p["fastball_peak_change_mph"]==5
+    assert p["observations"][0]["source"]==PG_GLOBAL_PUBLIC_EVENT_RECORDS
+    assert all(x["name"]!="Unknown Grad Pitcher" for x in result["players"])
+    assert any("TOP-ONLY BIAS" in x["purpose"] for x in result["source_diagnostics"])
+    assert result["confirmed_breakout_players"]==0
+
+
+def test_global_leaderboard_never_leaks_future_into_past():
+    def getter(url):
+        if url==PG_GLOBAL_PUBLIC_EVENT_RECORDS:
+            return GLOBAL_VELO_HTML
+        return mock_fetch(url)
+    result=run_hs_scan(as_of=date(2026,7,4),fetch=getter)
+    assert result["public_event_velocity_measurements"]==2
+    assert all(p["fastball_peak_change_mph"] is None for p in result["players"])
+    assert all(p["national_team_2026"] is False for p in result["players"])
+    assert all(o["event_end"]<="2026-07-04"
+               for p in result["players"] for o in p["observations"])
