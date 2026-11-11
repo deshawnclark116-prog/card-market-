@@ -8,6 +8,9 @@ from prehype.paper_bot import (
     MIN_DEAL_SCORE, FRESH_SALE_DAYS, _entry_cost, _quote_is_fresh,
     card_id, report,
 )
+from prehype.price_discipline import (
+    CHEAP_CARD_MAX_CENTS, CHEAP_ALL_IN_MAX_CENTS, assess_low_entry,
+)
 
 DEFAULT_SCOUTING_JSON = "data/card_bot_scouting_latest.json"
 DEFAULT_DASHBOARD = "CARD_BOT_DASHBOARD.md"
@@ -29,8 +32,8 @@ def _score_reasons(candidate):
         reasons.append("missing or low deal score")
     if breakout is None or breakout < MIN_BREAKOUT_SCORE:
         reasons.append("missing or low breakout score")
-    if candidate.get("cardHypeVerified") is False:
-        reasons.append("card-collector hype NOT measured; search ratio is not proof of quiet demand")
+    if candidate.get("cardHypeVerified") is not True:
+        reasons.append("card-collector hype NOT verified; search ratio is not proof of quiet demand")
     elif hype is None:
         reasons.append("hype data missing")
     elif hype > 30:
@@ -70,17 +73,20 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
             quote = (lookup.peek(name, card, day) if hasattr(lookup, "peek") else lookup(name, card, day)) if name else None
             fresh = _quote_is_fresh(quote, day)
             median_cents = int(quote["median_cents"]) if fresh else None
-            entry_cents = ((int(round(median_cents * 1.10)) + 350)
-                           if fresh and quote.get("source") == "cardpricer_public_exact_sold_proxy"
-                           else (_entry_cost(median_cents) if fresh else None))
+            metadata=(candidate.get("cards") or {}).get(card,{})
+            cheap=assess_low_entry(metadata,quote)
+            entry_cents=(int(quote["all_in_ask_cents"])
+                         if cheap["low_entry_verified"] else None)
             reasons = list(score_reasons)
+            if cheap["status"]!="LOW_ENTRY_COST_VERIFIED_UNDERVALUATION_UNKNOWN":
+                reasons.append("1st Bowman auto bargain not validated: "+cheap["status"])
+            else:
+                reasons.append("Low entry price is NOT proof of undervaluation or future card appreciation")
             if not fresh:
-                reasons.append("no 5 independently title-matched recent sales of this EXACT card/grade")
-            elif median_cents < 500:
-                reasons.append("reference price under 5 dollars")
-            elif entry_cents > MAX_ENTRY_CENTS:
-                reasons.append("over 25 dollar all-in purchase cap")
-            elif entry_cents > state["cash_cents"] and card_id(name, card) not in held_ids:
+                reasons.append("no five independently title-matched recent sales of this EXACT card/grade")
+            if not (quote and quote.get("independent_exact_sold_comps_verified") is True):
+                reasons.append("verified independent same-card sold comps unavailable")
+            if entry_cents is not None and entry_cents > state["cash_cents"]:
                 reasons.append("insufficient unspent cash")
             identity = card_id(name, card)
             was_checked = (getattr(lookup, "checked_card", None) == {"player": name, "card": card})
@@ -107,7 +113,12 @@ def build_scouting_report(candidates, lookup, day: date, state, run_status, buys
                 "catalog_raw_untrusted_usd": (candidate.get("cards") or {}).get(card,{}).get("price"),
                 "catalog_guide_price_usd": None,
                 "card_id": (candidate.get("cards") or {}).get(card,{}).get("card_id"),
-                "all_in_paper_usd": round(entry_cents/100,2) if fresh else None,
+                "all_in_paper_usd": round(entry_cents/100,2) if entry_cents is not None else None,
+                "cheap_entry_screen": cheap,
+                "cheap_item_price_usd": cheap["item_price_usd"],
+                "cheap_delivered_price_usd": cheap["all_in_price_usd"],
+                "cheap_acquisition_verified": cheap["low_entry_verified"],
+                "market_lag_verified": False,
                 "sold_comps": int(quote["comps"]) if quote else None,
                 "last_sale": quote.get("last_sale") if quote else None,
                 "quote_fresh": fresh,
@@ -170,6 +181,11 @@ def to_markdown(data):
         "**Paper-only experiment:** unverified catalog dollar values are HIDDEN. "
         "A verified same-card sale median is NOT an active offer. "
         "A player skill-change score is NOT an investment score.",
+        "", "**CHEAP ≠ AFFORDABLE:** a $10–$25 card is not a pre-hype bargain merely "
+        "because it fits the bankroll. This paper strategy targets individually "
+        "verified manufacturer-issued **1st Bowman autographs at $5 or less for "
+        "the card and $10 or less delivered**. A genuine low-priced card is "
+        "still not necessarily underpriced or unnoticed by collectors.",
         "", "## Current paper bankroll", "",
         f"- Cash remaining: **{_money(port['cash_remaining_usd'])}**",
         f"- Paper purchases recorded: **{port['number_of_paper_buys']}**",
@@ -418,12 +434,17 @@ def to_markdown(data):
         lines += ["", "## Card identity watchlist — not buy prices", "",
                   "The public feed supplied some grossly inconsistent catalog estimates. They are retained in the machine-readable audit record, NOT shown as actionable prices.",
                   "",
-                  "| Player | Identified card and grade | Catalog price | Verified matching sale median | Verified sales | Status | Why not a buy |",
-                  "|---|---|---|---:|---:|---|---|"]
+                  "| Player | Identified reference | Advertised all-in | Low-entry status | Catalog mark | Verified same-card sales | Decision |",
+                  "|---|---|---:|---|---|---:|---|"]
         for p in data["players"]:
             for c in p["checks"]:
                 reasons = "; ".join(c["reasons"]) or "Meets filters; daily limit/ranking may apply"
-                lines.append(f"| {_clean(p['name'])} | {_clean(c['card'])} | **UNVERIFIED — HIDDEN** | {_money(c['sold_median_usd'])} | {_clean(c['sold_comps'])} | {_clean(c['decision'])} | {_clean(reasons)} |")
+                lines.append(
+                    f"| {_clean(p['name'])} | {_clean(c['card'])} | "
+                    f"{_money(c.get('cheap_delivered_price_usd'))} | "
+                    f"{_clean(c['cheap_entry_screen']['status'].replace('_',' '))} | "
+                    f"**UNVERIFIED — HIDDEN** | {_clean(c['sold_comps'])} | "
+                    f"{_clean(c['decision'])} ({_clean(reasons)}) |")
         lines += ["", "## Player skill-change explanations", ""]
         for p in data["players"]:
             if p["reason"]:
