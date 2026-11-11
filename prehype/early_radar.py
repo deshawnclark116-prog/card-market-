@@ -508,6 +508,32 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
             candidate["marketExposure"]="NOT ON CHECKED TOP-100 — HOBBY HYPE UNKNOWN"
         else:
             candidate["marketExposure"]="TOP-100 CHECK UNAVAILABLE — HOBBY HYPE UNKNOWN"
+    # ALL baseball improvement signals belong in the public research board,
+    # even when their cards are unaffordable, they are on a public Top-100
+    # prospect ranking, or no first autograph can be verified. Recognition
+    # is a separate investment screen, never a reason to hide player evidence.
+    all_skill_improvement_candidates=[]
+    for c in sorted(signal_rows,key=lambda c:(-c["breakoutScore"],c["name"])):
+        signal=c["earlySignal"]
+        short=signal["comparisons"]["14"]
+        all_skill_improvement_candidates.append({
+            "name":c["name"],"player_id":c["playerId"],
+            "age":c["age"],"level":c["level"],
+            "games_tracked":signal["games_in_history"],
+            "skill_score_not_probability":c["breakoutScore"],
+            "evidence_tier":signal["evidence_tier"],
+            "full_season_phase":c["seasonTrajectory"]["development_phase"],
+            "last_game":signal["last_game"],
+            "short_window_before":short.get("old"),
+            "short_window_after":short.get("new"),
+            "short_window_delta":short.get("delta"),
+            "supporting_metrics":short.get("supporting_metrics",[]),
+            "public_top100_ranked":ranked.get(c["name"]) is True,
+            "collector_hype_verified":False,
+            "card_buy_eligible":False,
+            "hype_note":("Already publicly ranked" if ranked.get(c["name"]) is True
+                         else "Not on checked Top-100; collector hype UNKNOWN"),
+        })
     signal_rows=[c for c in signal_rows if ranked.get(c["name"]) is not True]
     # This report covers EVERY eligible sampled hitter, including hitters
     # whose current 14v14 signal disappeared, worsened, or reversed.
@@ -535,6 +561,28 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
     historical.sort(key=lambda p:(
         0 if p["development_phase"]=="REGRESSING_AFTER_UPTREND" else 1,
         -p["games_available"],p["name"]))
+    current_skill_names={p["name"] for p in all_skill_improvement_candidates}
+    # A second, looser view catches rising players who did NOT pass the
+    # stricter 14v14 + two positive skills gate. Label them separately.
+    additional_upward_trajectories=[]
+    for profile in all_profiles:
+        trajectory=profile["trajectory"]
+        if (profile["name"] in current_skill_names
+                or trajectory["current_direction"]!="UPTREND"):
+            continue
+        additional_upward_trajectories.append({
+            "name":profile["name"],"player_id":profile["player_id"],
+            "age":profile["age"],"level":profile["level"],
+            "games_tracked":trajectory["games_available"],
+            "full_season_phase":trajectory["development_phase"],
+            "last_game":trajectory["last_game"],
+            "last_observed_uptrend":trajectory["last_observed_uptrend"],
+            "recent_window":trajectory.get("recent_window"),
+            "skill_score_not_probability":None,
+            "status":"ROLLING_UPTREND_ONLY_DID_NOT_PASS_CORE_EARLY_TRIGGER",
+            "card_buy_eligible":False,
+        })
+    additional_upward_trajectories.sort(key=lambda p:p["name"])
     audit={
         "pipeline":"PRE_HYPE_MILB_FULL_SEASON_TRAJECTORY_V2",
         "season":year,"as_of":as_of.isoformat(),
@@ -553,7 +601,16 @@ def scan_early_prospects(*,year=None,as_of=None,level_fetch=fetch_level,
         "historical_uptrend_now_not_rising":historical,
         "full_season_history_path":"data/card_bot_full_season_latest.json",
         "full_season_profiles":all_profiles,
-        "independent_skill_changes_found":len(signal_rows)+len(rejected),
+        "independent_skill_changes_found":len(all_skill_improvement_candidates),
+        "all_skill_improvement_candidates":all_skill_improvement_candidates,
+        "additional_upward_trajectories":additional_upward_trajectories,
+        "all_positive_development_names_count":(
+            len(all_skill_improvement_candidates)+len(additional_upward_trajectories)),
+        "all_skill_evidence_tier_counts":{
+            tier:sum(1 for c in all_skill_improvement_candidates
+                     if c["evidence_tier"]==tier)
+            for tier in EVIDENCE_TIERS
+        },
         "windows_per_side_games":list(CONFIRMATION_WINDOWS),
         "max_history_games_compared":2*max(CONFIRMATION_WINDOWS),
         "evidence_tier_counts":{
