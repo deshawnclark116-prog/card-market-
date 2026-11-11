@@ -77,6 +77,30 @@ current 2026 regular-season MiLB record is already finished in November.
 Collector attention and usable exact-card prices remain unverified.
 The $100 paper bankroll does not buy on season-history scores.
 
+## Two separate lists: ALL baseball improvement vs card-buy shortlist
+
+**Show all improving players even if they are already publicly known,**
+have expensive Bowman autographs, or have no verified card market.
+The daily [scouting dashboard](CARD_BOT_DASHBOARD.md) now has an
+**ALL players with current baseball improvement signals** table showing
+every observed 14v14 skill-change candidate, including the players
+subsequently screened out of the card-purchase queue due to Top-100
+recognition. Every row includes score (an uncalibrated *research heuristic*),
+latest 14v14 K%, BB%, and ISO changes, evidence tier and a link to
+the full-season player-by-player game history.
+
+A separate **additional rolling uptrends** section lists players whose
+full-season trajectory is currently rising but who do not pass the
+more restrictive short-window detector. These are NOT equivalent
+to primary early breakout candidates.
+
+The 1st Bowman autograph and collector-market verification stages are
+completely independent of **showing the names**. An expensive-card
+player does not disappear from baseball research. No player is
+presented as a validated breakout or bargain solely from this table.
+Data coverage is still limited to the current raw-stat-sampled
+MiLB hitter cohort, not every active minor leaguer.
+
 ## Mission: find early talent BEFORE mainstream card hype
 
 The bot's previous MLB season-over-season xwOBA leaderboard was not a
