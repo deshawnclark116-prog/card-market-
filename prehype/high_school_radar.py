@@ -22,6 +22,8 @@ from pathlib import Path
 
 DRAFT_CLASS = 2027
 USA_ROSTER = "https://www.usabaseball.com/team/18u/roster"
+# Official USA Baseball news archive dates final 2026 18U roster Aug 26.
+USA_ROSTER_PUBLISHED = date(2026,8,26)
 # Unauthenticated publicly rendered roster and FB-velocity tables.
 # Do NOT request Perfect Game DiamondKast game statistics or login pages.
 EVENTS = (
@@ -218,11 +220,14 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
     sources=[]
     qualifying={}
     event_peaks=defaultdict(list)
-    usa_html=fetch(USA_ROSTER)
+    usa_is_public=as_of>=USA_ROSTER_PUBLISHED
+    usa_html=fetch(USA_ROSTER) if usa_is_public else None
     usa=usa_18u_players(usa_html) if usa_html else []
     sources.append({"url":USA_ROSTER,"available":bool(usa_html),
                     "2027_players_extracted":len(usa),
-                    "purpose":"Official high-exposure reference roster"})
+                    "purpose":("Official high-exposure roster"
+                               if usa_is_public else
+                               "NOT YET PUBLIC AS OF THIS HISTORICAL DATE")})
     for p in usa:
         qualifying[key(p["name"])]={
             "name":p["name"],"graduation_year":DRAFT_CLASS,
@@ -234,6 +239,8 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
             continue
         roster_html=fetch(event["roster"])
         roster=pg_event_roster(roster_html,event["roster"]) if roster_html else []
+        event_verified_keys={key(p["name"]) for p in roster}
+        usa_verified_keys={key(p["name"]) for p in usa}
         sources.append({"url":event["roster"],"available":bool(roster_html),
                         "2027_players_extracted":len(roster),
                         "purpose":"Public graduation-year eligibility"})
@@ -255,7 +262,9 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
             k=key(v["name"])
             # Reject apparent identity match without the correct class. The
             # velocity table alone has NO graduation-year column.
-            if k in qualifying:
+            if k in qualifying and (
+                k in event_verified_keys or k in usa_verified_keys
+            ):
                 event_peaks[k].append(v)
     rows=[]
     for k,p in sorted(qualifying.items(),key=lambda x:x[1]["name"].casefold()):
@@ -285,7 +294,7 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
             "fastball_peak_change_mph":change,
             "measurement_status":status,
             "evidence_not_prediction":True,
-            "drafted":False, # as-of 2026 for class 2027; do NOT infer outcome
+            "draft_outcome":"NOT_EVALUATED_NO_SIGNING_PROJECTION",
             "bowman_first_auto_status":"NOT_VERIFIED_OR_NOT_YET_ISSUED",
             "card_buy_eligible":False,
         })
@@ -318,8 +327,9 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
             "or replicated pitch-quality evidence. Showcase selection biases "
             "against unknown players. A 3+ mph jump between event PEAKS may "
             "be noise, environment, measurement changes or small sample; "
-            "it does NOT establish a future skill breakout. No Bowman "
-            "card market claims, no purchase recommendations."),
+            "it does NOT establish a future skill breakout. Event "
+            "name joins are not verified persistent identities; no Bowman "
+            "card market claims or purchase recommendations."),
     }
 
 
