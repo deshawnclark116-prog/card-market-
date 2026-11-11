@@ -184,7 +184,10 @@ def test_global_public_peak_table_recovers_june_when_direct_table_unavailable():
         return mock_fetch(url)
     result=run_hs_scan(as_of=date(2026,11,11),fetch=getter)
     assert result["players_with_verified_2027_graduation"]==2
-    assert result["public_event_velocity_measurements"]==4
+    # Only three matched observations exist: 2 for Unheralded,
+    # 1 October-only for the national-team player. Do NOT invent his
+    # missing June event peak in order to obtain two measurements.
+    assert result["public_event_velocity_measurements"]==3
     assert result["observed_velocity_increases"]==1
     p=next(x for x in result["players"] if x["name"]=="Unheralded Arm")
     assert p["fastball_peak_change_mph"]==5
