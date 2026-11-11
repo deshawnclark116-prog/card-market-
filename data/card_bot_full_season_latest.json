@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10",
+  "as_of": "2026-11-11",
   "games_recorded": 8906,
   "note": "Click each history_path for all per-game records, 14-game blocks, 7-game checkpoints, phase events, season totals and team stints. Development phases are descriptive, not future-breakout or investment odds.",
   "player_count": 88,
@@ -379,7 +379,7 @@
       "season_pa": 395
     },
     {
-      "age": 19,
+      "age": 20,
       "current_direction": "UPTREND",
       "development_phase": "REBOUNDING_AFTER_DOWNTREND",
       "early_signal_now": true,
@@ -1161,7 +1161,7 @@
       "season_pa": 490
     },
     {
-      "age": 19,
+      "age": 20,
       "current_direction": "MIXED",
       "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
       "early_signal_now": false,

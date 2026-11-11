@@ -1,8 +1,10 @@
 # Card Bot — Daily Scouting Board
 
-**Last scan:** 2026-11-10 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
+**Last scan:** 2026-11-11 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
 
 **Paper-only experiment:** unverified catalog dollar values are HIDDEN. A verified same-card sale median is NOT an active offer. A player skill-change score is NOT an investment score.
+
+**CHEAP ≠ AFFORDABLE:** a $10–$25 card is not a pre-hype bargain merely because it fits the bankroll. This paper strategy targets individually verified manufacturer-issued **1st Bowman autographs at $5 or less for the card and $10 or less delivered**. A genuine low-priced card is still not necessarily underpriced or unnoticed by collectors.
 
 ## Current paper bankroll
 
@@ -329,10 +331,10 @@ A sudden jump may still be sampling noise or reflect unmodeled opponents, ballpa
 
 The public feed supplied some grossly inconsistent catalog estimates. They are retained in the machine-readable audit record, NOT shown as actionable prices.
 
-| Player | Identified card and grade | Catalog price | Verified matching sale median | Verified sales | Status | Why not a buy |
-|---|---|---|---:|---:|---|---|
-| Cristofer Torin | 2023 Bowman Chrome Sapphire Edition Prospects #204 (PSA 10) | **UNVERIFIED — HIDDEN** | unknown | — | PRICE GUIDE ONLY (NOT VERIFIED BUY) | missing or low deal score; missing or low breakout score; card-collector hype NOT measured; search ratio is not proof of quiet demand; price trend missing; no 5 independently title-matched recent sales of this EXACT card/grade |
-| Aroon Escobar | 2025 Bowman Chrome Prospects #BCP65 (PSA 9) | **UNVERIFIED — HIDDEN** | unknown | — | PRICE GUIDE ONLY (NOT VERIFIED BUY) | missing or low deal score; missing or low breakout score; card-collector hype NOT measured; search ratio is not proof of quiet demand; price trend missing; no 5 independently title-matched recent sales of this EXACT card/grade |
+| Player | Identified reference | Advertised all-in | Low-entry status | Catalog mark | Verified same-card sales | Decision |
+|---|---|---:|---|---|---:|---|
+| Cristofer Torin | 2023 Bowman Chrome Sapphire Edition Prospects #204 (PSA 10) | unknown | FIRST BOWMAN PACK AUTO NOT VERIFIED | **UNVERIFIED — HIDDEN** | — | PRICE GUIDE ONLY (NOT VERIFIED BUY) (missing or low deal score; missing or low breakout score; card-collector hype NOT verified; search ratio is not proof of quiet demand; price trend missing; Low-entry 1st Bowman auto not verified: FIRST_BOWMAN_PACK_AUTO_NOT_VERIFIED; no five independently title-matched recent sales of this EXACT card/grade; verified independent same-card sold comps unavailable) |
+| Aroon Escobar | 2025 Bowman Chrome Prospects #BCP65 (PSA 9) | unknown | FIRST BOWMAN PACK AUTO NOT VERIFIED | **UNVERIFIED — HIDDEN** | — | PRICE GUIDE ONLY (NOT VERIFIED BUY) (missing or low deal score; missing or low breakout score; card-collector hype NOT verified; search ratio is not proof of quiet demand; price trend missing; Low-entry 1st Bowman auto not verified: FIRST_BOWMAN_PACK_AUTO_NOT_VERIFIED; no five independently title-matched recent sales of this EXACT card/grade; verified independent same-card sold comps unavailable) |
 
 ## Player skill-change explanations
 

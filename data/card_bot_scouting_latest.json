@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10",
+  "as_of": "2026-11-11",
   "discovery": {
     "already_publicized_excluded": [
       {
@@ -57,7 +57,7 @@
         "source": "https://prospectpulsev1.com/pipeline/"
       }
     ],
-    "as_of": "2026-11-10",
+    "as_of": "2026-11-11",
     "eligible_for_log_sampling": 88,
     "evidence_tier_counts": {
       "BUILDING_14_AND_28": 0,
@@ -589,7 +589,7 @@
         "player_id": "821100"
       },
       {
-        "age": 19,
+        "age": 20,
         "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
         "early_signal_now": false,
         "first_observed_uptrend": "2026-05-30",
@@ -924,7 +924,7 @@
           "source": "https://prospectpulsev1.com/pipeline/"
         }
       ],
-      "as_of": "2026-11-10",
+      "as_of": "2026-11-11",
       "eligible_for_log_sampling": 88,
       "evidence_tier_counts": {
         "BUILDING_14_AND_28": 0,
@@ -1456,7 +1456,7 @@
           "player_id": "821100"
         },
         {
-          "age": 19,
+          "age": 20,
           "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
           "early_signal_now": false,
           "first_observed_uptrend": "2026-05-30",
@@ -1842,7 +1842,7 @@
       "reason": "A, age 18: 14v14 K% 27.9%\u219215.9%, BB% 18.0%\u219220.6%, ISO 0.163\u21920.400; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "CURRENT_UPTREND",
         "first_game": "2026-05-02",
@@ -2294,7 +2294,7 @@
       "reason": "A, age 20: 14v14 K% 20.8%\u21929.3%, BB% 17.0%\u219218.5%, ISO 0.140\u21920.262; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-05-02",
@@ -2735,7 +2735,7 @@
       "reason": "AA, age 22: 14v14 K% 30.3%\u219221.2%, BB% 12.1%\u219213.6%, ISO 0.161\u21920.148; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -3379,7 +3379,7 @@
       "reason": "AA, age 21: 14v14 K% 40.4%\u219229.7%, BB% 7.0%\u219212.5%, ISO 0.157\u21920.273; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-12. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-21",
@@ -3888,7 +3888,7 @@
       "reason": "A, age 19: 14v14 K% 20.0%\u21927.4%, BB% 13.8%\u219211.8%, ISO 0.018\u21920.190; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-08-28. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-03",
@@ -4502,7 +4502,7 @@
       "reason": "AA, age 21: 14v14 K% 26.1%\u219214.8%, BB% 15.9%\u219213.1%, ISO 0.018\u21920.096; Longer-window evidence conflicts with a shorter improvement. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-02",
@@ -5091,7 +5091,7 @@
       "reason": "AA, age 22: 14v14 K% 37.5%\u219228.1%, BB% 5.4%\u219231.2%, ISO 0.440\u21920.419; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -5762,7 +5762,7 @@
       "reason": "A+, age 20: 14v14 K% 30.6%\u219225.0%, BB% 17.7%\u219221.7%, ISO 0.080\u21920.213; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-08-25. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -6292,7 +6292,7 @@
       "reason": "AAA, age 23: 14v14 K% 30.2%\u219216.7%, BB% 7.9%\u219210.6%, ISO 0.143\u21920.153; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-20. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-03-27",
@@ -6807,19 +6807,37 @@
           "card_id": "6fa83913-bbbd-4493-aed3-7672d7dd3f08",
           "catalog_guide_price_usd": null,
           "catalog_raw_untrusted_usd": 24.5,
+          "cheap_acquisition_verified": false,
+          "cheap_delivered_price_usd": null,
+          "cheap_entry_screen": {
+            "all_in_price_usd": null,
+            "discount_to_same_card_sold_median_pct": null,
+            "item_price_usd": null,
+            "low_entry_verified": false,
+            "market_lag_verified": false,
+            "max_all_in_usd": 10.0,
+            "max_item_usd": 5.0,
+            "same_card_sold_median_usd": null,
+            "status": "FIRST_BOWMAN_PACK_AUTO_NOT_VERIFIED",
+            "warning": "A low dollar price alone is not a bargain, or proof of low card-market hype."
+          },
+          "cheap_item_price_usd": null,
           "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
           "listing_title": null,
           "listing_url": null,
+          "market_lag_verified": false,
           "note": "Unverified price guide unless exact sold comps exist",
           "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
             "missing or low breakout score",
-            "card-collector hype NOT measured; search ratio is not proof of quiet demand",
+            "card-collector hype NOT verified; search ratio is not proof of quiet demand",
             "price trend missing",
-            "no 5 independently title-matched recent sales of this EXACT card/grade"
+            "Low-entry 1st Bowman auto not verified: FIRST_BOWMAN_PACK_AUTO_NOT_VERIFIED",
+            "no five independently title-matched recent sales of this EXACT card/grade",
+            "verified independent same-card sold comps unavailable"
           ],
           "sold_comps": null,
           "sold_median_usd": null,
@@ -7002,7 +7020,7 @@
       "reason": "AA, age 21: 14v14 K% 12.3%\u21928.5%, BB% 4.6%\u21929.9%, ISO 0.200\u21920.206; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-03",
@@ -7494,19 +7512,37 @@
           "card_id": "b4f96102-bf81-4359-be4f-36dbc4bbba13",
           "catalog_guide_price_usd": null,
           "catalog_raw_untrusted_usd": 29.61,
+          "cheap_acquisition_verified": false,
+          "cheap_delivered_price_usd": null,
+          "cheap_entry_screen": {
+            "all_in_price_usd": null,
+            "discount_to_same_card_sold_median_pct": null,
+            "item_price_usd": null,
+            "low_entry_verified": false,
+            "market_lag_verified": false,
+            "max_all_in_usd": 10.0,
+            "max_item_usd": 5.0,
+            "same_card_sold_median_usd": null,
+            "status": "FIRST_BOWMAN_PACK_AUTO_NOT_VERIFIED",
+            "warning": "A low dollar price alone is not a bargain, or proof of low card-market hype."
+          },
+          "cheap_item_price_usd": null,
           "decision": "PRICE GUIDE ONLY (NOT VERIFIED BUY)",
           "last_sale": null,
           "listing_title": null,
           "listing_url": null,
+          "market_lag_verified": false,
           "note": "Unverified price guide unless exact sold comps exist",
           "provenance_url": null,
           "quote_fresh": false,
           "reasons": [
             "missing or low deal score",
             "missing or low breakout score",
-            "card-collector hype NOT measured; search ratio is not proof of quiet demand",
+            "card-collector hype NOT verified; search ratio is not proof of quiet demand",
             "price trend missing",
-            "no 5 independently title-matched recent sales of this EXACT card/grade"
+            "Low-entry 1st Bowman auto not verified: FIRST_BOWMAN_PACK_AUTO_NOT_VERIFIED",
+            "no five independently title-matched recent sales of this EXACT card/grade",
+            "verified independent same-card sold comps unavailable"
           ],
           "sold_comps": null,
           "sold_median_usd": null,
@@ -7686,7 +7722,7 @@
       "reason": "AA, age 21: 14v14 K% 17.5%\u219214.0%, BB% 14.0%\u21928.8%, ISO 0.167\u21920.260; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-10",
+        "as_of": "2026-11-11",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-02",
@@ -8215,7 +8251,7 @@
   "portfolio": {
     "cash_remaining_usd": 100.0,
     "days_recorded": 0,
-    "ends_on": "2026-12-10",
+    "ends_on": "2026-12-11",
     "important": "Estimated liquidation is NOT realized profit and assumes a buyer exists at the recent sold median. All entries are simulated fills from active listing snapshots where available; last valuation may be up to 7 days old. No real transaction occurs.",
     "indicative_net_liquidation_usd": 100.0,
     "indicative_return_pct": 0.0,
@@ -8224,7 +8260,7 @@
     "number_of_paper_buys": 0,
     "positions": [],
     "stale_or_unverified_marks": 0,
-    "started_on": "2026-11-10",
+    "started_on": "2026-11-11",
     "status": "IN_PROGRESS"
   },
   "source": "Official MiLB early skill-change detector + public card identities",
