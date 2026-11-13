@@ -24,6 +24,15 @@ The system does **not** scrape YouTube, Perfect Game, ESPN, broadcasts or subscr
 
 ## Adding a real clip
 
+**High-school roster IDs:** Most current USA Baseball and showcase
+rosters provide only the athlete's name and 2027 graduation class.
+The system generates a stable local video roster key starting with
+**hs2027_** from the normalized name and class. That is NOT an official
+provider/player ID and does not establish that two identically named
+players are the same person. It only joins a visible roster research
+row to a human-verified clip. Confirm the actual person independently
+and do not reuse the key for ambiguous namesakes.
+
 1. Obtain the clip and written permission/rights for analysis. Verify the visible player manually and match the exact ID in the class-2027 or MiLB research JSON. Do not publish identifying personal details beyond the public sporting name.
 2. Create a short, direct HTTPS video URL on a host you are authorized to use. Configure its exact hostname as GitHub repository variable **CARD_BOT_VIDEO_ALLOWED_HOSTS**. There is no unrestricted video downloader; redirects are blocked.
 3. Calculate the video's SHA256 checksum locally (for example, use the sha256sum command). Keep the right-holder/permission record separately; reference it without putting private contact details in GitHub.
