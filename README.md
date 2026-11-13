@@ -9,7 +9,26 @@ The goal is simple: **be way ahead of the crowd.** Buy players whose
 fundamentals point to a breakout while their cards are still cheap and quiet —
 then sell into the hype once everyone else catches on.
 
-## New: 2027 high-school draft watch — pre-card research
+## NEW — actual film analysis (requires authorized footage)
+
+[Video scouting evidence board](VIDEO_SCOUTING_BOARD.md) ·
+[How the video engine works and how to add licensed clips](VIDEO_SCOUTING.md)
+
+Card Bot now has a **real video decoding and body-pose evidence pipeline**
+(OpenCV + pinned MediaPipe Pose). It can extract image-frame elbow/knee/trunk
+angles, repeated-action variation and cautiously compare same-camera,
+different-date clips. Every clip requires documented source and analysis
+permission, SHA256 checksum, exact roster ID, manually verified single
+athlete, dated action windows and camera metadata. Poor imagery fails closed.
+
+**Important: installing a video engine does not mean it already watched
+athletes.** The manifest begins empty. Until verified footage is actually
+processed, the dashboard states **NO APPROVED FOOTAGE ANALYZED** for every
+player. There is no scraping/rehosting copyrighted clips or fake pose
+projections. Visual features cannot affect breakout odds or purchases
+until expert-reviewed and validated against future outcomes.
+
+
 
 During the 2026-27 MiLB offseason, the same free GitHub Actions workflow
 also analyzes **publicly verifiable high-school class-of-2027 rosters** and
