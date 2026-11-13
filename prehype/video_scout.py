@@ -10,11 +10,13 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import tempfile
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
 
+from prehype.high_school_radar import provisional_roster_key
 from prehype.video_evidence import (
     MODEL_VERSION, analyze_local_video, allowed_clip_metadata,
     compare_same_camera_observations, fetch_verified_video,
@@ -39,12 +41,23 @@ def load_json(path, default):
         return default
 
 
+def _hs_roster_key(row):
+    """Internal class+name group key; NOT an official identity credential."""
+    name=row.get("name")
+    if not isinstance(name,str) or not name.strip():
+        return None
+    pid=str(row.get("player_id") or provisional_roster_key(name) or "")
+    if pid.isdigit() or re.fullmatch(r"hs2027_[0-9a-f]{16}",pid):
+        return pid
+    return None
+
+
 def athlete_index(hs, milb):
     verified={}
     for row in hs.get("players",[]):
-        pid=str(row.get("player_id") or "")
+        pid=_hs_roster_key(row)
         name=row.get("name")
-        if pid.isdigit() and isinstance(name,str):
+        if pid and isinstance(name,str):
             verified[("HS_2027",pid)]=name
     for row in milb.get("players",[]):
         pid=str(row.get("player_id") or "")
@@ -61,11 +74,12 @@ def athlete_queue(hs, milb, scout, observed):
     ) if p.get("player_id")}
     rows=[]
     for p in hs.get("players",[]):
-        pid=str(p.get("player_id") or "")
-        if not pid.isdigit():
+        pid=_hs_roster_key(p)
+        if not pid:
             continue
         rows.append({
             "pool":"HS_2027", "player_id":pid, "name":p["name"],
+            "player_id_is_provisional_not_official":pid.startswith("hs2027_"),
             "baseball_evidence":"PRE_DRAFT_CLASS_VERIFIED_ROSTER_NOT_A_BREAKOUT",
             "existing_public_exposure":p.get("market_exposure","UNKNOWN"),
             "video_status":observed.get(("HS_2027",pid),"NO_APPROVED_FOOTAGE_ANALYZED"),
@@ -329,6 +343,9 @@ def render_markdown(report):
         "",
         "## Evidence limits and safeguards",
         "",
+        "- High-school roster identifiers are local, name-based **provisional** "
+        "keys and may conflate namesakes; the video athlete must be "
+        "independently verified by a reviewer, never assumed from the key.",
         "- Video clips must be source-authenticated, legally authorized for analysis, "
         "manually athlete-verified, SHA256-verified and timestamp-annotated.",
         "- The engine decodes frames, uses a pose landmark model to calculate "
