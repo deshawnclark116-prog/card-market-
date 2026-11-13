@@ -120,6 +120,7 @@ def scan_video_evidence(manifest, hs, milb, scout, *, as_of=None,
     decisions=[]
     next_cache={}
     processed=0
+    attempted=0
     cached_count=0
     seen=set()
     for entry in clips:
@@ -155,11 +156,14 @@ def scan_video_evidence(manifest, hs, milb, scout, *, as_of=None,
             decisions.append(row)
             continue
         else:
-            processed+=1
+            attempted+=1
             try:
                 with tempfile.TemporaryDirectory(prefix="card_bot_film_") as work:
                     path=fetch_video(entry,hosts,work)
                     result=analyze_video(path,entry)
+                # A fetch failure was NOT a watched clip. Count only videos
+                # whose frames were actually decoded and analyzed.
+                processed+=1
                 next_cache[cid]={
                     "fingerprint":token,"model_version":MODEL_VERSION,
                     "result":result,
@@ -171,6 +175,15 @@ def scan_video_evidence(manifest, hs, milb, scout, *, as_of=None,
                 # checksum, decoder, or source rights; no phantom features.
                 row["status"]="VIDEO_ANALYSIS_FAILED"
                 row["failure_type"]=type(exc).__name__
+                if isinstance(exc,ValueError) and str(exc) in {
+                    "VIDEO_EXCEEDS_DOWNLOAD_LIMIT","VIDEO_SHA256_MISMATCH",
+                    "VIDEO_DECODER_CANNOT_OPEN_FILE",
+                    "INVALID_VIDEO_FRAME_METADATA",
+                    "VIDEO_LONGER_THAN_APPROVED_LIMIT",
+                    "ANNOTATED_REP_OUTSIDE_VIDEO_DURATION",
+                    "VIDEO_HOST_NOT_EXPLICITLY_ALLOWED",
+                }:
+                    row["failure_code"]=str(exc)
                 decisions.append(row)
                 continue
         row.update({
@@ -223,6 +236,7 @@ def scan_video_evidence(manifest, hs, milb, scout, *, as_of=None,
         "verified_source_players_in_queue":len(queue),
         "manifest_entries":len(clips),
         "video_clips_newly_processed":processed,
+        "new_video_analysis_attempts":attempted,
         "video_clips_reused_from_verified_cache":cached_count,
         "quality_passed_clips":sum(bool(x.get("quality_pass")) for x in decisions),
         "confirmed_visual_breakouts":0,
@@ -248,7 +262,7 @@ def render_markdown(report):
         "",
         f"- Player names queued for filming: **{report['verified_source_players_in_queue']}** (roster or stats records, **not** video).",
         f"- Footage items submitted with human source/identity/licensing records: **{report['manifest_entries']}**.",
-        f"- Newly decoded videos: **{report['video_clips_newly_processed']}**; prior valid clip analyses reused: **{report['video_clips_reused_from_verified_cache']}**.",
+        f"- Newly decoded and analyzed videos: **{report['video_clips_newly_processed']}**; fetch/inference attempts: **{report['new_video_analysis_attempts']}**; valid past analyses reused: **{report['video_clips_reused_from_verified_cache']}**.",
         f"- Clips meeting image/pose/rep gates: **{report['quality_passed_clips']}**.",
         "- Automatically validated visual skill breakouts: **0**.",
         "- Video-based card-buy authorizations: **0**.",
@@ -357,7 +371,7 @@ def main(argv=None):
     parser.add_argument("--needs-runtime",action="store_true")
     parser.add_argument("--manifest",default=MANIFEST_PATH)
     args=parser.parse_args(argv)
-    manifest=load_json(args.manifest,{"schema":1,"clips":[]})
+    manifest=load_json(args.manifest,{"schema":0,"clips":[]})
     if args.needs_runtime:
         # Avoid costly optional CV installs until at least one valid, allowed
         # video actually exists. Do not treat manifest rows as pose evidence.
