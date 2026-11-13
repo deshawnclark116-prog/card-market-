@@ -1,0 +1,900 @@
+{
+  "actual_card_buy_candidates_from_video": 0,
+  "approved_host_configuration_present": false,
+  "as_of": "2026-11-13",
+  "athletes": [
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Andrew Fischer",
+      "player_id": "702652",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Aroon Escobar",
+      "player_id": "800169",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Bryan Rincon",
+      "player_id": "804858",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Cristofer Torin",
+      "player_id": "800198",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Dax Kilby",
+      "player_id": "828076",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Demetrio Crisantes",
+      "player_id": "702679",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SUSTAINED_ACROSS_14_28_42",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Edward Florentino",
+      "player_id": "821273",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Franklin Arias",
+      "player_id": "808265",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Handelfry Encarnacion",
+      "player_id": "821136",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "LONG_HORIZON_CONFLICT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Jaison Chourio",
+      "player_id": "702693",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Jes\u00fas Made",
+      "player_id": "815908",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Johanfran Garcia",
+      "player_id": "703190",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Josh Adamczewski",
+      "player_id": "815304",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Josiah Ragsdale",
+      "player_id": "828824",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Lazaro Montes",
+      "player_id": "703155",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Luis Escudero",
+      "player_id": "806884",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Sebastian Dos Santos",
+      "player_id": "829741",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Starlyn Caba",
+      "player_id": "806965",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Walker Jenkins",
+      "player_id": "805805",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Zach Ehrhard",
+      "player_id": "701394",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Adael Amador",
+      "player_id": "691182",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Alexander Frias",
+      "player_id": "825484",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Alfredo Duno",
+      "player_id": "806957",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "NO_UPTREND_DETECTED",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Anderdson Rojas",
+      "player_id": "699232",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Andrew Salas",
+      "player_id": "829035",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Angel Feliz",
+      "player_id": "815906",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Arjun Nimmala",
+      "player_id": "805796",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Aron Estrada",
+      "player_id": "800406",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Brady Ebel",
+      "player_id": "815816",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Brailyn Antunez",
+      "player_id": "829073",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Braylon Payne",
+      "player_id": "815520",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Caleb Bonemer",
+      "player_id": "815352",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Cam Cauley",
+      "player_id": "695508",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Carlos Sanchez",
+      "player_id": "800176",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Charlie Condon",
+      "player_id": "809707",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Conor Essenburg",
+      "player_id": "828148",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Eli Willits",
+      "player_id": "816113",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Emil Morales",
+      "player_id": "815896",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Emmanuel Rodriguez",
+      "player_id": "691181",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Enddy Azocar",
+      "player_id": "821150",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Eric Bitonti",
+      "player_id": "800724",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Eric Hartman",
+      "player_id": "807080",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "CURRENT_DOWNTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Ethan Holliday",
+      "player_id": "815787",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Ethan Salas",
+      "player_id": "806956",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Franklin Primera",
+      "player_id": "829398",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Gabriel Gonzalez",
+      "player_id": "694224",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Gage Miller",
+      "player_id": "824028",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Hayden Alvarez",
+      "player_id": "820986",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Hendry Mendez",
+      "player_id": "694230",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Ivan Luciano",
+      "player_id": "813930",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Jaden Fauske",
+      "player_id": "828262",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Jaiden Lo Re",
+      "player_id": "828318",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Jefferson Rojas",
+      "player_id": "800473",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Jes\u00fas  B\u00e1ez",
+      "player_id": "800305",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Jhonny Level",
+      "player_id": "815929",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "John Gil",
+      "player_id": "808535",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Jose Silva",
+      "player_id": "834925",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Josiah Hartshorn",
+      "player_id": "815824",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "CURRENT_DOWNTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Josuar Gonzalez",
+      "player_id": "829034",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Josue De Paula",
+      "player_id": "800543",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Juneiker Caceres",
+      "player_id": "821181",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Justin Gonzales",
+      "player_id": "821100",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Kahlil Watson",
+      "player_id": "696135",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Kevin Alvarez",
+      "player_id": "829037",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Leo Balcazar",
+      "player_id": "699114",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Leo De Vries",
+      "player_id": "815888",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Luis Arana",
+      "player_id": "829854",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Luke Adams",
+      "player_id": "702726",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REBOUNDING_AFTER_DOWNTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Manuel Pena",
+      "player_id": "694211",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Marco Vargas",
+      "player_id": "804614",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Michael Arroyo",
+      "player_id": "703197",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Mikey Romero",
+      "player_id": "702540",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Nathan Flewelling",
+      "player_id": "807083",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Nelson Rada",
+      "player_id": "703185",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Nolan Schubart",
+      "player_id": "702278",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Rainiel Rodriguez",
+      "player_id": "823787",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Ralphy Velazquez",
+      "player_id": "806252",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Ryan Mitchell",
+      "player_id": "815829",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Sean Keys",
+      "player_id": "815873",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Sebastian Walcott",
+      "player_id": "806964",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Tate Southisene",
+      "player_id": "816111",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Termarr Johnson",
+      "player_id": "702261",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Theo Gillen",
+      "player_id": "815394",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Welbyn Francisca",
+      "player_id": "806988",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Wyatt Sanford",
+      "player_id": "815608",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Xavier Isaac",
+      "player_id": "800060",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Xavier Neyens",
+      "player_id": "815832",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Zyhir Hope",
+      "player_id": "814307",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    }
+  ],
+  "clips": [],
+  "comparisons": [],
+  "confirmed_visual_breakouts": 0,
+  "manifest_entries": 0,
+  "manifest_status": "VALID",
+  "model_version": "videopose_2d_mediapipe_0_10_21_v1",
+  "new_video_analysis_attempts": 0,
+  "note": "Actual pose inference ONLY for licensed, SHA-verified, manually attributed clips. 2D body pose values depend heavily on camera, crop, event alignment and occlusion. All visual movement interpretations require trained human scout review and future validation. No videos, faces or frames are retained, and visual scores never authorize a card buy.",
+  "quality_passed_clips": 0,
+  "schema": "CARD_BOT_VISUAL_EVIDENCE_V1",
+  "verified_source_players_in_queue": 88,
+  "video_clips_newly_processed": 0,
+  "video_clips_reused_from_verified_cache": 0
+}

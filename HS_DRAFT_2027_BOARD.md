@@ -2,6 +2,8 @@
 
 **Scan date:** 2026-11-13 | **Target class:** High-school graduation 2027
 
+**Film scouting:** [Actual video evidence board](VIDEO_SCOUTING_BOARD.md) records only source-licensed decoded videos; being on this roster does NOT mean the video engine has watched this player.
+
 ## Why we are watching before the draft
 
 Our goal is to discover measurable player development **before the 2027 MLB Draft and first Bowman card release/repricing**. This is a **PRE-CARD RESEARCH** list, not a list of buyable Bowman 1st autos. Existing USA Baseball national-team selections are highly publicized and MUST NOT be described as undiscovered sleepers.

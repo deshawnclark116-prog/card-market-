@@ -4,6 +4,8 @@
 
 **Paper-only experiment:** unverified catalog dollar values are HIDDEN. A verified same-card sale median is NOT an active offer. A player skill-change score is NOT an investment score.
 
+[**Actual footage / pose-analysis evidence board**](VIDEO_SCOUTING_BOARD.md): includes every player awaiting verified licensed film. A roster/stat signal is NOT proof footage has been analyzed.
+
 **CHEAP ≠ AFFORDABLE:** a $10–$25 card is not a pre-hype bargain merely because it fits the bankroll. This paper strategy targets individually verified manufacturer-issued **1st Bowman autographs at $5 or less for the card and $10 or less delivered**. A genuine low-priced card is still not necessarily underpriced or unnoticed by collectors.
 
 ## Current paper bankroll
