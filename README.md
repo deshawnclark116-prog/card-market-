@@ -1,13 +1,15 @@
 # prehype — get ahead of the sports card market
 
-A system that does the scanning for you and surfaces the cards worth buying
-**before** the crowd shows up:
+A raw-stat-first research system that seeks baseball development **before**
+collectors price in future prospect success. It separates player
+improvement evidence, legitimate scouting footage, collector awareness,
+verified exact-card pricing, and purchase feasibility.
 
-> 🔥 *Jalen Rooke (MLB) — EARLY — dirt cheap, hype hasn't hit, breakout building*
-
-The goal is simple: **be way ahead of the crowd.** Buy players whose
-fundamentals point to a breakout while their cards are still cheap and quiet —
-then sell into the hype once everyone else catches on.
+**This is an experimental research and $100 paper-only bot.** It currently
+has no independently validated investment probabilities or confirmed
+cheap first-Bowman-autograph buy candidates. Never interpret an exploratory
+player signal, a 2D video measurement, or a vendor guide price as
+a guaranteed prospect breakout or a buy recommendation.
 
 ## NEW — actual film analysis (requires authorized footage)
 
@@ -61,10 +63,15 @@ The MiLB scout and $100 paper-only buy safeguards are unchanged.
   logs, and a detailed scouting report in each run's Summary.
 - [Simulation methodology](PAPER_BOT.md) — important limits and rules.
 
-The board refreshes with each successful LIVE scheduled/manual scan, even if
-reliable eBay sold-comps are missing and the 30-day clock has not started.
-It uses **paper-only, category-level sold-comparable prices**, not verified
-buyable listings. Current discovery covers the existing MLB pipeline only.
+The boards refresh with each successful scheduled/manual GitHub run.
+MiLB research, the 2027 high-school roster/velocity watch, and the new
+source-authenticated actual-film evidence lane are separate. A reference
+sold median, untrusted guide mark, or low-dollar card listing cannot
+independently qualify a paper buy. The $100 ledger remains unspent until
+verified card identity, actual active offer, exact-card sold comps,
+collector exposure and player signals all pass independent gates.
+The video engine processes no real athletes until legitimate,
+explicitly authorized footage is received.
 
 ### The actual pre-hype prospect mission
 
