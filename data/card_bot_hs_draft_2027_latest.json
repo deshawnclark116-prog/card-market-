@@ -27,6 +27,8 @@
           "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
         }
       ],
+      "player_id": "hs2027_6723112c2a6eccd6",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP/C",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -54,6 +56,8 @@
           "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
         }
       ],
+      "player_id": "hs2027_8d0195f8ae1ca620",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "INF/RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -81,6 +85,8 @@
           "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
         }
       ],
+      "player_id": "hs2027_137bb547f1e929bd",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "LHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -108,6 +114,8 @@
           "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
         }
       ],
+      "player_id": "hs2027_bd28482ce9aa1f4e",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -135,6 +143,8 @@
           "type": "TOP_PUBLIC_EVENT_FB_PEAK_LEADERBOARD_NOT_FULL_SAMPLE"
         }
       ],
+      "player_id": "hs2027_d76c4324ffbe322c",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -162,6 +172,8 @@
           "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
         }
       ],
+      "player_id": "hs2027_13feb7421e02f075",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "LHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -189,6 +201,8 @@
           "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
         }
       ],
+      "player_id": "hs2027_20065ea84afddfce",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -216,6 +230,8 @@
           "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
         }
       ],
+      "player_id": "hs2027_f2ee6e8a0b945032",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -252,6 +268,8 @@
           "type": "EVENT_FASTBALL_PEAK_NOT_AVERAGE"
         }
       ],
+      "player_id": "hs2027_dbe6c432f97f6548",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -269,6 +287,8 @@
       "name": "Adryan Diaz",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_0af27dbddc0e4ec0",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -286,6 +306,8 @@
       "name": "Andrew Carlson",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_f7ae1045081aab5b",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -303,6 +325,8 @@
       "name": "Ashton Boyajian",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_f59e809547c956ff",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -320,6 +344,8 @@
       "name": "Beau Tait",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_511d613e38a57b18",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -337,6 +363,8 @@
       "name": "Brayden Longo",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_858da9900a9c90b5",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -354,6 +382,8 @@
       "name": "Broder Katke",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_941718f278737043",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "C",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -371,6 +401,8 @@
       "name": "Connor Geraci",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_3d435a6e81f2bfcb",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -388,6 +420,8 @@
       "name": "Connor Smith",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_e73f4af5e68f2c21",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "MIF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -405,6 +439,8 @@
       "name": "Cooper Collins",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_699180b0b6292c1c",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "C",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -422,6 +458,8 @@
       "name": "Daniel Alvarez",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_7ccc36232dbb8dd0",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -439,6 +477,8 @@
       "name": "Donovan Marotto",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_34847cdec850b441",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -456,6 +496,8 @@
       "name": "Drake Hawpe",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_e8bd7502bdc1f838",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -473,6 +515,8 @@
       "name": "Dustin Reveles",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_5ae9a5d69835f88e",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -490,6 +534,8 @@
       "name": "Dylan Seward",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_e4b31b88ea8d9e01",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "INF",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -507,6 +553,8 @@
       "name": "Ethan Broome",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_4a7c8c61e1601c8f",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -524,6 +572,8 @@
       "name": "Ethan Dubois",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_d38b1f37c16174ba",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "SS",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -541,6 +591,8 @@
       "name": "Gavin Jenkins",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_ca672d0ded5f579e",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -558,6 +610,8 @@
       "name": "Gian Diaz",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_212f9dea9553e999",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -575,6 +629,8 @@
       "name": "Graham Houston",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_446120ca675c0842",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "UT",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -592,6 +648,8 @@
       "name": "Hayden Hatcher",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_7dc1e56179a7338f",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "MIF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -609,6 +667,8 @@
       "name": "Heath Richardson",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_875095e03539a495",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "C",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -626,6 +686,8 @@
       "name": "Hunter Abifadel",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_8bbe6c3b9c335f64",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "C",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -643,6 +705,8 @@
       "name": "Isaac Vidal",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_3be33fd31debf22c",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -660,6 +724,8 @@
       "name": "Izmael Hernandez",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_8f1c42852fc5470f",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -677,6 +743,8 @@
       "name": "Jace Garcia",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_b46c0f0fbd819c79",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "SS",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -694,6 +762,8 @@
       "name": "Jack Swanson",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_77a0527360c49642",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "UT",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -711,6 +781,8 @@
       "name": "Jackson Beasley",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_a74bdec04fddc022",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -728,6 +800,8 @@
       "name": "Jacob Boone",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_56b66d7c71309a83",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -745,6 +819,8 @@
       "name": "Jacob Budarz",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_efd99afd18ed1078",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "3B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -762,6 +838,8 @@
       "name": "James Cole Jr.",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_741449ae47685aa9",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -779,6 +857,8 @@
       "name": "Jayden Fillyaw",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_28abd7ae84f48afb",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -796,6 +876,8 @@
       "name": "Jayden Montanez",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_694a16a24e86d06c",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "SS",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -813,6 +895,8 @@
       "name": "Jaylen Dumas",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_7dd1fe637fda7c15",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -830,6 +914,8 @@
       "name": "Joaquin Durazo",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_5247ffa040aad93f",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "C",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -847,6 +933,8 @@
       "name": "Justin Brown",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_0c57ff8e7d142844",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -864,6 +952,8 @@
       "name": "Justin Kirchner",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_49a3d9a8dcf1456e",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -881,6 +971,8 @@
       "name": "Justin Olivo",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_99cbfbdc7358a9e6",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "3B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -898,6 +990,8 @@
       "name": "Kade McReynolds",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_07105fd5461d0547",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "3B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -915,6 +1009,8 @@
       "name": "Landon Brewster",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_7618ea462094fd96",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "SS",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -932,6 +1028,8 @@
       "name": "Logan Hill",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_be73c39a0c502230",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "MIF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -949,6 +1047,8 @@
       "name": "Logan Umfress",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_28645e70c2f97be8",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -966,6 +1066,8 @@
       "name": "Lubin Rincon",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_66571a80827bedbc",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "UT",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -983,6 +1085,8 @@
       "name": "Luke Ayers",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_660dbe2e6adf40d9",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1000,6 +1104,8 @@
       "name": "Malachi Butler",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_62befcae23427554",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "INF",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -1017,6 +1123,8 @@
       "name": "Mason Rosenberg",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_7f51252a789d5aa5",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "1B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -1034,6 +1142,8 @@
       "name": "Matthew Gryskiewicz",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_be668cef43cb8199",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "3B",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=139793"
@@ -1051,6 +1161,8 @@
       "name": "Michael Caraballo",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_e652d5b2b3c08f22",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1068,6 +1180,8 @@
       "name": "Owen Maddux",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_844c09e38a50ab3c",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1085,6 +1199,8 @@
       "name": "Preston Jones",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_73eb095d4c8416c1",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1102,6 +1218,8 @@
       "name": "Preston Stevens",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_0ff444eec2b68218",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "LHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1119,6 +1237,8 @@
       "name": "Sebastian Castillo",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_0be2f8a399646db5",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "UT",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -1136,6 +1256,8 @@
       "name": "Sebastian Wilson",
       "national_team_2026": true,
       "observations": [],
+      "player_id": "hs2027_34b3abf6a2f3526b",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.usabaseball.com/team/18u/roster"
@@ -1153,6 +1275,8 @@
       "name": "Seth Vann",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_4eb4df3c72c3d910",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1170,6 +1294,8 @@
       "name": "Thijs Remy",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_92899e60fc6ba198",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "SS",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1187,6 +1313,8 @@
       "name": "Tripp Layng",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_9c2158bb454d13e0",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1204,6 +1332,8 @@
       "name": "Vincent Kasunich",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_2ceb9159fac19f2d",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1221,6 +1351,8 @@
       "name": "William Valdez",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_087466aa59bc078e",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "OF",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1238,6 +1370,8 @@
       "name": "Xzavier Guzman",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_43569b4f947f38cd",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "SS",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
@@ -1255,6 +1389,8 @@
       "name": "Yariel Martinez",
       "national_team_2026": false,
       "observations": [],
+      "player_id": "hs2027_08c29643cea99577",
+      "player_id_origin": "PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
       "position": "RHP",
       "source_roster_urls": [
         "https://www.perfectgame.org/Events/Rosters.aspx?event=141563"
