@@ -215,7 +215,8 @@ def test_real_processing_boundary_uses_analyzer_and_immutable_clip_cache():
     assert result["video_clips_newly_processed"]==1
     assert result["confirmed_visual_breakouts"]==0
     assert result["clips"][0]["status"]=="ANALYZED_REVIEW_REQUIRED"
-    assert result["athletes"][0]["video_status"]=="VIDEO_2D_POSE_REVIEW_REQUIRED"
+    hs_row=next(a for a in result["athletes"] if a["pool"]=="HS_2027")
+    assert hs_row["video_status"]=="VIDEO_2D_POSE_REVIEW_REQUIRED"
     result2,cache2=scan_video_evidence(manifest,HS,MILB,SCOUT,as_of=TODAY,
                                       allowed_hosts={"video.example"},
                                       cache=cache,
