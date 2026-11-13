@@ -56,6 +56,8 @@ def safe_video_url(url, hosts):
         parsed = urllib.parse.urlsplit(url)
         hostname = parsed.hostname
         if (parsed.scheme != "https" or not hostname
+                or hostname.lower() in {"localhost", "metadata.google.internal"}
+                or hostname.lower().endswith((".localhost",".local",".internal"))
                 or parsed.username is not None or parsed.password is not None
                 or parsed.port not in (None, 443)
                 or hostname.lower() not in hosts
@@ -163,7 +165,7 @@ def fetch_verified_video(row, hosts, temp_dir, opener=None):
         "User-Agent":"CardBotVideoAudit/1.0",
         "Accept":"video/mp4,video/quicktime,application/octet-stream",
     })
-    out=Path(temp_dir) / (row["clip_id"]+".video")
+    out=Path(temp_dir) / (row["clip_id"]+".mp4")
     digest=hashlib.sha256()
     count=0
     with op(req,timeout=18) as stream, open(out,"wb") as fh:
@@ -385,9 +387,11 @@ def compare_same_camera_observations(observations):
     valid.sort(key=lambda x:(x["recorded_on"],x["clip_id"]))
     if len(valid)<2:
         return {"status":"INSUFFICIENT_VALID_MULTI_DATE_VIDEO"}
-    older,later=valid[-2:]
-    if older["recorded_on"]==later["recorded_on"]:
+    later=valid[-1]
+    prior_dates=[x for x in valid if x["recorded_on"]!=later["recorded_on"]]
+    if not prior_dates:
         return {"status":"NO_INDEPENDENT_SECOND_DATE"}
+    older=prior_dates[-1]
     if (older["camera_view"]!=later["camera_view"] or
             older["camera_id"]!=later["camera_id"] or
             older["action"]!=later["action"]):
