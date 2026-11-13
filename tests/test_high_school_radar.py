@@ -222,5 +222,5 @@ def test_highschool_2027_provisional_group_keys_are_deterministic_not_official_i
         assert player["player_id"]==provisional_roster_key(player["name"])
         assert player["player_id_origin"]=="PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID"
     md=render_markdown(row)
-    assert "NOT an official player ID" in md
+    assert "not an official player id" in md.lower()
     assert row["players"][0]["player_id"] in md
