@@ -400,6 +400,10 @@ def render_markdown(result):
         "",
         f"**Scan date:** {result['as_of']} | **Target class:** High-school graduation {result['draft_class']}",
         "",
+        "**Film scouting:** [Actual video evidence board](VIDEO_SCOUTING_BOARD.md) "
+        "records only source-licensed decoded videos; being on this roster "
+        "does NOT mean the video engine has watched this player.",
+        "",
         "## Why we are watching before the draft",
         "",
         "Our goal is to discover measurable player development **before the 2027 "
