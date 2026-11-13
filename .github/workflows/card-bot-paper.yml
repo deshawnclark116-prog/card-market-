@@ -8,6 +8,8 @@ on:
       - claude/sports-card-market-strategy-pmtn58
     paths:
       - "prehype/**"
+      - "data/card_bot_video_manifest.json"
+      - "requirements-video.txt"
       - ".github/workflows/card-bot-paper.yml"
   schedule:
     # 14:30 UTC daily (09:30 EST / 10:30 EDT)
@@ -63,6 +65,23 @@ jobs:
       - name: Run 30-day paper experiment
         if: github.event_name != 'pull_request'
         run: python -m prehype.paper_bot run --ledger data/card_bot_100.json
+      - name: Video evidence pipeline smoke test (PR only)
+        if: github.event_name == 'pull_request'
+        run: |
+          python -m prehype.video_scout --as-of 2026-11-13
+      - name: Review licensed footage when explicitly submitted
+        if: github.event_name != 'pull_request'
+        timeout-minutes: 10
+        env:
+          CARD_BOT_VIDEO_ALLOWED_HOSTS: ${{ vars.CARD_BOT_VIDEO_ALLOWED_HOSTS }}
+        run: |
+          if [ "$(python -m prehype.video_scout --needs-runtime)" = "1" ]; then
+            echo "Valid licensed/identity-verified video manifest found; installing pinned Pose model"
+            pip install -r requirements-video.txt
+          else
+            echo "No approved clips: evidence queue only; no video claimed or downloaded"
+          fi
+          python -m prehype.video_scout
       - name: Show scouting results in GitHub Actions summary
         if: github.event_name != 'pull_request'
         run: |
@@ -71,6 +90,10 @@ jobs:
             if [ -f HS_DRAFT_2027_BOARD.md ]; then
               printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
               cat HS_DRAFT_2027_BOARD.md >> "$GITHUB_STEP_SUMMARY"
+            fi
+            if [ -f VIDEO_SCOUTING_BOARD.md ]; then
+              printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+              cat VIDEO_SCOUTING_BOARD.md >> "$GITHUB_STEP_SUMMARY"
             fi
           else
             echo "Scanner did not produce a scouting report." >> "$GITHUB_STEP_SUMMARY"
@@ -86,6 +109,12 @@ jobs:
           fi
           if [ -f data/card_bot_100.json ]; then
             git add data/card_bot_100.json
+          fi
+          if [ -f VIDEO_SCOUTING_BOARD.md ] && [ -f data/card_bot_video_scouting_latest.json ]; then
+            git add VIDEO_SCOUTING_BOARD.md data/card_bot_video_scouting_latest.json
+          fi
+          if [ -f data/card_bot_video_clip_cache.json ]; then
+            git add data/card_bot_video_clip_cache.json
           fi
           if git diff --cached --quiet; then
             echo "No scouting/ledger changes"
