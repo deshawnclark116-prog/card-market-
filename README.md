@@ -1,15 +1,36 @@
 # prehype — get ahead of the sports card market
 
-A system that does the scanning for you and surfaces the cards worth buying
-**before** the crowd shows up:
+A raw-stat-first research system that seeks baseball development **before**
+collectors price in future prospect success. It separates player
+improvement evidence, legitimate scouting footage, collector awareness,
+verified exact-card pricing, and purchase feasibility.
 
-> 🔥 *Jalen Rooke (MLB) — EARLY — dirt cheap, hype hasn't hit, breakout building*
+**This is an experimental research and $100 paper-only bot.** It currently
+has no independently validated investment probabilities or confirmed
+cheap first-Bowman-autograph buy candidates. Never interpret an exploratory
+player signal, a 2D video measurement, or a vendor guide price as
+a guaranteed prospect breakout or a buy recommendation.
 
-The goal is simple: **be way ahead of the crowd.** Buy players whose
-fundamentals point to a breakout while their cards are still cheap and quiet —
-then sell into the hype once everyone else catches on.
+## NEW — actual film analysis (requires authorized footage)
 
-## New: 2027 high-school draft watch — pre-card research
+[Video scouting evidence board](VIDEO_SCOUTING_BOARD.md) ·
+[How the video engine works and how to add licensed clips](VIDEO_SCOUTING.md)
+
+Card Bot now has a **real video decoding and body-pose evidence pipeline**
+(OpenCV + pinned MediaPipe Pose). It can extract image-frame elbow/knee/trunk
+angles, repeated-action variation and cautiously compare same-camera,
+different-date clips. Every clip requires documented source and analysis
+permission, SHA256 checksum, exact roster ID, manually verified single
+athlete, dated action windows and camera metadata. Poor imagery fails closed.
+
+**Important: installing a video engine does not mean it already watched
+athletes.** The manifest begins empty. Until verified footage is actually
+processed, the dashboard states **NO APPROVED FOOTAGE ANALYZED** for every
+player. There is no scraping/rehosting copyrighted clips or fake pose
+projections. Visual features cannot affect breakout odds or purchases
+until expert-reviewed and validated against future outcomes.
+
+
 
 During the 2026-27 MiLB offseason, the same free GitHub Actions workflow
 also analyzes **publicly verifiable high-school class-of-2027 rosters** and
@@ -42,10 +63,15 @@ The MiLB scout and $100 paper-only buy safeguards are unchanged.
   logs, and a detailed scouting report in each run's Summary.
 - [Simulation methodology](PAPER_BOT.md) — important limits and rules.
 
-The board refreshes with each successful LIVE scheduled/manual scan, even if
-reliable eBay sold-comps are missing and the 30-day clock has not started.
-It uses **paper-only, category-level sold-comparable prices**, not verified
-buyable listings. Current discovery covers the existing MLB pipeline only.
+The boards refresh with each successful scheduled/manual GitHub run.
+MiLB research, the 2027 high-school roster/velocity watch, and the new
+source-authenticated actual-film evidence lane are separate. A reference
+sold median, untrusted guide mark, or low-dollar card listing cannot
+independently qualify a paper buy. The $100 ledger remains unspent until
+verified card identity, actual active offer, exact-card sold comps,
+collector exposure and player signals all pass independent gates.
+The video engine processes no real athletes until legitimate,
+explicitly authorized footage is received.
 
 ### The actual pre-hype prospect mission
 

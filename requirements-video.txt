@@ -1,0 +1,5 @@
+# Optional, isolated real footage pose pipeline. Do not install for empty manifest.
+# MediaPipe >=0.10.31 removes legacy mp.solutions.Pose.
+mediapipe==0.10.21
+opencv-contrib-python==4.11.0.86
+numpy==1.26.4
