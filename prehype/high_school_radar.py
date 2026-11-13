@@ -10,6 +10,7 @@ projected stuff. Even positive deltas are exploratory and never 'breakout'.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import unicodedata
@@ -58,6 +59,21 @@ def key(name):
     s=unicodedata.normalize("NFKD",clean(name)).lower()
     return re.sub(r"\s+"," ",re.sub(r"[^a-z0-9 ]","", "".join(
         ch for ch in s if not unicodedata.combining(ch)))).strip()
+
+
+def provisional_roster_key(name, year=DRAFT_CLASS):
+    """Stable internal roster GROUP key, absolutely NOT verified real-person ID.
+
+    When a provider supplies no athlete ID, we keep a reproducible link
+    between the video queue and this same-name/class research row. Two
+    distinct athletes with identical names could collide; actual footage
+    cannot be attributed without independent human verification.
+    """
+    normalized=key(name)
+    if not normalized:
+        return None
+    raw=f"HS_CLASS_{year}|{normalized}"
+    return f"hs{year}_"+hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
 
 
 class Tables(HTMLParser):
@@ -346,6 +362,8 @@ def run_hs_scan(*,as_of=None,fetch=get_public_html):
             status="NO_PUBLIC_MEASUREMENT_AVAILABLE"
         rows.append({
             **p,
+            "player_id":provisional_roster_key(p["name"]),
+            "player_id_origin":"PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID",
             "source_roster_urls":p["source_roster_urls"],
             "market_exposure":("NATIONAL_TEAM_PUBLICLY_RECOGNIZED"
                                if p["national_team_2026"] else
@@ -433,11 +451,16 @@ def render_markdown(result):
         "",
         "## All class-2027 players in public roster samples",
         "",
+        "The local video roster key below is derived from normalized name and "
+        "graduation class. **It is not an official player ID or proof of "
+        "identity**; two namesakes may share a key. Human identity review "
+        "is always mandatory before analyzing footage.",
+        "",
         "Do not confuse a high raw fastball peak, being selected to Team USA, "
         "or a card being absent with market undervaluation.",
         "",
-        "| Player | Grad | Position | 2026 USA 18U | Public max-FB event observations | Change | Status |",
-        "|---|---:|---|---|---|---|---|",
+        "| Player | Provisional video roster key | Grad | Position | 2026 USA 18U | Public max-FB event observations | Change | Status |",
+        "|---|---|---:|---|---|---|---|---|",
     ]
     for p in result["players"]:
         observations="; ".join(
@@ -447,7 +470,7 @@ def render_markdown(result):
         change=(f"{p['fastball_peak_change_mph']:+d} mph"
                 if p["fastball_peak_change_mph"] is not None else "—")
         lines.append(
-            f"| {p['name']} | {p['graduation_year']} | {p['position']} | "
+            f"| {p['name']} | {p['player_id']} | {p['graduation_year']} | {p['position']} | "
             f"{'YES — already prominent' if p['national_team_2026'] else 'no verification from source'} | "
             f"{observations} | {change} | {p['measurement_status'].replace('_',' ')} |"
         )
