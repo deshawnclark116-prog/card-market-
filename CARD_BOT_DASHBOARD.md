@@ -1,6 +1,6 @@
 # Card Bot — Daily Scouting Board
 
-**Last scan:** 2026-11-12 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
+**Last scan:** 2026-11-13 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
 
 **Paper-only experiment:** unverified catalog dollar values are HIDDEN. A verified same-card sale median is NOT an active offer. A player skill-change score is NOT an investment score.
 
@@ -28,7 +28,7 @@
 - Skill-change candidates: **20**
 - Full-season tracking: **every available game** from first to last in a sampled player's season, including earlier streaks, slumps, rebounds and team changes
 - Players with complete development histories: **88**
-- Individual game observations retained: **8906**
+- Individual game observations retained: **8953**
 - Compare all-season 14-game blocks plus **rolling 7/14/28-game checkpoints**, saved every seven games and at the last game
 - Separate most recent comparison periods: **14v14, 28v28, 42v42** (up to 84 recent games); those overlapping horizons do not determine the entire seasonal history
 - [**Open the full-season index**](data/card_bot_full_season_latest.json) to find one readable JSON file per player (all games, rolling checkpoints, phase events)
@@ -98,10 +98,10 @@ These phase counts include **all sampled hitters**, not merely today's top break
 
 | Development phase (descriptive) | Players |
 |---|---:|
-| EARLIER UPTREND CURRENT WINDOW UNAVAILABLE | 21 |
+| EARLIER UPTREND CURRENT WINDOW UNAVAILABLE | 20 |
 | REGRESSING AFTER UPTREND | 20 |
+| EARLIER UPTREND NOW MIXED OR FLAT | 18 |
 | REBOUNDING AFTER DOWNTREND | 18 |
-| EARLIER UPTREND NOW MIXED OR FLAT | 17 |
 | INSUFFICIENT RECENT EVIDENCE | 6 |
 | CURRENT UPTREND | 3 |
 | CURRENT DOWNTREND | 2 |

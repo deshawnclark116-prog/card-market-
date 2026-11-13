@@ -1,6 +1,6 @@
 # Card Bot — 2027 High School Draft Watch
 
-**Scan date:** 2026-11-12 | **Target class:** High-school graduation 2027
+**Scan date:** 2026-11-13 | **Target class:** High-school graduation 2027
 
 ## Why we are watching before the draft
 
