@@ -7,6 +7,7 @@ import pytest
 from prehype.high_school_radar import (
     EVENTS, USA_ROSTER, PG_GLOBAL_PUBLIC_EVENT_RECORDS, key, parse_tables, pg_event_roster,
     pg_event_velocities, pg_public_global_event_velocities, render_markdown, run_hs_scan,
+    provisional_roster_key,
     usa_18u_players, write_hs_results,
 )
 
@@ -208,3 +209,18 @@ def test_global_leaderboard_never_leaks_future_into_past():
     assert all(p["national_team_2026"] is False for p in result["players"])
     assert all(o["event_end"]<="2026-07-04"
                for p in result["players"] for o in p["observations"])
+
+
+
+def test_highschool_2027_provisional_group_keys_are_deterministic_not_official_ids():
+    same=provisional_roster_key("José  A. Pérez")
+    assert same==provisional_roster_key("JOSE A PEREZ")
+    assert same.startswith("hs2027_")
+    assert same!=provisional_roster_key("José A. Pérez",2028)
+    row=run_hs_scan(as_of=date(2026,11,11),fetch=mock_fetch)
+    for player in row["players"]:
+        assert player["player_id"]==provisional_roster_key(player["name"])
+        assert player["player_id_origin"]=="PROVISIONAL_NAME_CLASS_KEY_NOT_PROVIDER_ID"
+    md=render_markdown(row)
+    assert "NOT an official player ID" in md
+    assert row["players"][0]["player_id"] in md
