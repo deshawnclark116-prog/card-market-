@@ -302,3 +302,40 @@ def test_actual_video_decode_pipeline_runs_with_fake_video_backend():
 def test_validated_clip_metadata_fingerprint_changes_if_camera_or_license_changes():
     assert clip_fingerprint(clip())!=clip_fingerprint(clip(camera_view="front"))
     assert clip_fingerprint(clip())!=clip_fingerprint(clip(rights_record="new written license"))
+
+
+
+def test_failed_fetch_never_counts_as_video_watched():
+    def fail(row,hosts,temp):
+        raise ValueError("VIDEO_SHA256_MISMATCH")
+    report,_=scan_video_evidence({"schema":1,"clips":[clip()]},
+                                 HS,MILB,SCOUT,as_of=TODAY,
+                                 allowed_hosts={"video.example"},
+                                 fetch_video=fail)
+    assert report["new_video_analysis_attempts"]==1
+    assert report["video_clips_newly_processed"]==0
+    assert report["quality_passed_clips"]==0
+    assert report["clips"][0]["status"]=="VIDEO_ANALYSIS_FAILED"
+    assert report["clips"][0]["failure_code"]=="VIDEO_SHA256_MISMATCH"
+    assert "Newly decoded and analyzed videos: **0**" in render_markdown(report)
+
+
+def test_cache_does_not_reuse_with_changed_crop_or_rights():
+    calls=[]
+    def get(row,hosts,folder):
+        calls.append("fetch")
+        return Path(folder)/"video.mp4"
+    def analyze(path,row):
+        calls.append("analyze")
+        return valid_pose_result()
+    first={"schema":1,"clips":[clip()]}
+    _,cache=scan_video_evidence(first,HS,MILB,SCOUT,as_of=TODAY,
+                               allowed_hosts={"video.example"},
+                               fetch_video=get,analyze_video=analyze)
+    revised={"schema":1,"clips":[clip(athlete_crop=[.1,.1,.8,.8])]}
+    report,_=scan_video_evidence(revised,HS,MILB,SCOUT,as_of=TODAY,
+                                 allowed_hosts={"video.example"},cache=cache,
+                                 fetch_video=get,analyze_video=analyze)
+    assert calls==["fetch","analyze","fetch","analyze"]
+    assert report["video_clips_newly_processed"]==1
+    assert report["video_clips_reused_from_verified_cache"]==0
