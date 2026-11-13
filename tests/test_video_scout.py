@@ -339,3 +339,37 @@ def test_cache_does_not_reuse_with_changed_crop_or_rights():
     assert calls==["fetch","analyze","fetch","analyze"]
     assert report["video_clips_newly_processed"]==1
     assert report["video_clips_reused_from_verified_cache"]==0
+
+
+
+def test_real_hs_rosters_without_official_player_id_must_not_disappear_from_video_queue():
+    # USA Baseball and tournament HTML tables often have no provider playerId.
+    # Never silently drop these athletes or manufacture an official ID.
+    missing={"players":[
+        {"name":"Unranked Prep Arm","graduation_year":2027,
+         "market_exposure":"COLLECTOR_HYPE_UNKNOWN"},
+        {"name":"National Team Arm","graduation_year":2027,
+         "market_exposure":"NATIONAL_TEAM_PUBLICLY_RECOGNIZED"},
+    ]}
+    valid=athlete_index(missing,MILB)
+    hs_ids={pid for pool,pid in valid if pool=="HS_2027"}
+    assert len(hs_ids)==2
+    assert all(pid.startswith("hs2027_") for pid in hs_ids)
+    result,_=scan_video_evidence({"schema":1,"clips":[]},missing,MILB,SCOUT,
+                                 as_of=TODAY,allowed_hosts=set())
+    hs=[p for p in result["athletes"] if p["pool"]=="HS_2027"]
+    assert len(hs)==2
+    assert all(p["player_id_is_provisional_not_official"] is True for p in hs)
+    assert all(p["video_status"]=="NO_APPROVED_FOOTAGE_ANALYZED" for p in hs)
+    assert "human" in render_markdown(result).lower()
+    assert result["verified_source_players_in_queue"]==3
+
+
+def test_manual_verified_hs_clip_can_join_via_non_official_local_roster_key():
+    missing={"players":[{"name":"Unranked Prep Arm","graduation_year":2027}]}
+    pid=next(pid for pool,pid in athlete_index(missing,{}) if pool=="HS_2027")
+    row=clip(player_id=pid,player_name="Unranked Prep Arm")
+    assert allowed_clip_metadata(row,athlete_index(missing,{}),TODAY) is None
+    assert allowed_clip_metadata(
+        {**row,"player_name":"Different Same-Name Risk"},
+        athlete_index(missing,{}),TODAY)=="PLAYER_NAME_ID_MISMATCH"
