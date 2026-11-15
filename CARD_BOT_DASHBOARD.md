@@ -1,6 +1,6 @@
 # Card Bot — Daily Scouting Board
 
-**Last scan:** 2026-11-14 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
+**Last scan:** 2026-11-15 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
 
 **Paper-only experiment:** unverified catalog dollar values are HIDDEN. A verified same-card sale median is NOT an active offer. A player skill-change score is NOT an investment score.
 
