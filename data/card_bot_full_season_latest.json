@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-11-15",
-  "games_recorded": 8953,
+  "as_of": "2026-11-16",
+  "games_recorded": 8934,
   "note": "Click each history_path for all per-game records, 14-game blocks, 7-game checkpoints, phase events, season totals and team stints. Development phases are descriptive, not future-breakout or investment odds.",
   "player_count": 88,
   "players": [
@@ -105,23 +105,6 @@
       "name": "Andrew Salas",
       "player_id": "829035",
       "season_pa": 289
-    },
-    {
-      "age": 19,
-      "current_direction": "MIXED",
-      "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
-      "early_signal_now": false,
-      "first_game": "2026-04-03",
-      "first_observed_uptrend": "2026-05-26",
-      "games_available": 117,
-      "history_path": "data/card_bot_season_players/2026/815906.json",
-      "last_game": "2026-09-06",
-      "last_observed_downtrend": "2026-08-14",
-      "last_observed_uptrend": "2026-08-30",
-      "level": "A+",
-      "name": "Angel Feliz",
-      "player_id": "815906",
-      "season_pa": 495
     },
     {
       "age": 21,
@@ -258,6 +241,23 @@
       "name": "Caleb Bonemer",
       "player_id": "815352",
       "season_pa": 595
+    },
+    {
+      "age": 23,
+      "current_direction": "UPTREND",
+      "development_phase": "REBOUNDING_AFTER_DOWNTREND",
+      "early_signal_now": true,
+      "first_game": "2026-04-04",
+      "first_observed_uptrend": "2026-07-12",
+      "games_available": 98,
+      "history_path": "data/card_bot_season_players/2026/703448.json",
+      "last_game": "2026-09-19",
+      "last_observed_downtrend": "2026-08-26",
+      "last_observed_uptrend": "2026-09-19",
+      "level": "AAA",
+      "name": "Cam Cannarella",
+      "player_id": "703448",
+      "season_pa": 438
     },
     {
       "age": 23,

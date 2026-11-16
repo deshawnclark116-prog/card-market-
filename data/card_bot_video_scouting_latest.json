@@ -1,7 +1,7 @@
 {
   "actual_card_buy_candidates_from_video": 0,
   "approved_host_configuration_present": false,
-  "as_of": "2026-11-15",
+  "as_of": "2026-11-16",
   "athletes": [
     {
       "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
@@ -29,6 +29,16 @@
       "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
       "name": "Bryan Rincon",
       "player_id": "804858",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Cam Cannarella",
+      "player_id": "703448",
       "pool": "MILB_2026",
       "source": "data/card_bot_full_season_latest.json",
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
@@ -997,16 +1007,6 @@
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
       "name": "Andrew Salas",
       "player_id": "829035",
-      "pool": "MILB_2026",
-      "source": "data/card_bot_full_season_latest.json",
-      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
-    },
-    {
-      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
-      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
-      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
-      "name": "Angel Feliz",
-      "player_id": "815906",
       "pool": "MILB_2026",
       "source": "data/card_bot_full_season_latest.json",
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
