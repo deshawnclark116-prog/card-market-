@@ -1,7 +1,7 @@
 {
   "actual_card_buy_candidates_from_video": 0,
   "approved_host_configuration_present": false,
-  "as_of": "2026-11-16",
+  "as_of": "2026-11-17",
   "athletes": [
     {
       "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
@@ -49,16 +49,6 @@
       "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
       "name": "Cristofer Torin",
       "player_id": "800198",
-      "pool": "MILB_2026",
-      "source": "data/card_bot_full_season_latest.json",
-      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
-    },
-    {
-      "baseball_evidence": "EARLY_14_ONLY",
-      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
-      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
-      "name": "Dax Kilby",
-      "player_id": "828076",
       "pool": "MILB_2026",
       "source": "data/card_bot_full_season_latest.json",
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
@@ -1152,16 +1142,6 @@
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
     },
     {
-      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
-      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
-      "name": "Eric Bitonti",
-      "player_id": "800724",
-      "pool": "MILB_2026",
-      "source": "data/card_bot_full_season_latest.json",
-      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
-    },
-    {
       "baseball_evidence": "REGRESSING_AFTER_UPTREND",
       "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
@@ -1352,6 +1332,16 @@
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
     },
     {
+      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Juan Ortuno",
+      "player_id": "821187",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
       "baseball_evidence": "INSUFFICIENT_RECENT_EVIDENCE",
       "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
@@ -1497,6 +1487,16 @@
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
       "name": "Nolan Schubart",
       "player_id": "702278",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "REGRESSING_AFTER_UPTREND",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Owen Carey",
+      "player_id": "826928",
       "pool": "MILB_2026",
       "source": "data/card_bot_full_season_latest.json",
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"

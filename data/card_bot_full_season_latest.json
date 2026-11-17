@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-11-16",
-  "games_recorded": 8934,
+  "as_of": "2026-11-17",
+  "games_recorded": 8983,
   "note": "Click each history_path for all per-game records, 14-game blocks, 7-game checkpoints, phase events, season totals and team stints. Development phases are descriptive, not future-breakout or investment odds.",
   "player_count": 88,
   "players": [
@@ -345,23 +345,6 @@
       "season_pa": 556
     },
     {
-      "age": 19,
-      "current_direction": "UPTREND",
-      "development_phase": "CURRENT_UPTREND",
-      "early_signal_now": true,
-      "first_game": "2026-05-28",
-      "first_observed_uptrend": "2026-09-02",
-      "games_available": 36,
-      "history_path": "data/card_bot_season_players/2026/828076.json",
-      "last_game": "2026-09-06",
-      "last_observed_downtrend": null,
-      "last_observed_uptrend": "2026-09-02",
-      "level": "A",
-      "name": "Dax Kilby",
-      "player_id": "828076",
-      "season_pa": 164
-    },
-    {
       "age": 22,
       "current_direction": "UPTREND",
       "development_phase": "REBOUNDING_AFTER_DOWNTREND",
@@ -462,23 +445,6 @@
       "name": "Enddy Azocar",
       "player_id": "821150",
       "season_pa": 512
-    },
-    {
-      "age": 20,
-      "current_direction": "INSUFFICIENT",
-      "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-      "early_signal_now": false,
-      "first_game": "2026-04-04",
-      "first_observed_uptrend": "2026-06-02",
-      "games_available": 117,
-      "history_path": "data/card_bot_season_players/2026/800724.json",
-      "last_game": "2026-09-13",
-      "last_observed_downtrend": "2026-06-24",
-      "last_observed_uptrend": "2026-08-30",
-      "level": "A+",
-      "name": "Eric Bitonti",
-      "player_id": "800724",
-      "season_pa": 517
     },
     {
       "age": 20,
@@ -925,6 +891,23 @@
     {
       "age": 19,
       "current_direction": "INSUFFICIENT",
+      "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "early_signal_now": false,
+      "first_game": "2026-04-03",
+      "first_observed_uptrend": "2026-05-13",
+      "games_available": 108,
+      "history_path": "data/card_bot_season_players/2026/821187.json",
+      "last_game": "2026-09-06",
+      "last_observed_downtrend": "2026-08-30",
+      "last_observed_uptrend": "2026-07-05",
+      "level": "A",
+      "name": "Juan Ortuno",
+      "player_id": "821187",
+      "season_pa": 508
+    },
+    {
+      "age": 19,
+      "current_direction": "INSUFFICIENT",
       "development_phase": "INSUFFICIENT_RECENT_EVIDENCE",
       "early_signal_now": false,
       "first_game": "2026-04-02",
@@ -1210,6 +1193,23 @@
       "name": "Nolan Schubart",
       "player_id": "702278",
       "season_pa": 537
+    },
+    {
+      "age": 20,
+      "current_direction": "DOWNTREND",
+      "development_phase": "REGRESSING_AFTER_UPTREND",
+      "early_signal_now": false,
+      "first_game": "2026-04-02",
+      "first_observed_uptrend": "2026-07-17",
+      "games_available": 94,
+      "history_path": "data/card_bot_season_players/2026/826928.json",
+      "last_game": "2026-09-13",
+      "last_observed_downtrend": "2026-09-13",
+      "last_observed_uptrend": "2026-07-17",
+      "level": "AA",
+      "name": "Owen Carey",
+      "player_id": "826928",
+      "season_pa": 397
     },
     {
       "age": 19,
