@@ -1,6 +1,6 @@
 # Card Bot — Daily Scouting Board
 
-**Last scan:** 2026-11-18 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
+**Last scan:** 2026-11-19 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
 
 **Paper-only experiment:** unverified catalog dollar values are HIDDEN. A verified same-card sale median is NOT an active offer. A player skill-change score is NOT an investment score.
 
@@ -65,7 +65,7 @@
 | 15 | [Starlyn Caba](data/card_bot_season_players/2026/806965.json) | 20 / A+ | 81 | 38.2 | K -5.7% / BB +3.9% / ISO +0.133 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
 | 16 | [Bryan Rincon](data/card_bot_season_players/2026/804858.json) | 22 / AA | 118 | 37.7 | K -3.6% / BB +11.5% / ISO +0.092 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
 | 17 | [Zach Ehrhard](data/card_bot_season_players/2026/701394.json) | 23 / AAA | 138 | 35.0 | K -13.5% / BB +2.7% / ISO +0.010 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 18 | [Franklin Arias](data/card_bot_season_players/2026/808265.json) | 20 / AAA | 117 | 32.7 | K -3.2% / BB +3.0% / ISO +0.024 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
+| 18 | [Franklin Arias](data/card_bot_season_players/2026/808265.json) | 21 / AAA | 117 | 32.7 | K -3.2% / BB +3.0% / ISO +0.024 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
 | 19 | [Cristofer Torin](data/card_bot_season_players/2026/800198.json) | 21 / AA | 118 | 28.8 | K -3.9% / BB +5.2% / ISO +0.006 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
 | 20 | [Aroon Escobar](data/card_bot_season_players/2026/800169.json) | 21 / AA | 132 | 25.2 | K -3.5% / BB -5.3% / ISO +0.093 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
 
