@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-11-20",
-  "games_recorded": 8983,
+  "as_of": "2026-11-21",
+  "games_recorded": 8967,
   "note": "Click each history_path for all per-game records, 14-game blocks, 7-game checkpoints, phase events, season totals and team stints. Development phases are descriptive, not future-breakout or investment odds.",
   "player_count": 88,
   "players": [
@@ -292,6 +292,23 @@
       "name": "Carlos Sanchez",
       "player_id": "800176",
       "season_pa": 579
+    },
+    {
+      "age": 20,
+      "current_direction": "INSUFFICIENT",
+      "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
+      "early_signal_now": false,
+      "first_game": "2026-04-03",
+      "first_observed_uptrend": "2026-05-14",
+      "games_available": 101,
+      "history_path": "data/card_bot_season_players/2026/808024.json",
+      "last_game": "2026-09-13",
+      "last_observed_downtrend": "2026-09-06",
+      "last_observed_uptrend": "2026-08-27",
+      "level": "A+",
+      "name": "Carlos Virahonda",
+      "player_id": "808024",
+      "season_pa": 448
     },
     {
       "age": 23,
@@ -632,23 +649,6 @@
       "name": "Ivan Luciano",
       "player_id": "813930",
       "season_pa": 428
-    },
-    {
-      "age": 19,
-      "current_direction": "MIXED",
-      "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
-      "early_signal_now": false,
-      "first_game": "2026-04-02",
-      "first_observed_uptrend": "2026-05-09",
-      "games_available": 117,
-      "history_path": "data/card_bot_season_players/2026/828262.json",
-      "last_game": "2026-09-06",
-      "last_observed_downtrend": "2026-09-01",
-      "last_observed_uptrend": "2026-06-25",
-      "level": "A",
-      "name": "Jaden Fauske",
-      "player_id": "828262",
-      "season_pa": 538
     },
     {
       "age": 19,
