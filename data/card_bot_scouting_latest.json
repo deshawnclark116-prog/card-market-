@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-24",
   "discovery": {
     "additional_upward_trajectories": [
       {
@@ -69,10 +69,10 @@
         "status": "ROLLING_UPTREND_ONLY_DID_NOT_PASS_CORE_EARLY_TRIGGER"
       }
     ],
-    "all_positive_development_names_count": 21,
+    "all_positive_development_names_count": 22,
     "all_skill_evidence_tier_counts": {
       "BUILDING_14_AND_28": 0,
-      "EARLY_14_ONLY": 8,
+      "EARLY_14_ONLY": 9,
       "LONG_HORIZON_CONFLICT": 1,
       "SHORT_SPIKE_NOT_CONFIRMED": 10,
       "SUSTAINED_ACROSS_14_28_42": 1
@@ -154,6 +154,48 @@
           "K": -0.1662
         },
         "skill_score_not_probability": 63.4,
+        "supporting_metrics": [
+          "K",
+          "BB",
+          "ISO"
+        ]
+      },
+      {
+        "age": 19,
+        "card_buy_eligible": false,
+        "collector_hype_verified": false,
+        "evidence_tier": "EARLY_14_ONLY",
+        "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+        "games_tracked": 81,
+        "hype_note": "Already publicly ranked",
+        "last_game": "2026-09-06",
+        "level": "A",
+        "name": "Taitn Gray",
+        "player_id": "828685",
+        "public_top100_ranked": true,
+        "public_top100_status": "RANKED",
+        "short_window_after": {
+          "bb_pct": 0.12727272727272726,
+          "games": 14,
+          "hr": 2,
+          "iso": 0.2,
+          "k_pct": 0.14545454545454545,
+          "pa": 55
+        },
+        "short_window_before": {
+          "bb_pct": 0.03389830508474576,
+          "games": 14,
+          "hr": 0,
+          "iso": 0.09090909090909091,
+          "k_pct": 0.23728813559322035,
+          "pa": 59
+        },
+        "short_window_delta": {
+          "BB": 0.0934,
+          "ISO": 0.1091,
+          "K": -0.0918
+        },
+        "skill_score_not_probability": 63.2,
         "supporting_metrics": [
           "K",
           "BB",
@@ -905,6 +947,12 @@
         "source": "https://prospectpulsev1.com/pipeline/"
       },
       {
+        "name": "Taitn Gray",
+        "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+        "skill_score": 63.2,
+        "source": "https://prospectpulsev1.com/pipeline/"
+      },
+      {
         "name": "Walker Jenkins",
         "reason": "Appears on published MLB Pipeline Top-100 aggregation",
         "skill_score": 54.9,
@@ -941,7 +989,7 @@
         "source": "https://prospectpulsev1.com/pipeline/"
       }
     ],
-    "as_of": "2026-11-22",
+    "as_of": "2026-11-24",
     "eligible_for_log_sampling": 88,
     "evidence_tier_counts": {
       "BUILDING_14_AND_28": 0,
@@ -955,11 +1003,11 @@
     "full_season_phase_counts": {
       "CURRENT_DOWNTREND": 2,
       "CURRENT_UPTREND": 2,
-      "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE": 21,
-      "EARLIER_UPTREND_NOW_MIXED_OR_FLAT": 16,
+      "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE": 19,
+      "EARLIER_UPTREND_NOW_MIXED_OR_FLAT": 17,
       "INSUFFICIENT_RECENT_EVIDENCE": 6,
       "NO_UPTREND_DETECTED": 1,
-      "REBOUNDING_AFTER_DOWNTREND": 19,
+      "REBOUNDING_AFTER_DOWNTREND": 20,
       "REGRESSING_AFTER_UPTREND": 21
     },
     "full_season_player_histories": 88,
@@ -1343,6 +1391,19 @@
         "player_id": "814307"
       },
       {
+        "age": 22,
+        "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+        "early_signal_now": false,
+        "first_observed_uptrend": "2026-05-07",
+        "games_available": 118,
+        "last_game": "2026-09-13",
+        "last_observed_downtrend": "2026-07-04",
+        "latest_window_status": "AVAILABLE",
+        "level": "AA",
+        "name": "Samuel Zavala",
+        "player_id": "694214"
+      },
+      {
         "age": 19,
         "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
         "early_signal_now": false,
@@ -1577,19 +1638,6 @@
         "player_id": "806957"
       },
       {
-        "age": 19,
-        "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-        "early_signal_now": false,
-        "first_observed_uptrend": "2026-05-15",
-        "games_available": 97,
-        "last_game": "2026-09-05",
-        "last_observed_downtrend": "2026-07-18",
-        "latest_window_status": "INSUFFICIENT_GAMES",
-        "level": "A",
-        "name": "Ivan Luciano",
-        "player_id": "813930"
-      },
-      {
         "age": 20,
         "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
         "early_signal_now": false,
@@ -1681,19 +1729,6 @@
         "player_id": "806988"
       },
       {
-        "age": 20,
-        "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-        "early_signal_now": false,
-        "first_observed_uptrend": "2026-05-27",
-        "games_available": 76,
-        "last_game": "2026-09-06",
-        "last_observed_downtrend": "2026-05-07",
-        "latest_window_status": "INSUFFICIENT_GAMES",
-        "level": "A+",
-        "name": "Wyatt Sanford",
-        "player_id": "815608"
-      },
-      {
         "age": 22,
         "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
         "early_signal_now": false,
@@ -1720,7 +1755,7 @@
         "player_id": "806964"
       }
     ],
-    "independent_skill_changes_found": 20,
+    "independent_skill_changes_found": 21,
     "max_history_games_compared": 84,
     "minor_league_levels_available": [
       "AAA",
@@ -1737,7 +1772,7 @@
     "public_top100_source_available": true,
     "season": 2026,
     "season_stat_rows": 3527,
-    "total_player_games_recorded": 8967,
+    "total_player_games_recorded": 8993,
     "windows_per_side_games": [
       14,
       28,
@@ -1820,10 +1855,10 @@
           "status": "ROLLING_UPTREND_ONLY_DID_NOT_PASS_CORE_EARLY_TRIGGER"
         }
       ],
-      "all_positive_development_names_count": 21,
+      "all_positive_development_names_count": 22,
       "all_skill_evidence_tier_counts": {
         "BUILDING_14_AND_28": 0,
-        "EARLY_14_ONLY": 8,
+        "EARLY_14_ONLY": 9,
         "LONG_HORIZON_CONFLICT": 1,
         "SHORT_SPIKE_NOT_CONFIRMED": 10,
         "SUSTAINED_ACROSS_14_28_42": 1
@@ -1905,6 +1940,48 @@
             "K": -0.1662
           },
           "skill_score_not_probability": 63.4,
+          "supporting_metrics": [
+            "K",
+            "BB",
+            "ISO"
+          ]
+        },
+        {
+          "age": 19,
+          "card_buy_eligible": false,
+          "collector_hype_verified": false,
+          "evidence_tier": "EARLY_14_ONLY",
+          "full_season_phase": "REBOUNDING_AFTER_DOWNTREND",
+          "games_tracked": 81,
+          "hype_note": "Already publicly ranked",
+          "last_game": "2026-09-06",
+          "level": "A",
+          "name": "Taitn Gray",
+          "player_id": "828685",
+          "public_top100_ranked": true,
+          "public_top100_status": "RANKED",
+          "short_window_after": {
+            "bb_pct": 0.12727272727272726,
+            "games": 14,
+            "hr": 2,
+            "iso": 0.2,
+            "k_pct": 0.14545454545454545,
+            "pa": 55
+          },
+          "short_window_before": {
+            "bb_pct": 0.03389830508474576,
+            "games": 14,
+            "hr": 0,
+            "iso": 0.09090909090909091,
+            "k_pct": 0.23728813559322035,
+            "pa": 59
+          },
+          "short_window_delta": {
+            "BB": 0.0934,
+            "ISO": 0.1091,
+            "K": -0.0918
+          },
+          "skill_score_not_probability": 63.2,
           "supporting_metrics": [
             "K",
             "BB",
@@ -2656,6 +2733,12 @@
           "source": "https://prospectpulsev1.com/pipeline/"
         },
         {
+          "name": "Taitn Gray",
+          "reason": "Appears on published MLB Pipeline Top-100 aggregation",
+          "skill_score": 63.2,
+          "source": "https://prospectpulsev1.com/pipeline/"
+        },
+        {
           "name": "Walker Jenkins",
           "reason": "Appears on published MLB Pipeline Top-100 aggregation",
           "skill_score": 54.9,
@@ -2692,7 +2775,7 @@
           "source": "https://prospectpulsev1.com/pipeline/"
         }
       ],
-      "as_of": "2026-11-22",
+      "as_of": "2026-11-24",
       "eligible_for_log_sampling": 88,
       "evidence_tier_counts": {
         "BUILDING_14_AND_28": 0,
@@ -2706,11 +2789,11 @@
       "full_season_phase_counts": {
         "CURRENT_DOWNTREND": 2,
         "CURRENT_UPTREND": 2,
-        "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE": 21,
-        "EARLIER_UPTREND_NOW_MIXED_OR_FLAT": 16,
+        "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE": 19,
+        "EARLIER_UPTREND_NOW_MIXED_OR_FLAT": 17,
         "INSUFFICIENT_RECENT_EVIDENCE": 6,
         "NO_UPTREND_DETECTED": 1,
-        "REBOUNDING_AFTER_DOWNTREND": 19,
+        "REBOUNDING_AFTER_DOWNTREND": 20,
         "REGRESSING_AFTER_UPTREND": 21
       },
       "full_season_player_histories": 88,
@@ -3094,6 +3177,19 @@
           "player_id": "814307"
         },
         {
+          "age": 22,
+          "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+          "early_signal_now": false,
+          "first_observed_uptrend": "2026-05-07",
+          "games_available": 118,
+          "last_game": "2026-09-13",
+          "last_observed_downtrend": "2026-07-04",
+          "latest_window_status": "AVAILABLE",
+          "level": "AA",
+          "name": "Samuel Zavala",
+          "player_id": "694214"
+        },
+        {
           "age": 19,
           "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
           "early_signal_now": false,
@@ -3328,19 +3424,6 @@
           "player_id": "806957"
         },
         {
-          "age": 19,
-          "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-          "early_signal_now": false,
-          "first_observed_uptrend": "2026-05-15",
-          "games_available": 97,
-          "last_game": "2026-09-05",
-          "last_observed_downtrend": "2026-07-18",
-          "latest_window_status": "INSUFFICIENT_GAMES",
-          "level": "A",
-          "name": "Ivan Luciano",
-          "player_id": "813930"
-        },
-        {
           "age": 20,
           "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
           "early_signal_now": false,
@@ -3432,19 +3515,6 @@
           "player_id": "806988"
         },
         {
-          "age": 20,
-          "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-          "early_signal_now": false,
-          "first_observed_uptrend": "2026-05-27",
-          "games_available": 76,
-          "last_game": "2026-09-06",
-          "last_observed_downtrend": "2026-05-07",
-          "latest_window_status": "INSUFFICIENT_GAMES",
-          "level": "A+",
-          "name": "Wyatt Sanford",
-          "player_id": "815608"
-        },
-        {
           "age": 22,
           "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
           "early_signal_now": false,
@@ -3471,7 +3541,7 @@
           "player_id": "806964"
         }
       ],
-      "independent_skill_changes_found": 20,
+      "independent_skill_changes_found": 21,
       "max_history_games_compared": 84,
       "minor_league_levels_available": [
         "AAA",
@@ -3488,7 +3558,7 @@
       "public_top100_source_available": true,
       "season": 2026,
       "season_stat_rows": 3527,
-      "total_player_games_recorded": 8967,
+      "total_player_games_recorded": 8993,
       "windows_per_side_games": [
         14,
         28,
@@ -3610,7 +3680,7 @@
       "reason": "A, age 18: 14v14 K% 27.9%\u219215.9%, BB% 18.0%\u219220.6%, ISO 0.163\u21920.400; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "CURRENT_UPTREND",
         "first_game": "2026-05-02",
@@ -4062,7 +4132,7 @@
       "reason": "A, age 20: 14v14 K% 20.8%\u21929.3%, BB% 17.0%\u219218.5%, ISO 0.140\u21920.262; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-06. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-05-02",
@@ -4504,7 +4574,7 @@
       "reason": "AAA, age 23: 14v14 K% 28.1%\u219219.4%, BB% 14.1%\u219210.4%, ISO 0.096\u21920.167; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-19. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -5128,7 +5198,7 @@
       "reason": "AA, age 22: 14v14 K% 30.3%\u219221.2%, BB% 12.1%\u219213.6%, ISO 0.161\u21920.148; Only the short horizon is testable; NOT yet confirmed. Up to 28 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -5772,7 +5842,7 @@
       "reason": "AA, age 21: 14v14 K% 40.4%\u219229.7%, BB% 7.0%\u219212.5%, ISO 0.157\u21920.273; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-12. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-21",
@@ -6281,7 +6351,7 @@
       "reason": "A, age 19: 14v14 K% 20.0%\u21927.4%, BB% 13.8%\u219211.8%, ISO 0.018\u21920.190; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-08-28. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-03",
@@ -6895,7 +6965,7 @@
       "reason": "AA, age 21: 14v14 K% 26.1%\u219214.8%, BB% 15.9%\u219213.1%, ISO 0.018\u21920.096; Longer-window evidence conflicts with a shorter improvement. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-02",
@@ -7484,7 +7554,7 @@
       "reason": "AA, age 22: 14v14 K% 37.5%\u219228.1%, BB% 5.4%\u219231.2%, ISO 0.440\u21920.419; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -8155,7 +8225,7 @@
       "reason": "A+, age 20: 14v14 K% 30.6%\u219225.0%, BB% 17.7%\u219221.7%, ISO 0.080\u21920.213; Recent improvement is NOT confirmed by the 28-game comparison. Up to 56 same-team games assessed. Last game 2026-08-25. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-04",
@@ -8685,7 +8755,7 @@
       "reason": "AAA, age 23: 14v14 K% 30.2%\u219216.7%, BB% 7.9%\u219210.6%, ISO 0.143\u21920.153; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-20. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-03-27",
@@ -9413,7 +9483,7 @@
       "reason": "AA, age 21: 14v14 K% 12.3%\u21928.5%, BB% 4.6%\u21929.9%, ISO 0.200\u21920.206; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-03",
@@ -10115,7 +10185,7 @@
       "reason": "AA, age 21: 14v14 K% 17.5%\u219214.0%, BB% 14.0%\u21928.8%, ISO 0.167\u21920.260; Recent improvement is NOT confirmed by the 28-game comparison. Up to 84 same-team games assessed. Last game 2026-09-13. Collector interest and card price NOT validated.",
       "search_interest_vs_aaron_judge_pct": null,
       "season_trajectory": {
-        "as_of": "2026-11-22",
+        "as_of": "2026-11-24",
         "current_direction": "UPTREND",
         "development_phase": "REBOUNDING_AFTER_DOWNTREND",
         "first_game": "2026-04-02",
@@ -10644,7 +10714,7 @@
   "portfolio": {
     "cash_remaining_usd": 100.0,
     "days_recorded": 0,
-    "ends_on": "2026-12-22",
+    "ends_on": "2026-12-24",
     "important": "Estimated liquidation is NOT realized profit and assumes a buyer exists at the recent sold median. All entries are simulated fills from active listing snapshots where available; last valuation may be up to 7 days old. No real transaction occurs.",
     "indicative_net_liquidation_usd": 100.0,
     "indicative_return_pct": 0.0,
@@ -10653,7 +10723,7 @@
     "number_of_paper_buys": 0,
     "positions": [],
     "stale_or_unverified_marks": 0,
-    "started_on": "2026-11-22",
+    "started_on": "2026-11-24",
     "status": "IN_PROGRESS"
   },
   "source": "Official MiLB early skill-change detector + public card identities",

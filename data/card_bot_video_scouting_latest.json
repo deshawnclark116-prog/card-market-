@@ -1,7 +1,7 @@
 {
   "actual_card_buy_candidates_from_video": 0,
   "approved_host_configuration_present": false,
-  "as_of": "2026-11-22",
+  "as_of": "2026-11-24",
   "athletes": [
     {
       "baseball_evidence": "SHORT_SPIKE_NOT_CONFIRMED",
@@ -179,6 +179,16 @@
       "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
       "name": "Starlyn Caba",
       "player_id": "806965",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLY_14_ONLY",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "STATISTICAL_CHANGE_REVIEW_FOOTAGE",
+      "name": "Taitn Gray",
+      "player_id": "828685",
       "pool": "MILB_2026",
       "source": "data/card_bot_full_season_latest.json",
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
@@ -1235,16 +1245,6 @@
       "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
       "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
-      "name": "Ivan Luciano",
-      "player_id": "813930",
-      "pool": "MILB_2026",
-      "source": "data/card_bot_full_season_latest.json",
-      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
-    },
-    {
-      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
-      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
       "name": "Jaiden Lo Re",
       "player_id": "828318",
       "pool": "MILB_2026",
@@ -1535,6 +1535,16 @@
       "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
       "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
+      "name": "Samuel Zavala",
+      "player_id": "694214",
+      "pool": "MILB_2026",
+      "source": "data/card_bot_full_season_latest.json",
+      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
+    },
+    {
+      "baseball_evidence": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
+      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
       "name": "Sean Keys",
       "player_id": "815873",
       "pool": "MILB_2026",
@@ -1587,16 +1597,6 @@
       "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
       "name": "Welbyn Francisca",
       "player_id": "806988",
-      "pool": "MILB_2026",
-      "source": "data/card_bot_full_season_latest.json",
-      "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"
-    },
-    {
-      "baseball_evidence": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-      "existing_public_exposure": "TOP_100_OR_HOBBY_UNVERIFIED",
-      "film_priority": "LOWER_PRIORITY_RAW_SEASON_TRACKING",
-      "name": "Wyatt Sanford",
-      "player_id": "815608",
       "pool": "MILB_2026",
       "source": "data/card_bot_full_season_latest.json",
       "video_status": "NO_APPROVED_FOOTAGE_ANALYZED"

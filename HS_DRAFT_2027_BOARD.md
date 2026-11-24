@@ -1,6 +1,6 @@
 # Card Bot — 2027 High School Draft Watch
 
-**Scan date:** 2026-11-22 | **Target class:** High-school graduation 2027
+**Scan date:** 2026-11-24 | **Target class:** High-school graduation 2027
 
 **Film scouting:** [Actual video evidence board](VIDEO_SCOUTING_BOARD.md) records only source-licensed decoded videos; being on this roster does NOT mean the video engine has watched this player.
 

@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-11-22",
-  "games_recorded": 8967,
+  "as_of": "2026-11-24",
+  "games_recorded": 8993,
   "note": "Click each history_path for all per-game records, 14-game blocks, 7-game checkpoints, phase events, season totals and team stints. Development phases are descriptive, not future-breakout or investment odds.",
   "player_count": 88,
   "players": [
@@ -638,23 +638,6 @@
       "current_direction": "INSUFFICIENT",
       "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
       "early_signal_now": false,
-      "first_game": "2026-04-04",
-      "first_observed_uptrend": "2026-05-15",
-      "games_available": 97,
-      "history_path": "data/card_bot_season_players/2026/813930.json",
-      "last_game": "2026-09-05",
-      "last_observed_downtrend": "2026-07-18",
-      "last_observed_uptrend": "2026-07-28",
-      "level": "A",
-      "name": "Ivan Luciano",
-      "player_id": "813930",
-      "season_pa": 428
-    },
-    {
-      "age": 19,
-      "current_direction": "INSUFFICIENT",
-      "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-      "early_signal_now": false,
       "first_game": "2026-05-02",
       "first_observed_uptrend": "2026-08-18",
       "games_available": 88,
@@ -1263,6 +1246,23 @@
       "season_pa": 496
     },
     {
+      "age": 22,
+      "current_direction": "MIXED",
+      "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
+      "early_signal_now": false,
+      "first_game": "2026-04-03",
+      "first_observed_uptrend": "2026-05-07",
+      "games_available": 118,
+      "history_path": "data/card_bot_season_players/2026/694214.json",
+      "last_game": "2026-09-13",
+      "last_observed_downtrend": "2026-07-04",
+      "last_observed_uptrend": "2026-08-02",
+      "level": "AA",
+      "name": "Samuel Zavala",
+      "player_id": "694214",
+      "season_pa": 484
+    },
+    {
       "age": 23,
       "current_direction": "MIXED",
       "development_phase": "EARLIER_UPTREND_NOW_MIXED_OR_FLAT",
@@ -1329,6 +1329,23 @@
       "name": "Starlyn Caba",
       "player_id": "806965",
       "season_pa": 373
+    },
+    {
+      "age": 19,
+      "current_direction": "UPTREND",
+      "development_phase": "REBOUNDING_AFTER_DOWNTREND",
+      "early_signal_now": true,
+      "first_game": "2026-04-02",
+      "first_observed_uptrend": "2026-09-04",
+      "games_available": 81,
+      "history_path": "data/card_bot_season_players/2026/828685.json",
+      "last_game": "2026-09-06",
+      "last_observed_downtrend": "2026-05-17",
+      "last_observed_uptrend": "2026-09-04",
+      "level": "A",
+      "name": "Taitn Gray",
+      "player_id": "828685",
+      "season_pa": 332
     },
     {
       "age": 20,
@@ -1414,23 +1431,6 @@
       "name": "Welbyn Francisca",
       "player_id": "806988",
       "season_pa": 347
-    },
-    {
-      "age": 20,
-      "current_direction": "INSUFFICIENT",
-      "development_phase": "EARLIER_UPTREND_CURRENT_WINDOW_UNAVAILABLE",
-      "early_signal_now": false,
-      "first_game": "2026-04-02",
-      "first_observed_uptrend": "2026-05-27",
-      "games_available": 76,
-      "history_path": "data/card_bot_season_players/2026/815608.json",
-      "last_game": "2026-09-06",
-      "last_observed_downtrend": "2026-05-07",
-      "last_observed_uptrend": "2026-05-27",
-      "level": "A+",
-      "name": "Wyatt Sanford",
-      "player_id": "815608",
-      "season_pa": 363
     },
     {
       "age": 22,

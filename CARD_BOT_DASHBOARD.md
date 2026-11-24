@@ -1,6 +1,6 @@
 # Card Bot — Daily Scouting Board
 
-**Last scan:** 2026-11-22 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
+**Last scan:** 2026-11-24 | **Status:** EARLY_SKILL_WATCHLIST_OFFSEASON_NO_BUYS
 
 **Paper-only experiment:** unverified catalog dollar values are HIDDEN. A verified same-card sale median is NOT an active offer. A player skill-change score is NOT an investment score.
 
@@ -27,10 +27,10 @@
 - Context: **OFFSEASON / retrospectively reviewing last season (no new games today)**
 - MiLB season rows read: **3527**
 - Player game-log feeds with data: **88**
-- Skill-change candidates: **20**
+- Skill-change candidates: **21**
 - Full-season tracking: **every available game** from first to last in a sampled player's season, including earlier streaks, slumps, rebounds and team changes
 - Players with complete development histories: **88**
-- Individual game observations retained: **8967**
+- Individual game observations retained: **8993**
 - Compare all-season 14-game blocks plus **rolling 7/14/28-game checkpoints**, saved every seven games and at the last game
 - Separate most recent comparison periods: **14v14, 28v28, 42v42** (up to 84 recent games); those overlapping horizons do not determine the entire seasonal history
 - [**Open the full-season index**](data/card_bot_full_season_latest.json) to find one readable JSON file per player (all games, rolling checkpoints, phase events)
@@ -44,30 +44,31 @@
 
 **Every player discovered from the raw game logs appears here,** including publicly ranked prospects, players without a Bowman 1st autograph, and players whose cards are not cheap. Do NOT treat the separate card-buy shortlist as the complete baseball research list. Numeric scores are uncalibrated skill-change heuristics—not breakout likelihoods.
 
-**20 skill-change candidates** across 88 sampled players. Each 14v14 change compares the most recent 14 games with the 14 games before them; negative K% changes mean fewer strikeouts, positive BB% and ISO changes mean more walks and extra-base power. These late-season patterns have NOT yet been forward-validated.
+**21 skill-change candidates** across 88 sampled players. Each 14v14 change compares the most recent 14 games with the 14 games before them; negative K% changes mean fewer strikeouts, positive BB% and ISO changes mean more walks and extra-base power. These late-season patterns have NOT yet been forward-validated.
 
 | Signal rank | Player / full game history | Age / level | Games | Skill score | Recent 14v14 deltas | Evidence tier | Public recognition |
 |---:|---|---|---:|---:|---|---|---|
 | 1 | [Edward Florentino](data/card_bot_season_players/2026/821273.json) | 20 / A+ | 103 | 67.6 | K -3.2% / BB +4.2% / ISO +0.136 | SUSTAINED ACROSS 14 28 42 | RANKED — not a quiet-card claim |
 | 2 | [Demetrio Crisantes](data/card_bot_season_players/2026/702679.json) | 22 / AAA | 91 | 63.4 | K -16.6% / BB +10.3% / ISO +0.093 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
-| 3 | [Sebastian Dos Santos](data/card_bot_season_players/2026/829741.json) | 18 / A | 82 | 62.8 | K -12.0% / BB +2.6% / ISO +0.237 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
-| 4 | [Walker Jenkins](data/card_bot_season_players/2026/805805.json) | 21 / AAA | 73 | 54.9 | K -2.1% / BB +9.0% / ISO +0.199 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
-| 5 | [Luis Escudero](data/card_bot_season_players/2026/806884.json) | 20 / A | 58 | 54.2 | K -11.5% / BB +1.5% / ISO +0.122 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
-| 6 | [Lazaro Montes](data/card_bot_season_players/2026/703155.json) | 22 / AAA | 123 | 53.2 | K -8.7% / BB +7.3% / ISO -0.187 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
-| 7 | [Cam Cannarella](data/card_bot_season_players/2026/703448.json) | 23 / AAA | 98 | 45.9 | K -8.7% / BB -3.6% / ISO +0.070 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
-| 8 | [Johanfran Garcia](data/card_bot_season_players/2026/703190.json) | 21 / AA | 80 | 45.8 | K -10.7% / BB +5.5% / ISO +0.116 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 9 | [Josh Adamczewski](data/card_bot_season_players/2026/815304.json) | 21 / AA | 114 | 44.7 | K -13.1% / BB +16.9% / ISO +0.072 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
-| 10 | [Jesús Made](data/card_bot_season_players/2026/815908.json) | 19 / AA | 122 | 43.5 | K -12.2% / BB +2.9% / ISO +0.130 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
-| 11 | [Josiah Ragsdale](data/card_bot_season_players/2026/828824.json) | 22 / AA | 116 | 43.3 | K -9.1% / BB +1.5% / ISO -0.013 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
-| 12 | [Handelfry Encarnacion](data/card_bot_season_players/2026/821136.json) | 19 / A | 111 | 42.4 | K -12.7% / BB -2.1% / ISO +0.172 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 13 | [Jaison Chourio](data/card_bot_season_players/2026/702693.json) | 21 / AA | 115 | 39.7 | K -11.3% / BB -2.8% / ISO +0.079 | LONG HORIZON CONFLICT | Unranked on checked Top-100; hobby hype unknown |
-| 14 | [Andrew Fischer](data/card_bot_season_players/2026/702652.json) | 22 / AA | 126 | 38.6 | K -9.4% / BB +25.9% / ISO -0.021 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 15 | [Starlyn Caba](data/card_bot_season_players/2026/806965.json) | 20 / A+ | 81 | 38.2 | K -5.7% / BB +3.9% / ISO +0.133 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 16 | [Bryan Rincon](data/card_bot_season_players/2026/804858.json) | 22 / AA | 118 | 37.7 | K -3.6% / BB +11.5% / ISO +0.092 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
-| 17 | [Zach Ehrhard](data/card_bot_season_players/2026/701394.json) | 23 / AAA | 138 | 35.0 | K -13.5% / BB +2.7% / ISO +0.010 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 18 | [Franklin Arias](data/card_bot_season_players/2026/808265.json) | 21 / AAA | 117 | 32.7 | K -3.2% / BB +3.0% / ISO +0.024 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
-| 19 | [Cristofer Torin](data/card_bot_season_players/2026/800198.json) | 21 / AA | 118 | 28.8 | K -3.9% / BB +5.2% / ISO +0.006 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
-| 20 | [Aroon Escobar](data/card_bot_season_players/2026/800169.json) | 21 / AA | 132 | 25.2 | K -3.5% / BB -5.3% / ISO +0.093 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 3 | [Taitn Gray](data/card_bot_season_players/2026/828685.json) | 19 / A | 81 | 63.2 | K -9.2% / BB +9.3% / ISO +0.109 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
+| 4 | [Sebastian Dos Santos](data/card_bot_season_players/2026/829741.json) | 18 / A | 82 | 62.8 | K -12.0% / BB +2.6% / ISO +0.237 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
+| 5 | [Walker Jenkins](data/card_bot_season_players/2026/805805.json) | 21 / AAA | 73 | 54.9 | K -2.1% / BB +9.0% / ISO +0.199 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
+| 6 | [Luis Escudero](data/card_bot_season_players/2026/806884.json) | 20 / A | 58 | 54.2 | K -11.5% / BB +1.5% / ISO +0.122 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
+| 7 | [Lazaro Montes](data/card_bot_season_players/2026/703155.json) | 22 / AAA | 123 | 53.2 | K -8.7% / BB +7.3% / ISO -0.187 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
+| 8 | [Cam Cannarella](data/card_bot_season_players/2026/703448.json) | 23 / AAA | 98 | 45.9 | K -8.7% / BB -3.6% / ISO +0.070 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
+| 9 | [Johanfran Garcia](data/card_bot_season_players/2026/703190.json) | 21 / AA | 80 | 45.8 | K -10.7% / BB +5.5% / ISO +0.116 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 10 | [Josh Adamczewski](data/card_bot_season_players/2026/815304.json) | 21 / AA | 114 | 44.7 | K -13.1% / BB +16.9% / ISO +0.072 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
+| 11 | [Jesús Made](data/card_bot_season_players/2026/815908.json) | 19 / AA | 122 | 43.5 | K -12.2% / BB +2.9% / ISO +0.130 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
+| 12 | [Josiah Ragsdale](data/card_bot_season_players/2026/828824.json) | 22 / AA | 116 | 43.3 | K -9.1% / BB +1.5% / ISO -0.013 | EARLY 14 ONLY | Unranked on checked Top-100; hobby hype unknown |
+| 13 | [Handelfry Encarnacion](data/card_bot_season_players/2026/821136.json) | 19 / A | 111 | 42.4 | K -12.7% / BB -2.1% / ISO +0.172 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 14 | [Jaison Chourio](data/card_bot_season_players/2026/702693.json) | 21 / AA | 115 | 39.7 | K -11.3% / BB -2.8% / ISO +0.079 | LONG HORIZON CONFLICT | Unranked on checked Top-100; hobby hype unknown |
+| 15 | [Andrew Fischer](data/card_bot_season_players/2026/702652.json) | 22 / AA | 126 | 38.6 | K -9.4% / BB +25.9% / ISO -0.021 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 16 | [Starlyn Caba](data/card_bot_season_players/2026/806965.json) | 20 / A+ | 81 | 38.2 | K -5.7% / BB +3.9% / ISO +0.133 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 17 | [Bryan Rincon](data/card_bot_season_players/2026/804858.json) | 22 / AA | 118 | 37.7 | K -3.6% / BB +11.5% / ISO +0.092 | SHORT SPIKE NOT CONFIRMED | RANKED — not a quiet-card claim |
+| 18 | [Zach Ehrhard](data/card_bot_season_players/2026/701394.json) | 23 / AAA | 138 | 35.0 | K -13.5% / BB +2.7% / ISO +0.010 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 19 | [Franklin Arias](data/card_bot_season_players/2026/808265.json) | 21 / AAA | 117 | 32.7 | K -3.2% / BB +3.0% / ISO +0.024 | EARLY 14 ONLY | RANKED — not a quiet-card claim |
+| 20 | [Cristofer Torin](data/card_bot_season_players/2026/800198.json) | 21 / AA | 118 | 28.8 | K -3.9% / BB +5.2% / ISO +0.006 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
+| 21 | [Aroon Escobar](data/card_bot_season_players/2026/800169.json) | 21 / AA | 132 | 25.2 | K -3.5% / BB -5.3% / ISO +0.093 | SHORT SPIKE NOT CONFIRMED | Unranked on checked Top-100; hobby hype unknown |
 
 ### Additional players with an improving rolling trajectory
 
@@ -85,6 +86,7 @@ These players passed some raw skill-change checks, but are already publicly rank
 |---|---:|---|
 | Edward Florentino | 67.6 | [Already on a published Top-100 list](https://prospectpulsev1.com/pipeline/) |
 | Demetrio Crisantes | 63.4 | [Already on a published Top-100 list](https://prospectpulsev1.com/pipeline/) |
+| Taitn Gray | 63.2 | [Already on a published Top-100 list](https://prospectpulsev1.com/pipeline/) |
 | Walker Jenkins | 54.9 | [Already on a published Top-100 list](https://prospectpulsev1.com/pipeline/) |
 | Lazaro Montes | 53.2 | [Already on a published Top-100 list](https://prospectpulsev1.com/pipeline/) |
 | Franklin Arias | 32.7 | [Already on a published Top-100 list](https://prospectpulsev1.com/pipeline/) |
@@ -99,10 +101,10 @@ These phase counts include **all sampled hitters**, not merely today's top break
 
 | Development phase (descriptive) | Players |
 |---|---:|
-| EARLIER UPTREND CURRENT WINDOW UNAVAILABLE | 21 |
 | REGRESSING AFTER UPTREND | 21 |
-| REBOUNDING AFTER DOWNTREND | 19 |
-| EARLIER UPTREND NOW MIXED OR FLAT | 16 |
+| REBOUNDING AFTER DOWNTREND | 20 |
+| EARLIER UPTREND CURRENT WINDOW UNAVAILABLE | 19 |
+| EARLIER UPTREND NOW MIXED OR FLAT | 17 |
 | INSUFFICIENT RECENT EVIDENCE | 6 |
 | CURRENT DOWNTREND | 2 |
 | CURRENT UPTREND | 2 |
@@ -135,7 +137,7 @@ These phase counts include **all sampled hitters**, not merely today's top break
 | [Luis Arana](data/card_bot_season_players/2026/829854.json) | A | 81 | 2026-08-12 | REGRESSING AFTER UPTREND | 2026-09-05 |
 | [Gage Miller](data/card_bot_season_players/2026/824028.json) | AAA | 80 | 2026-05-22 | REGRESSING AFTER UPTREND | 2026-09-19 |
 | [Franklin Primera](data/card_bot_season_players/2026/829398.json) | A | 78 | 2026-09-01 | REGRESSING AFTER UPTREND | 2026-09-06 |
-More histories (38) are in the full-season JSON.
+More histories (37) are in the full-season JSON.
 
 
 ## Live pricing diagnostics
