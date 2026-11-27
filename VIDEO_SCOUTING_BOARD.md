@@ -1,6 +1,6 @@
 # Card Bot — Actual Video Scouting Evidence
 
-**Last run:** 2026-11-26 | **Engine:** videopose_2d_mediapipe_0_10_21_v1
+**Last run:** 2026-11-27 | **Engine:** videopose_2d_mediapipe_0_10_21_v1
 
 ## What the system has ACTUALLY seen
 
